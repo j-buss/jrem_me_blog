@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Calculus on jrem.me - wonder.explore.share</title>
+    <link>/categories/calculus/</link>
+    <description>Recent content in Calculus on jrem.me - wonder.explore.share</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 09 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="/categories/calculus/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Derivatives</title>
+      <link>/2022/04/09/derivatives/</link>
+      <pubDate>Sat, 09 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/04/09/derivatives/</guid>
+      <description>\(\gdef\ddx{\frac{d}{dx}}\) \(\gdef\fx{f(x)}\) \(\gdef\fpx{f&amp;#39;(x)}\)
+The following are my personal notes from relearning calculus using the following resources:
+Khan Academy AP Calculus BC Paul’s Online Notes taking the online class: Introduction to Linear Algebra - MIT OCW 18.06 Definition and Notation If \(y=f(x)\) then the derivative is defined to be \(f&amp;#39;(x) = \displaystyle{\lim_{h \rightarrow 0}} \frac{f(x+h)-f(x)}{h}\) If \(y=f(x)\) then all of the following are equivalent notations for the derivative: \(f&amp;#39;(x)=y&amp;#39;=\frac{df}{dx}=\frac{dy}{dx}=\frac{d}{dx}(f(x))=Df(x)\) If \(y=f(x)\) then all of the following are equivalent notations for derivative evaluated at \(x=a\): \(f&amp;#39;(a)=y&amp;#39;\vert_{x=a}=\frac{df}{dx}\biggm\vert_{x=a}=\frac{dy}{dx}\biggm\vert_{x=a}=Df(a)\) Interpretation of the Derivative If \(y=f(x)\) then \(m=f&amp;#39;(a)\) is the slope of the tangent line to \(y=f(x)\) at \(x=a\) \(f&amp;#39;(a)\) is the instantaneous rate of change of \(f(x)\) at \(x=a\) If \(f(x)\) is the position of an object at time \(x\) then \(f&amp;#39;(a)\) is the velocity of the object at \(x=a\) Basic Properties and Formulas If \(f(x)\) and \(g(x)\) are differentiable functions (the derivative exists), \(c\) and \(n\) are any real numbers:</description>
+    </item>
+    
+    <item>
+      <title>Integration</title>
+      <link>/2022/04/09/integration/</link>
+      <pubDate>Sat, 09 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/04/09/integration/</guid>
+      <description> \(\gdef\ddx{\frac{d}{dx}}\) \(\gdef\fx{f(x)}\) \(\gdef\fpx{f&amp;#39;(x)}\)
+The following are my personal notes from relearning calculus using the following resources:
+Khan Academy AP Calculus BC Paul’s Online Notes taking the online class: Introduction to Linear Algebra - MIT OCW 18.06 Definition Definite Integral: Suppose \(\fx\) is continuous on \([a,b]\). Divide \([a,b]\) into \(n\) subintervals of width \(\Delta x\) and choose a point \(x_i^*\) from each interval. Then \(\int_a^b \fx dx = \displaystyle{\lim_{n \rightarrow \infty}} \sum_{i=1}^n f(x_i^*) \Delta x\) Fundamental Theorem of Calculus Properties Common Integrals Standard Integration Techniques </description>
+    </item>
+    
+    <item>
+      <title>Limits and Continuity</title>
+      <link>/2022/04/03/limits-and-continuity/</link>
+      <pubDate>Sun, 03 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/04/03/limits-and-continuity/</guid>
+      <description>The following are my personal notes from relearning calculus using the following resources:
+Khan Academy AP Calculus BC Paul’s Online Notes taking the online class: Introduction to Linear Algebra - MIT OCW 18.06 Strategy to Find Limits When finding limits, the answer of \(\frac{0}{0}\) is much different than \(\frac{b}{0}\)
+Squeeze Theorem - Alternate Names:
+Pinching Theorem Sandwich Theorem Two officers and a drunk theorem Squeeze Theorem (formula): Let \(I\) be an interval having the point \(a\) as a limit point.</description>
+    </item>
+    
+  </channel>
+</rss>

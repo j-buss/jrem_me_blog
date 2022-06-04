@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.100.1" />
+
+
+<title>Reference - Linear Algebra - jrem.me - wonder.explore.share</title>
+<meta property="og:title" content="Reference - Linear Algebra - jrem.me - wonder.explore.share">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/j-buss">GitHub</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">7 min read</span>
+    
+
+    <h1 class="article-title">Reference - Linear Algebra</h1>
+
+    
+    <span class="article-date">2021-06-27</span>
+    
+
+    <div class="article-content">
+      <h1 id="background">Background</h1>
+<p>This page is a refresher. The impetus for this page was a reference for someone who learned linear algebra in the past, but is in need of a refresher.</p>
+<p>This page borrows <strong>very</strong> heavily from the excellent document <a href="https://minireference.com/static/tutorials/linear_algebra_in_4_pages.pdf">Linear algebra explained in four pages</a> by Ivan Savov.</p>
+<h2 id="introduction">Introduction</h2>
+<p>Linear algebra is essentially the mathematics of vectors and matrices, so we start with a few definitions.</p>
+<h4 id="vector-a-vector-overrightarrowv-in-rn-is-an-n-tuple-of-real-numbers">Vector: A vector $\overrightarrow{v} \in R^n$ is an $n$-tuple of real numbers</h4>
+<p>$$
+\overrightarrow{v}=(v_1,v_2,v_3) \in (R, R, R) \equiv R^{3}
+$$</p>
+<h4 id="matrix-a-matrix-a-in-rm-times-n-is-a-rectangular-array-of-real-numbers-with-m-rows-and-n-columns">Matrix: A matrix $A \in R^{m \times n}$ is a rectangular array of real numbers with $m$ rows and $n$ columns</h4>
+<p>Refer to the values in the matrix as $a_{ij}$ where $i$ is the row number and $j$ is the column number. So $a_{32}$ is the element in the 3rdd row and 2nd column of the matrix.</p>
+<p>$$
+A=\begin{bmatrix}
+a_{11}&amp;a_{12}\\a_{21}&amp;a_{22}\\a_{31}&amp;a_{32}
+\end{bmatrix}\in
+R^{3 \times 2}$$</p>
+<h3 id="vector-operations">Vector Operations</h3>
+<h4 id="vector-addition">Vector Addition:</h4>
+<p>each value is added to corresponding value on the other vector; all the vecotrs are teh same size</p>
+<p>$$
+\overrightarrow{u}+\overrightarrow{v}=
+\begin{bmatrix}
+u_{1}\\u_{2}\\u_{3}
+\end{bmatrix}
++
+\begin{bmatrix}
+v_{1}\\v_{2}\\v_{3}
+\end{bmatrix}
+=
+\begin{bmatrix}
+u_{1}+v_{1}\\u_{2}+v_{2}\\u_{3}+v_{3}
+\end{bmatrix}
+$$</p>
+<h4 id="scalar-multiplications">Scalar Multiplications:</h4>
+<p>multiply each item in the vector by the scalar</p>
+<p>$$
+\alpha \cdot \overrightarrow{u}=
+\begin{bmatrix}
+\alpha \cdot u_{1}\\ \alpha \cdot u_{2}\\ \alpha \cdot u_{3}
+\end{bmatrix}
+$$</p>
+<h4 id="vector-length">Vector Length:</h4>
+<p>determine length of vector using the pythagorean theorem across all dimensions of the vector</p>
+<p>$$
+\Vert \overrightarrow{u} \Vert = \sqrt{u_{1}^2+u_{2}^2+u_{3}^2}
+$$</p>
+<h4 id="dot-product">Dot Product:</h4>
+<p>a multiplication step that results in a scalar; calculated 2 ways</p>
+<h5 id="a-each-member-of-a-vector-is-multipled-by-the-corresponding-member-of-the-other-vector">A. each member of a vector is multipled by the corresponding member of the other vector;</h5>
+<p>$$
+\overrightarrow{u}\cdot\overrightarrow{v}=
+\begin{bmatrix}
+u_{1}\\u_{2}\\u_{3}
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+v_{1}\\v_{2}\\v_{3}
+\end{bmatrix}
+=
+u_{1} \cdot v_{1} + u_{2} \cdot v_{2} + u_{3} \cdot v_{3}
+$$</p>
+<h5 id="b-the-length-of-each-vector-is-multiplied-together-in-addition-to-the-cosine-of-the-angle-between">B. the length of each vector is multiplied together in addition to the cosine of the angle between</h5>
+<p>$$
+\overrightarrow{u}\cdot\overrightarrow{v}=
+\Vert \overrightarrow{u} \Vert \cdot \Vert \overrightarrow{v} \Vert \cdot \cos{\theta}
+$$</p>
+<h5 id="note-the-two-vectors-are-orthogonal-if-the-dot-product-is-0">Note: the two vectors are orthogonal if the dot product is 0;</h5>
+<p>$$ \overrightarrow{u}\cdot\overrightarrow{v}= \Vert \overrightarrow{u} \Vert \cdot \Vert \overrightarrow{v} \Vert \cdot \cos{90 \degree} = 0 $$</p>
+<h4 id="cross-product-a-type-of-multiplication-operation-that-results-in-a-vector">Cross Product: a type of multiplication operation that results in a vector</h4>
+<p>ignoring a horizontal line at a time; cross multiply remaining terms</p>
+<p>$$
+\overrightarrow{u}\times\overrightarrow{v}=
+\begin{bmatrix}
+u_{1}\\u_{2}\\u_{3}
+\end{bmatrix}
+\times
+\begin{bmatrix}
+v_{1}\\v_{2}\\v_{3}
+\end{bmatrix}
+=
+\begin{bmatrix}
+u_{2}v_{3}-u_{3}v_{2}\\u_{3}v_{1}-u_{1}v_{3}\\u_{1}v_{2}-u_{2}v_{1}
+\end{bmatrix}
+$$</p>
+<h5 id="cross-product-norm">Cross Product Norm:</h5>
+<p>$$
+\Vert \overrightarrow{u} \times \overrightarrow{v} \Vert =
+\Vert \overrightarrow{u} \Vert \cdot \Vert \overrightarrow{v} \Vert \cdot \sin{\theta}
+$$</p>
+<h5 id="commutative-property-for-cross-product-does-__not__-hold">Commutative Property for Cross Product does <strong>NOT</strong> hold</h5>
+<p>$$
+\overrightarrow{u} \times \overrightarrow{v} \neq \overrightarrow{v} \times \overrightarrow{u}
+$$
+$$
+\overrightarrow{u} \times \overrightarrow{v} = -\overrightarrow{v} \times \overrightarrow{u}
+$$</p>
+<h5 id="right-hand-rule">Right hand rule:</h5>
+
+
+
+
+
+
+
+<figure style="padding: 0.25rem; margin: 2rem 0; ">
+	<img style="max-width: 100%; width: auto; height: auto;" src="/2021/06/27/reference-linear-algebra/right_hand_rule_huf982814be44667791acd074b331503e4_59152_200x0_resize_box_3.png" width="200" height="181">
+	<figcaption>
+	<small>
+	
+	
+	
+	</small>
+	</figcaption>
+</figure>
+
+<h3 id="matrix-operations">Matrix Operations</h3>
+<h4 id="matrix-addition">Matrix Addition</h4>
+<p>For matrix addition all the matrixes being added must be of the same size. Adding matrices you add each of the corresponding values from the two matricesyou add each of the corresponding values from the two matrices</p>
+<p>$$
+A + B =
+\begin{bmatrix}
+a_{11}&amp;a_{12}\\a_{21}&amp;a_{22}
+\end{bmatrix}
++
+\begin{bmatrix}
+b_{11}&amp;b_{12}\\b_{21}&amp;b_{22}
+\end{bmatrix} =
+\begin{bmatrix}
+a_{11}+b_{11}&amp;a_{12}+b_{12}\\a_{21}+b_{21}&amp;a_{22}+b_{22}
+\end{bmatrix}
+$$</p>
+<p>In shorthand this becomes:
+$$
+C = A + B
+\Leftrightarrow
+c_{ij} = a_{ij} + b_{ij}
+$$</p>
+<h4 id="matrix-subtraction">Matrix Subtraction</h4>
+<p>Matrix subtraction is the same but with an inverse:</p>
+<p>$$ A - B =
+\begin{bmatrix}
+a_{11}&amp;a_{12}\\a_{21}&amp;a_{22}
+\end{bmatrix} -
+\begin{bmatrix}
+b_{11}&amp;b_{12}\\b_{21}&amp;b_{22}
+\end{bmatrix} =
+\begin{bmatrix}
+a_{11}-b_{11}&amp;a_{12}-b_{12}\\a_{21}-b_{21}&amp;a_{22}-b_{22}
+\end{bmatrix}
+$$</p>
+<p>In shorthand this becomes:
+$$
+C = A - B
+\Leftrightarrow
+c_{ij} = a_{ij} - b_{ij}
+$$</p>
+<h4 id="matrix-product">Matrix Product</h4>
+<p>If:
+$$
+A \in R ^{3 \times 2};\thickspace\thickspace B \in R ^{2 \times 2}; \thickspace\thickspace C \in R ^{3 \times 2}
+$$
+Then:
+$$
+AB=C
+$$</p>
+<p>$$
+AB =
+\begin{bmatrix}
+a_{11}&amp;a_{12}\\a_{21}&amp;a_{22}\\a_{31}&amp;a_{32}
+\end{bmatrix}
+\times
+\begin{bmatrix}
+b_{11}&amp;b_{12}\\b_{21}&amp;b_{22}
+\end{bmatrix} =
+\begin{bmatrix}
+a_{11}b_{11}+a_{12}b_{21}&amp;a_{11}b_{12}+a_{12}b_{22}\\a_{21}b_{11}+a_{22}b_{21}&amp;a_{21}b_{12}+a_{22}b_{22}\\a_{31}b_{11}+a_{32}b_{21}&amp;a_{31}b_{12}+a_{32}b_{22}
+\end{bmatrix} = C
+$$</p>
+<h5 id="commutative-property-for-matrix-multiplication-does-__not__-hold">Commutative property for Matrix multiplication does <strong>NOT</strong> hold</h5>
+<p>$$
+AB \neq BA
+$$</p>
+<h4 id="transpose">Transpose</h4>
+<p>This operation flips a matrix over its diagnoal; that is, it switches the row and column indices of the matrix; the transpose of $A$ is depicted $A^{T}$</p>
+<p>$$
+A^{T} =
+\begin{bmatrix}
+\alpha_{1}&amp;\beta_{1}\\\alpha_{2}&amp;\beta_{2}\\\alpha_{3}&amp;\beta_{3}
+\end{bmatrix}^{T}=
+\begin{bmatrix}
+\alpha_{1}&amp;\alpha_{2}&amp;\alpha_{3}\\\beta_{1}&amp;\beta_{2}&amp;\beta_{3}
+\end{bmatrix}
+$$</p>
+<p>A vector transpose is a special case; essentially as a 1-column matrix</p>
+<p>$$
+\overrightarrow{u}=
+\begin{bmatrix}
+u_{1}\\u_{2}\\u_{3}
+\end{bmatrix};\hspace3ex
+\overrightarrow{u}^{T}=
+\begin{bmatrix}
+u_{1}&amp;u_{2}&amp;u_{3}
+\end{bmatrix}
+$$</p>
+<h4 id="inverse">Inverse</h4>
+<p>The inverse of a matrix $A$ is depicted by $A^{-1}$;
+$$AA^{-1} = I$$
+Where $I$ is the Identity Matrix
+$$
+I =
+\begin{bmatrix}
+1&amp;\hspace2ex&amp;0\\\space&amp;\ddots&amp;\space\\0&amp;\hspace2ex&amp;1
+\end{bmatrix}
+$$
+Given this property of the inverse it is extremely useful in solving equations to remove a term from one side of an equation. In the following example we &ldquo;hit&rdquo; the equation with $A^{-1}$ to remove it from the left side.</p>
+<p>$$
+\begin{align*}
+XA&amp;=B\\XAA^{-1}&amp;=BA^{-1}\\X&amp;=BA^{-1}
+\end{align*}
+$$</p>
+<p>The steps can be duplicated for multiple variables, but care must be taken to ensure correct ordering and direction:</p>
+<p>$$
+\begin{align*}
+ABXC&amp;=D
+\end{align*}
+$$</p>
+<ol>
+<li>$C^{-1}$ from the right
+$$
+\begin{align*}
+ABXCC^{-1}&amp;=DC^{-1}\\ABXI&amp;=DC^{-1}\\ABX&amp;=DC^{-1}
+\end{align*}
+$$</li>
+<li>$A^{-1}$ from the left
+$$
+\begin{align*}
+A^{-1}ABX&amp;=A^{-1}DC^{-1}\\IBX&amp;=A^{-1}DC^{-1}\\BX&amp;=A^{-1}DC^{-1}
+\end{align*}
+$$</li>
+<li>$B^{-1}$ from the left</li>
+</ol>
+<p>$$
+\begin{align*}
+B^{-1}BX&amp;=B^{-1}A^{-1}DC^{-1}\\IX&amp;=B^{-1}A^{-1}DC^{-1}\\X&amp;=B^{-1}A^{-1}DC^{-1}
+\end{align*}
+$$</p>
+<h4 id="matrix-vector-product">Matrix-Vector Product</h4>
+<p>An important case of matrix-matrix product; $3 \times 2$ matrix $A$ and the $2 \times 1$ column vector $\overrightarrow{x}$ result in the $3 \times 1$ vector $\overrightarrow{y}$ given by:
+$$
+\begin{align*}
+\overrightarrow{y}=A\overrightarrow{x}
+\Leftrightarrow
+\begin{bmatrix}
+y_{1}\\y_{2}\\y_{3}
+\end{bmatrix}
+&amp;=\begin{bmatrix}
+a_{11}&amp;a_{12}\\a_{21}&amp;a_{22}\\a_{31}&amp;a_{32}
+\end{bmatrix}
+\times
+\begin{bmatrix}
+x_{1}\\x_{2}
+\end{bmatrix}
+=\begin{bmatrix}
+a_{11}x_{1}+a_{12}x_{2}\\a_{21}x_{1}+a_{22}x_{2}\\a_{31}x_{1}+a_{32}x_{2}
+\end{bmatrix}\\&amp;=x_{1}
+\begin{bmatrix}
+a_{11}\\a_{21}\\a_{31}
+\end{bmatrix}+x_{2}
+\begin{bmatrix}
+a_{12}\\a_{22}\\a_{32}
+\end{bmatrix}
+\end{align*}
+$$</p>
+<h4 id="gaussian-elimination--row-reduction--gauss-jordan">Gaussian Elimination / Row Reduction / Gauss-Jordan</h4>
+<p>A set of operations, by many names, in order to solve systems of linear equations.</p>
+<p>There are 3 types of row opearations:</p>
+<ol>
+<li>Swapping 2 rows</li>
+<li>Multiplying a row by a nonzero number</li>
+<li>Adding a multiple of one row to another row</li>
+</ol>
+<p>When these steps are completed on a matrix then the matrix is said to be an <a href="https://en.wikipedia.org/wiki/Triangular_matrix">upper triangular matrix</a> or a matrix in <a href="https://en.wikipedia.org/wiki/Row_echelon_form">row echelon form</a> if the following conditions are met:</p>
+<ol>
+<li>All rows consisting of only zeroes are at the bottom</li>
+<li>Leading coefficients (also called the pivot) of a nonzero row is always strictly to the right of the leading coefficient of the row above it</li>
+</ol>
+<h5 id="example-solving-the-system">Example: Solving the system</h5>
+<p>$$
+\begin{align*}
+1x_{1}+2x_{2}&amp;=5\\3x_{1}+9x_{2}&amp;=21
+\end{align*}
+$$</p>
+<ol>
+<li>Create an augmented matrix to represent the system:</li>
+</ol>
+<p>$$
+\left [\begin{array}{rr|r}
+1 &amp; 2 &amp; 5 \\ 3 &amp; 9 &amp; 21
+\end{array}\right ]
+$$</p>
+<ol start="2">
+<li>Use the first row to eliminate the variable $x_{1}$ in the second row. $Row_{2} - 3 \times Row_{1} \rightarrow NewRow_{2}$</li>
+</ol>
+<p>$$
+\left [\begin{array}{rr|r}
+1 &amp; 2 &amp; 5 \\ 0 &amp; 3 &amp; 6
+\end{array}\right ]
+$$</p>
+<ol start="3">
+<li>Create pivot in the $x_2$ position in the second row. ${1 \over 3}Row_{2} \rightarrow NewRow_{2}$</li>
+</ol>
+<p>$$
+\left [\begin{array}{rr|r}
+1 &amp; 2 &amp; 5 \\ 0 &amp; 1 &amp; 2
+\end{array}\right ]
+$$</p>
+<ol start="4">
+<li>Now use the second row to remove the $x_2$ term from the first row. $Row_{1} - 2 \times Row_2 \rightarrow NewRow_{1}$</li>
+</ol>
+<p>$$
+\left [\begin{array}{rr|r}
+1 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 2
+\end{array}\right ]
+$$</p>
+<p>Now the matrix is in <strong>reduced row exchelon form</strong> (RREF); The solutions are:
+$$
+\begin{align*}
+x_1&amp;=1\\x_2&amp;=2
+\end{align*}
+$$</p>
+<h4 id="compute-matrix-inverse">Compute Matrix Inverse</h4>
+<p>One approach for computing the inverse is to use the Gaussian elimination procedure.</p>
+<ol>
+<li>Create an augmented matrix with an Identity matrix on the right side:</li>
+</ol>
+<p>$$
+\left [\begin{array}{rr|rr}
+1 &amp; 2 &amp; 1 &amp; 0 \\ 3 &amp; 9 &amp; 0 &amp; 1
+\end{array}\right ]
+$$</p>
+<ol start="2">
+<li>Use the first row to eliminate the variable $x_{1}$ in the second row. $Row_{2} - 3 \times Row_{1} \rightarrow NewRow_{2}$</li>
+</ol>
+<p>$$
+\left [\begin{array}{rr|rr}
+1 &amp; 2 &amp; 1 &amp; 0 \\ 0 &amp; 3 &amp; -3 &amp; 1
+\end{array}\right ]
+$$</p>
+<ol start="3">
+<li>Create pivot in the $x_2$ position in the second row. ${1 \over 3}Row_{2} \rightarrow NewRow_{2}$</li>
+</ol>
+<p>$$
+\left [\begin{array}{rr|rr}
+1 &amp; 2 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; -1 &amp; \small{{1 \over 3}}
+\end{array}\right ]
+$$</p>
+<ol start="4">
+<li>Now use the second row to remove the $x_2$ term from the first row. $Row_{1} - 2 \times Row_2 \rightarrow NewRow_{1}$</li>
+</ol>
+<p>$$
+\left [\begin{array}{rr|rr}
+1 &amp; 0 &amp; 3 &amp; \small{-{2 \over 3}} \\ 0 &amp; 1 &amp; -1 &amp; \small{{1 \over 3}}
+\end{array}\right ]
+$$</p>
+<p>Now the inverse matrix is on the right side:</p>
+<p>$$
+A^{-1} =
+\begin{bmatrix}
+3&amp;\small{-{2 \over 3}}\\-1&amp;\small{1 \over 3}
+\end{bmatrix}
+$$</p>
+<h5 id="example-solving-the-system-1">Example: Solving the system</h5>
+<p>Here is an alternate way to solve the system of equations using the inverse matrix.</p>
+<p>Let $A$ be a $2 \times 2$ matrix; $\overrightarrow{x}$ be the vector of unknowns and $\overrightarrow{b}$ be a vector of constants.</p>
+<p>$$
+\begin{align*}
+\begin{bmatrix}
+1&amp;2\\3&amp;9
+\end{bmatrix}
+\begin{bmatrix}
+x_1\\x_2
+\end{bmatrix}&amp;=
+\begin{bmatrix}
+5\\21
+\end{bmatrix}\\A\overrightarrow{x}&amp;=\overrightarrow{b}\\A^{-1}A\overrightarrow{x} &amp;= A^{-1}\overrightarrow{b}\\I\space\overrightarrow{x} &amp;= A^{-1}\overrightarrow{b}\\\overrightarrow{x} &amp; = A^{-1}\overrightarrow{b}\\&amp;=
+\begin{bmatrix}
+3&amp;\small{-{2 \over 3}}\\-1&amp;\small{1 \over 3}
+\end{bmatrix}
+\begin{bmatrix}
+5\\21
+\end{bmatrix}\\&amp;=
+\begin{bmatrix}
+1\\2
+\end{bmatrix}
+\end{align*}
+$$</p>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+

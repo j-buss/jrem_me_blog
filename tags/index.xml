@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on jrem.me - wonder.explore.share</title>
+    <link>/tags/</link>
+    <description>Recent content in Tags on jrem.me - wonder.explore.share</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 03 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>R</title>
+      <link>/tags/r/</link>
+      <pubDate>Mon, 03 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linear regression</title>
+      <link>/tags/linear-regression/</link>
+      <pubDate>Sun, 14 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/linear-regression/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Reference</title>
+      <link>/tags/reference/</link>
+      <pubDate>Sat, 03 Jul 2021 21:21:32 -0500</pubDate>
+      
+      <guid>/tags/reference/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gcp</title>
+      <link>/tags/gcp/</link>
+      <pubDate>Sun, 22 Dec 2019 10:25:54 -0600</pubDate>
+      
+      <guid>/tags/gcp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>iris</title>
+      <link>/tags/iris/</link>
+      <pubDate>Sun, 22 Dec 2019 10:25:54 -0600</pubDate>
+      
+      <guid>/tags/iris/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mlflow</title>
+      <link>/tags/mlflow/</link>
+      <pubDate>Sun, 22 Dec 2019 10:25:54 -0600</pubDate>
+      
+      <guid>/tags/mlflow/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>python</title>
+      <link>/tags/python/</link>
+      <pubDate>Sun, 22 Dec 2019 10:25:54 -0600</pubDate>
+      
+      <guid>/tags/python/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

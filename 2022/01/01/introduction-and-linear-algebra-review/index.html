@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.100.1" />
+
+
+<title>Introduction and Linear Algebra Review - jrem.me - wonder.explore.share</title>
+<meta property="og:title" content="Introduction and Linear Algebra Review - jrem.me - wonder.explore.share">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/j-buss">GitHub</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">8 min read</span>
+    
+
+    <h1 class="article-title">Introduction and Linear Algebra Review</h1>
+
+    
+    <span class="article-date">2022-01-01</span>
+    
+
+    <div class="article-content">
+      
+<script src="/2022/01/01/introduction-and-linear-algebra-review/index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="notation-and-simple-matrix-algebra" class="section level2">
+<h2>Notation and Simple Matrix Algebra</h2>
+<ul>
+<li><p>n: number of observations</p></li>
+<li><p><span class="math inline">\(x_{ij}\)</span>: the <span class="math inline">\(j\)</span>-th variable of the <span class="math inline">\(i\)</span>th observation where <span class="math inline">\(i=1,2,\dots,n\)</span> and <span class="math inline">\(j=1,2,\dots,p\)</span></p></li>
+<li><p>p: number of variables</p></li>
+<li><p><span class="math inline">\(\mathbf{X}\)</span>: is a matrix of size <span class="math inline">\(n \times p\)</span> whose <span class="math inline">\((i,j)\)</span>th element is <span class="math inline">\(x_{ij}\)</span></p></li>
+<li><p><span class="math inline">\(\mathbf{X}=\)</span> <span class="math inline">\(\begin{pmatrix} x_{11}&amp;x_{12}&amp;\dots&amp;x_{1p} \\x_{21}&amp;x_{22}&amp;\dots&amp;x_{2p}\\\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\x_{n1}&amp;x_{n2}&amp;\dots&amp;x_{np} \end{pmatrix}\)</span></p></li>
+<li><p>Row vector of <span class="math inline">\(\mathbf{X}\)</span>: <span class="math inline">\(x_i = \begin{pmatrix} x_{i1}\\x_{i2}\\\vdots\\x_{ip} \end{pmatrix}\)</span>;</p>
+<ul>
+<li>*Note: even though it is a <strong>row</strong> vector the default orientation is as a column</li>
+</ul></li>
+<li><p>Column vector of <span class="math inline">\(\mathbf{X}\)</span>: <span class="math inline">\(\mathbf{x}_j = \begin{pmatrix} x_{1j}\\x_{2j}\\\vdots\\x_{nj} \end{pmatrix}\)</span></p></li>
+<li><p>With these row and column conventions the entire matrix <span class="math inline">\(\mathbf{X}\)</span> can be written as:</p>
+<ul>
+<li>Using Column Vectors: <span class="math inline">\(\mathbf{X}=\begin{pmatrix} \mathbf{x}_1 &amp; \mathbf{x}_2 &amp; \dots &amp; \mathbf{x}_p \end{pmatrix}\)</span></li>
+<li>Using Row Vectors: <span class="math inline">\(\mathbf{X} = \begin{pmatrix} x^{\intercal}_{1}\\x^{\intercal}_{2}\\\vdots\\x^{\intercal}_{n} \end{pmatrix}\)</span></li>
+</ul></li>
+<li><p>order: refers to the number of rows and columns of a matrix</p></li>
+<li><p>rank of matrix: the number of linearly independent rows/columns or with a “transformation” lense it is the number of dimensions in the output or column space</p></li>
+<li><p>column rank: the number of linearly independent columns</p></li>
+<li><p>row rank: the number of linearly independent rows</p></li>
+<li><p>Matrix <span class="math inline">\(\mathbf{A}\)</span> is full rank: if <span class="math inline">\(\text{rank}(\mathbf{A})=min(n,p)\)</span></p></li>
+<li><p>full rank if <span class="math inline">\(n&lt;p\)</span>: implies full row rank <span class="math inline">\(\text{rank}(\mathbf{A})=n\)</span></p></li>
+<li><p>full rank if <span class="math inline">\(n&gt;p\)</span>: implies full column rank <span class="math inline">\(\text{rank}(\mathbf{A})=p\)</span></p></li>
+<li><p><span class="math inline">\(\intercal\)</span>: transpose of a matrix</p></li>
+<li><p><span class="math inline">\(\mathbf{X}^{\intercal}=\)</span> <span class="math inline">\(\begin{pmatrix} x_{11}&amp;x_{21}&amp;\dots&amp;x_{n1} \\x_{12}&amp;x_{22}&amp;\dots&amp;x_{n2}\\\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\x_{1p}&amp;x_{2p}&amp;\dots&amp;x_{np} \end{pmatrix}\)</span></p></li>
+<li><p><span class="math inline">\(x_i^{\intercal} = \begin{pmatrix} x_{i1}&amp;x_{i2}&amp;\dots&amp;x_{ip} \end{pmatrix}\)</span></p></li>
+<li><p><span class="math inline">\((\mathbf{A}^\intercal)^\intercal=\mathbf{A}\)</span></p></li>
+<li><p><span class="math inline">\((\mathbf{A}+\mathbf{B})^\intercal=\mathbf{A}^\intercal+\mathbf{B}^\intercal\)</span></p></li>
+<li><p><span class="math inline">\((b\mathbf{A})^\intercal=b\mathbf{A}^\intercal\)</span> where <span class="math inline">\(b\)</span> is a scalar</p></li>
+<li><p><span class="math inline">\((\mathbf{A}\mathbf{B})^\intercal=\mathbf{B}^\intercal\mathbf{A}^\intercal\)</span></p></li>
+<li><p><span class="math inline">\((\mathbf{A}^{-1})^\intercal=(\mathbf{A}^\intercal)^{-1}\)</span></p></li>
+<li><p>trace of a square matrix <span class="math inline">\(\mathbf{A}\)</span> is the sum of the diagonals or
+<span class="math display">\[\text{tr}(\mathbf{A})=\sum_{j=1}^p a_{jj}\]</span></p></li>
+<li><p><span class="math inline">\(\text{tr}(\mathbf{A})=\text{tr}(\mathbf{A}^\intercal)\)</span></p></li>
+<li><p><span class="math inline">\(\text{tr}(\mathbf{A}+ \mathbf{B})=\text{tr}(\mathbf{A}) + \text{tr}(\mathbf{B})\)</span></p></li>
+<li><p><span class="math inline">\(\text{tr}(b\mathbf{A})=b\text{tr}(\mathbf{A})\)</span></p></li>
+<li><p><span class="math inline">\(\text{tr}(\mathbf{AB})=\text{tr}(\mathbf{BA})\)</span>; if both products are defined</p></li>
+<li><p>If <span class="math inline">\(\mathbf{A}\)</span> is symmetric:
+<span class="math display">\[\text{tr}(\mathbf{A})=\sum_{j=1}^p \lambda_j\]</span>
+where <span class="math inline">\(\lambda_j\)</span> is the <span class="math inline">\(j\)</span>-th eigenvalue of <span class="math inline">\(\mathbf{A}\)</span></p></li>
+<li><p>Symmetric Matrix: square and symmetric along the main diagonal
+<span class="math display">\[
+\mathbf{X}=\begin{pmatrix} x_{11}&amp;x_{12}&amp;\dots&amp;x_{1n} \\x_{21}&amp;x_{22}&amp;\dots&amp;x_{2n}\\\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\x_{n1}&amp;x_{n2}&amp;\dots&amp;x_{nn} \end{pmatrix}_{n \times n}
+\]</span>
+with <span class="math inline">\(a_{ij}=a_{ji}\)</span> for all <span class="math inline">\(i \ne j\)</span></p></li>
+<li><p>For Symmetric Matrix <span class="math inline">\(\mathbf{A}=\mathbf{A}^\intercal\)</span></p></li>
+<li><p>Diagonal Matrix: a square matrix of order <span class="math inline">\(p\)</span> is a <span class="math inline">\(p \times p\)</span> matrix that has zeros in the off-diagonals
+<span class="math display">\[
+\mathbf{D}=\begin{pmatrix} d_{1}&amp;0&amp;\dots&amp;0 \\0&amp;d_{2}&amp;0&amp;0
+\\\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\0&amp;0&amp;\dots&amp;d_{p} \end{pmatrix}_{p \times p}
+\]</span></p></li>
+<li><p>We often write <span class="math inline">\(\mathbf{D}=diag(d_1,\dots,d_p)\)</span> to define a diagonal matrix</p></li>
+<li><p>Identity Matrix: a square matrix, of order <span class="math inline">\(p\)</span> is a <span class="math inline">\(p \times p\)</span> matrix that has zeros in the off-diagonals
+<span class="math display">\[
+\mathbf{I}_p=\begin{pmatrix} 1&amp;0&amp;\dots&amp;0 \\0&amp;1&amp;0&amp;0
+\\\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\0&amp;0&amp;\dots&amp;1 \end{pmatrix}_{p \times p}
+\]</span></p></li>
+<li><p>The identity matrix <span class="math inline">\(\mathbf{I}_p\)</span> is a special type of diagonal matrix</p></li>
+<li><p>Zero Vector: a vector of all 0s of size <span class="math inline">\(n\)</span><br />
+<span class="math inline">\(\mathbf{0}_n= \begin{pmatrix} 0\\0\\\vdots\\0 \end{pmatrix}_{n\times1}\)</span></p></li>
+<li><p>Zero Matrix: a matrix of all 0s of size <span class="math inline">\(n \times p\)</span>
+<span class="math display">\[
+\mathbf{0}_{n \times p} =\begin{pmatrix} 0&amp;0&amp;\dots&amp;0 \\0&amp;0&amp;0&amp;0
+\\\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\0&amp;0&amp;\dots&amp;0 \end{pmatrix}_{n \times p}
+\]</span></p></li>
+<li><p>Ones Vector: a vector of all 1s of size <span class="math inline">\(n\)</span><br />
+<span class="math inline">\(\mathbf{1}_n= \begin{pmatrix} 1\\1\\\vdots\\1 \end{pmatrix}_{n\times1}\)</span></p></li>
+<li><p>Ones Matrix: a matrix of all 1s of size <span class="math inline">\(n \times p\)</span>
+<span class="math display">\[
+\mathbf{1}_{n \times p} =\begin{pmatrix} 1&amp;1&amp;\dots&amp;1 \\1&amp;1&amp;\dots&amp;1
+\\\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\1&amp;1&amp;\dots&amp;1 \end{pmatrix}_{n \times p}
+\]</span></p></li>
+<li><p>Matrix Equality: two matrices, <span class="math inline">\(\mathbf{A}\)</span> and <span class="math inline">\(\mathbf{B}\)</span> are equal (written <span class="math inline">\(\mathbf{A}=\mathbf{B}\)</span> ) if an only if <span class="math inline">\(a_{ij} = b_{ij} \forall i,j\)</span></p></li>
+<li><p>Matrix Addition is only defined for two matrices of the same order.Adding matrices you add each of the corresponding values from the two matrices</p></li>
+</ul>
+<p><span class="math display">\[
+A + B = 
+\begin{bmatrix}
+a_{11}&amp;a_{12}\\\\a_{21}&amp;a_{22}
+\end{bmatrix}
++
+\begin{bmatrix}
+b_{11}&amp;b_{12}\\\\b_{21}&amp;b_{22}
+\end{bmatrix} = 
+\begin{bmatrix}
+a_{11}+b_{11}&amp;a_{12}+b_{12}\\\\a_{21}+b_{21}&amp;a_{22}+b_{22}
+\end{bmatrix}
+\]</span></p>
+<ul>
+<li><p>Matrix Addition shorthand:
+<span class="math display">\[
+\mathbf{C} = \mathbf{A} + \mathbf{B}
+\Leftrightarrow
+c_{ij} = a_{ij} + b_{ij}
+\]</span></p></li>
+<li><p>Matrix Subtraction is only defined for two matrices of the same order. Subtracting matrices you subtract each of the corresponding values from the two matrices
+<span class="math display">\[ A - B = 
+\begin{bmatrix}
+a_{11}&amp;a_{12}\\\\a_{21}&amp;a_{22}
+\end{bmatrix} -
+\begin{bmatrix}
+b_{11}&amp;b_{12}\\\\b_{21}&amp;b_{22}
+\end{bmatrix} = 
+\begin{bmatrix}
+a_{11}-b_{11}&amp;a_{12}-b_{12}\\\\a_{21}-b_{21}&amp;a_{22}-b_{22}
+\end{bmatrix}
+\]</span></p></li>
+<li><p>Matrix subtraction shorthand:
+<span class="math display">\[
+\mathbf{C} = \mathbf{A} - \mathbf{B}
+\Leftrightarrow
+c_{ij} = a_{ij} - b_{ij}
+\]</span></p></li>
+<li><p>Vector Inner Product: for vectors <span class="math inline">\(\mathbf{x} = \begin{pmatrix} x_{1}&amp;\dots&amp;x_{n} \end{pmatrix}^\intercal\)</span> and <span class="math inline">\(\mathbf{y} = \begin{pmatrix} y_{1}&amp;\dots&amp;y_{n} \end{pmatrix}^\intercal\)</span>, both of the same length <span class="math inline">\(n\)</span>; then the inner product is
+<span class="math display">\[
+\begin{split}
+\mathbf{x}^\intercal \mathbf{y}&amp; = \begin{pmatrix} x_i \dots x_n\end{pmatrix}\begin{pmatrix} y_i \\ \vdots \\ y_n \end{pmatrix}\\
+&amp;=\left ( \sum_{i=1}^n x_i y_i \right )_{1 \times 1}
+\end{split}
+\]</span></p></li>
+<li><p>Vector Outer Product: for vectors <span class="math inline">\(\mathbf{x} = \begin{pmatrix} x_{1}&amp;\dots&amp;x_{m} \end{pmatrix}^\intercal\)</span> and <span class="math inline">\(\mathbf{y} = \begin{pmatrix} y_{1}&amp;\dots&amp;y_{n} \end{pmatrix}^\intercal\)</span>, both vectors can have different lengths; then the outer product is
+<span class="math display">\[
+\begin{split}
+\mathbf{x} \mathbf{y}^\intercal &amp; = \begin{pmatrix} x_i \dots x_n\end{pmatrix}\begin{pmatrix} y_i \\ \vdots \\ y_n \end{pmatrix}\\
+&amp;=\left ( \sum_{i=1}^n x_i y_i \right )_{1 \times 1}
+\end{split}
+\]</span></p></li>
+<li><p>span: is the linear combination of some set of vectors. for example the span of <span class="math inline">\(\hat{i}\)</span> and <span class="math inline">\(\hat{j}\)</span> is the two dimensional plane; <span class="math inline">\(a\hat{i}+b\hat{j}\)</span> where <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are real numbers; i.e. what vectors can you make from a combination of these vectors?</p></li>
+<li><p>Linearly Dependent: vectors are linearly dependent if one of the vectors is a scalar multiple of the other or linear combination of the other vectors in the set</p></li>
+<li><p>basis: within a vector space it is a set of linearly independent vectors that span the full space</p></li>
+<li><p>Transformation matrix: A matrix which contains in columns where the basis vectors end at. For example if the normal matrix describing <span class="math inline">\(\hat{i}\)</span> and <span class="math inline">\(\hat{j}\)</span> is: <span class="math inline">\(\begin{bmatrix}1&amp;0\\0&amp;1\end{bmatrix}\)</span> then after a transformation by rotating by 90<span class="math inline">\(^\circ\)</span> counterclockwise would be <span class="math inline">\(\begin{bmatrix}0&amp;-1\\1&amp;0\end{bmatrix}\)</span></p></li>
+<li><p>Matrix-Vector multiplication:
+With matrix</p></li>
+</ul>
+<p><span class="math display">\[
+\mathbf{A}=
+\begin{bmatrix}
+a_{11}&amp;\dots&amp;a_{1n}\\
+\vdots&amp;\ddots&amp;\vdots\\
+a_{m1}&amp;\dots&amp;a_{mn}\\
+\end{bmatrix}_{m \times n}
+\]</span>
+and matrix</p>
+<p><span class="math display">\[
+\mathbf{B}=
+\begin{bmatrix}
+b_{11}&amp;\dots&amp;b_{1p}\\
+\vdots&amp;\ddots&amp;\vdots\\
+b_{n1}&amp;\dots&amp;b_{np}\\
+\end{bmatrix}_{n \times p}
+\]</span></p>
+<p>becomes:</p>
+$$
+<span class="math display">\[\begin{split}
+
+\mathbf{AB}&amp;=
+\begin{bmatrix}
+a_{11}&amp;\dots&amp;a_{1n}\\
+\vdots&amp;\ddots&amp;\vdots\\
+a_{m1}&amp;\dots&amp;a_{mn}\\
+\end{bmatrix}
+\begin{bmatrix}
+b_{11}&amp;\dots&amp;b_{1p}\\
+\vdots&amp;\ddots&amp;\vdots\\
+b_{n1}&amp;\dots&amp;b_{np}\\
+\end{bmatrix}\\
+&amp;=
+\begin{bmatrix}
+\sum_{j=1}^na_{1j}b_{j1}&amp;\sum_{j=1}^na_{1j}b_{j2}&amp;\dots&amp;\sum_{j=1}^na_{1j}b_{jp}\\
+\sum_{j=1}^na_{2j}b_{j1}&amp;\sum_{j=1}^na_{2j}b_{j2}&amp;\dots&amp;\sum_{j=1}^na_{2j}b_{jp}\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+\sum_{j=1}^na_{mj}b_{j1}&amp;\sum_{j=1}^na_{mj}b_{j2}&amp;\dots&amp;\sum_{j=1}^na_{mj}b_{jp}\\
+\\
+\end{bmatrix}_{m \times p}
+\end{split}\]</span>
+<p>$$</p>
+<ul>
+<li>Matrix Matrix Mutiplication:
+With matrix</li>
+</ul>
+<p><span class="math display">\[
+\mathbf{A}=
+\begin{bmatrix}
+a_{11}&amp;\dots&amp;a_{1p}\\
+\vdots&amp;\ddots&amp;\vdots\\
+a_{n1}&amp;\dots&amp;a_{np}\\
+\end{bmatrix}_{n \times p}
+\]</span>
+and vector</p>
+<p><span class="math display">\[ \mathbf{x} = 
+\begin{bmatrix}
+x_1\\\vdots\\x_p
+\end{bmatrix}_{p \times 1}
+\]</span>
+becomes:</p>
+<p><span class="math display">\[
+\begin{split}
+\mathbf{Ax}&amp;=
+\begin{bmatrix}
+a_{11}&amp;\dots&amp;a_{1p}\\
+\vdots&amp;\ddots&amp;\vdots\\
+a_{n1}&amp;\dots&amp;a_{np}\\
+\end{bmatrix}
+\begin{bmatrix}
+x_1\\\vdots\\x_p
+\end{bmatrix}\\
+&amp;=
+\begin{bmatrix}
+\sum_{j=1}^pa_{1j}x_j\\
+\vdots\\
+\sum_{j=1}^pa_{nj}x_j\\
+\end{bmatrix}_{n \times 1}
+\end{split}
+\]</span></p>
+<ul>
+<li>A transformation is linear if it satisfies two properties: Depicting the transformation as the function <span class="math inline">\(L\)</span>
+<ol style="list-style-type: decimal">
+<li>Additivity: <span class="math inline">\(L(\mathbf{a}+\mathbf{b})=L(\mathbf{a})+L(\mathbf{b})\)</span></li>
+<li>Scaling <span class="math inline">\(bL(\mathbf{v})=L(b\mathbf{v})\)</span></li>
+</ol></li>
+<li>How to find a transformed vector?: Simply multiply the vector by the change in basis matrix</li>
+</ul>
+<p><span class="math display">\[
+\begin{bmatrix}
+a&amp;b\\c&amp;d
+\end{bmatrix}
+\begin{bmatrix}
+x\\y
+\end{bmatrix}
+=
+x\begin{bmatrix}
+a\\c
+\end{bmatrix} + y\begin{bmatrix}
+b\\d
+\end{bmatrix}
+=\begin{bmatrix}
+ax+by\\cx+dy
+\end{bmatrix}
+\]</span></p>
+<ul>
+<li>What is the “intuition” behind multiplying a matrix and a vector? A matrix represents a specific linear transformation and muliplying a vector by that matrix is finding the resultant vector transformation</li>
+<li></li>
+<li>What is the “intuition” behind multiplying two matrices? The composition of two transformations; for example a shear and a rotation: (applied right to left as in function notation <span class="math inline">\(f(g(x))\)</span>)
+<span class="math display">\[
+\begin{bmatrix}
+1&amp;1\\0&amp;1
+\end{bmatrix}
+\begin{bmatrix}
+0&amp;-1\\1&amp;0
+\end{bmatrix}
+=
+\begin{bmatrix}
+1&amp;-1\\1&amp;0
+\end{bmatrix}
+\]</span></li>
+<li>Multiplication:</li>
+<li>What is the intuition behind a determinant? The change in area after the transformation by a matrix; note the special case if the determinant is zero, the area changed to 0 (e.g. 2D squished to a line); if the determinant is negative then the orientation of space has been “flipped” (and <span class="math inline">\(\hat{j}\)</span> would be to the “right” of <span class="math inline">\(\hat{i}\)</span> or in 3D from right hand to left hand rule)</li>
+<li>How can we summarize a set of linear equations?
+<span class="math display">\[
+\begin{split}
+\mathbf{A} \mathbf{x} = \mathbf{v}\\
+\mathbf{A} ^{\intercal}\mathbf{A} \mathbf{x} = \mathbf{A} ^{\intercal}\mathbf{v}\\
+\mathbf{x} = \mathbf{A} ^{\intercal}\mathbf{v}
+\end{split}
+\]</span></li>
+<li>Dot product geometric interpretation: one of the vectors can be seen as the transformation matrix for <span class="math inline">\(\hat{i}\)</span> and <span class="math inline">\(\hat{j}\)</span> from many dimensions to 1. Therefore the operation is matrix / vector multiplication (where the first matrix is actually the first vector “tipped” on it’s side)
+#### Dot Product:
+a multiplication step that results in a scalar; calculated 2 ways</li>
+</ul>
+<div id="a.-each-member-of-a-vector-is-multipled-by-the-corresponding-member-of-the-other-vector" class="section level5">
+<h5>A. each member of a vector is multipled by the corresponding member of the other vector;</h5>
+<p><span class="math display">\[
+\overrightarrow{u} \cdot \overrightarrow{v}= 
+\begin{bmatrix}
+u_{1}\\\\u_{2}\\\\u_{3}
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+v_{1}\\\\v_{2}\\\\v_{3}
+\end{bmatrix} =
+u_{1} \cdot v_{1} + u_{2} \cdot v_{2} + u_{3} \cdot v_{3}
+\]</span></p>
+</div>
+<div id="b.-the-length-of-each-vector-is-multiplied-together-in-addition-to-the-cosine-of-the-angle-between" class="section level5">
+<h5>B. the length of each vector is multiplied together in addition to the cosine of the angle between</h5>
+<p><span class="math display">\[
+\overrightarrow{u}\cdot\overrightarrow{v}= 
+\Vert \overrightarrow{u} \Vert \cdot \Vert \overrightarrow{v} \Vert \cdot \cos{\theta}
+\]</span></p>
+</div>
+<div id="note-the-two-vectors-are-orthogonal-if-the-dot-product-is-0" class="section level5">
+<h5>Note: the two vectors are orthogonal if the dot product is 0;</h5>
+<p><span class="math display">\[
+\overrightarrow{u}\cdot\overrightarrow{v}= \Vert \overrightarrow{u} \Vert \cdot \Vert \overrightarrow{v} \Vert \cdot \cos{90^{\circ}} = 0
+\]</span>
+#### Cross Product: a type of multiplication operation that results in a vector</p>
+<p>ignoring a horizontal line at a time; cross multiply remaining terms</p>
+<p><span class="math display">\[
+\overrightarrow{u}\times\overrightarrow{v}= 
+\begin{bmatrix}
+u_{1}\\\\u_{2}\\\\u_{3}
+\end{bmatrix}
+\times
+\begin{bmatrix}
+v_{1}\\\\v_{2}\\\\v_{3}
+\end{bmatrix}
+=
+\begin{bmatrix}
+u_{2}v_{3}-u_{3}v_{2}\\\\u_{3}v_{1}-u_{1}v_{3}\\\\u_{1}v_{2}-u_{2}v_{1}
+\end{bmatrix}
+\]</span></p>
+</div>
+<div id="cross-product-norm" class="section level5">
+<h5>Cross Product Norm:</h5>
+<p><span class="math display">\[
+\Vert \overrightarrow{u} \times \overrightarrow{v} \Vert =
+\Vert \overrightarrow{u} \Vert \cdot \Vert \overrightarrow{v} \Vert \cdot \sin{\theta}
+\]</span></p>
+</div>
+<div id="commutative-property-for-cross-product-does-not-hold" class="section level5">
+<h5>Commutative Property for Cross Product does <strong>NOT</strong> hold</h5>
+<p><span class="math display">\[
+\overrightarrow{u} \times \overrightarrow{v} \neq \overrightarrow{v} \times \overrightarrow{u}
+\]</span>
+<span class="math display">\[
+\overrightarrow{u} \times \overrightarrow{v} = -\overrightarrow{v} \times \overrightarrow{u}
+\]</span></p>
+</div>
+<div id="right-hand-rule" class="section level5">
+<h5>Right hand rule:</h5>
+<p><img src="images/right_hand_rule.png" /></p>
+<p><span class="math display">\[
+\overrightarrow{u}\times\overrightarrow{v}= 
+\begin{bmatrix}
+u_{1}\\\\u_{2}\\\\u_{3}
+\end{bmatrix}
+\times
+\begin{bmatrix}
+v_{1}\\\\v_{2}\\\\v_{3}
+\end{bmatrix}
+=
+det \left ( \begin{bmatrix}
+\hat{i}&amp;u_{1}&amp;v_{1}\\
+\hat{j}&amp;u_{2}&amp;v_{2}\\
+\hat{k}&amp;u_{3}&amp;v_{3}
+\end{bmatrix} \right )
+=
+\begin{bmatrix}
+\hat{i}(u_{2}v_{3}-u_{3}v_{2})\\
+\hat{j}(u_{3}v_{1}-u_{1}v_{3})\\
+\hat{k}(u_{1}v_{2}-u_{2}v_{1})
+\end{bmatrix}
+\]</span></p>
+<ul>
+<li><p>What is the geometric interpretation of the Cross Product? The cross product scalar is the size of the parallelogram between the vectors (i.e. the deteminant) and is in the direction perpendicular to the plane of that parallelogram (also obeying the right hand rule to determine the size)</p></li>
+<li><p>orthonormal Matrix - Transformation matrix where the basis vectors stay perpendicular and of unit length (Rotation Transformations)</p></li>
+<li><p>What is the formula for a empathy transformation? For a transformation depicted in our basis as <span class="math inline">\(\mathbf{M}\)</span> and the translation of basis from theirs to ours as <span class="math inline">\(\mathbf{A}\)</span> then the empathy translation is <span class="math inline">\(\mathbf{A}^{\intercal}\mathbf{M}\mathbf{A}\)</span>; this full matrix product is a transformation as someone else sees it</p></li>
+<li><p>Conceptual definition of an eigenvector in 3d? The axis of rotation</p></li>
+<li><p>Conceptual definition of an eigenvector in 2d? A vector, which after transformation is NOT knocked off of it’s span (only stretched or squished)</p></li>
+<li><p>Eigenvalue / Eigenvector Definition: Let <span class="math inline">\(\mathbf{A}\)</span> be an <span class="math inline">\(n \times n\)</span> matrix. A scalar <span class="math inline">\(\lambda\)</span> is called an eigenvalue of <span class="math inline">\(\mathbf{A}\)</span> if ther is a nonzero vector <span class="math inline">\(\mathbf{x}\)</span> such that <span class="math inline">\(\mathbf{A} \mathbf{x} = \lambda \mathbf{x}\)</span>. Such a vector <span class="math inline">\(\mathbf{x}\)</span> is called an eigenvecotr of <span class="math inline">\(\mathbf{A}\)</span> corresponding to <span class="math inline">\(\lambda\)</span></p></li>
+<li><p>Framework for solving for Eigenvectors:
+<span class="math display">\[
+\begin{split}
+\mathbf{A} \mathbf{x} &amp;= \lambda \mathbf{x}\\
+\mathbf{A} \mathbf{x} &amp;= (\lambda \mathbf{I}) \mathbf{x}\\
+\mathbf{A} \mathbf{x} - (\lambda \mathbf{I}) \mathbf{x} &amp;= \mathbf{0}\\
+(\mathbf{A} - \lambda \mathbf{I}) \mathbf{x} &amp;= \mathbf{0}\\
+\text{det}(\mathbf{A} - \lambda \mathbf{I}) &amp;= \mathbf{0}\\
+\end{split}
+\]</span></p></li>
+<li><p>Eigenbasis: all basis vectors are eigenvectors</p></li>
+<li><p>Change of Basis Matrix: Matrix made up of column vectors</p></li>
+</ul>
+</div>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+

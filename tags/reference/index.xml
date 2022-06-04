@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reference on jrem.me - wonder.explore.share</title>
+    <link>/tags/reference/</link>
+    <description>Recent content in Reference on jrem.me - wonder.explore.share</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 03 Jul 2021 21:21:32 -0500</lastBuildDate><atom:link href="/tags/reference/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Reference - Statistics and Probability</title>
+      <link>/2021/07/03/reference-statistics-and-probability/</link>
+      <pubDate>Sat, 03 Jul 2021 21:21:32 -0500</pubDate>
+      
+      <guid>/2021/07/03/reference-statistics-and-probability/</guid>
+      <description>CHANGES
+Background This page is a refresher. Someone, may have studied statistics long ago and is in need of a reference.
+This page borrows quite heavily from the MIT Statistics Cheat Sheet
+Population: The entire group one desires information about Sample: A subset of the population taken because the entire population is usually too large to analyze; Its characteristics are taken to be representative of the population Mean: (average); The sum of all values in the sample divided by the number of values in the sample; $\mu$ = population mean $\overline{x}$ = sample mean Median: the value separating the higher half of a sample/population from lower half It is the middle value when all values arranged lowest to highest (or avg of middle two if even number of items) IQR: the middle 50%, calculated as Q3 - Q1 1.</description>
+    </item>
+    
+    <item>
+      <title>Reference - Linear Algebra</title>
+      <link>/2021/06/27/reference-linear-algebra/</link>
+      <pubDate>Sun, 27 Jun 2021 14:29:01 -0500</pubDate>
+      
+      <guid>/2021/06/27/reference-linear-algebra/</guid>
+      <description>Background This page is a refresher. The impetus for this page was a reference for someone who learned linear algebra in the past, but is in need of a refresher.
+This page borrows very heavily from the excellent document Linear algebra explained in four pages by Ivan Savov.
+Introduction Linear algebra is essentially the mathematics of vectors and matrices, so we start with a few definitions.
+Vector: A vector $\overrightarrow{v} \in R^n$ is an $n$-tuple of real numbers $$ \overrightarrow{v}=(v_1,v_2,v_3) \in (R, R, R) \equiv R^{3} $$</description>
+    </item>
+    
+  </channel>
+</rss>

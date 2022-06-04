@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linear Algebra on jrem.me - wonder.explore.share</title>
+    <link>/categories/linear-algebra/</link>
+    <description>Recent content in Linear Algebra on jrem.me - wonder.explore.share</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 22 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="/categories/linear-algebra/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 4 - Orthogonality</title>
+      <link>/2022/03/22/chapter-4-orthogonality/</link>
+      <pubDate>Tue, 22 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/03/22/chapter-4-orthogonality/</guid>
+      <description>The following are my personal notes from taking the online class: Introduction to Linear Algebra - MIT OCW 18.06
+4.1 Orthogonality of the Four Subspaces Orthogonal vectors: \(\mathbf{v}^{\intercal}\mathbf{w}=0\) \(\Vert \mathbf{v} \Vert ^{2} + \Vert \mathbf{w} \Vert ^{2} = \Vert \mathbf{v} + \mathbf{w} \Vert ^{2}\) Orthogonal subspaces: Two subspaces \(V\) and \(W\) are orthogonal if \(\mathbf{v}^{\intercal}\mathbf{w}=0; \; \forall \mathbf{v} \in V \; and \; \forall \mathbf{w} \in W\) Every vector in the nullspace is perpendicualr to every row of \(A\), because \(A\mathbf{x}=\mathbf{0}\) The nullspace \(\mathbf{N}(A)\) and the row space \(\mathbf{C}(A)\) are orthogonal subspaces of \(\R^n\) nullspace \(\mathbf{N}(A)\) and the row space \(\mathbf{C}(A)\) relationship: \[ A\mathbf{x} = \begin{bmatrix} \mathbf{row\;1}\\ \vdots\\ \mathbf{row\;m}\\ \end{bmatrix} \begin{bmatrix}\\ \mathbf{x}\\ \\ \end{bmatrix} = \begin{bmatrix} 0\\ \vdots \\ 0 \end{bmatrix} \begin{matrix} \longleftarrow \\ \\ \longleftarrow \end{matrix} \begin{matrix} (\mathbf{row\;1})\cdot x \; \text{is zero}\\ \\ (\mathbf{row\;m})\cdot x \; \text{is zero}\\ \end{matrix} \] Nullspace orthogonal to row space proof: \(\mathbf{x}^{\intercal}(A^{\intercal}\mathbf{y}) = (A\mathbf{x})^{\intercal} \mathbf{y} = \mathbf{0}^{\intercal}\mathbf{y}=0\) Every vector \(\mathbf{y}\) in the nullspace of \(A^{\intercal}\) is perpendicular to every column of \(A\) The left nullspace \(\mathbf{N}(A^{\intercal})\) and the column space \(\mathbf{C}(A)\) are orthogonal in \(\R^n\) \(\mathbf{C}(A)\perp\mathbf{N}(A^{\intercal})\) \[ A^{\intercal}\mathbf{y} = \begin{bmatrix} (\mathbf{column\;1})^{\intercal}\\ \vdots\\ (\mathbf{column\;n})^{\intercal}\\ \end{bmatrix} \begin{bmatrix}\\ \mathbf{y}\\ \\ \end{bmatrix} = \begin{bmatrix} 0\\ \vdots \\ 0 \end{bmatrix} \]</description>
+    </item>
+    
+    <item>
+      <title>Chapter 3 - Vector Spaces and Subspaces</title>
+      <link>/2022/03/16/chapter-3-vector-spaces-and-subspaces/</link>
+      <pubDate>Wed, 16 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/03/16/chapter-3-vector-spaces-and-subspaces/</guid>
+      <description>The following are my personal notes from taking the online class: Introduction to Linear Algebra - MIT OCW 18.06
+3.1 Spaces of Vectors The space \(\R^n\) consists of all column vectors \(v\) with \(n\) components If \(\mathbf{v}\) and \(\mathbf{w}\) are in the vector space \(S\) every combination \(c\mathbf{v} + d\mathbf{w}\) must be in \(S\); \(\forall c,d \in \R\) A subspace is a vector space inside of another vector space A subspace of a vector space is a set of vectors (including \(\mathbf{0}\)) that satisfies 2 requirements: If \(\mathbf{v}\) and \(\mathbf{w}\) are vectors in the subspace and \(c\) is any scalar then: \(\mathbf{v}+\mathbf{w}\) is in the subspace \(c\mathbf{v}\) is in the subspace A subspace is closed under addition and scalar multiplication All subspaces of \(\R^3\) L Any line through (0,0,0) P Any plane through (0,0,0) Z The single vector (0,0,0) \(\R^3\) The whole space The Column Space of \(A\) contains all linear combinations of the columns of \(A\).</description>
+    </item>
+    
+    <item>
+      <title>Chapter 2 - Solving Linear Equations</title>
+      <link>/2022/03/11/chapter-2-solving-linear-equations/</link>
+      <pubDate>Fri, 11 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/03/11/chapter-2-solving-linear-equations/</guid>
+      <description>The following are my personal notes from taking the online class: Introduction to Linear Algebra - MIT OCW 18.06
+Matrix Laws: Multiplication: Dimensions of Matrix Multiplication: 1st matrix must have same number of rows as columns in 2nd matrix Example: \(A\) has dimensions \((m \times n)\) \(B\) has dimensions \((n \times p)\) Results in matrix \(AB\) with dimensions \((m \times p)\) Associative: \(A(BC) = (AB)C\) Commutative: \(AB \ne BA\) Distributive from the left: \(A(B + C) = AB + AC\) Distributive from the right: \((A + B)C = AC + BC\) If \(A\) is square, then \(A^p = AAA \dots A\) (\(p\) factors) \((A^p)(A^q)=A^{p+q}\) \((A^p)^q = A^{pq}\) Addition: Dimensions of Matrix Addition: Matrices must have the same dimensions Example: \(A\) has dimensions \((m \times n)\) \(B\) has dimensions \((m \times n)\) Results in matrix \(A + B\) with dimensions \((m \times n)\) Associative: \(A + (B + C) = (A + B) + C\) Commutative: \(A + B = B + A\) Distributive: \(c(A + B) = cA + cB\) 2.</description>
+    </item>
+    
+    <item>
+      <title>Chapter 1 - Introduction to Vectors</title>
+      <link>/2022/03/09/chapter-1-introduction-to-vectors/</link>
+      <pubDate>Wed, 09 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/03/09/chapter-1-introduction-to-vectors/</guid>
+      <description>The following are my personal notes from taking the online class: Introduction to Linear Algebra - MIT OCW 18.06
+1.1 Vectors and Linear Combinations Linear combination: use any combination of 2 operations: vector addition and scalar multiplication to create a new vector Linear combination (formula): \[ \begin{align*} c\mathbf{v} + d\mathbf{w} &amp;amp;= c \begin{bmatrix} v_1 \\ v_2 \end{bmatrix} + d \begin{bmatrix} w_1 \\ w_2 \end{bmatrix}\\ \\ &amp;amp;= \begin{bmatrix} cv_1 + dw_1 \\ cv_2 + dw_2 \end{bmatrix} \end{align*} \] Vector Addition: a vector operation where each value is added to the corresponding value on the other vector; all the vectors must be the same size Vector Addition (formula): \[ \begin{align*} \mathbf{u}+\mathbf{v}&amp;amp;= \begin{bmatrix} u_{1}\\\\u_{2}\\\\u_{3} \end{bmatrix} + \begin{bmatrix} v_{1}\\\\v_{2}\\\\v_{3} \end{bmatrix}\\ \\ &amp;amp;= \begin{bmatrix} u_{1}+v_{1}\\\\u_{2}+v_{2}\\\\u_{3}+v_{3} \end{bmatrix} \end{align*} \]</description>
+    </item>
+    
+  </channel>
+</rss>

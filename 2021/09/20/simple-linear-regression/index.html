@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.100.1" />
+
+
+<title>Simple Linear Regression - jrem.me - wonder.explore.share</title>
+<meta property="og:title" content="Simple Linear Regression - jrem.me - wonder.explore.share">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/j-buss">GitHub</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">15 min read</span>
+    
+
+    <h1 class="article-title">Simple Linear Regression</h1>
+
+    
+    <span class="article-date">2021-09-20</span>
+    
+
+    <div class="article-content">
+      
+<script src="/2021/09/20/simple-linear-regression/index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="simple-linear-regression" class="section level1">
+<h1>Simple Linear Regression</h1>
+<p>The characteristics of a <strong>Simple Linear Regression</strong> are as follows:</p>
+<ul>
+<li>One predictor <span class="math inline">\(X\)</span> that is known and constant</li>
+<li>One response variable <span class="math inline">\(Y\)</span></li>
+<li>Linear function <span class="math inline">\(y=\beta_0 + \beta_1 x + \epsilon\)</span></li>
+</ul>
+<p><br></p>
+<div id="simple-linear-regression---population" class="section level2">
+<h2>Simple Linear Regression - Population</h2>
+<p>The above is an idealized representation. Instead we have a set of n-pairs of data <span class="math inline">\((x_i, y_i)\)</span> where <span class="math inline">\(i=1, 2, ... n\)</span>. Additionally, the data will not perfectly fit the line. As a result we add an error term <span class="math inline">\(\epsilon\)</span>.</p>
+<ul>
+<li><p>Linear function <span class="math inline">\(Y_i=\beta_0 + \beta_1 X_i + \epsilon_i\)</span> for <span class="math inline">\(i=1,2,...n\)</span></p></li>
+<li><p>Error term <span class="math inline">\(\epsilon_i {\overset {iid}{\sim}} N(0,\sigma^2)\)</span></p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Independent_and_identically_distributed_random_variables"><span class="math inline">\(iid\)</span></a>: identically, and independently distributed</li>
+<li><span class="math inline">\(E(\epsilon_i)=0\)</span></li>
+<li><span class="math inline">\(Var(\epsilon_i)=\sigma^2\)</span></li>
+</ul></li>
+<li><p><span class="math inline">\(Y_i\)</span> is the <span class="math inline">\(i\)</span>-th value of the response</p></li>
+<li><p><span class="math inline">\(X_i\)</span> is the <span class="math inline">\(i\)</span>-th value of the fixed value of the predictor</p></li>
+<li><p><span class="math inline">\(\beta_0, \beta_1,\)</span> are model coefficients</p></li>
+<li><p><span class="math inline">\(\beta_0, \beta_1,\)</span> and <span class="math inline">\(\sigma^2\)</span> are fixed unknown parameters of the model</p></li>
+<li><p>The mean response <span class="math inline">\(\mu_{Y|X}=E(Y|X)\)</span> has a straightline relationship with <span class="math inline">\(X\)</span> given by the population regression line
+<span class="math display">\[
+\begin{align*}
+\mu_{Y_i|X_i}=E(Y_i|X_i)&amp;=E(\beta_0+\beta_1 X_i + \epsilon_i)\\
+&amp;=\beta_0+\beta_1 X_i + E(\epsilon_i)\\
+&amp;=\beta_0+\beta_1 X_i
+\end{align*}
+\]</span></p></li>
+<li><p>The variance of <span class="math inline">\(Y\)</span> does not depend on <span class="math inline">\(X\)</span>
+<span class="math display">\[
+\begin{align*}
+Var(Y_i|X_i) &amp;= Var(\beta_0+\beta_1 X_i + \epsilon_i)\\
+&amp;=Var(\epsilon_i)
+\end{align*}
+\]</span></p></li>
+<li><p>Any fixed value of <span class="math inline">\(X_i=x\)</span>, the response variable <span class="math inline">\(Y_i\)</span> varies with <span class="math inline">\(N(\mu_{Y_i|X_i=x},\sigma^2)\)</span></p>
+<ul>
+<li><span class="math inline">\(Y_i|X_i = N(\beta_0 + \beta_1 X_i, \sigma^2)\)</span></li>
+</ul></li>
+</ul>
+</div>
+<div id="parameter-estimation-and-model-fitting" class="section level2">
+<h2>Parameter Estimation and Model Fitting</h2>
+<p>Given that we have sample data <span class="math inline">\(\{(x_1, y_1),(x_2, y_2),...(x_n,y_n)\}\)</span> we wish to find the <em>best</em> sample regression line.</p>
+<p>We are interested in the values of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> in the following <em>sample</em> regression model:
+<span class="math display">\[
+\begin{align*}
+y_i &amp;= f(x_i) + \epsilon_i\\
+&amp;= \beta_0 + \beta_1 x_i + \epsilon_i
+\end{align*}
+\]</span></p>
+<p>or using sample statistics <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> computed from the training data to estimate them:
+<span class="math display">\[\hat{y_i} = b_0 + b_1 x_i\]</span>
+where <span class="math inline">\(\hat{y_i}\)</span> is a point estimate of <span class="math inline">\(y_i\)</span> with mean <span class="math inline">\(\mu_{Y|X=x_i}=E(Y|X=x_i)\)</span></p>
+</div>
+<div id="ordinary-least-squares-ols" class="section level2">
+<h2>Ordinary Least Squares (OLS)</h2>
+<p>We choose <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> that minimize the <strong>sum of squared residuals</strong> <span class="math inline">\(SS_{res}\)</span> or <strong>residual sum of squares</strong> <span class="math inline">\(RSS\)</span></p>
+<ul>
+<li><strong>residual</strong> <span class="math inline">\(e_i\)</span> is a point estimate of <span class="math inline">\(\epsilon_i\)</span> and defined as the difference between our estimate of <span class="math inline">\(y_i\)</span> (i.e. <span class="math inline">\(\hat{y_i}\)</span>) and the true value of <span class="math inline">\(y_i\)</span>
+<ul>
+<li><span class="math inline">\(e_i = y_i - \hat{y_i} = y_i - (b_0 + b_i x_i)\)</span></li>
+</ul></li>
+<li>The sample regression line minimizes <span class="math inline">\(SS_{res}\)</span>
+<span class="math display">\[
+\begin{align*}
+SS_{res}&amp;=e_1^2 + e_2^2 + \cdots + e_n^2 = \sum_{i=1}^n e_i^2\\
+&amp;=(y_1 - b_0 + b_1 x_1)^2 + (y_2 - b_0 + b_1 x_2)^2 + \cdots + (y_n - b_0 + b_1 x_n)^2\\
+&amp;= \sum_{i=1}^n (y_i - b_0 + b_1 x_i)^2\\
+\end{align*}
+\]</span></li>
+</ul>
+</div>
+<div id="least-squares-estimate-lse" class="section level2">
+<h2>Least Squares Estimate (LSE)</h2>
+<p>With the least squares estimate approach we choose <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> to minimize <span class="math inline">\(SS_{res}\)</span></p>
+<p><span class="math display">\[
+(b_0, b_1) = \text{arg} \; \underset {\beta_0, \beta_1}{\text{min}} \sum_{i=1}^n (y_i - b_0 + b_1 x_i)^2
+\]</span>
+Taking the derivative of this equation with respect to <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> and set them equal to 0:
+<span class="math display">\[ 
+\begin{align}
+\frac{\partial SS_{res}}{\partial {\beta_0}} \bigg\vert_{b_0,b_1} &amp;= -2\sum_{i=1}^n (y_i-b_0-b_1x_i)\\
+\frac{\partial SS_{res}}{\partial {\beta_1}} \bigg\vert_{b_0,b_1} &amp;= -2\sum_{i=1}^n x_i(y_i-b_0-b_1x_i)
+\end{align}
+\]</span></p>
+<div id="least-squares-estimates-solving-for-beta_0-and-beta_1" class="section level3">
+<h3>Least Squares Estimates: Solving for <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span></h3>
+<p>Setting each of the derivatives equal to 0 we arrive at the <strong>normal equations</strong></p>
+<p><span class="math display">\[
+\begin{align*}
+nb_0 + b_1 \sum_{i=1}^n x_i &amp;= \sum_{i=1}^n y_i\\
+b_0 \sum_{i=1}^n x_i + b_1 \sum_{i=1}^n x_i^2 &amp;= \sum_{i=1}^n y_i x_i
+\end{align*}
+\]</span></p>
+<p>Solving the first equation (i.e. the “easy” one) for <span class="math inline">\(b_0\)</span>:
+<span class="math display">\[b_0 = \overline{y} - b_1 \overline {x}\]</span></p>
+<p>Solving the second equation (i.e. the “hard” one) for <span class="math inline">\(\beta_1\)</span>, given that <span class="math inline">\(b_0 = \overline{y} - b_1 \overline {x}\)</span>:
+<span class="math display">\[
+\begin{align*}
+b_1 = \frac{\sum_{i=1}^ny_ix_i - \frac{(\sum_{i=1}^n y_i)(\sum_{i=1}^n x_i)}{n}}{\sum_{i=1}^n x_i^2 - \frac{(\sum_{i=1}^n x_i)^2}{n}}
+= \frac{\sum_{i=1}^ny_i(x_i - \overline{x})}{\sum_{i=1}^nx_i(x_i -\overline{x})} = 
+\frac{\sum_{i=1}^n(x_i - \overline{x})(y_i-\overline{y})}{\sum_{i=1}^n(x_i-\overline{x})(x_i -\overline{x})}
+=\frac{\sum_{i=1}^n(x_i - \overline{x})(y_i-\overline{y})}{\sum_{i=1}^n(x_i-\overline{x})^2}=
+\frac{S_{xy}}{S_{xx}}
+\end{align*}
+\]</span></p>
+<p>While we can observe these relationships from the equation above it is helpful to call them out explicitly:</p>
+<p><span class="math display">\[
+S_{xx}=\sum_{i=1}^n x_i^2 - \frac{(\sum_{i=1}^n x_i)^2}{n} = \sum_{i=1}^n(x_i-\overline{x})^2
+\]</span>
+and</p>
+<p><span class="math display">\[
+S_{xy} = \sum_{i=1}^ny_ix_i - \frac{(\sum_{i=1}^n y_i)(\sum_{i=1}^n x_i)}{n} = \sum_{i=1}^ny_i(x_i - \overline{x})
+\]</span></p>
+<div id="practice" class="section level4">
+<h4>Practice:</h4>
+<p>Starting at Least Squares Criterion, solve for <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> (try to do it from a blank sheet of paper)</p>
+</div>
+</div>
+<div id="best-linear-unbiased-estimators-blue" class="section level3">
+<h3>Best Linear Unbiased Estimators (BLUE)</h3>
+<p>In order for the most straightforward mathematical flow we will address <strong>Linear</strong> first:</p>
+<div id="linear" class="section level4">
+<h4>1. Linear:</h4>
+<p><span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> are linear combinations of <span class="math inline">\(y_i\)</span>.</p>
+<p>We start with <span class="math inline">\(b_1\)</span> in the following form:
+<span class="math display">\[
+\begin{align*}
+b_1 = \frac{\sum_{i=1}^ny_i(x_i - \overline{x})}{\sum_{i=1}^n(x_i-\overline{x})(x_i -\overline{x})}
+\end{align*}
+\]</span>
+We can group and rename the terms that are not dependent upon <span class="math inline">\(y\)</span> for ease: <span class="math inline">\(c_i = \frac{x_i-\overline{x}}{S_{xx}}\)</span> for <span class="math inline">\(i=1,2,\dots n\)</span></p>
+<p>Now the equation simply becomes a constant multiplied by <span class="math inline">\(y_i\)</span>:
+<span class="math display">\[
+\begin{align*}
+b_1 = \sum_{i=1}^ny_i c_i
+\end{align*}
+\]</span></p>
+</div>
+<div id="best" class="section level4">
+<h4>2. Best:</h4>
+<p>For the estimators to be the “best” they need to have minimum variance.</p>
+<div id="variance-of-beta_1" class="section level5">
+<h5>Variance of <span class="math inline">\(\beta_1\)</span></h5>
+<p><span class="math display">\[
+\begin{align*}
+Var(b_1)&amp;=Var \left (\sum_{i=1}^n c_i y_i \right ) = \sum_{i=1}^n c_i^2 Var(y_i)
+\end{align*}
+\]</span></p>
+<p>Since the observations <span class="math inline">\(y_i\)</span> are uncorrelated then the variance of the sum is just the sum of the variances. Since the <span class="math inline">\(Var(y_i)=\sigma^2\)</span></p>
+<p><span class="math display">\[
+\begin{align*}
+Var(b_1)&amp;= \sigma^2 \sum_{i=1}^n c_i^2 = \frac {\sigma^2 \sum_{i=1}^n (x_i-\overline {x})^2}{S_{xx}^2} = \frac{\sigma^2}{S_{xx}}
+\end{align*}
+\]</span></p>
+</div>
+<div id="the-variance-of-b_0" class="section level5">
+<h5>The Variance of <span class="math inline">\(b_0\)</span></h5>
+<p><span class="math display">\[
+\begin{align*}
+Var(b_0) &amp;= Var(\overline{y} - b_1 \overline {x})
+\end{align*}
+\]</span>
+Using the <a href="https://en.wikipedia.org/wiki/Variance#Properties">properties of variance</a> for the difference of two random variables this becomes:
+<span class="math display">\[
+\begin{align}
+Var(b_0) &amp;= Var(\overline{y}) + \overline{x}^2 Var (b_1) - 2 \overline{x} Cov(\overline{y},b_1)
+\end{align}
+\]</span>
+To simplify this further we need to find <span class="math inline">\(Var(\overline{y})\)</span></p>
+<p><span class="math display">\[
+\begin{align*}
+Var(\overline {y}) &amp;= Var \left ( \frac{y_1+y_2+\dots+y_n}{n} \right )\\
+&amp;= \left ( \frac {1}{n} \right )^2 (y_1+y_2+\dots+y_n)\\
+&amp;= \left ( \frac {1}{n} \right )^2 (\sigma^2+\sigma^2+\dots+\sigma^2)\\
+&amp;= \left ( \frac {1}{n} \right )^2 n \sigma^2\\
+&amp;= \frac {\sigma^2}{n} 
+\end{align*}
+\]</span>
+Additionally we can simplify the last term in equation #3 and focus on the Covariance.</p>
+<p>Let us start by simply filling in the values for <span class="math inline">\(\overline{y}\)</span> and <span class="math inline">\(b_1\)</span>.</p>
+<p><span class="math display">\[
+Cov(\overline{y},b_1)=
+Cov\left(\frac{1}{n}\sum_{i=1}^ny_i,    \frac {\sum_{i=1}^ny_i(x_i-\overline{x})} {S_{xx}} \right)
+\]</span>
+A constant can be pulled out of the covariance and simply multiplied.
+<span class="math display">\[
+Cov(\overline{y},b_1)=
+\frac{1}{n}Cov\left(\sum_{i=1}^ny_i,    \frac {\sum_{i=1}^ny_i(x_i-\overline{x})} {S_{xx}} \right)
+\]</span>
+Next we let <span class="math inline">\(c_i = \frac{(x_i - \overline{x})}{S_{xx}}\)</span>:</p>
+<p><span class="math display">\[
+Cov(\overline{y},b_1)=
+\frac{1}{n}Cov\left(\sum_{i=1}^ny_i,    \sum_{i=1}^nc_iy_i \right)
+\]</span></p>
+<p>Now since <span class="math inline">\(\overline{y}\)</span> and <span class="math inline">\(b_1\)</span> are independently distributed normal variables we can pull the <span class="math inline">\(c_i\)</span> term out of the <span class="math inline">\(Cov\)</span></p>
+<p><span class="math display">\[
+\begin{split}
+Cov(\overline{y},b_1) =
+\frac{1}{n}\sum_{i=1}^nc_i \cdot Cov\left(\sum_{i=1}^ny_i,    \sum_{i=1}^ny_i \right)\\
+\\
+Cov(\overline{y},b_1)= \frac{1}{n}\sum_{i=1}^nc_i \cdot Var(y_i)\\
+\\
+Cov(\overline{y},b_1)= \frac{\sigma^2}{n}\sum_{i=1}^nc_i\\
+\end{split}
+\]</span>
+Now if we remember that <span class="math inline">\(c_i = \frac{(x_i - \overline{x})}{S_{xx}}\)</span> and sum of which will be 0 so:
+<span class="math display">\[
+\begin{split}
+Cov(\overline{y},b_1)&amp;= \frac{\sigma^2}{n}\sum_{i=1}^n \frac{(x_i - \overline{x})}{S_{xx}}\\
+\\
+Cov(\overline{y},b_1)&amp;= \frac{\sigma^2}{n} \cdot 0\\
+\\
+Cov(\overline{y},b_1)&amp;= 0\\
+\end{split}
+\]</span>
+So we see that the last term in equation #3 is 0. So we are left with:</p>
+<p><span class="math display">\[
+\begin{align*}
+Var(b_0) &amp;= Var(\overline{y}) + \overline{x}^2 Var (b_1)\\
+&amp;= Var(\overline{y}) + \overline{x}^2 Var (b_1)\\
+&amp;= \frac{\sigma^2}{n} + \frac{\overline{x}^2\sigma^2}{S_{xx}}\\
+Var(b_0)&amp;= \sigma^2 \left ( \frac{1}{n} + \frac{\overline{x}^2}{S_{xx}} \right )
+\end{align*}
+\]</span></p>
+</div>
+</div>
+<div id="unbiased" class="section level4">
+<h4>3. Unbiased</h4>
+<p><span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> are unbiased estimators of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span></p>
+<p>For <span class="math inline">\(b_0\)</span> to be an unbiased estimator we want to show that <span class="math inline">\(E(b_0)=\beta_0\)</span>. Let us simply start by substituting in the value for <span class="math inline">\(b_0\)</span> from the normal equations.</p>
+<p><span class="math display">\[
+E(b_0) = E(\overline{y} - b_1\overline{x})
+\]</span>
+We use the helper function <span class="math inline">\(\frac{1}{n}\sum_{i=1}^{n} {y_i}={\overline{y}}\)</span> and pull out any values from the sum or Expected value function that are not dependent on them
+<span class="math display">\[
+E(b_0) = \frac{1}{n}\sum_{i=1}^n E({y_i}) - E(b_1)\overline{x}
+\]</span>
+Now substitute our equation for <span class="math inline">\(y_i = \beta_0 + \beta_1 x_i\)</span> and <span class="math inline">\(E(b_1)=\beta_1\)</span> in addition to the fact that <span class="math inline">\(\beta_0, \beta_1, x_i\)</span> are constant values the Expected Value of those individual items is simply the value of those items…
+<span class="math display">\[
+E(b_0) = \frac{1}{n}\sum_{i=1}^n (\beta_0 + \beta_1 x_i) - \beta_1 \overline{x}
+\]</span>
+Again we use a helper function for <span class="math inline">\(\sum_{i=1}^{n} {x_i}=n{\overline{x}}\)</span>
+<span class="math display">\[
+E(b_0) = \frac{1}{n}(n\beta_0 + n\beta_1 \overline{x}) - \beta_1 \overline{x}
+\]</span>
+Combining like terms we are left with simply:
+<span class="math display">\[
+E(b_0) = \beta_0 
+\]</span></p>
+<p>Similarly for <span class="math inline">\(\beta_1\)</span>:</p>
+<p><span class="math display">\[
+\begin{align*}
+E(b_1)&amp;=E \left (\sum_{i=1}^n c_i y_i \right ) = \sum_{i=1}^n c_i E(y_i)\\
+&amp;=\sum_{i=1}^n c_i (b_0 + b_1 x_i)=b_0 \sum_{i=1}^n c_i + b_1 \sum_{i=1}^n c_i x_i
+\end{align*}
+\]</span></p>
+<p>Now <span class="math inline">\(\sum_{i=1}^n c_i =0\)</span> and <span class="math inline">\(\sum_{i=1}^n c_i x_i =1\)</span> so
+<span class="math display">\[
+E(b_1)=\beta_1
+\]</span></p>
+</div>
+<div id="properties-of-least-squares-fit" class="section level4">
+<h4>Properties of Least Squares Fit</h4>
+<ol style="list-style-type: decimal">
+<li>Sum of residuals is zero <span class="math inline">\(\sum_{i=1}^n(y_i - \hat {y_i}) = \sum_{i=1}^n e_i = 0\)</span></li>
+<li>The sum of observations <span class="math inline">\(y_i\)</span> and the sum of fitted values <span class="math inline">\(\hat{y_i}\)</span> are the same <span class="math inline">\(\sum_{i=1}^ny_i = \sum_{i=1}^n \hat{y}\)</span></li>
+<li>The Least Squares Regression line passes through the centroid point <span class="math inline">\((\overline{x},\overline{y})\)</span></li>
+<li>Inner product of residual and predictor is zero <span class="math inline">\(\sum_{i=1}^n e_i x_i = 0\)</span></li>
+<li>Inner product of residual and predicted values is zero <span class="math inline">\(\sum_{i=1}^n e_i \hat{y_i} = 0\)</span></li>
+</ol>
+</div>
+<div id="estimation-for-sigma2" class="section level4">
+<h4>Estimation for <span class="math inline">\(\sigma^2\)</span></h4>
+<p>The <strong>error</strong> or <strong>residual sum of squares</strong> is:
+<span class="math display">\[SS_{res} = \sum_{i=1}^n e_i^2 = \sum_{i=1}^n (y_i - \hat{y_i})^2\]</span></p>
+<p>The residual sum of squares has <span class="math inline">\(n-2\)</span> degrees of freedom, because two degrees of freedom are associated with the estimators <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> involved in obtaining <span class="math inline">\(\hat{y_i}\)</span>. Dividing the residual sum of squares by the degrees of freedom we arrive at the <strong>residual mean square</strong></p>
+<p><span class="math display">\[\hat{\sigma}^2 = \frac {SS_{Res}}{n-2}=MS_{Res}\]</span>
+<span class="math inline">\(\hat{\sigma}^2\)</span> is an unbiased estimator for <span class="math inline">\(\sigma^2\)</span>, i.e. <span class="math inline">\(E(MS_{Res})=\sigma^2\)</span></p>
+</div>
+</div>
+<div id="sampling-distribution" class="section level3">
+<h3>Sampling Distribution</h3>
+<p>We do not know the true values of <span class="math inline">\(\beta_0\)</span> or <span class="math inline">\(\beta_1\)</span>. Therefore we must derive them from the data. As such we must take into account how these values are derived and what the likelihood of the true value being within a certain range.</p>
+<div id="sampling-distribution-of-beta_0-and-beta_1" class="section level4">
+<h4>Sampling Distribution of <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span></h4>
+<p>We know that the errors <span class="math inline">\(\epsilon_i\)</span> are <span class="math inline">\(NID(0,\sigma^2)\)</span> and the observations <span class="math inline">\(y_i\)</span> are <span class="math inline">\(NID(\beta_0 + \beta_1 x_i, \sigma^2)\)</span>. Also, <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> are linear combinations of <span class="math inline">\(y_i\)</span>. Therefore <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> are normally distributed. We can synthesize the information this way:</p>
+<p><span class="math display">\[
+\begin{align*}
+b_1 &amp; \sim NID \left ( \beta_1,\frac{\sigma^2}{S_{xx}} \right )\\
+b_0 &amp; \sim NID \left ( \beta_0,\sigma^2 \left ( \frac{1}{n} + \frac{\overline{x}^2}{S_{xx}}\right ) \right )
+\end{align*}
+\]</span>
+Since we just said that they are normal we could standardize them:</p>
+<p><span class="math display">\[
+\begin{align*}
+\frac {b_1 - \beta_1}{\sqrt{\sigma^2/S_{xx}}} &amp; \sim NID (0,1)\\
+\frac {b_0 - \beta_0}{\sqrt{ \sigma^2 (1/n + \overline{x}^2/S_{xx})}} &amp; \sim NID (0,1)\\
+\end{align*}
+\]</span>
+However, we don’t know the true value of <span class="math inline">\(\sigma^2\)</span>. Therefore we can use the estimate of <span class="math inline">\(\sigma\)</span> that we found earlier: <span class="math inline">\(\hat{\sigma}^2\)</span>.</p>
+<p><span class="math display">\[
+\begin{align}
+\frac {b_1 - \beta_1}{\sqrt{\hat{\sigma}^2/S_{xx}}} &amp; \sim t_{n-2}\\
+\frac {b_0 - \beta_0}{\sqrt{\hat{\sigma}^2 (1/n + \overline{x}^2/S_{xx})}} &amp; \sim t_{n-2}\\
+\end{align}
+\]</span>
+We can use this information to construct a <span class="math inline">\((1-\alpha)100%\)</span> confidence intervals:</p>
+<ul>
+<li><span class="math inline">\(\beta_1\)</span>: <span class="math inline">\(b_1 \pm t_{\alpha/2,n-2} \sqrt{\hat{\sigma}^2/S_{xx}}\)</span></li>
+<li><span class="math inline">\(\beta_0\)</span>: <span class="math inline">\(b_0 \pm t_{\alpha/2,n-2} \sqrt{\hat{\sigma}^2 (1/n + \overline{x}^2/S_{xx})}\)</span></li>
+</ul>
+</div>
+<div id="sampling-distribution-of-hatsigma2" class="section level4">
+<h4>Sampling Distribution of <span class="math inline">\(\hat{\sigma^2}\)</span></h4>
+<p>It can be shown that <span class="math inline">\(\frac {SS_{res}}{\sigma^2}\)</span> follows a chi-squared distribution. We can use that fact to the sampling distribution of <span class="math inline">\(\hat{\sigma^2}\)</span>:</p>
+<p><span class="math display">\[
+\begin{align*}
+\frac {SS_{res}}{\sigma^2} &amp; \sim \chi_{n-2}^2\\
+SS_{res} &amp; \sim \sigma^2 \chi_{n-2}^2\\
+\frac {1}{n-2}SS_{res} &amp; \sim \frac {1}{n-2} \sigma^2 \chi_{n-2}^2\\
+\hat{\sigma^2} = MS_{res} &amp; \sim \sigma^2 \frac {\chi_{n-2}^2}{n-2}  \\
+\end{align*}
+\]</span></p>
+<p>We can use this information to construct a <span class="math inline">\((1-\alpha)100%\)</span> confidence interval:</p>
+<p><span class="math inline">\(\sigma^2\)</span>:</p>
+<p><span class="math display">\[\left ( 
+\frac{SS_{Res}}
+{\chi_{\alpha/2,n-2}^2}, 
+\frac{SS_{Res}}
+{\chi_{1-\alpha/2,n-2}^2}
+\right )
+\]</span></p>
+</div>
+</div>
+<div id="hypothesis-testing" class="section level3">
+<h3>Hypothesis Testing</h3>
+<div id="standard-error" class="section level4">
+<h4>Standard Error</h4>
+<p>The denominator of the test statistics (equations #4 and #5) are often referred to as the <strong>standard error</strong>. Rewriting each of the terms as:</p>
+<ul>
+<li><span class="math inline">\(se(\hat{\beta_1}) = \sqrt{\frac{MS_{Res}}{S_{xx}}}\)</span></li>
+<li><span class="math inline">\(se(\hat{\beta_0}) = \sqrt{MS_{Res} (1/n + \overline{x}^2/S_{xx})}\)</span></li>
+</ul>
+</div>
+<div id="hypothesis-testing-1" class="section level4">
+<h4>Hypothesis Testing</h4>
+<p>We reject <span class="math inline">\(H_0\)</span> in favor of <span class="math inline">\(H_1\)</span> if</p>
+<ul>
+<li>Critical Value Method: <span class="math inline">\(\vert t_{test} \vert &gt; t_{\alpha/2,n-2}\)</span></li>
+<li>P-Value Method: p-value = <span class="math inline">\(2P(t_{n-2} &gt; \vert t_{test} \vert ) &lt; \alpha\)</span></li>
+</ul>
+<div id="beta_1" class="section level5">
+<h5><span class="math inline">\(\beta_1\)</span></h5>
+<ul>
+<li>Null Hypothesis: <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta_1=\beta_1^0\)</span></li>
+<li>Alternative Hypothesis: <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\beta_1 \ne \beta_1^0\)</span></li>
+<li>Standard error: <span class="math inline">\(se(\hat{\beta_1}) = \sqrt{\frac{MS_{Res}}{S_{xx}}}\)</span></li>
+<li>Test statistic: <span class="math inline">\(t_{test} = \frac {b_1 - \beta_1^0}{se(b_1)} \sim t_{n-2}\)</span> under <span class="math inline">\(H_0\)</span></li>
+</ul>
+</div>
+<div id="beta_0" class="section level5">
+<h5><span class="math inline">\(\beta_0\)</span></h5>
+<ul>
+<li>Null Hypothesis: <span class="math inline">\(H_0\)</span>: <span class="math inline">\(\beta_0=\beta_0^0\)</span></li>
+<li>Alternative Hypothesis: <span class="math inline">\(H_1\)</span>: <span class="math inline">\(\beta_0 \ne \beta_0^0\)</span></li>
+<li>Standard error: <span class="math inline">\(se(\hat{\beta_0}) = \sqrt{MS_{Res} (1/n + \overline{x}^2/S_{xx})}\)</span></li>
+<li>Test statistic: <span class="math inline">\(t_{test} = \frac {b_0 - \beta_0^0}{se(b_0)} \sim t_{n-2}\)</span> under <span class="math inline">\(H_0\)</span></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="analysis-of-variance-anova" class="section level3">
+<h3>Analysis of Variance (ANOVA)</h3>
+<p>The <strong>analysis of variance</strong> approach involves partitioning the total variability in the response variable y into different pieces. We start by examining the total variability.</p>
+<p>If <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are linearly related, but you have no information about <span class="math inline">\(x\)</span>; How would you predict a value of <span class="math inline">\(y\)</span>?</p>
+<p>Well…we would use the average of <span class="math inline">\(y\)</span>, or <span class="math inline">\(\overline{y}\)</span> as a prediction of <span class="math inline">\(y\)</span></p>
+<p>And the difference between that estimate the the true value could be described as</p>
+<p><span class="math display">\[(y_i - \overline{y}) = (\hat{y_i} - \overline{y}) + (y_i - \hat{y_i}) \]</span>
+If we square both sides and sum over all observations:</p>
+<p><span class="math display">\[
+\sum_{i=1}^n (y_i - \overline{y})^2 = \sum_{i=1}^n (\hat{y_i} - \overline{y})^2 + \sum_{i=1}^n (y_i - \hat{y_i})^2 + 2\sum_{i=1}^n (\hat{y_i} - \overline{y})(y_i - \hat{y_i})
+\]</span>
+The third term in this last equation can be rewritten as:</p>
+<p><span class="math display">\[\begin{align*}
+2\sum_{i=1}^n (\hat{y_i} - \overline{y})(y_i - \hat{y_i}) &amp;= 
+2\sum_{i=1}^n \hat{y_i} (y_i - \hat{y_i}) - 
+2\overline{y}\sum_{i=1}^n (y_i - \hat{y_i})\\
+&amp;=2\sum_{i=1}^n \hat{y_i} e_i - 
+2\overline{y}\sum_{i=1}^n e_i\\
+\end{align*}
+\]</span>
+Now we can leverage two of the Properties of Least Squares Fit from above. Namely #1 where the sum of residuals is 0 and #5 where the inner product of residuals and predicted values is zero.</p>
+<p>Therefore the entire third term is 0</p>
+<p><span class="math display">\[\begin{align*}
+2\sum_{i=1}^n (\hat{y_i} - \overline{y})(y_i - \hat{y_i}) &amp;= 
+2\sum_{i=1}^n \hat{y_i} e_i - 
+2\overline{y}\sum_{i=1}^n e_i\\
+&amp;=0
+\end{align*}
+\]</span></p>
+<p>So the total variability can be described as:</p>
+<p><span class="math display">\[
+\begin{align*}
+\sum_{i=1}^n (y_i - \overline{y})^2 &amp;= \sum_{i=1}^n (\hat{y_i} - \overline{y})^2 + \sum_{i=1}^n (y_i - \hat{y_i})^2\\
+SS_T &amp;= SS_R + SS_{Res}
+\end{align*}
+\]</span>
+Where the terms are:</p>
+<ul>
+<li><strong>Sum of Squares - Total</strong> <span class="math inline">\((SS_T)\)</span> : <span class="math inline">\(\sum_{i=1}^n (y_i - \overline{y})^2\)</span></li>
+<li><strong>Sum of Squares - Regression</strong> <span class="math inline">\((SS_R)\)</span>: <span class="math inline">\(\sum_{i=1}^n (\hat{y_i} - \overline{y})^2\)</span> or <span class="math inline">\(\hat{\beta_1}S_{xy}\)</span></li>
+<li><strong>Sum of Squares - Residual</strong> <span class="math inline">\((SS_{Res})\)</span>: <span class="math inline">\(\sum_{i=1}^n (y_i - \hat{y_i})^2\)</span> or <span class="math inline">\(SS_T - \hat{\beta_1}S_{xy}\)</span></li>
+</ul>
+<p>Furthermore the degrees of freedom (df) are as follows:</p>
+<ul>
+<li><span class="math inline">\(\textcolor{blue}{df_T = n-1}\)</span> Lose 1 df with constraint <span class="math inline">\(\sum_{i=1}^n (y_i = \overline{y})=0\)</span></li>
+<li><span class="math inline">\(\textcolor{blue}{df_R=1}\)</span> all <span class="math inline">\(\hat{y_i}\)</span> are on the regression line with 2 df (intercept and slope), but with constraint <span class="math inline">\(\sum_{i=1}^n (\hat{y_i} = \overline{y})=0\)</span></li>
+<li><span class="math inline">\(\textcolor{blue}{df_{res}=n-2}\)</span> Lose 2 dfs because <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> are estimated by <span class="math inline">\(b_0\)</span> and <span class="math inline">\(b_1\)</span> which are linear combo of <span class="math inline">\(y_i\)</span></li>
+</ul>
+<div id="analysis-of-variance-f-test" class="section level4">
+<h4>Analysis of Variance F test</h4>
+<p>We can define an F statistic:</p>
+<p><span class="math display">\[
+F_{test}=\frac {SS_R/df_R}{SS_{Res}/df_{Res}}=\frac {SS_R/1}{SS_{Res}/{(n-2)}}=\frac{MS_R}{MS_{Res}}
+\]</span>
+Therefore, to test the hypothesis <span class="math inline">\(H_0: \beta_1 = 0\)</span> compute <span class="math inline">\(F_{test}\)</span> and reject <span class="math inline">\(H_0\)</span> if</p>
+<ul>
+<li><span class="math inline">\(F_{test} &gt; F_{\alpha,1,n-2}\)</span></li>
+<li>p-value = <span class="math inline">\(P(F_{1,n-2} &gt; F_{test}) &gt; \alpha\)</span></li>
+</ul>
+<p>Combining all these definitions we have…</p>
+<table>
+<caption><span id="tab:unnamed-chunk-2">Table 1: </span>ANOVA Table</caption>
+<thead>
+<tr class="header">
+<th align="left">Source of Variation</th>
+<th align="left">Sum of Squares</th>
+<th align="left">Degrees of Freedom</th>
+<th align="left">Mean Square</th>
+<th align="left"><span class="math inline">\(F_{test}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Regression</td>
+<td align="left"><span class="math inline">\(SS_R\)</span></td>
+<td align="left">1</td>
+<td align="left"><span class="math inline">\(MS_R\)</span></td>
+<td align="left"><span class="math inline">\(MS_R/MS_{Res}\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">Residual</td>
+<td align="left"><span class="math inline">\(SS_{Res}\)</span></td>
+<td align="left">n-2</td>
+<td align="left"><span class="math inline">\(MS_{Res}\)</span></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="left"><span class="math inline">\(SS_T\)</span></td>
+<td align="left">n-1</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>In SLR, the <span class="math inline">\(F\)</span>-test of ANOVA give the same result as a two-sided <span class="math inline">\(t\)</span>-test of <span class="math inline">\(H_0\)</span>:<span class="math inline">\(\beta_1\)</span>=0</p>
+</div>
+</div>
+<div id="coefficient-of-determination" class="section level3">
+<h3>Coefficient of Determination</h3>
+<p>The <strong>coefficient of determination</strong> is defined as the following:</p>
+<p><span class="math display">\[
+R^2 = \frac {SS_R}{SS_T}= \frac {SS_T - SS_{Res}}{SS_T} = 1-\frac {SS_{Res}}{SS_T}
+\]</span></p>
+<p>Since <span class="math inline">\(SS_T\)</span> is the measure of variability in y without considering the effect of the regressor variable <span class="math inline">\(x\)</span> and <span class="math inline">\(SS_{Res}\)</span> is a measure of the variability in <span class="math inline">\(y\)</span> remaining after <span class="math inline">\(x\)</span> has been considered.</p>
+<p><span class="math inline">\(R^2\)</span> is often called the proportion of variation explained by the regressor <span class="math inline">\(x\)</span>.</p>
+</div>
+<div id="prediction" class="section level3">
+<h3>Prediction</h3>
+<div id="mean-response" class="section level4">
+<h4>Mean Response</h4>
+<p>If <span class="math inline">\(x_0\)</span> is within the range of <span class="math inline">\(x\)</span>, an unbiased point estimate of <span class="math inline">\(E(y|x_0)\)</span> is:</p>
+<p><span class="math display">\[
+\widehat{E(y|x_0)}=\hat{\mu_{y|x_0}}=b_0+b_1x_0
+\]</span></p>
+<p>The variance of <span class="math inline">\(\hat{\mu_{y|x_0}}\)</span> is:
+<span class="math display">\[
+\begin{align*}
+Var(\hat{\mu_{y|x_0}}) &amp;= Var(b_0+b_1 x_0) = Var(\overline{y} + b_1(x_0-\overline{x}))\\
+&amp;=\frac{\sigma^2}{n}+ \frac{\sigma^2 (x_0 - \overline{x})^2}{S_{xx}}=\sigma^2 \left ( \frac{1}{n}+\frac{(x_0-\overline{x})^2}{S_{xx}} \right )
+\end{align*}
+\]</span></p>
+<p>So the sampling distribution of <span class="math inline">\(\hat{\mu_{y|x_0}}\)</span> is:</p>
+<p><span class="math display">\[
+N \left ( \beta_0+\beta_1x_0,\sigma^2 \left ( \frac{1}{n}+\frac{(x_0-\overline{x})^2}{S_{xx}} \right ) \right )
+\]</span>
+So now we have
+<span class="math display">\[
+(\widehat{\mu_{y|x_0}}=b_0+b_1 x_0)
+\sim
+N \left ( \beta_0+\beta_1 x_0,\sigma^2 \left ( \frac{1}{n}+\frac{(x_0-\overline{x})^2}{S_{xx}} \right ) \right )
+\]</span>
+And we take the steps to normalize the standard distribution:</p>
+<p><span class="math display">\[
+\frac {(b_0+b_1 x_0)-(\beta_0+\beta_1 x_0)}{\sigma \sqrt{\frac{1}{n}+\frac{(x_0-\overline{x})^2}{S_{xx}}}} \sim NID(0,1)
+\]</span></p>
+<p>We don’t know the value of <span class="math inline">\(\sigma\)</span> so we use the “hatted” version and use a <span class="math inline">\(t\)</span> distribution:</p>
+<p><span class="math display">\[
+\frac {(b_0+b_1 x_0)-(\beta_0+\beta_1 x_0)}{\hat{\sigma} \sqrt{\frac{1}{n}+\frac{(x_0-\overline{x})^2}{S_{xx}}}} \sim t_{n-2}
+\]</span></p>
+<p>So we have the <span class="math inline">\((1-\alpha)100%\)</span> Confidence interval for <span class="math inline">\(E(y|x_0)\)</span> is:</p>
+<p><span class="math display">\[
+\hat{\mu_{y|x_0}} \pm t_{\alpha/2,n-2} 
+\hat{\sigma} \sqrt{\frac{1}{n}+\frac{(x_0-\overline{x})^2}{S_{xx}}}
+\]</span></p>
+<p>Or written slightly differently using the relationship of <span class="math inline">\(\hat{\sigma^2} = MS_{Res}\)</span>:
+<span class="math display">\[
+\hat{\mu_{y|x_0}} \pm t_{\alpha/2,n-2} 
+\sqrt{MS_{Res} \left ( \frac{1}{n}+\frac{(x_0-\overline{x})^2}{S_{xx}} \right )}
+\]</span></p>
+</div>
+<div id="point-estimate" class="section level4">
+<h4>Point Estimate</h4>
+<p>The sampling distribution of <span class="math inline">\(\hat{y_0}\)</span> is:</p>
+<p><span class="math display">\[
+\hat{y_0}=b_0+b_1 x_0 \sim 
+N \left ( \beta_0+\beta_1x_0,\sigma^2 \left ( \frac{1}{n}+\frac{(x_0-\overline{x})^2}{S_{xx}} \right ) \right )
+\]</span>
+The sampling distribution of <span class="math inline">\(y_0\)</span> is:</p>
+<p><span class="math display">\[
+y_0 \sim 
+N ( \beta_0+\beta_1x_0,\sigma^2)
+\]</span>
+So the distribution of <span class="math inline">\(y_0 -\hat{y_0}\)</span> is:</p>
+<p><span class="math display">\[
+y_0 -\hat{y_0}
+\sim
+N \left ( 0,\sigma^2 \left ( 1 + \frac{1}{n}+\frac{(x_0-\overline{x})^2}{S_{xx}} \right ) \right )
+\]</span>
+And we take the steps to normalize the standard distribution:</p>
+<p><span class="math display">\[
+\frac {y_0 - \hat{y_0}}{\sigma \sqrt{ 1 + \frac{1}{n}+\frac{(x_0-\overline{x})^2}{S_{xx}}}} \sim NID(0,1)
+\]</span></p>
+<p>We don’t know the value of <span class="math inline">\(\sigma\)</span> so we use the “hatted” version and use a <span class="math inline">\(t\)</span> distribution:</p>
+<p><span class="math display">\[
+\frac {y_0 - \hat{y_0}}{\hat{\sigma} \sqrt{ 1 + \frac{1}{n}+\frac{(x_0-\overline{x})^2}{S_{xx}}}} \sim t_{n-2}
+\]</span></p>
+<p>So we have the <span class="math inline">\((1-\alpha)100%\)</span> Prediction Interval for <span class="math inline">\(y_0(x_0)\)</span> is:</p>
+<p><span class="math display">\[
+\hat{y_0} \pm t_{\alpha/2,n-2} 
+\hat{\sigma} \sqrt{1 + \frac{1}{n}+\frac{(x_0-\overline{x})^2}{S_{xx}}}
+\]</span></p>
+<p>Or written slightly differently using the relationship of <span class="math inline">\(\hat{\sigma^2} = MS_{Res}\)</span>:
+<span class="math display">\[
+\hat{y_0}  \pm t_{\alpha/2,n-2} 
+\sqrt{MS_{Res} \left (1 +  \frac{1}{n}+\frac{(x_0-\overline{x})^2}{S_{xx}} \right )}
+\]</span></p>
+</div>
+</div>
+<div id="maximum-likelihood-estimation" class="section level3">
+<h3>Maximum Likelihood Estimation</h3>
+<p>We can also use the <strong>method of maximum likelihood</strong> to derive the linear regression estimators.</p>
+<p>Let’s start with what we know:</p>
+<ul>
+<li><span class="math inline">\(Y_i = \beta_0 + \beta_1 x_i + \epsilon_i\)</span></li>
+<li><span class="math inline">\(\epsilon \overset{iid}{\sim} NID(0,\sigma^2)\)</span></li>
+</ul>
+<p>This means that the sampling distribution of <span class="math inline">\(Y_i\)</span>:
+<span class="math display">\[
+Y_i \overset{iid}{\sim} N(\beta_0 + \beta_1 x_i, \sigma^2)
+\]</span>
+Now let’s write the probability density function (pdf) for the distribution of <span class="math inline">\(Y_i\)</span>:
+<span class="math display">\[
+f(y_i|\beta_0,\beta_1,\sigma^2) = \frac{e^{\frac
+{-(y_i-\beta_0-\beta_i x_i)^2}
+{2\sigma^2}}}
+{\sqrt{2 \pi \sigma^2}}
+\]</span></p>
+<p>Well, that is one function. Now to get the distribution for all n we take the product over all n:</p>
+<p><span class="math display">\[
+\begin{align*}
+L(\beta_0,\beta_1,\sigma^2|Y_i) &amp;= \prod_{i=1}^n f(y_i|\beta_0,\beta_1,\sigma^2)\\
+&amp;= \prod_{i=1}^n 
+e^{\frac
+{-(y_i-\beta_0-\beta_i x_i)^2}
+{2\sigma^2}}
+\left ( \frac{1}{\sqrt{2 \pi \sigma^2}} \right )^n
+\end{align*}
+\]</span></p>
+<p>Now we use the product rule for exponents:</p>
+<p><span class="math display">\[
+\begin{align*}
+L(\beta_0,\beta_1,\sigma^2|Y_i) &amp;= 
+&amp;=  
+\left ( \frac{1}{\sqrt{2 \pi \sigma^2}} \right )^n
+e^{\frac{-1}{2\sigma^2}
+\sum_{i=1}^n(y_i-\beta_0-\beta_i x_i)^2}
+\end{align*}
+\]</span></p>
+<p>Now we take the natural log to get the log likelihood:</p>
+<p><span class="math display">\[
+\begin{align*}
+l(\beta_0,\beta_1,\sigma^2|Y_i) &amp;= 
+\frac{-1}{2\sigma^2}
+\sum_{i=1}^n(y_i-\beta_0-\beta_i x_i)^2 - \frac {n}{2} ln(2 \pi \sigma^2)\\
+&amp;= \frac{-1}{2\sigma^2}
+\sum_{i=1}^n(y_i-\beta_0-\beta_i x_i)^2 - \frac {n}{2} ln(2 \pi \sigma^2)\\
+&amp;= \frac{-1}{2\sigma^2}
+\sum_{i=1}^n(y_i-\beta_0-\beta_i x_i)^2 - \frac {n}{2} ln(2 \pi ) - \frac {n}{2} ln(\sigma^2 )\\
+\end{align*}
+\]</span>
+Now to find the values of <span class="math inline">\(\beta_0, \beta_1\)</span> and <span class="math inline">\(\sigma^2\)</span> we take the derivative with respect to each and set it equal to 0:</p>
+<p><span class="math display">\[ 
+\begin{align*}
+\frac{\partial l} {\partial {\beta_0}} \bigg\vert_{\hat{\beta_0},\hat{\beta_1},\hat{\sigma}} &amp;= 
+\frac{1}{\hat{\sigma}^2}
+\sum_{i=1}^n (y_i-\hat{\beta_0}-\hat{\beta}_1x_i) = 0\\
+\frac{\partial l}{\partial {\beta_1}} \bigg\vert_{\hat{\beta_0},\hat{\beta_1},\hat{\sigma}} &amp;= \frac{1}{\hat{\sigma}^2} \sum_{i=1}^n (y_i-\hat{\beta}_0-\hat{\beta}_1x_i)x_i = 0\\
+\frac{\partial l}{\partial {\sigma^2}} \bigg\vert_{\hat{\beta_0},\hat{\beta_1},\hat{\sigma}} &amp;= 
+-\frac{1}{2\hat{\sigma}^2} +
+\frac{1}{2\hat{\sigma}^4} 
+\sum_{i=1}^n (y_i-\hat{\beta}_0-\hat{\beta}_1x_i)^2 = 0\\
+\end{align*}
+\]</span></p>
+<p>Solving those equations leaves us with the following:</p>
+<p><span class="math display">\[
+\begin{align*}
+\hat{\beta_0} &amp;= 
+\overline{y} - \hat{\beta_1} \overline {x}=b_0\\
+\hat{\beta_1} &amp;= 
+\frac{\sum_{i=1}^n(x_i - \overline{x})y_i}
+{\sum_{i=1}^n(x_i -\overline{x})^2} 
+= b_1\\
+\hat{\sigma^2} &amp;= 
+\frac{\sum_{i=1}^n(y_i - \hat{\beta_0} - \hat{\beta_1}x_i)^2}
+{n} 
+\end{align*}
+\]</span></p>
+<p>Notes about MLE:</p>
+<ul>
+<li><span class="math inline">\(\hat{\sigma^2}\)</span> is biased</li>
+<li>MLE requires full distributional assumptions whereas LSE does not</li>
+<li>In general MLE have better statistical properties than LSE</li>
+</ul>
+</div>
+</div>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+

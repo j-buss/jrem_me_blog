@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.100.1" />
+
+
+<title>Reference - Statistics and Probability - jrem.me - wonder.explore.share</title>
+<meta property="og:title" content="Reference - Statistics and Probability - jrem.me - wonder.explore.share">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/j-buss">GitHub</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">3 min read</span>
+    
+
+    <h1 class="article-title">Reference - Statistics and Probability</h1>
+
+    
+    <span class="article-date">2021-07-03</span>
+    
+
+    <div class="article-content">
+      <p>CHANGES</p>
+<h2 id="background">Background</h2>
+<p>This page is a refresher. Someone, may have studied statistics long ago and is in need of a reference.</p>
+<p>This page borrows quite heavily from the <a href="https://web.mit.edu/~csvoss/Public/usabo/stats_handout.pdf">MIT Statistics Cheat Sheet</a></p>
+<hr>
+<ul>
+<li><strong>Population:</strong> The entire group one desires information about</li>
+<li><strong>Sample:</strong> A subset of the population taken because the entire population is usually too large to analyze; Its characteristics are taken to be representative of the population</li>
+<li><strong>Mean:</strong> (average); The sum of all values in the sample divided by the number of values in the sample;
+<ul>
+<li>$\mu$ = population mean</li>
+<li>$\overline{x}$ = sample mean</li>
+</ul>
+</li>
+<li><strong>Median:</strong> the value separating the higher half of a sample/population from lower half
+<ul>
+<li>It is the middle value when all values arranged lowest to highest (or avg of middle two if even number of items)</li>
+</ul>
+</li>
+<li><strong>IQR:</strong> the middle 50%, calculated as Q3 - Q1</li>
+<li><strong>1.5 * IQR Outlier:</strong> identification of outliers
+<ul>
+<li>Q1 - 1.5 IQR</li>
+<li>Q3 + 1.5 IQR</li>
+</ul>
+</li>
+<li><strong>Variance:</strong> Measures dispersion around the mean; squared units
+<ul>
+<li>Of population:
+$$
+\sigma^{2}={\sum (x-\mu)^2 \over n}
+\hspace7ex
+or
+\hspace7ex
+\sigma^{2}={\sum x^2 \over n} - \mu^{2}
+$$</li>
+<li>Of sample:
+$$
+s^{2}={\sum (x-\overline{x})^2 \over n-1}
+\hspace7ex
+or
+\hspace7ex
+s^{2}={\sum x^2 - {\small{(\sum x )^2 \over n}} \over n-1}
+$$</li>
+</ul>
+</li>
+<li><strong>Standard Deviation:</strong> square root of variance; measure of dispersion around the mean, same units as values
+<ul>
+<li>$\sigma$ = population standard deviation
+$$
+\sigma=\sqrt{{\sum (x-\mu)^2 \over n}}
+\hspace7ex
+or
+\hspace7ex
+\sigma=\sqrt{{\sum x^2 \over n} - \mu^{2}}
+$$</li>
+<li>$s$ = sample standard deviation
+$$
+s=\sqrt{{\sum (x-\overline{x})^2 \over n-1}}
+\hspace7ex
+or
+\hspace7ex
+s=\sqrt{{\sum x^2 - {\small{(\sum x )^2 \over n}} \over n-1}}
+$$</li>
+</ul>
+</li>
+<li><strong>Standard Error:</strong> an estimate of standard deviation of sampling distribution; the set of all samples of size $n$ that can be taken from a population; Reflects the extent to which a statistic changes from sample to sample
+<ul>
+<li>
+<p>For mean - Exact Value:
+$$
+\sigma_{\overline{x}} = {\sigma \over \sqrt{n}}
+$$</p>
+</li>
+<li>
+<p>For mean - Estimate:
+$$
+\sigma_{\overline{x}} \approx {\sigma_{x} \over \sqrt{n}}
+\hspace7ex
+or
+\hspace7ex
+\widehat{\sigma_{\overline{x}}} = {\sigma_{x} \over \sqrt{n}}
+\hspace7ex
+or
+\hspace7ex
+s_{\overline{x}} = {s \over \sqrt{n}}
+$$</p>
+</li>
+<li>
+<p>Note: Confusion exists between the similar values:</p>
+<ul>
+<li>$\sigma$ = standard deviation of the population</li>
+<li>$\sigma_{x}$ = standard deviation of the sample</li>
+<li>$\sigma_{\overline{x}}$ = standard deviation of the mean</li>
+<li>$\widehat{\sigma_{\overline{x}}}$ = estimator of the standard deviation of the mean (standard error)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Normal Distribution (aka Gaussian Distribution):</strong> A type of continuous probability distribution for real-valued random variables
+<ul>
+<li>Generalized probability density function (pdf)
+$$
+f(x) = {1 \over {\sigma \sqrt{2 \pi}} } \hspace1ex e^{{-1 \over 2}{\left({x - \mu} \over \sigma \right)^2}}
+$$</li>
+<li>X is a normally distributed random variable with mean $\mu$ and standard deviation $\sigma$
+$$
+X \sim N(\mu, \sigma^2)
+$$</li>
+<li>To standardize the distribution, or finding the <strong>z-score</strong>, subtract $\mu$ from x and divide it by the standard deviation $\sigma$
+$$
+Z = {{x - \mu} \over \sigma}
+$$</li>
+<li>Then we say that Z has a standard normal distribution where:
+$$
+Z \sim N(0, 1)
+$$</li>
+</ul>
+</li>
+<li><strong>Joint Probability:</strong> the probability of events A and B occurring
+<ul>
+<li>$P(A \space and \space B) = P(A) \times P(B)$ when events $A$ and $B$ are independent</li>
+</ul>
+</li>
+<li><strong>Union of Events:</strong> the probability of either event A or event B occurring
+<ul>
+<li>$P(A \space or \space B) = P(A) + P(B)$ - P(A \space and \space B)</li>
+</ul>
+</li>
+<li><strong>Conditional Probability:</strong> the probability of event A occurring given that event B has occured
+$$
+P(A \vert B) = {P(A \space and \space B) \over P(B)}
+\hspace7ex
+or
+\hspace7ex
+P(A \vert B) = {P(B \vert A) \times P(A) \over P(B)}
+$$</li>
+<li><strong>Pearson&rsquo;s Correlation Coefficient for a sample</strong>
+<ul>
+<li>$$r_{xy} = {\sum_{i=1}^{n} (x_1 - \overline{x})(y_i = \overline{y}) \over sqrt{ \sum_{i=1}TBD&hellip;.$$</li>
+</ul>
+</li>
+<li><strong>Coefficient of DEtermination</strong> - $r^2$tells us what percent of the variability in the y variable is accounted for by the regression on the x variable.
+<ul>
+<li>$$r^2 = 1 - {SS_{res} \over SS_{tot}}$$</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+

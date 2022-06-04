@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.100.1" />
+
+
+<title>Model Adequacy Checking - jrem.me - wonder.explore.share</title>
+<meta property="og:title" content="Model Adequacy Checking - jrem.me - wonder.explore.share">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/j-buss">GitHub</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">7 min read</span>
+    
+
+    <h1 class="article-title">Model Adequacy Checking</h1>
+
+    
+    <span class="article-date">2021-10-19</span>
+    
+
+    <div class="article-content">
+      
+<script src="/2021/10/19/model-adequacy-checking/index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="assumptions-of-linear-regression" class="section level2">
+<h2>Assumptions of Linear Regression</h2>
+<p>Linear Regression:</p>
+<p><span class="math display">\[
+\begin{align*}
+Y_i = \beta_0 + \beta_1 X_{i1} + \dots + \beta_k X_{ik} + \epsilon_i
+\end{align*}
+\]</span></p>
+<p><img src="images/Screenshot%202021-10-16%2013.23.21.png" /></p>
+<p>The major assumptions that we have made concerning Linear Regression are as follows:</p>
+<ol style="list-style-type: decimal">
+<li>Relationship between <span class="math inline">\(Y\)</span> and <span class="math inline">\(X_i\)</span> is linear</li>
+<li><span class="math inline">\(E(\epsilon_i)=0\)</span></li>
+<li><span class="math inline">\(Var(\epsilon_i)=\sigma^2\)</span></li>
+<li><span class="math inline">\(Cov(\epsilon_i, \epsilon_j)=0\)</span> for all <span class="math inline">\(i \ne j\)</span></li>
+<li><span class="math inline">\(\epsilon_i {\overset {iid}{\sim}} N(0,\sigma^2)\)</span></li>
+</ol>
+<ul>
+<li>If assumptions are violated, a different sample could lead to different model with opposite conclusions!</li>
+<li>All the inferences are based on the assumption that the model is correct.</li>
+<li>We cannot detect departure from underlying assumptions by examining standard summary statistics. <span class="math inline">\(R^2\)</span>, <span class="math inline">\(t\)</span> or <span class="math inline">\(F\)</span> statistics are “global” model properties, and as such they do not ensure model adequacy</li>
+</ul>
+</div>
+<div id="definition-of-residuals" class="section level2">
+<h2>Definition of Residuals</h2>
+<p>We previously learned that residuals are defined as:</p>
+<p><span class="math display">\[
+e_i = y_i - \hat{y_i}, \space i=1,2,...,n
+\]</span>
+However there are a few other constructive ways to view the residuals:</p>
+<ul>
+<li><strong>deviation</strong> between observed <strong>data</strong> and the <strong>fitted</strong> values</li>
+<li><strong>unexplained variability</strong> in the response variable from the model</li>
+<li><strong>realized</strong> or <strong>observed values</strong> of <span class="math inline">\(\epsilon_i\)</span></li>
+</ul>
+<p>The residuals have several important properties:</p>
+<ul>
+<li>Zero mean or <span class="math inline">\(\sum_{i=1}^n e_i =0\)</span></li>
+<li>Approximate variance:</li>
+</ul>
+<p><span class="math display">\[
+\frac{\sum_{i=1}^n (e_i - \overline{e_i})^2}{n-p} = \frac{\sum_{i=1}^n e_i^2}{n-p} = \frac{SS_{Res}}{n-p} = MS_{Res} = \hat{\sigma}^2
+\]</span>
+where <span class="math inline">\(p=\)</span> # of parameters</p>
+<ul>
+<li>Unlike <span class="math inline">\(\epsilon_i\)</span>, <span class="math inline">\(e_i\)</span> are not independent:
+<ul>
+<li><span class="math inline">\(n\)</span> residuals have only <span class="math inline">\(n-p\)</span> degrees of freedom</li>
+</ul></li>
+</ul>
+<p><strong>Scaled Residuals</strong>: Helpful in finding <strong>outliers</strong>, the <strong>unusual or extreme points</strong> that are considerably different from other data points in <span class="math inline">\(y\)</span> or <span class="math inline">\(x\)</span> directions</p>
+</div>
+<div id="standardized-residuals" class="section level2">
+<h2>Standardized Residuals</h2>
+<p>Approximate average variance of a residual is estimated by <span class="math inline">\(MS_{Res}\)</span>.</p>
+<p><span class="math display">\[
+d_i = \frac{e_i}{\sqrt{MS_{Res}}}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(d_i\)</span>s have mean zero and <em>approximate</em> unit variance</li>
+<li><span class="math inline">\(\vert d_i \vert &gt; 3\)</span> may indicate an outlier</li>
+</ul>
+</div>
+<div id="variance-covariance-of-residuals" class="section level2">
+<h2>Variance-Covariance of Residuals</h2>
+<p>Remember our definition of the Hat Matrix:</p>
+<p><span class="math display">\[
+ \mathbf{H} = \mathbf{X} ( \mathbf{X^\intercal} \mathbf{X})^{-1} \mathbf{X^\intercal} 
+\]</span></p>
+<p>The Hat Matrix has the following properties:</p>
+<ul>
+<li><span class="math inline">\(\mathbf{H}\)</span> is symmetric and idempotent</li>
+<li><span class="math inline">\(\mathbf{I-H}\)</span> is symmetric and idempotent</li>
+</ul>
+<p>Also remember that we can show residuals in matrix notation as:</p>
+<p><span class="math display">\[
+\mathbf{e} = \mathbf{y}-\mathbf{\hat{y}} = \mathbf{y} - \mathbf{X\hat{\beta}}=\mathbf{y}-\mathbf{Hy}=(\mathbf{I}-\mathbf{H})\mathbf{y}
+\]</span>
+We can take that last equation, properties of the Hat matrix and substituting <span class="math inline">\(\mathbf{y=X\beta+\epsilon}\)</span> into:</p>
+<p><span class="math display">\[
+\begin{align*}
+\mathbf{e} &amp;= (\mathbf{I}-\mathbf{H})(\mathbf{X\beta+\epsilon})\\
+&amp;= \mathbf{X\beta}-\mathbf{HX\beta}+(\mathbf{I-H})\mathbf{\epsilon}\\
+&amp;= \mathbf{X\beta}-\mathbf{\mathbf{X} ( \mathbf{X^\intercal} \mathbf{X})^{-1} \mathbf{X^\intercal}}\mathbf{X\beta}+(\mathbf{I-H})\mathbf{\epsilon}\\
+&amp;= \mathbf{X\beta}-\mathbf{\mathbf{X} [( \mathbf{X^\intercal} \mathbf{X})^{-1} \mathbf{X^\intercal}}\mathbf{X}]\mathbf{\beta}+(\mathbf{I-H})\mathbf{\epsilon}\\
+&amp;= \mathbf{X\beta}-\mathbf{X} \mathbf{\beta}+(\mathbf{I-H})\mathbf{\epsilon}\\
+&amp;=(\mathbf{I-H})\mathbf{\epsilon}\\
+\end{align*}\\
+\]</span></p>
+<p>Therefore we see that the residuals are the same linear transformation of the observations <span class="math inline">\(\mathbf{y}\)</span> and the errors <span class="math inline">\(\mathbf{\epsilon}\)</span>, or in mathematical terms:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(\mathbf{e}=(\mathbf{I} - \mathbf{H})\mathbf{y}\)</span></li>
+<li><span class="math inline">\(\mathbf{e}=(\mathbf{I} - \mathbf{H})\mathbf{\epsilon}\)</span></li>
+</ol>
+<p>Using the second equation we can find the variance of <span class="math inline">\(\mathbf{e}\)</span></p>
+<p><span class="math display">\[
+\begin{align*}
+Var(\mathbf{e}) &amp;= Var[(\mathbf{I} - \mathbf{H})\mathbf{\epsilon}]\\
+\end{align*}
+\]</span>
+And leveraging the variance of matrices property:
+<span class="math display">\[
+Var(\mathbf{A}\mathbf{X}) = \mathbf{A}(Var(\mathbf{X}))\mathbf{A^\intercal}
+\]</span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(\mathbf{X} \in \mathbb{R}^{\ell \times 1}\)</span> is a random column vector</li>
+<li><span class="math inline">\(\mathbf{A} \in \mathbb{R}^{k \times \ell}\)</span> is a constant matrix</li>
+</ul>
+<p>So back to our variance:</p>
+<p><span class="math display">\[
+\begin{align*}
+Var(\mathbf{e}) &amp;= Var[(\mathbf{I} - \mathbf{H})\mathbf{\epsilon}]\\
+&amp;= (\mathbf{I} - \mathbf{H}) Var(\mathbf{\epsilon}) (\mathbf{I} - \mathbf{H}) ^\intercal\\
+&amp;= \sigma^2 (\mathbf{I} - \mathbf{H})
+\end{align*}
+\]</span></p>
+<p>Since the <span class="math inline">\(Var(\mathbf{\epsilon})=\sigma^2 \mathbf{I}\)</span> and <span class="math inline">\(\mathbf{I}-\mathbf{H}\)</span> is symmetric and idempotent. The matrix <span class="math inline">\(\mathbf{I}-\mathbf{H}\)</span> is generally not diagonal, so the residuals have different variances and they are correlated:</p>
+<ul>
+<li><p><span class="math inline">\(Var(e_i) = \sigma^2(1-h_{ii})\)</span>, where <span class="math inline">\(h_{ii}\)</span> is the <span class="math inline">\(i\)</span>-th diagonal element of <span class="math inline">\(\mathbf{H}\)</span></p></li>
+<li><p><span class="math inline">\(Cov(e_i,e_j) = -\sigma^2h_{ij}\)</span>, where <span class="math inline">\(h_{ij}\)</span> is the <span class="math inline">\(ij\)</span>-th diagonal element of <span class="math inline">\(\mathbf{H}\)</span></p></li>
+<li><p><span class="math inline">\(h_{ii} \in [0,1]\)</span> measures the location of the <span class="math inline">\(i\)</span>-th point in <span class="math inline">\(\mathbf{x}\)</span> space</p>
+<ul>
+<li>the <strong>smaller</strong> <span class="math inline">\(h_{ii}\)</span> is:
+<ul>
+<li>The <strong>larger</strong> the <span class="math inline">\(Var(e_i)\)</span></li>
+<li>The <strong>closer</strong> the point <span class="math inline">\(\mathbf{x_i}\)</span> lies to the centroid of the <span class="math inline">\(\mathbf{X}\)</span> space</li>
+</ul></li>
+<li>The <strong>larger</strong> <span class="math inline">\(h_{ii}\)</span> is:
+<ul>
+<li>The <strong>smaller</strong> the <span class="math inline">\(Var(e_i)\)</span></li>
+</ul></li>
+<li><span class="math inline">\(MS_{res}&gt;MS_{res}(1-h_{ii})\)</span> overestimates <span class="math inline">\(Var(e_i)\)</span></li>
+</ul></li>
+</ul>
+<div id="leverage-points-and-influential-points" class="section level3">
+<h3>Leverage Points and Influential Points</h3>
+<ul>
+<li><strong>Leverage Point</strong> - Leverage points are observations made at extreme values of the independent variables; the lack of neighboring observations means that the fitted regression model will pass close to that particular observation.</li>
+<li><strong>Influential Point</strong> - Influential observations are those observations that have a relatively large effect on the regression model’s predictions
+<ul>
+<li>Drags the prediction to itself</li>
+<li>Remote point with large <span class="math inline">\(h_{ii}\)</span> may be influential</li>
+</ul></li>
+<li><strong>Leverage vs. Influential</strong> - An influential point will typically have high leverage; however a high leverage point is not necessarily an influential point.</li>
+</ul>
+</div>
+<div id="influential-points---mathematical-insights" class="section level3">
+<h3>Influential Points - Mathematical Insights</h3>
+<ul>
+<li>Let <span class="math inline">\(y_n\)</span> be the observed response for the <span class="math inline">\(n^{th}\)</span> data point</li>
+<li>Let <span class="math inline">\(\hat{y}_n^*\)</span> be predicted value for response based on other n-1 data points</li>
+<li>Let <span class="math inline">\(\delta = y_n - \hat{y}_n^*\)</span> or the difference between actual observed value vs. predicted value from “other” observations.</li>
+</ul>
+<p><img src="images/MPV_InfluentialPoint_vs_LeveragePoint.png" />
+<em>Model Adequacy Checking - Introduction to Linear Regression Analysis - 5th addition - Montgomery/Peck/Vining</em></p>
+<p>Using the an image from Introduction to Linear Regression Analysis by Montgomery/Peck/Vining</p>
+<p>For <span class="math inline">\(x=25\)</span>:</p>
+<ul>
+<li>Figure 1: <span class="math inline">\(\hat{y}_n^* = 25\)</span> predicted value based on other points</li>
+<li>Figure 2: <span class="math inline">\(y_n=2\)</span> actual value</li>
+<li><span class="math inline">\(\delta = y_n - \hat{y}_n^*\)</span> is -23: showing very influential point</li>
+</ul>
+<p>Furthermore if the <span class="math inline">\(n^{th}\)</span> data point is remote in terms of the space devined by data values for regressors, then <span class="math inline">\(h_{nn}\)</span> approaches 1 and <span class="math inline">\(\hat{y}_n\)</span> approaches <span class="math inline">\(y_n\)</span></p>
+<p><span class="math display">\[
+\begin{align*}
+\hat{y}_n&amp;=\hat{y}_n^* + h_{nn}\delta\\
+&amp;=\hat{y}_n^* + \left [ \frac{1}{n} + \left ( \frac{n-1}{n} \right )^2 \frac{(x_n-\overline{x}^*)^2}{S_{xx}} \right ]\delta\\
+\end{align*}
+\]</span></p>
+<p>Let <span class="math inline">\(\overline{x}^*\)</span> be the average value for the other <span class="math inline">\(n\)</span>-1 regressors.</p>
+</div>
+</div>
+<div id="studentized-residuals" class="section level2">
+<h2>Studentized Residuals</h2>
+<p>A logical next step is to produce a residual with constant variance:</p>
+<p><span class="math display">\[
+r_i = \frac{e_i}{\sqrt{MS_{res}(1-h_{ii})}}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(r_i\)</span>s have mean zero and unit variance, regardless of the location of <span class="math inline">\(\mathbf{x_i}\)</span> when the model form is correct</li>
+<li>Larger than <span class="math inline">\(d_i\)</span></li>
+<li>When <span class="math inline">\(n\)</span> is large, standardized <span class="math inline">\(d_i\)</span> and studentized <span class="math inline">\(r_i\)</span> are similar</li>
+</ul>
+<div id="practice-if-there-is-only-one-regressor-show-that-studentized-residuals-are" class="section level4">
+<h4>Practice: If there is only one regressor, show that studentized residuals are:</h4>
+<p><span class="math display">\[
+r_i = \frac{e_i}
+{\sqrt{MS_{res}    \left [ 1- \left ( \frac{1}{n} + \frac{(x_i - \overline{x})^2}{S_{xx}} \right ) \right ]         }                 }
+\]</span></p>
+</div>
+</div>
+<div id="press-residuals" class="section level2">
+<h2>PRESS Residuals</h2>
+<p>Another alternative is to find <span class="math inline">\(\hat{y}_{(i)}\)</span>: the fitted value of <span class="math inline">\(y_i\)</span> based on a model with all observations except <span class="math inline">\(y_i\)</span></p>
+<p>Define the prediction residual as:</p>
+<p><span class="math display">\[
+e_{(i)}=y_i - \hat{y}_{(i)}
+\]</span></p>
+<div id="motivation" class="section level4">
+<h4>Motivation:</h4>
+<ul>
+<li>If the <span class="math inline">\(i\)</span>-th point <span class="math inline">\((\mathbf{x_i}, y_i)\)</span> is unusual it can “overly” influence the regression model</li>
+<li>If the point in question is used then <span class="math inline">\(y_i \approx \hat{y}_{(i)}\)</span> and it’s hard to detect an outlier</li>
+<li>If the point in question is not used then <span class="math inline">\(\hat{y}_{(i)}\)</span> cannot be influenced by it, and the residual will better reflect how unusual the point is</li>
+</ul>
+</div>
+<div id="practice-it-can-be-shown" class="section level4">
+<h4>Practice: It can be shown</h4>
+<p><span class="math display">\[
+e_{(i)} = \frac{e_i}{1-h_{ii}}, \space i=1,2,\dots,n
+\]</span></p>
+<ul>
+<li>When <span class="math inline">\(h_{ii}\)</span> is large, the PRESS residual is large, or the difference between <span class="math inline">\(e_i\)</span> and <span class="math inline">\(e_{(i)} is large\)</span></li>
+<li>These points will generally be <strong>high influence</strong> points</li>
+<li><span class="math inline">\((\mathbf{x_i},y_i)\)</span> is a point where the model <strong>fits</strong> the data well, but a model built without the point <strong>predicts</strong> poorly</li>
+</ul>
+</div>
+<div id="the-sum-of-squares-becomes" class="section level4">
+<h4>The Sum of Squares becomes:</h4>
+<p>(i.e. <strong>PR</strong>ediction <strong>E</strong>ror <strong>S</strong>um of <strong>S</strong>quares <strong>(PRESS)</strong>):</p>
+<p><span class="math display">\[
+\sum_{i=1}^n e_i = \sum_{i=1}^n \left ( y_i - \hat{y}_{(i)} \right )^2
+\]</span></p>
+</div>
+<div id="standardized-press-residuals" class="section level3">
+<h3>Standardized PRESS Residuals</h3>
+<p>The variance of the <span class="math inline">\(i\)</span>th PRESS residual is:</p>
+<p><span class="math display">\[
+Var[e_{(i)}]=Var \left [ \frac{e_i}{1-h_{ii}} \right ] = \frac{\sigma^2}{1-h_{ii}}
+\]</span></p>
+<p>so that a <strong>standardized</strong> PRESS residual is:</p>
+<p><span class="math display">\[
+\frac{e_{(i)}}{\sqrt{Var(e_{(i)}})} = \frac{e_{i}/(1-h_{ii})}{\sqrt{\sigma^2/(1 - h_{ii})}} = \frac{e_{i}}{\sqrt{\sigma^2(1 - h_{ii})}}
+\]</span></p>
+<p>which, if we use <span class="math inline">\(MS_{Res}\)</span> to estimate <span class="math inline">\(\sigma^2\)</span>, is just the <strong>studentized residual</strong> discussed previously.</p>
+</div>
+</div>
+<div id="press-statistic" class="section level2">
+<h2>PRESS Statistic</h2>
+<p>Sum of squared PRESS residuals, as a measure of model quality:</p>
+<p><span class="math display">\[
+\begin{align*}
+PRESS &amp;= \sum_{i=1}^n [y_i - \hat{y_{(i)}}]^2\\
+&amp;= \sum_{i=1}^n \left ( \frac{e_i}{1 - h_{ii}} \right )^2
+\end{align*}
+\]</span></p>
+</div>
+<div id="r-student-residuals" class="section level2">
+<h2>R-Student Residuals</h2>
+<ul>
+<li><span class="math inline">\(MS_{res}\)</span> uses all <span class="math inline">\(n\)</span> observations to estimate <span class="math inline">\(\sigma^2\)</span></li>
+<li><span class="math inline">\(S_{(i)}^2\)</span> estimates <span class="math inline">\(\sigma^2\)</span> based on the data with the <span class="math inline">\(i\)</span>-th observation removed:</li>
+</ul>
+<p><span class="math display">\[
+S_{(i)}^2 = \frac{(n-p)MS_{res}-e_i^2/(1-h_{ii})}{n-p-1}
+\]</span></p>
+<div id="r-student-residual" class="section level3">
+<h3>R-Student residual:</h3>
+<p><span class="math display">\[
+t_i = \frac{e_i}{\sqrt{S_{(i)}^2(1-h_{ii})}}
+\]</span></p>
+<ul>
+<li>If <span class="math inline">\(i\)</span>-th observation is influential, <span class="math inline">\(S_{(i)}^2\)</span> is significantly different from <span class="math inline">\(MS_{res}\)</span></li>
+</ul>
+</div>
+</div>
+<div id="residual-plots" class="section level2">
+<h2>Residual Plots</h2>
+<p>Normal probability (<a href="https://en.wikipedia.org/wiki/Q%E2%80%93Q_plot">QQ-plot</a>) of residuals:</p>
+<ul>
+<li><span class="math inline">\(t_{test}\)</span>, <span class="math inline">\(F_{test}\)</span>, CI and PI all depend on normality assumptions</li>
+<li>Heavy tailed error distributions often generate outliers that “pull” the LS fit too much in their direction</li>
+</ul>
+<p>Plot <span class="math inline">\(e_i\)</span> vs. fitted values <span class="math inline">\(\hat{y}_i\)</span>
+* Check for nonconstant variance
+* Check for nonlinearity
+* Look for outliers
+* We plot <span class="math inline">\(e_i\)</span> vs. fitted values <span class="math inline">\(\hat{y}_i\)</span> as <span class="math inline">\(e_i\)</span> and <span class="math inline">\(y_i\)</span> are usually correlated
+<strong>Why?</strong></p>
+<div id="other-residual-plots" class="section level3">
+<h3>Other Residual Plots</h3>
+<div id="e_i-vs.-x_j" class="section level4">
+<h4><span class="math inline">\(e_i\)</span> vs. <span class="math inline">\(x_j\)</span></h4>
+<ul>
+<li>Similar to <span class="math inline">\(e_i\)</span> to <span class="math inline">\(\hat{y}_i\)</span></li>
+<li>Not always effective revealing whether a transformation is required</li>
+</ul>
+</div>
+<div id="partial-regression-plot" class="section level4">
+<h4>Partial Regression Plot</h4>
+<ul>
+<li>Study <strong>marginal</strong> effect of a <span class="math inline">\(x_j\)</span> given all others in the model</li>
+<li>Evaluate whether we specified the relationship between <span class="math inline">\(y\)</span> and <span class="math inline">\(x_j\)</span> correctly</li>
+</ul>
+<div id="partial-regression-plot---how" class="section level5">
+<h5>Partial Regression Plot - How</h5>
+<ol style="list-style-type: decimal">
+<li>Regress <span class="math inline">\(y\)</span> on all regressors except <span class="math inline">\(x_j\)</span> and obtain residuals</li>
+</ol>
+<p><span class="math display">\[
+\begin{align*}
+\hat{y}_i(x_{(j)})&amp;= b_0 + b_1 x_{i1} + \dots + b_{j-1}x_{i,j-1} + b_{j+1}x_{i,j+1} + \dots + b_{k}x_{ik}\\
+e_i(y|x_{(j)})&amp;= y_i - \hat{y}_{i}(x_{(j)})
+\end{align*}
+\]</span></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Regress <span class="math inline">\(x_j\)</span> on all other predictors and obtain residuals</li>
+</ol>
+<p><span class="math display">\[
+\begin{align*}
+\hat{x}_j(x_{(j)})&amp;= a_0 + a_1 x_{i1} + \dots + a_{j-1}x_{i,j-1} + a_{j+1}x_{i,j+1} + \dots + a_{k}x_{ik}\\
+e_i(x_j|x_{(j)}) &amp;= x_{ij} - \hat{x}_{ij}(x_{(j)})
+\end{align*}
+\]</span></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Plot <span class="math inline">\(e_i(y|x_{(j)})\)</span> vs. <span class="math inline">\(e_i(x_j|x_{(j)})\)</span></li>
+</ol>
+<ul>
+<li>If the plot of <span class="math inline">\(e_i(y|x_{(j)})\)</span> vs. <span class="math inline">\(e_i(x_j|x_{(j)})\)</span> is linear, then a linear relationship between <span class="math inline">\(y\)</span> and <span class="math inline">\(x_j\)</span> seems reasonable</li>
+<li>The slope of the line will be the regression coefficient of <span class="math inline">\(x_j\)</span> in an MLR model</li>
+<li>If the plot is curvilinear, we may need some transformation such as <span class="math inline">\(x_j^2\)</span> or <span class="math inline">\(1/x_j\)</span></li>
+<li>If <span class="math inline">\(x_j\)</span> is a candidate variable, a horizontal band indicates there is no additional useful information in <span class="math inline">\(x_j\)</span> for predicting <span class="math inline">\(y\)</span></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+

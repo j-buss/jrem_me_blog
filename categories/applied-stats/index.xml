@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Applied Stats on jrem.me - wonder.explore.share</title>
+    <link>/categories/applied-stats/</link>
+    <description>Recent content in Applied Stats on jrem.me - wonder.explore.share</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 14 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="/categories/applied-stats/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Polynomial Regression</title>
+      <link>/2021/11/14/polynomial-regression/</link>
+      <pubDate>Sun, 14 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/11/14/polynomial-regression/</guid>
+      <description>Why Polynomial Regression Polynomials are widely used in situations where the response surface is curvilinear Many complex nonlinear relationships can be adequately modeled by polynomials over reasonably small ranges of the \(x\)’s Polynomial Regression Models A second-order polynomial in one variable or a quadratic model is \[ y=\beta_0 + \beta_1 x + \beta_2 x^2 + \epsilon \]
+A second-order polynomial in two variables is \[ y=\beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_{11}x_1^2 + \beta_{22}x_2^2 + \beta_{12} x_1 x_2 + \epsilon \]</description>
+    </item>
+    
+    <item>
+      <title>Diagnostics for Leverage and Influence</title>
+      <link>/2021/11/13/diagnostics-for-leverage-and-influence/</link>
+      <pubDate>Sat, 13 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/11/13/diagnostics-for-leverage-and-influence/</guid>
+      <description>Introduction Outlier - a data point whose response \(y\) does not follow the general trend of the rest of the data Often detected in y space by R-student residuals, \(t_i\) which is more sensitive (become larger) in the presence of a discordant data point A point with \(|t_i| &amp;gt; 3\) is considered an outlier (in the y direction) When sample size is not large, points with \(|t_i| &amp;gt; 2\) should be examined with care Leverage - a point which falls horizontally (in the \(x\) direction) away from the center of the cloud are called (high) leverage points An observation with \(h_{ii} &amp;gt; 2p / n\) is remote enough to be considered a leverage point Remote leverage points have dramatic impact on model summary statistics such as \(R^2\) and standard errors of coefficients A point with high leverage has a potential to be influential, but generally need to investigate further Influential - a point which has a noticeable impact on the model coefficients in that it “pulls” the regression model in it’s direction A point with large \(h_{ii}\) and a large residual is likely to be influential The Hat Matrix and Leverage: The diagonal elements of the hat matrix \(\mathbf{H}=\mathbf{X}(\mathbf{X^{\intercal}X})^{-1}\mathbf{X}^{\intercal}\) are given by: \[ h_{ii}=\mathbf{x}_i^{\intercal}(\mathbf{X^{\intercal}X})^{-1}\mathbf{x}_i \] where \(\mathbf{x}_i\) is the \(i\)th row of \(\mathbf{X}\)</description>
+    </item>
+    
+    <item>
+      <title>Model Adequacy Checking - Examples from Montgomery/Peck/Vining</title>
+      <link>/2021/10/23/model-adequacy-checking-examples-from-montgomery/peck/vining/</link>
+      <pubDate>Sat, 23 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/10/23/model-adequacy-checking-examples-from-montgomery/peck/vining/</guid>
+      <description>For the example data we will leverage the CRAN package “MPV”.
+#install.packages(&amp;quot;MPV&amp;quot;) library(MPV) Example 4.1: The Delivery Time Data Let’s define the dataframe for the SoftDrink data and take a look at the first 5 rows:
+SoftDrink &amp;lt;- data.frame(MPV::softdrink) colnames(SoftDrink) &amp;lt;- c(&amp;quot;DeliveryTime&amp;quot;, &amp;quot;NumberCases&amp;quot;, &amp;quot;Distance&amp;quot;) head(SoftDrink, 5) ## DeliveryTime NumberCases Distance ## 1 16.68 7 560 ## 2 11.50 3 220 ## 3 12.03 3 340 ## 4 14.88 4 80 ## 5 13.</description>
+    </item>
+    
+    <item>
+      <title>Transformations and Weighting to Correct Model Inadequacies</title>
+      <link>/2021/10/20/transformations-and-weighting-to-correct-model-inadequacies/</link>
+      <pubDate>Wed, 20 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/10/20/transformations-and-weighting-to-correct-model-inadequacies/</guid>
+      <description>Model Assumptions Regression model fitting has several implicit assumptions, including:
+\(\epsilon \overset{iid}{\sim} NID(0,\sigma^2)\): mean 0, constant variance, normally distributed, and uncorrelated The form of the model (linearity) and the specification of the predictors are correct. Check model adequacy by residual plots and lack-of-fit tests Methods when some assumptions are violated: Data Transformation Generalized Least Squares (GLS) Weighted Least Squares (WLS) Data Transformation Variance Stabilization The constant variance assumption is often violated when the response \(y\) follows a distribution which is related to the mean.</description>
+    </item>
+    
+    <item>
+      <title>Model Adequacy Checking</title>
+      <link>/2021/10/19/model-adequacy-checking/</link>
+      <pubDate>Tue, 19 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/10/19/model-adequacy-checking/</guid>
+      <description>Assumptions of Linear Regression Linear Regression:
+\[ \begin{align*} Y_i = \beta_0 + \beta_1 X_{i1} + \dots + \beta_k X_{ik} + \epsilon_i \end{align*} \]
+The major assumptions that we have made concerning Linear Regression are as follows:
+Relationship between \(Y\) and \(X_i\) is linear \(E(\epsilon_i)=0\) \(Var(\epsilon_i)=\sigma^2\) \(Cov(\epsilon_i, \epsilon_j)=0\) for all \(i \ne j\) \(\epsilon_i {\overset {iid}{\sim}} N(0,\sigma^2)\) If assumptions are violated, a different sample could lead to different model with opposite conclusions!</description>
+    </item>
+    
+    <item>
+      <title>Simple Linear Regression</title>
+      <link>/2021/09/20/simple-linear-regression/</link>
+      <pubDate>Mon, 20 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/09/20/simple-linear-regression/</guid>
+      <description>Simple Linear Regression The characteristics of a Simple Linear Regression are as follows:
+One predictor \(X\) that is known and constant One response variable \(Y\) Linear function \(y=\beta_0 + \beta_1 x + \epsilon\) Simple Linear Regression - Population The above is an idealized representation. Instead we have a set of n-pairs of data \((x_i, y_i)\) where \(i=1, 2, ... n\). Additionally, the data will not perfectly fit the line. As a result we add an error term \(\epsilon\).</description>
+    </item>
+    
+    <item>
+      <title>Reference - Statistics and Probability</title>
+      <link>/2021/07/03/reference-statistics-and-probability/</link>
+      <pubDate>Sat, 03 Jul 2021 21:21:32 -0500</pubDate>
+      
+      <guid>/2021/07/03/reference-statistics-and-probability/</guid>
+      <description>CHANGES
+Background This page is a refresher. Someone, may have studied statistics long ago and is in need of a reference.
+This page borrows quite heavily from the MIT Statistics Cheat Sheet
+Population: The entire group one desires information about Sample: A subset of the population taken because the entire population is usually too large to analyze; Its characteristics are taken to be representative of the population Mean: (average); The sum of all values in the sample divided by the number of values in the sample; $\mu$ = population mean $\overline{x}$ = sample mean Median: the value separating the higher half of a sample/population from lower half It is the middle value when all values arranged lowest to highest (or avg of middle two if even number of items) IQR: the middle 50%, calculated as Q3 - Q1 1.</description>
+    </item>
+    
+    <item>
+      <title>Reference - Linear Algebra</title>
+      <link>/2021/06/27/reference-linear-algebra/</link>
+      <pubDate>Sun, 27 Jun 2021 14:29:01 -0500</pubDate>
+      
+      <guid>/2021/06/27/reference-linear-algebra/</guid>
+      <description>Background This page is a refresher. The impetus for this page was a reference for someone who learned linear algebra in the past, but is in need of a refresher.
+This page borrows very heavily from the excellent document Linear algebra explained in four pages by Ivan Savov.
+Introduction Linear algebra is essentially the mathematics of vectors and matrices, so we start with a few definitions.
+Vector: A vector $\overrightarrow{v} \in R^n$ is an $n$-tuple of real numbers $$ \overrightarrow{v}=(v_1,v_2,v_3) \in (R, R, R) \equiv R^{3} $$</description>
+    </item>
+    
+  </channel>
+</rss>

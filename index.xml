@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>jrem.me - wonder.explore.share</title>
+    <link>/</link>
+    <description>Recent content on jrem.me - wonder.explore.share</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 09 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Derivatives</title>
+      <link>/2022/04/09/derivatives/</link>
+      <pubDate>Sat, 09 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/04/09/derivatives/</guid>
+      <description>\(\gdef\ddx{\frac{d}{dx}}\) \(\gdef\fx{f(x)}\) \(\gdef\fpx{f&amp;#39;(x)}\)
+The following are my personal notes from relearning calculus using the following resources:
+Khan Academy AP Calculus BC Paul’s Online Notes taking the online class: Introduction to Linear Algebra - MIT OCW 18.06 Definition and Notation If \(y=f(x)\) then the derivative is defined to be \(f&amp;#39;(x) = \displaystyle{\lim_{h \rightarrow 0}} \frac{f(x+h)-f(x)}{h}\) If \(y=f(x)\) then all of the following are equivalent notations for the derivative: \(f&amp;#39;(x)=y&amp;#39;=\frac{df}{dx}=\frac{dy}{dx}=\frac{d}{dx}(f(x))=Df(x)\) If \(y=f(x)\) then all of the following are equivalent notations for derivative evaluated at \(x=a\): \(f&amp;#39;(a)=y&amp;#39;\vert_{x=a}=\frac{df}{dx}\biggm\vert_{x=a}=\frac{dy}{dx}\biggm\vert_{x=a}=Df(a)\) Interpretation of the Derivative If \(y=f(x)\) then \(m=f&amp;#39;(a)\) is the slope of the tangent line to \(y=f(x)\) at \(x=a\) \(f&amp;#39;(a)\) is the instantaneous rate of change of \(f(x)\) at \(x=a\) If \(f(x)\) is the position of an object at time \(x\) then \(f&amp;#39;(a)\) is the velocity of the object at \(x=a\) Basic Properties and Formulas If \(f(x)\) and \(g(x)\) are differentiable functions (the derivative exists), \(c\) and \(n\) are any real numbers:</description>
+    </item>
+    
+    <item>
+      <title>Integration</title>
+      <link>/2022/04/09/integration/</link>
+      <pubDate>Sat, 09 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/04/09/integration/</guid>
+      <description> \(\gdef\ddx{\frac{d}{dx}}\) \(\gdef\fx{f(x)}\) \(\gdef\fpx{f&amp;#39;(x)}\)
+The following are my personal notes from relearning calculus using the following resources:
+Khan Academy AP Calculus BC Paul’s Online Notes taking the online class: Introduction to Linear Algebra - MIT OCW 18.06 Definition Definite Integral: Suppose \(\fx\) is continuous on \([a,b]\). Divide \([a,b]\) into \(n\) subintervals of width \(\Delta x\) and choose a point \(x_i^*\) from each interval. Then \(\int_a^b \fx dx = \displaystyle{\lim_{n \rightarrow \infty}} \sum_{i=1}^n f(x_i^*) \Delta x\) Fundamental Theorem of Calculus Properties Common Integrals Standard Integration Techniques </description>
+    </item>
+    
+    <item>
+      <title>Limits and Continuity</title>
+      <link>/2022/04/03/limits-and-continuity/</link>
+      <pubDate>Sun, 03 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/04/03/limits-and-continuity/</guid>
+      <description>The following are my personal notes from relearning calculus using the following resources:
+Khan Academy AP Calculus BC Paul’s Online Notes taking the online class: Introduction to Linear Algebra - MIT OCW 18.06 Strategy to Find Limits When finding limits, the answer of \(\frac{0}{0}\) is much different than \(\frac{b}{0}\)
+Squeeze Theorem - Alternate Names:
+Pinching Theorem Sandwich Theorem Two officers and a drunk theorem Squeeze Theorem (formula): Let \(I\) be an interval having the point \(a\) as a limit point.</description>
+    </item>
+    
+    <item>
+      <title>Chapter 4 - Orthogonality</title>
+      <link>/2022/03/22/chapter-4-orthogonality/</link>
+      <pubDate>Tue, 22 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/03/22/chapter-4-orthogonality/</guid>
+      <description>The following are my personal notes from taking the online class: Introduction to Linear Algebra - MIT OCW 18.06
+4.1 Orthogonality of the Four Subspaces Orthogonal vectors: \(\mathbf{v}^{\intercal}\mathbf{w}=0\) \(\Vert \mathbf{v} \Vert ^{2} + \Vert \mathbf{w} \Vert ^{2} = \Vert \mathbf{v} + \mathbf{w} \Vert ^{2}\) Orthogonal subspaces: Two subspaces \(V\) and \(W\) are orthogonal if \(\mathbf{v}^{\intercal}\mathbf{w}=0; \; \forall \mathbf{v} \in V \; and \; \forall \mathbf{w} \in W\) Every vector in the nullspace is perpendicualr to every row of \(A\), because \(A\mathbf{x}=\mathbf{0}\) The nullspace \(\mathbf{N}(A)\) and the row space \(\mathbf{C}(A)\) are orthogonal subspaces of \(\R^n\) nullspace \(\mathbf{N}(A)\) and the row space \(\mathbf{C}(A)\) relationship: \[ A\mathbf{x} = \begin{bmatrix} \mathbf{row\;1}\\ \vdots\\ \mathbf{row\;m}\\ \end{bmatrix} \begin{bmatrix}\\ \mathbf{x}\\ \\ \end{bmatrix} = \begin{bmatrix} 0\\ \vdots \\ 0 \end{bmatrix} \begin{matrix} \longleftarrow \\ \\ \longleftarrow \end{matrix} \begin{matrix} (\mathbf{row\;1})\cdot x \; \text{is zero}\\ \\ (\mathbf{row\;m})\cdot x \; \text{is zero}\\ \end{matrix} \] Nullspace orthogonal to row space proof: \(\mathbf{x}^{\intercal}(A^{\intercal}\mathbf{y}) = (A\mathbf{x})^{\intercal} \mathbf{y} = \mathbf{0}^{\intercal}\mathbf{y}=0\) Every vector \(\mathbf{y}\) in the nullspace of \(A^{\intercal}\) is perpendicular to every column of \(A\) The left nullspace \(\mathbf{N}(A^{\intercal})\) and the column space \(\mathbf{C}(A)\) are orthogonal in \(\R^n\) \(\mathbf{C}(A)\perp\mathbf{N}(A^{\intercal})\) \[ A^{\intercal}\mathbf{y} = \begin{bmatrix} (\mathbf{column\;1})^{\intercal}\\ \vdots\\ (\mathbf{column\;n})^{\intercal}\\ \end{bmatrix} \begin{bmatrix}\\ \mathbf{y}\\ \\ \end{bmatrix} = \begin{bmatrix} 0\\ \vdots \\ 0 \end{bmatrix} \]</description>
+    </item>
+    
+    <item>
+      <title>Chapter 3 - Vector Spaces and Subspaces</title>
+      <link>/2022/03/16/chapter-3-vector-spaces-and-subspaces/</link>
+      <pubDate>Wed, 16 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/03/16/chapter-3-vector-spaces-and-subspaces/</guid>
+      <description>The following are my personal notes from taking the online class: Introduction to Linear Algebra - MIT OCW 18.06
+3.1 Spaces of Vectors The space \(\R^n\) consists of all column vectors \(v\) with \(n\) components If \(\mathbf{v}\) and \(\mathbf{w}\) are in the vector space \(S\) every combination \(c\mathbf{v} + d\mathbf{w}\) must be in \(S\); \(\forall c,d \in \R\) A subspace is a vector space inside of another vector space A subspace of a vector space is a set of vectors (including \(\mathbf{0}\)) that satisfies 2 requirements: If \(\mathbf{v}\) and \(\mathbf{w}\) are vectors in the subspace and \(c\) is any scalar then: \(\mathbf{v}+\mathbf{w}\) is in the subspace \(c\mathbf{v}\) is in the subspace A subspace is closed under addition and scalar multiplication All subspaces of \(\R^3\) L Any line through (0,0,0) P Any plane through (0,0,0) Z The single vector (0,0,0) \(\R^3\) The whole space The Column Space of \(A\) contains all linear combinations of the columns of \(A\).</description>
+    </item>
+    
+    <item>
+      <title>Chapter 2 - Solving Linear Equations</title>
+      <link>/2022/03/11/chapter-2-solving-linear-equations/</link>
+      <pubDate>Fri, 11 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/03/11/chapter-2-solving-linear-equations/</guid>
+      <description>The following are my personal notes from taking the online class: Introduction to Linear Algebra - MIT OCW 18.06
+Matrix Laws: Multiplication: Dimensions of Matrix Multiplication: 1st matrix must have same number of rows as columns in 2nd matrix Example: \(A\) has dimensions \((m \times n)\) \(B\) has dimensions \((n \times p)\) Results in matrix \(AB\) with dimensions \((m \times p)\) Associative: \(A(BC) = (AB)C\) Commutative: \(AB \ne BA\) Distributive from the left: \(A(B + C) = AB + AC\) Distributive from the right: \((A + B)C = AC + BC\) If \(A\) is square, then \(A^p = AAA \dots A\) (\(p\) factors) \((A^p)(A^q)=A^{p+q}\) \((A^p)^q = A^{pq}\) Addition: Dimensions of Matrix Addition: Matrices must have the same dimensions Example: \(A\) has dimensions \((m \times n)\) \(B\) has dimensions \((m \times n)\) Results in matrix \(A + B\) with dimensions \((m \times n)\) Associative: \(A + (B + C) = (A + B) + C\) Commutative: \(A + B = B + A\) Distributive: \(c(A + B) = cA + cB\) 2.</description>
+    </item>
+    
+    <item>
+      <title>Chapter 1 - Introduction to Vectors</title>
+      <link>/2022/03/09/chapter-1-introduction-to-vectors/</link>
+      <pubDate>Wed, 09 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/03/09/chapter-1-introduction-to-vectors/</guid>
+      <description>The following are my personal notes from taking the online class: Introduction to Linear Algebra - MIT OCW 18.06
+1.1 Vectors and Linear Combinations Linear combination: use any combination of 2 operations: vector addition and scalar multiplication to create a new vector Linear combination (formula): \[ \begin{align*} c\mathbf{v} + d\mathbf{w} &amp;amp;= c \begin{bmatrix} v_1 \\ v_2 \end{bmatrix} + d \begin{bmatrix} w_1 \\ w_2 \end{bmatrix}\\ \\ &amp;amp;= \begin{bmatrix} cv_1 + dw_1 \\ cv_2 + dw_2 \end{bmatrix} \end{align*} \] Vector Addition: a vector operation where each value is added to the corresponding value on the other vector; all the vectors must be the same size Vector Addition (formula): \[ \begin{align*} \mathbf{u}+\mathbf{v}&amp;amp;= \begin{bmatrix} u_{1}\\\\u_{2}\\\\u_{3} \end{bmatrix} + \begin{bmatrix} v_{1}\\\\v_{2}\\\\v_{3} \end{bmatrix}\\ \\ &amp;amp;= \begin{bmatrix} u_{1}+v_{1}\\\\u_{2}+v_{2}\\\\u_{3}+v_{3} \end{bmatrix} \end{align*} \]</description>
+    </item>
+    
+    <item>
+      <title>Linear Regression</title>
+      <link>/2022/01/03/linear-regression/</link>
+      <pubDate>Mon, 03 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/01/03/linear-regression/</guid>
+      <description>Interaction: two or more variables interact to affect a third variable in a non additive manner, i.e. two variables interact to have an affect more than the sum of their parts Simple Linear Regression (formula): \(Y = \beta_0 + \beta_1 X + \epsilon\) 2 Coefficients or parameters for Simple Linear Regression (SLR): \(\beta_0=\) Intercept \(\beta_1=\) slope SLR estimate (formula): \(\hat{y_i} = \hat{\beta}_0 + \hat{\beta}_1 x_i\) Residual: difference between the \(i\)th observed response and the \(i\)th response value predicted by our model Residual (formula): \(e_i = y_i - \hat{y}_i\) Residual Sum of Squares: the sum of squared residuals for all observations \(i=1, 2, \dots, n\) a.</description>
+    </item>
+    
+    <item>
+      <title>Introduction and Linear Algebra Review</title>
+      <link>/2022/01/01/introduction-and-linear-algebra-review/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/01/01/introduction-and-linear-algebra-review/</guid>
+      <description>Notation and Simple Matrix Algebra n: number of observations
+\(x_{ij}\): the \(j\)-th variable of the \(i\)th observation where \(i=1,2,\dots,n\) and \(j=1,2,\dots,p\)
+p: number of variables
+\(\mathbf{X}\): is a matrix of size \(n \times p\) whose \((i,j)\)th element is \(x_{ij}\)
+\(\mathbf{X}=\) \(\begin{pmatrix} x_{11}&amp;amp;x_{12}&amp;amp;\dots&amp;amp;x_{1p} \\x_{21}&amp;amp;x_{22}&amp;amp;\dots&amp;amp;x_{2p}\\\vdots&amp;amp;\vdots&amp;amp;\ddots&amp;amp;\vdots\\x_{n1}&amp;amp;x_{n2}&amp;amp;\dots&amp;amp;x_{np} \end{pmatrix}\)
+Row vector of \(\mathbf{X}\): \(x_i = \begin{pmatrix} x_{i1}\\x_{i2}\\\vdots\\x_{ip} \end{pmatrix}\);
+*Note: even though it is a row vector the default orientation is as a column Column vector of \(\mathbf{X}\): \(\mathbf{x}_j = \begin{pmatrix} x_{1j}\\x_{2j}\\\vdots\\x_{nj} \end{pmatrix}\)</description>
+    </item>
+    
+    <item>
+      <title>Statistical Learning</title>
+      <link>/2022/01/01/statistical-learning/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/01/01/statistical-learning/</guid>
+      <description>Input Variable (X): predictor, independent variable, feature Output Variable(Y): response, dependent variable error term (\(\epsilon\)): assumed independent of \(X, Y\) w/ mean of zero General form of relationship between \(X\)s and \(Y\): \(Y=f(X) + \epsilon\) Estimated relationship: We don’t know \(f(X)\) so we estimate it by using the data to fit a relationship \(\hat{Y}=\hat{f}(X)\) Two reasons to estimate an unknown function \(\hat{f}\) relating input vs. output: Prediction and Inference Error is composed of 2 categories: Reducible and Irreducible Reducible Error: Potentially improve accuracy of \(\hat{f}\) by using the most appropriate statistical learning techniques Irreducible Error: may contain unmeasured items that can’t be used to understand or predict \(Y\) 2 Traits of Parametric Model: 1 - Makes an assumption about the form of the model 2 - Use data to estimate relatively few parameters of the assumed form Non-Parametric Model - No assumptions about the form of the model are made Overfitting: Model follows errors or noise too closely Advantage of Parametric Model: Assumed model requires few estimated parameters Disadvantage of Parametric Model: Assumed model form may not follow true form Advantage of Non-Parametric Model: No assumed form Disadvantage of Non-Parametric Model: Lots of data required to fit model Why would we ever choose to uyse a more restrictive model instead of a very flexible approach?</description>
+    </item>
+    
+    <item>
+      <title>Polynomial Regression</title>
+      <link>/2021/11/14/polynomial-regression/</link>
+      <pubDate>Sun, 14 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/11/14/polynomial-regression/</guid>
+      <description>Why Polynomial Regression Polynomials are widely used in situations where the response surface is curvilinear Many complex nonlinear relationships can be adequately modeled by polynomials over reasonably small ranges of the \(x\)’s Polynomial Regression Models A second-order polynomial in one variable or a quadratic model is \[ y=\beta_0 + \beta_1 x + \beta_2 x^2 + \epsilon \]
+A second-order polynomial in two variables is \[ y=\beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_{11}x_1^2 + \beta_{22}x_2^2 + \beta_{12} x_1 x_2 + \epsilon \]</description>
+    </item>
+    
+    <item>
+      <title>Diagnostics for Leverage and Influence</title>
+      <link>/2021/11/13/diagnostics-for-leverage-and-influence/</link>
+      <pubDate>Sat, 13 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/11/13/diagnostics-for-leverage-and-influence/</guid>
+      <description>Introduction Outlier - a data point whose response \(y\) does not follow the general trend of the rest of the data Often detected in y space by R-student residuals, \(t_i\) which is more sensitive (become larger) in the presence of a discordant data point A point with \(|t_i| &amp;gt; 3\) is considered an outlier (in the y direction) When sample size is not large, points with \(|t_i| &amp;gt; 2\) should be examined with care Leverage - a point which falls horizontally (in the \(x\) direction) away from the center of the cloud are called (high) leverage points An observation with \(h_{ii} &amp;gt; 2p / n\) is remote enough to be considered a leverage point Remote leverage points have dramatic impact on model summary statistics such as \(R^2\) and standard errors of coefficients A point with high leverage has a potential to be influential, but generally need to investigate further Influential - a point which has a noticeable impact on the model coefficients in that it “pulls” the regression model in it’s direction A point with large \(h_{ii}\) and a large residual is likely to be influential The Hat Matrix and Leverage: The diagonal elements of the hat matrix \(\mathbf{H}=\mathbf{X}(\mathbf{X^{\intercal}X})^{-1}\mathbf{X}^{\intercal}\) are given by: \[ h_{ii}=\mathbf{x}_i^{\intercal}(\mathbf{X^{\intercal}X})^{-1}\mathbf{x}_i \] where \(\mathbf{x}_i\) is the \(i\)th row of \(\mathbf{X}\)</description>
+    </item>
+    
+    <item>
+      <title>Model Adequacy Checking - Examples from Montgomery/Peck/Vining</title>
+      <link>/2021/10/23/model-adequacy-checking-examples-from-montgomery/peck/vining/</link>
+      <pubDate>Sat, 23 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/10/23/model-adequacy-checking-examples-from-montgomery/peck/vining/</guid>
+      <description>For the example data we will leverage the CRAN package “MPV”.
+#install.packages(&amp;quot;MPV&amp;quot;) library(MPV) Example 4.1: The Delivery Time Data Let’s define the dataframe for the SoftDrink data and take a look at the first 5 rows:
+SoftDrink &amp;lt;- data.frame(MPV::softdrink) colnames(SoftDrink) &amp;lt;- c(&amp;quot;DeliveryTime&amp;quot;, &amp;quot;NumberCases&amp;quot;, &amp;quot;Distance&amp;quot;) head(SoftDrink, 5) ## DeliveryTime NumberCases Distance ## 1 16.68 7 560 ## 2 11.50 3 220 ## 3 12.03 3 340 ## 4 14.88 4 80 ## 5 13.</description>
+    </item>
+    
+    <item>
+      <title>Transformations and Weighting to Correct Model Inadequacies</title>
+      <link>/2021/10/20/transformations-and-weighting-to-correct-model-inadequacies/</link>
+      <pubDate>Wed, 20 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/10/20/transformations-and-weighting-to-correct-model-inadequacies/</guid>
+      <description>Model Assumptions Regression model fitting has several implicit assumptions, including:
+\(\epsilon \overset{iid}{\sim} NID(0,\sigma^2)\): mean 0, constant variance, normally distributed, and uncorrelated The form of the model (linearity) and the specification of the predictors are correct. Check model adequacy by residual plots and lack-of-fit tests Methods when some assumptions are violated: Data Transformation Generalized Least Squares (GLS) Weighted Least Squares (WLS) Data Transformation Variance Stabilization The constant variance assumption is often violated when the response \(y\) follows a distribution which is related to the mean.</description>
+    </item>
+    
+    <item>
+      <title>Model Adequacy Checking</title>
+      <link>/2021/10/19/model-adequacy-checking/</link>
+      <pubDate>Tue, 19 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/10/19/model-adequacy-checking/</guid>
+      <description>Assumptions of Linear Regression Linear Regression:
+\[ \begin{align*} Y_i = \beta_0 + \beta_1 X_{i1} + \dots + \beta_k X_{ik} + \epsilon_i \end{align*} \]
+The major assumptions that we have made concerning Linear Regression are as follows:
+Relationship between \(Y\) and \(X_i\) is linear \(E(\epsilon_i)=0\) \(Var(\epsilon_i)=\sigma^2\) \(Cov(\epsilon_i, \epsilon_j)=0\) for all \(i \ne j\) \(\epsilon_i {\overset {iid}{\sim}} N(0,\sigma^2)\) If assumptions are violated, a different sample could lead to different model with opposite conclusions!</description>
+    </item>
+    
+    <item>
+      <title>Simple Linear Regression</title>
+      <link>/2021/09/20/simple-linear-regression/</link>
+      <pubDate>Mon, 20 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/2021/09/20/simple-linear-regression/</guid>
+      <description>Simple Linear Regression The characteristics of a Simple Linear Regression are as follows:
+One predictor \(X\) that is known and constant One response variable \(Y\) Linear function \(y=\beta_0 + \beta_1 x + \epsilon\) Simple Linear Regression - Population The above is an idealized representation. Instead we have a set of n-pairs of data \((x_i, y_i)\) where \(i=1, 2, ... n\). Additionally, the data will not perfectly fit the line. As a result we add an error term \(\epsilon\).</description>
+    </item>
+    
+    <item>
+      <title>Reference - Statistics and Probability</title>
+      <link>/2021/07/03/reference-statistics-and-probability/</link>
+      <pubDate>Sat, 03 Jul 2021 21:21:32 -0500</pubDate>
+      
+      <guid>/2021/07/03/reference-statistics-and-probability/</guid>
+      <description>CHANGES
+Background This page is a refresher. Someone, may have studied statistics long ago and is in need of a reference.
+This page borrows quite heavily from the MIT Statistics Cheat Sheet
+Population: The entire group one desires information about Sample: A subset of the population taken because the entire population is usually too large to analyze; Its characteristics are taken to be representative of the population Mean: (average); The sum of all values in the sample divided by the number of values in the sample; $\mu$ = population mean $\overline{x}$ = sample mean Median: the value separating the higher half of a sample/population from lower half It is the middle value when all values arranged lowest to highest (or avg of middle two if even number of items) IQR: the middle 50%, calculated as Q3 - Q1 1.</description>
+    </item>
+    
+    <item>
+      <title>Reference - Linear Algebra</title>
+      <link>/2021/06/27/reference-linear-algebra/</link>
+      <pubDate>Sun, 27 Jun 2021 14:29:01 -0500</pubDate>
+      
+      <guid>/2021/06/27/reference-linear-algebra/</guid>
+      <description>Background This page is a refresher. The impetus for this page was a reference for someone who learned linear algebra in the past, but is in need of a refresher.
+This page borrows very heavily from the excellent document Linear algebra explained in four pages by Ivan Savov.
+Introduction Linear algebra is essentially the mathematics of vectors and matrices, so we start with a few definitions.
+Vector: A vector $\overrightarrow{v} \in R^n$ is an $n$-tuple of real numbers $$ \overrightarrow{v}=(v_1,v_2,v_3) \in (R, R, R) \equiv R^{3} $$</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/2020/01/01/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/01/01/</guid>
+      <description>1.2 Initial Data Analysis The following step of &amp;lsquo;install.packages(&amp;ldquo;faraway&amp;rdquo;)&amp;rsquo; did not work and gave an error of: &amp;ldquo;installation of package ‘nloptr’ had non-zero exit status&amp;rdquo;. It is required to install from the command line:
+sudo apt-get install libnlopt-dev
+install.packages(&amp;#34;faraway&amp;#34;) Installing package into ‘/home/jeremyfbuss/R/x86_64-pc-linux-gnu-library/3.6’ (as ‘lib’ is unspecified) also installing the dependencies ‘minqa’, ‘nloptr’, ‘Rcpp’, ‘RcppEigen’, ‘lme4’ data(pima, package=&amp;#34;faraway&amp;#34;) head(pima) A data.frame: 6 × 9 pregnantglucosediastolictricepsinsulinbmidiabetesagetest &amp;lt;int&amp;gt;&amp;lt;int&amp;gt;&amp;lt;int&amp;gt;&amp;lt;int&amp;gt;&amp;lt;int&amp;gt;&amp;lt;dbl&amp;gt;&amp;lt;dbl&amp;gt;&amp;lt;int&amp;gt;&amp;lt;int&amp;gt; 161487235 033.60.627501 21 856629 026.</description>
+    </item>
+    
+    <item>
+      <title>MLflow on Google Cloud Platform</title>
+      <link>/2019/12/22/mlflow-on-google-cloud-platform/</link>
+      <pubDate>Sun, 22 Dec 2019 10:25:54 -0600</pubDate>
+      
+      <guid>/2019/12/22/mlflow-on-google-cloud-platform/</guid>
+      <description>With this post we will setup MLflow and experiment with the machine learning workflow. Specifically we will install MLflow on a compute engine in GCP.
+Assumptions: Familiarity with Python, and scikit-learn Access to a linux system While the steps below don&amp;rsquo;t necessarily require linux they were performed on linux so I can&amp;rsquo;t speak to the ability to perform on Windows or Mac OS Google Cloud Platform familiarity and access to a GCP project Part 1: Install MLFlow MLflow is an &amp;ldquo;open source platform for the machine learning lifecycle&amp;rdquo;.</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>/about/</link>
+      <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/about/</guid>
+      <description>My name is Jeremy Buss and throughout my life I have been inquisitive. In elementary school this passion took the shape as a love of reading. I would spend most evenings after school reading anything I could get my hands on. I especially loved reading stories about people and the impact they made. It felt like I had a backstage pass to the lives of influential individuals.
+As I progressed through high school and into college this inquisitive nature led me to study physics and mathematics.</description>
+    </item>
+    
+  </channel>
+</rss>
