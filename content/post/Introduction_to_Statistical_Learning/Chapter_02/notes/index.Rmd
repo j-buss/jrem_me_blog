@@ -1,0 +1,83 @@
+---
+title: Statistical Learning
+author: Jeremy Buss
+date: '2022-01-01'
+slug: []
+categories: 
+  - Machine Learning
+  - Introduction to Statistical Learning - James/Witten/Hastie/Tibshirani
+tags:
+  - R
+draft: no
+katex: yes
+---
+
+```{r include = FALSE}
+knitr::opts_chunk$set(echo=FALSE)
+```
+
+- Input Variable (X): predictor, independent variable, feature
+- Output Variable(Y): response, dependent variable
+- error term ($\epsilon$): assumed independent of $X, Y$ w/ mean of zero
+- General form of relationship between $X$s and $Y$: $Y=f(X) + \epsilon$
+- Estimated relationship: We don't know $f(X)$ so we estimate it by using the data to fit a relationship $\hat{Y}=\hat{f}(X)$
+- Two reasons to estimate an unknown function $\hat{f}$ relating input vs. output: Prediction and Inference
+- Error is composed of 2 categories: Reducible and Irreducible
+- Reducible Error: Potentially improve accuracy of $\hat{f}$ by using the most appropriate statistical learning techniques
+- Irreducible Error: may contain unmeasured items that can't be used to understand or predict $Y$
+- 2 Traits of Parametric Model: 
+  1 - Makes an assumption about the form of the model
+  2 - Use data to estimate relatively few parameters of the assumed form
+- Non-Parametric Model - No assumptions about the form of the model are made
+- Overfitting: Model follows errors or noise too closely
+- Advantage of Parametric Model: Assumed model requires few estimated parameters
+- Disadvantage of Parametric Model: Assumed model form may not follow true form
+- Advantage of Non-Parametric Model: No assumed form
+- Disadvantage of Non-Parametric Model: Lots of data required to fit model
+- Why would we ever choose to uyse a more restrictive model instead of a very flexible approach?
+  - Restrictive Models are more interpretable
+```{r fig.cap="Relative Interpretibility vs. Flexibility for Statistical Learning Models"}
+plot(1:10, 10:1,xlab="Flexibility",ylab="Interpretibility",type="n",xaxt="n",yaxt="n")
+text(1, 10, "Subset Selection", pos=4)
+text(1.5, 9, "Lasso", pos=4)
+text(4, 8, "Least Square", pos=1)
+text(4.5, 6, "Generative Additive Models", pos=4)
+text(5, 5, "Trees", pos=4)
+text(8, 2.75, "Bagging, Boosting", pos=2)
+text(9, 1.75, "Support Vector Machines", pos=2)
+text(10, 1, "Deep Learning", pos=2)
+xtick<-seq(1,10, by=9)
+ytick<-seq(1,10, by=9)
+tick_lables<-c("Low","High")
+axis(side=1, at=xtick, labels=FALSE)
+text(x=xtick, par("usr")[3], labels=tick_lables, pos=1,xpd=TRUE)
+axis(side=2, at=ytick, labels=FALSE)
+text(par("usr")[1], ytick, labels=tick_lables, pos=2,xpd=TRUE)
+```
+- Supervised: For each observation there is a response
+- Unsupervised: For each observation there is not a response
+- Quantitative Variable: Numerical Values
+- Qualitative Variable: Take on values in one of K-classes
+- Mean Squared Error: Common measure to assess quality of fit in regression
+- Mean Squared Error (formula): $MSE=\frac{1}{n}\sum_{i=1}^n \left (y_i-\hat{f}(x_i) \right)^2$
+- Training Data: Data use to train the model
+- Test Data: Data held out to test the model after it has been fit; can be considered as "new data" since the model has never seen it
+- MSE can be calculated with the training data and test data; Generally one tries to minimize the test MSE
+- Degrees of Freedom: the numbe of independent pieces of information that went into calculating the estimate
+- Training MSE Behavior: Generally decreases monotonically as the model flexibility increases
+- Testing MSE Behavior: generally U-shaped as model flexibility increases
+- Overfitting: Small training MSE, but large test MSE
+- Cross Validation: aka "Rotation Estimate" or "out-of-sample" testing, basically partition full dataset into a set for training and a set for testing on an "unseen" set
+- Bias-Variance Trade-off: the property of a model that the variance of the parameter estimated across samples can be reduced by increasing the bias in the estimated parameters
+- Bias-Variance Trade-off (formula): $E \left ( y_0 - \hat{f}(x_0) \right )^2 = \text {Var} (\hat{f}(x_o)) + [\text{Bias} (\hat{f}(x_0))]^2 + \text{Var}(\epsilon)$; where $E \left ( y_0 - \hat{f}(x_0) \right )^2$ refers to the expected test MSE at $x_0$ and refers to the average test MSE that we would obtain if we repeatedly estimated $f$ using a large number of training sets, and tested each at $x_0$
+- Bias Error: comes from erroneous assumptions in learning algorithm; High bias can cause an algorithm to miss relevant relations between features and target outputs; underfitting
+- Variance Error: comes from sensitivity to small fluctuations in training set; High variance may result from algorithm modeling the random noise in the training data; overfitting
+- Error Rate: proportion of mistakes made
+- Error Rate (formula): $\frac{1}{n}\sum_{i=1}^n I(y_i \ne \hat{y}_i)$; where $I$ is an indicator function that equals 1 if $y_i \neq \hat{y}_i$ else 0 if  $y_i = \hat{y}_i$
+- Bayes Classifier: Assign each observation to most likely class, given its predictor values
+- Bayes Classifier (formula): Assign value for which $\text{Pr}(Y=j|X=x_0)$ is largest
+- Bayes Decision Boundary: a line/plane etc. which denotes the probability of class membership to be equal between classes
+- Bayes Error Rate: $1 - E \left ( \underset{j}{max} \space \text{Pr}(Y=j|X) \right )$
+- Shortcoming of Bayes Classifier: For real data we don't know the conditional distribution of $Y$ given $X$; so the Bayes Classifier is an unattainable "Gold Standard" to compare other models 
+- K-Nearest Neighbor Classifier (formula): Given positive integer $K$ and test observation $x_0$ it identifies the $K$ points in the training data set closest to $x_0$ represented by $\mathcal{N}_0$; then estimates the conditional probability for class $j$ as the fraction of points in $\mathcal{N}_0$ whose values equal $j$: $\text{Pr}(Y=j|X=x_0)=\frac{1}{K}\sum_{i \in \mathcal{N}_0}I(y_i = j)$; KNN classifies the test observation $x_0$ to the class with the largest probability.
+- Describe the size of $K$ in KNN and test/training error: Plot of error rate vs. $1/K$ resembles variance bias trade-off; if $1/K$ is too small has high training error / high test error; if $1/K$ is too big then test error is high and training error is low

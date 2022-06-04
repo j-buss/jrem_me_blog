@@ -1,0 +1,318 @@
+---
+title: Transformations and Weighting to Correct Model Inadequacies
+author: Jeremy Buss
+date: '2021-10-20'
+slug: []
+categories:
+  - Introduction to Linear Regression Analysis - Montgomery/Peck/Vining
+  - Applied Stats
+  - Regression Analysis
+tags:
+  - linear regression
+draft: false
+katex: yes
+---
+```{r echo=FALSE}
+library(blogdown)
+```
+
+## Model Assumptions
+
+Regression model fitting has several implicit assumptions, including:
+
+* $\epsilon \overset{iid}{\sim} NID(0,\sigma^2)$: **mean 0**, **constant variance**, **normally distributed**, and **uncorrelated** 
+* The form of the model (**linearity**) and the specification of the predictors are correct.
+* Check model adequacy by residual plots and lack-of-fit tests
+* Methods when some assumptions are violated:
+  * Data Transformation
+  * Generalized Least Squares (GLS)
+  * Weighted Least Squares (WLS)
+
+## Data Transformation
+
+### Variance Stabilization
+
+The constant variance assumption is often violated when the response $y$ follows a distribution which is related to the mean.  
+
+
+* Problems can be identified by examining the residual plots
+* Variance stabilizing transformations can be selected empirically
+  * If $\sigma^2$ is not constant, the coefficients will have larger standard errors (no longer BLUE)
+
+```{r echo=FALSE, results='asis', escape=FALSE}
+x <- data.frame("Relationship" = c("$\\sigma^2 \\propto \\text{constant}$",
+                                   "$\\sigma^2 \\propto E(y)$",
+                                   "$\\sigma^2 \\propto E(y)[1-E(y)]$",
+                                   "$\\sigma^2 \\propto [E(y)]^2$",
+                                   "$\\sigma^2 \\propto [E(y)]^3$",
+                                   "$\\sigma^2 \\propto [E(y)]^4$"
+                                   ),
+                "Transformation" = c("$y^\\prime = y$ (no transformation)",
+                                     "$y^\\prime = \\sqrt{y}$ (Square root; Poisson)",
+                                     "$y^\\prime = \\arcsin{(\\sqrt{y})}$ (arcsin; binomial proportions $0 \\leq y_i \\leq 1$)",
+                                     "$y^\\prime = \\ln{(y)}$ (natural log)",
+                                     "$y^\\prime = y^{-1/2}$ (reciprocal square root)",
+                                     "$y^\\prime = y^{-1}$ (reciprocal)"
+                                     )
+                )
+knitr::kable(x=x,
+             caption = "Useful Variance-Stabilizing Transformations",
+             format="markdown", escape=FALSE, 
+             col.names=c("Relationship of $\\sigma^2$ to $E(y)$","Transformation")
+             )
+
+```
+
+
+
+### Linearization
+
+* Nonlinearity may be detected by **lack-of-fit** test
+* **Intrinsically Linear** refers to a nonlinear function which can be transformed into a linear one
+* One should check the model assumptions on the transformed residuals
+
+
+```{r echo=FALSE, results='asis', escape=FALSE}
+x <- data.frame(
+  
+  "Col1" = c(
+    "$y=\\beta_0 x^{\\beta_1}$",
+    "$y=\\beta_0 e^{\\beta_1 x}$",
+    "$y=\\beta_0 + \\beta_1 \\log {x}$",
+    "$y=\\frac{x}{\\beta_0x - \\beta_1}$"
+    ),
+  
+  "Col2" = c(
+    "$y^\\prime = \\log {y}, x^\\prime = \\log {x}$",
+    "$y^\\prime = \\ln{y}$",
+    "$x^\\prime = \\log{x}$",
+    "$y^\\prime = 1/y, x^\\prime = 1/x$"
+  ),
+    
+  "Col3" = c(
+    "$y^\\prime = \\log {\\beta_0} + \\beta_1 x^\\prime$",
+    "$y^\\prime = \\ln {\\beta_0} + \\beta_1 x$",
+    "$y^\\prime = \\beta_0 + \\beta_1 x^\\prime$",
+    "$y^\\prime = \\beta_0 - \\beta_1 x^\\prime$"
+  )
+)
+knitr::kable(x=x,
+             caption = "Linearizable Functions and Corresponding Linear Form",
+             format="markdown", escape=FALSE, 
+             col.names=c("Linearizable Function",
+                         "Transformation",
+                         "Linear Form")
+             )
+
+```
+
+* When these transformations are applied, the least squares estimator has least squares properties with the transformed data, not the original
+
+## Methods for Selecting a Transformation
+
+While many transformations may be selected empirically, the following methods can be used to select the appropriate transformation more formally.
+
+### Box-Cox Method
+
+* Goal: Transform $y$ to correct non-normality or non-constant variance
+* **Power Transformation**: $y^{\lambda}$, where $\lambda$ is a parameter to be determined
+
+[Box and Cox (1964) - Method](https://www.nuffield.ox.ac.uk/users/cox/cox72.pdf):
+$$
+y_i^{(\lambda)}=
+\begin{cases}
+   \frac{y_i^{\lambda}-1}{\lambda \dot{y}^{\lambda - 1}}, & \lambda \ne 0\\
+   \dot{y} \ln{y_i}, & \lambda = 0
+\end{cases}
+$$
+
+* Where $\dot{y} = \left ( \prod_{i=1}^n y_i \right )^{1/n}$ is the geometric mean of the observations
+* The units of measurement do not change as $\lambda$ changes
+* Models with different $\lambda$ are comparable
+
+The model to be fit is:
+
+$$
+\mathbf{y}^{(\lambda)}=\mathbf{X\beta}+\mathbf{\epsilon}
+$$
+
+#### Computation Procedure
+
+1. Create a grid of $\lambda$ values
+2. For each value of $\lambda$ in the grid, regress $y^{(\lambda)}$ on the predictors, and obtain $SS_{Res}(\lambda)$
+3. Take the $\lambda$ that leads to the smallest $SS_{Res}(\lambda)$
+
+Once $\lambda$ is selected, we are free to fit the model using $y^{\lambda}$ as the response if $\lambda \ne 0$, and $\ln{y}$ if $\lambda = 0$
+
+### Box and Tidwell
+
+* Goal: the relationship between $y$ and the transformed regressors is approximately linear.
+* $\epsilon \overset{iid}{\sim} NID(0,\sigma^2)$ is at least approximately satisfied
+* Box and Tidwell (1962) proposed a procedure for estimating $\alpha_1, \alpha_2, \dots , \alpha_k$ in a model of the type
+
+$$
+y=\beta_0+\beta_1 z_1+\dots+\beta_k z_k + \epsilon
+$$
+
+where
+
+$$
+z_j=
+\begin{cases}
+   x_j^{\alpha_j}, & \alpha_j \ne 0\\
+   \ln{(x_j)}, & \alpha_j = 0
+\end{cases}
+$$
+
+## Generalized and Weighted Least Squares
+
+
+
+### Generalized Least Squares (GLS)
+
+We can use a method called generalized least squares (GLS) for correlated errors with non-constant variance.
+
+Originally we had:
+
+* $\mathbf{y}=\mathbf{X\beta}+\mathbf{\epsilon}$
+* $E(\mathbf{\epsilon}) =0$
+* $Var(\mathbf{\epsilon}) = \sigma^2 \mathbf{I}$
+
+Sometimes the assumption is unreasonable, and the error variance structure is **known**. Therefore we consider the model:
+
+* $\mathbf{y}=\mathbf{X\beta}+\mathbf{\epsilon}$
+* $E(\mathbf{\epsilon}) =0$
+* $Var(\mathbf{\epsilon}) = \sigma^2 \mathbf{V}$
+
+Where $\mathbf{V}$ is a **known** $n \times n$ matrix:
+
+* If $\mathbf{V}$ is diagonal but with unequal diagonal elements: the observations $\mathbf{y}$ are **uncorrelated** but have **unequal** variances
+* If some of the off diagonal elements of $\mathbf{V}$ are nonzero: the observations $\mathbf{y}$ are **correlated**
+
+Using our standard $\mathbf{b} = ( \mathbf{X}^\intercal \mathbf{X}) ^ {-1} \mathbf{X}^\intercal \mathbf{y}$ is not BLUE anymore:
+
+* $\mathbf{b}$ is still unbiased for $\mathbf{\beta}$, i.e., $E(\mathbf{b})=\mathbf{\beta}$
+* However $\mathbf{b}$ does not have minimum variance. (not the "best")
+
+GLS estimator:
+
+$$
+\mathbf{\hat{\beta}} = (\mathbf{X^\intercal V^{-1}X})^{-1}\mathbf{X^\intercal V^{-1}y}
+$$
+
+* The GLS estimator is BLUE
+* $Var(\mathbf{\hat{\beta}}) =\sigma^2 (\mathbf{X^\intercal} \mathbf{V}^{-1} \mathbf{X})^{-1}$
+
+#### Anova Table for GLS
+
+```{r echo=FALSE, results='asis', escape=FALSE}
+x <- data.frame(
+  
+  "Col1" = c(
+    "Regression",
+    "Error",
+    "Total"
+    ),
+  
+  "Col2" = c(
+    "$$\\begin{align*}
+    SS_R&=\\mathbf{\\hat{\\beta}^\\intercal}\\mathbf{B^\\intercal}\\mathbf{z}\\\\
+    &=\\mathbf{y^{\\intercal}V}^{-1}\\mathbf{X}(\\mathbf{X^{\\intercal}V}^{-1}\\mathbf{X})^{-1}\\mathbf{X^{\\intercal}V}^{-1}\\mathbf{y}
+    \\end{align*}
+    $$",
+    "$$\\begin{align*}
+    SS_{Res}&=\\mathbf{z^{\\intercal}z}-\\mathbf{\\hat{\\beta}^{\\intercal}B^{\\intercal}z}\\\\
+    &=\\mathbf{y}^{\\intercal}\\mathbf{V}^{-1}\\mathbf{y}- \\mathbf{y^{\\intercal}V}^{-1}\\mathbf{X}(\\mathbf{X^{\\intercal}V}^{-1}\\mathbf{X})^{-1}\\mathbf{X^{\\intercal}V}^{-1}\\mathbf{y}
+    \\end{align*}
+    $$",
+    "$\\mathbf{z^{\\intercal}z}=\\mathbf{y}^{\\intercal}\\mathbf{V}^{-1}\\mathbf{y}$"
+  ),
+    
+  "Col3" = c(
+    "k",
+    "n-k-1",
+    "n-1"
+  ),
+  "Col4" = c(
+    "$SS_R/k$",
+    "$SS_{Res}/(n-k-1)$",
+    ""
+  ),
+  "Col5" = c(
+    "$MS_R/MS_{Res}$",
+    "",
+    ""
+  )
+)
+knitr::kable(x=x,
+             caption = "Analysis of Variance for Generalized Least Squares",
+             format="markdown", escape=FALSE, 
+             col.names=c("Source",
+                         "Sum of Squares",
+                         "Degrees of Freedom",
+                         "Mean Square",
+                         "$F_0$")
+             )
+
+```
+
+$\mathbf{y}$ is scaled to have mean zero
+
+### Weighted Least Squares (WLS)
+
+* Weighted Least Squares is a special case of GLS that $\mathbf{V}$ has a special form.
+* When $\mathbf{\epsilon}$ are _uncorrelated_ and have _unequal variances_ the covariance matrix of $\mathbf{\epsilon}$ is
+
+$$
+\sigma^2 \mathbf{V} = \sigma^2 
+\begin{bmatrix}
+\frac{1}{w_1} & \space & \space & 0 \\
+\space & \frac{1}{w_2} & \space \\
+\space & \space & \space & \ddots\\
+0 & \space & \space & \frac{1}{w_n}
+\end{bmatrix}
+$$
+
+* Let $\mathbf{W} = \mathbf{V}^{-1}. Then $\mathbf{W}$ is diagonal with diagonal elements or **weights** $w_1, w_2, \dots, w_n$
+* The WLS esitmator $\hat{\mathbf{\beta}} = (\mathbf{X}^{\intercal}\mathbf{WX})^{-1} \mathbf{X}^{\intercal}\mathbf{Wy}$
+* Observations with large variances will have smaller weights
+
+The weighted least squares function:
+
+$$
+S(\beta_0, \beta_1) = \sum_{i=1}^n w_i (y_i - \beta_0 + \beta_1 x_i)^2
+$$
+
+The resulting least squares Normal Equations:
+
+$$
+\begin{align*}
+\beta_0 \sum_{i=1}^n w_i + \beta_1 \sum_{i=1}^n w_i x_i &= \sum_{i=1}^n w_i y_i\\
+\beta_0 \sum_{i=1}^n w_i x_i + \beta_1 \sum_{i=1}^n w_i x_i^2 &= \sum_{i=1}^n w_i y_i x_i
+\end{align*}
+$$
+
+Which can be written as:
+
+$$
+\begin{align}
+( \mathbf{X}^\intercal \mathbf{WX}) \mathbf{\beta} = \mathbf{X}^\intercal \mathbf{Wy}
+\end{align}
+$$
+
+#### Methods of choosing weights
+
+* The weights, $w_i$, or in general $\mathbf{V}$ must be _known_
+* Prior information or knowledge
+* Residual Analysis:
+  * Var($\epsilon$) $\propto x_i$, suggests $w_i = 1\x_i$
+  * When $y_i$ is an average of $n_i$ observations at $x_i$, Var$(y_i)=\sigma^2/n_i$ and suggest $w_i = n_i$
+* Chosen inversely proportional to variances of measurement error
+
+If we have no idea of $\mathbf{W}$, consider **feasible GLS** estimator: 
+
+$$
+\mathbf{\hat{\beta}}_{FGLS} = ( \mathbf{X}^\intercal \mathbf{\hat{W}X})^{-1} \mathbf{X}^\intercal \mathbf{\hat{W}y}
+$$ 
+
+where $\mathbf{\hat{W}}$ is an estimate of $\mathbf{W}$ from some method.

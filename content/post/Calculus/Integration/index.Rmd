@@ -1,0 +1,30 @@
+---
+title: Integration
+author: Jeremy Buss
+date: '2022-04-09'
+slug: []
+categories: 
+  - Calculus
+draft: no
+katex: yes
+---
+\(\gdef\ddx{\frac{d}{dx}}\)
+\(\gdef\fx{f(x)}\)
+\(\gdef\fpx{f'(x)}\)
+
+The following are my personal notes from relearning calculus using the following resources:
+
+- [Khan Academy AP Calculus BC](https://www.khanacademy.org/math/ap-calculus-bc)
+- [Paul's Online Notes](https://tutorial.math.lamar.edu/)
+taking the online class: [Introduction to Linear Algebra - MIT OCW 18.06](https://ocw.mit.edu/courses/mathematics/18-06-linear-algebra-spring-2010/index.htm)
+
+## Definition
+- Definite Integral: Suppose \(\fx \) is continuous on \( [a,b] \). Divide \([a,b]\) into \(n\) subintervals of width \(\Delta x \) and choose a point \(x_i^*\) from each interval. Then \( \int_a^b \fx dx = \displaystyle{\lim_{n \rightarrow \infty}} \sum_{i=1}^n f(x_i^*) \Delta x\)
+
+## Fundamental Theorem of Calculus
+
+## Properties
+
+## Common Integrals
+
+## Standard Integration Techniques

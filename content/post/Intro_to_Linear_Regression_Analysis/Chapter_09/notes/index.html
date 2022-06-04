@@ -1,0 +1,137 @@
+---
+title: Multicollinearity
+author: Jeremy Buss
+date: '2021-11-17'
+slug: []
+categories:
+  - Applied Stats
+  - Introduction to Linear Regression Analysis - Montgomery/Peck/Vining
+  - Regression Analysis
+tags:
+  - linear regression
+draft: yes
+katex: yes
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="meaning" class="section level2">
+<h2>Meaning</h2>
+<div id="dependency-of-regressors" class="section level3">
+<h3>Dependency of Regressors:</h3>
+<ul>
+<li>In regression, we want to have regressors that are <strong>NOT <em>moving with each other</em></strong></li>
+<li>Ideally we desire to have <strong>orthogonal</strong> regressors</li>
+</ul>
+</div>
+<div id="what-is-multicollinearity" class="section level3">
+<h3>What is Multicollinearity?</h3>
+<ul>
+<li>After unit length scaling, <span class="math inline">\(\mathbf{X}^{\intercal}\mathbf{X}\)</span> is the correlation matrix of regressors
+<ul>
+<li>We remove the intercept term or the column of ones in the design matrix, i.e. <span class="math inline">\(\mathbf{X} = [\mathbf{x}_1 \quad \mathbf{x}_2 \quad \dots \quad \mathbf{x}_k]\)</span>. The diagnostics will not be exactly the same as when <span class="math inline">\(\mathbf{X} = [\mathbf{1} \quad \mathbf{x}_1 \quad \mathbf{x}_2 \quad \dots \quad \mathbf{x}_k]\)</span> is used, but the concepts and procedures are the same</li>
+</ul></li>
+</ul>
+<p>For an example let’s define two matrices <span class="math inline">\(\mathbf{X}_1\)</span> and <span class="math inline">\(\mathbf{X}_2\)</span>:</p>
+<ul>
+<li>Uncorrelated Data:
+<ul>
+<li><span class="math inline">\(\mathbf{X}_1^{\intercal}\mathbf{X}_1 = \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{bmatrix}\)</span></li>
+<li>(<span class="math inline">\(\mathbf{X}_1^{\intercal}\mathbf{X}_1)^{-1} = \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{bmatrix}\)</span></li>
+<li><span class="math inline">\(Var(b_1)= \sigma^2 (\mathbf{X}_1^{\intercal}\mathbf{X}_1)_{11}^{-1}=\sigma^2\)</span></li>
+<li><span class="math inline">\(Var(b_2)=\sigma^2\)</span></li>
+</ul></li>
+<li>Correlated Data:
+<ul>
+<li><span class="math inline">\(\mathbf{X}_2^{\intercal}\mathbf{X}_2 = \begin{bmatrix} 1 &amp; 0.992 \\ 0.992 &amp; 1 \end{bmatrix}\)</span></li>
+<li>(<span class="math inline">\(\mathbf{X}_2^{\intercal}\mathbf{X}_2)^{-1} = \begin{bmatrix} 63.94 &amp; -63.44 \\ -63.44 &amp; 63.94 \end{bmatrix}\)</span></li>
+<li><span class="math inline">\(Var(b_1)= \sigma^2 (\mathbf{X}_1^{\intercal}\mathbf{X}_1)_{11}^{-1}=63.94 \sigma^2\)</span></li>
+<li><span class="math inline">\(Var(b_2) = 63.94 \sigma^2\)</span></li>
+</ul></li>
+<li>The variances of the estimates of the correlated regressors are <strong>inflated</strong>, leading to <em>more uncertainty and less precision</em> about coefficient estimation.</li>
+<li><strong>Multicollinearity</strong> occurs when there are <em><strong>near</strong> linear dependencies</em> among the <span class="math inline">\(\mathbf{x}_j\)</span>s, the columns of <span class="math inline">\(\mathbf{X}\)</span></li>
+<li><em><strong>Near</strong> linear dependencies</em>: there is a set of constants <span class="math inline">\(c_1, c_2, \dots, c_k\)</span> (not all zero) such that:</li>
+</ul>
+<p><span class="math display">\[
+\sum_{i=1}^k c_i \mathbf{x}_i \approx \mathbf{0}
+\]</span>
+- Example: for <span class="math inline">\(\mathbf{X}_2\)</span> we could have <span class="math inline">\(c_1=1\)</span> and <span class="math inline">\(c_2=-1\)</span> so that
+<span class="math display">\[
+\sum_{i=1}^k c_i \mathbf{x}_i =
+1 \times 
+\begin{bmatrix}
+1\\
+0.992
+\end{bmatrix} +
+-1 \times 
+\begin{bmatrix}
+0.992\\
+1
+\end{bmatrix}=
+\begin{bmatrix}
+0.008\\
+-0.008
+\end{bmatrix}
+\]</span></p>
+</div>
+</div>
+<div id="sources-of-multicollinearity" class="section level2">
+<h2>Sources of Multicollinearity</h2>
+<ol style="list-style-type: decimal">
+<li>Data collection method</li>
+<li>Constraints on the model or population</li>
+<li>Model specification</li>
+<li>A <span class="math inline">\(p &gt; n\)</span> model</li>
+</ol>
+<div id="data-collection" class="section level3">
+<h3>1. Data Collection</h3>
+<ul>
+<li>Multicollinearity occurs when only a subspace of the entire sample has been explored.</li>
+<li>May be able to reduce this multicollinearity through the sampling technique used
+<ul>
+<li>You can sample additional data in an additional subspace</li>
+</ul></li>
+</ul>
+</div>
+<div id="constraints" class="section level3">
+<h3>2. Constraints</h3>
+<p>Physical constraints are present, multicollinearity will exist regardless of collection method.</p>
+<p>For example the relationship between family income and house size.</p>
+</div>
+<div id="model-specification" class="section level3">
+<h3>3. Model Specification</h3>
+<ul>
+<li>Polynomial terms can cause ill-conditioning in <span class="math inline">\(\mathbf{X}^{\intercal}\mathbf{X}\)</span></li>
+<li>As the order of the model increases, <span class="math inline">\(\mathbf{X}^{\intercal}\mathbf{X}\)</span> matrix inversion will become inaccurate, and error can be introduced into the parameter estimates.</li>
+<li>If range on a regressor variable is small, adding <span class="math inline">\(x^2\)</span> term can result in significant multicollinearity</li>
+</ul>
+</div>
+<div id="pn-model" class="section level3">
+<h3>4. <span class="math inline">\(p&gt;n\)</span> Model</h3>
+<ul>
+<li>More regressor variables than observations</li>
+<li>The best way to counter this is to remove/reconstruct regressor variables.
+<ul>
+<li>Principal Component Regression</li>
+<li>Variable Selection</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="effects" class="section level2">
+<h2>Effects</h2>
+<ol style="list-style-type: decimal">
+<li><strong>Large variances and covariances</strong> for the LSEs of the regression coefficients.</li>
+</ol>
+<p><span class="math display">\[
+\mathbf{X}_2^{\intercal}\mathbf{X}_2)^{-1} = \begin{bmatrix} 63.94 &amp; -63.44 \\ -63.44 &amp; 63.94 \end{bmatrix}
+\]</span>
+2. Tends to produce LSE <span class="math inline">\(b_j\)</span> that are <strong>too large in absolute value</strong></p>
+</div>
+<div id="diagnostics" class="section level2">
+<h2>Diagnostics</h2>
+</div>
+<div id="solutions" class="section level2">
+<h2>Solutions</h2>
+</div>

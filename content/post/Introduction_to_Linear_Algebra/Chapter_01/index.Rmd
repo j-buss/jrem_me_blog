@@ -1,0 +1,174 @@
+---
+title: Chapter 1 - Introduction to Vectors
+author: Jeremy Buss
+date: '2022-03-09'
+slug: []
+categories: 
+  - Linear Algebra
+  - Introduction to Linear Algebra - Gilbert Strang
+draft: no
+katex: yes
+---
+
+The following are my personal notes from taking the online class: [Introduction to Linear Algebra - MIT OCW 18.06](https://ocw.mit.edu/courses/mathematics/18-06-linear-algebra-spring-2010/index.htm)
+
+## 1.1 Vectors and Linear Combinations
+
+- Linear combination: use any combination of 2 operations: vector addition  and scalar multiplication to create a new vector
+- Linear combination (formula): 
+$$
+\begin{align*}
+c\mathbf{v} + d\mathbf{w} &= c \begin{bmatrix} v_1 \\ v_2  \end{bmatrix} + d \begin{bmatrix} w_1 \\ w_2 \end{bmatrix}\\
+\\
+&= \begin{bmatrix} cv_1 + dw_1 \\ cv_2 + dw_2 \end{bmatrix}
+\end{align*}
+$$
+- Vector Addition: a vector operation where each value is added to the corresponding value on the other vector; all the vectors must be the same size
+- Vector Addition (formula):
+
+$$
+\begin{align*}
+\mathbf{u}+\mathbf{v}&= 
+\begin{bmatrix}
+u_{1}\\\\u_{2}\\\\u_{3}
+\end{bmatrix}
++
+\begin{bmatrix}
+v_{1}\\\\v_{2}\\\\v_{3}
+\end{bmatrix}\\
+\\
+&=
+\begin{bmatrix}
+u_{1}+v_{1}\\\\u_{2}+v_{2}\\\\u_{3}+v_{3}
+\end{bmatrix}
+\end{align*}
+$$
+
+- Scalar Multiplication: multiply each item in the vector by the scalar
+- Scalar Multiplication (formula):
+$$
+\alpha \cdot \mathbf{u}= 
+\begin{bmatrix}
+\alpha \cdot u_{1}\\\\ \alpha \cdot u_{2}\\\\ \alpha \cdot u_{3}
+\end{bmatrix}
+$$
+
+- Representing a vector in 3-D space: The tail of the vector is on origin $(\mathbf{0,0,0})$ and each of the vector components is the coordinates of the arrow generally mapping to $\begin{bmatrix} x \\ y \\ z \\ \end{bmatrix}$
+- For a given vector $\mathbf{u}$ in 3-dimensions, $\forall c \in R$, $c\mathbf{u}$ fills a line through the origin $(\mathbf{0,0,0})$
+- For a given vector $\mathbf{u}$ In 3-dimensions, $\forall c,d \in R$, $c\mathbf{u} + d\mathbf{v}$ fills a plane through the origin $(\mathbf{0,0,0})$
+- For a given vector $\mathbf{u}$ In 3-dimensions, $\forall c,d,e \in R$, $c\mathbf{u} + d\mathbf{v} + e\mathbf{w}$ fills the entire 3-D space
+
+## 1.2 Lengths and Dot Products
+
+- Dot Product or Inner Product between two vectors: a multiplication step that results in a scalar; each member of a vector is multiplied by the corresponding member of the other vector
+- Dot Product or Inner Product between two vectors (formula):
+$$
+\begin{align*}
+\mathbf{u}\cdot\mathbf{v}&= 
+\begin{bmatrix}
+u_{1}\\\\u_{2}\\\\u_{3}
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+v_{1}\\\\v_{2}\\\\v_{3}
+\end{bmatrix}\\
+\\
+&=
+u_{1} \cdot v_{1} + u_{2} \cdot v_{2} + u_{3} \cdot v_{3}
+\end{align*}
+$$
+- Vector Length: the square root of the vector dotted with itself
+- Vector Length (formula): 
+
+$$
+\begin{align*}
+\Vert \mathbf{u} \Vert &= \sqrt{\mathbf{u} \cdot \mathbf{u}} \\  
+&= \sqrt{u_{1}^2+u_{2}^2+u_{3}^2}
+\end{align*}
+$$
+
+- Unit Vector: A vector whose length equals one
+- Unit Vector (formula): $\mathbf{u} = \frac{\mathbf{v}}{\Vert \mathbf{v} \Vert}$
+- Cosine Formula: If $\mathbf{u}$ and $\mathbf{v}$ are non-zero vectors then $\frac{\mathbf{v} \cdot \mathbf{w}}{\Vert \mathbf{v} \Vert \Vert \mathbf{w} \Vert} = \cos {\theta}$
+- Schwartz Inequality: $\vert \mathbf{v} \cdot \mathbf{w} \vert \le \Vert \mathbf{v} \Vert \Vert \mathbf{w} \Vert$
+- Triangle Inequality: $\Vert \mathbf{v} + \mathbf{w} \Vert \le \Vert \mathbf{v} \Vert \Vert \mathbf{w} \Vert$
+
+## 1.3 Matrices
+
+Matrix multiplied by a vector can be thought of in 2 ways:
+
+  1. Combination of Columns:
+$$
+Ax = 
+\begin{bmatrix}
+a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33}
+\end{bmatrix}
+\begin{bmatrix}
+x_1 \\ x_2 \\ x_3
+\end{bmatrix}
+$$
+Think of $\mathbf{x}$ as "tipped" to the left, with each one of the elements of $\mathbf{x}$ multiplying one of the columns of $A$
+
+$$
+\begin{align*}
+Ax
+&=
+x_1
+\begin{bmatrix}
+a_{11} \\ a_{21} \\ a_{31} 
+\end{bmatrix}
++ x_2
+\begin{bmatrix}
+a_{12} \\ a_{22} \\ a_{32} 
+\end{bmatrix}
++ x_3
+\begin{bmatrix}
+a_{13} \\ a_{23} \\ a_{33} 
+\end{bmatrix} \\
+\\
+&= 
+\begin{bmatrix}
+x_1 a_{11} +  x_2 a_{12} + x_3 a_{13}  \\ 
+x_1 a_{21} +  x_2 a_{22} + x_3 a_{23}  \\
+x_1 a_{31} +  x_2 a_{32} + x_3 a_{33}
+\end{bmatrix}
+\end{align*}
+$$
+
+  2. Rows at a Time or Dot Product:
+  
+  Think of the rows of $A$ as "falling into" the vector as in
+$$
+\begin{align*}
+A\mathbf{x}&=
+\begin{bmatrix}
+\begin{bmatrix}
+a_{11} & a_{12} & a_{13}
+\end{bmatrix}
+\begin{bmatrix}
+x_1 \\ x_2 \\ x_3
+\end{bmatrix} \\
+\\
+\begin{bmatrix}
+a_{21} & a_{22} & a_{23}
+\end{bmatrix}
+\begin{bmatrix}
+x_1 \\ x_2 \\ x_3
+\end{bmatrix} \\
+\\
+\begin{bmatrix}
+a_{31} & a_{32} & a_{33}
+\end{bmatrix}
+\begin{bmatrix}
+x_1 \\ x_2 \\ x_3
+\end{bmatrix} \\
+\end{bmatrix}\\
+\\
+&=
+\begin{bmatrix}
+x_1 a_{11} +  x_2 a_{12} + x_3 a_{13}  \\ 
+x_1 a_{21} +  x_2 a_{22} + x_3 a_{23}  \\
+x_1 a_{31} +  x_2 a_{32} + x_3 a_{33}
+\end{bmatrix}
+\end{align*}
+$$

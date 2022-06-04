@@ -1,0 +1,413 @@
+---
+title: Multiple Linear Regression
+author: Jeremy Buss
+date: '2021-10-09'
+slug: []
+categories:
+  - Introduction to Linear Regression Analysis - Montgomery/Peck/Vining
+  - Applied Stats
+  - Regression Analysis
+tags:
+  - linear regression
+draft: true
+katex: yes
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="multiple-linear-regression-mlr" class="section level2">
+<h2>Multiple Linear Regression (MLR)</h2>
+<p>We have <span class="math inline">\(k\)</span> distinct predictors:
+<span class="math display">\[
+\begin{align}
+Y_i = \beta_0 + \beta_1 X_{i1} + \dots + \beta_k X_{ik} + \epsilon_i
+\end{align}
+\]</span></p>
+<div id="sample-mlr-model" class="section level3">
+<h3>Sample MLR Model</h3>
+<p>Given data <span class="math inline">\((x_{11},\dots,x_{1k},y_1),(x_{21},\dots,x_{2k},y_2),\dots,(x_{n1},\dots,x_{nk},y_n)\)</span></p>
+<p><span class="math display">\[
+\begin{align*}
+y_i &amp;= \beta_0 + \beta_1 x_{i1} + \dots + \beta_k x_{ik} + \epsilon_i\\
+&amp;= \beta_0 + \sum_{j=1}^k\beta_j x_{ij} + \epsilon_i,\quad i=1,2,\dots,n\\
+\end{align*}
+\]</span></p>
+<p>The fit to this equation will be a hyperplane rather than a line as in SLR.</p>
+<p>A model with <strong>interaction effects</strong> may result if there is a term <span class="math inline">\(x_1x_2\)</span>. It is still linear in <span class="math inline">\(\beta_{12}\)</span> and we could rewrite it as <span class="math inline">\(x_3 = x_1x_2\)</span> and let <span class="math inline">\(\beta_3 = \beta_{12}\)</span>. Additionally <strong>second order model interactions</strong> like <span class="math inline">\(...+\beta_{11}x_1^2+...\)</span> could be rewritten as <span class="math inline">\(x_3=x_1^2\)</span> and <span class="math inline">\(\beta_3 = \beta_{11}\)</span></p>
+<p>In summary:</p>
+<blockquote>
+<p>Any regression model that is linear in the parameters (i.e. the <span class="math inline">\(\beta\)</span>’s) is a linear regression model, regardless of the shape of the surface that it generates
+:Montgomer, Peck, Vinning pg. 69</p>
+</blockquote>
+</div>
+<div id="point-estimation-of-model-parameters" class="section level3">
+<h3>Point Estimation of Model Parameters</h3>
+<p>The Least Squares function is</p>
+<p><span class="math display">\[
+S(\beta_0, \beta_1,\dots,\beta_k) = \sum_{i=1}^n \epsilon_i^2 = \sum_{i=1}^n \left ( y_i - \beta_0 - \sum_{j=1}^k \beta_j x_{ij} \right )^2
+\]</span></p>
+<p>We minimize <span class="math inline">\(S\)</span> with respect to the coefficients <span class="math inline">\(\beta_0,\beta_1,\dots,\beta_k\)</span></p>
+<p><span class="math display">\[ 
+\begin{align}
+\frac{\partial S}{\partial {\beta_0}} \bigg\vert_{b_0,b_1,\dots,b_k} &amp;= -2\sum_{i=1}^n \left ( y_i - b_0 - \sum_{j=1}^k b_j x_{ij} \right ) = 0\\
+\frac{\partial S}{\partial {\beta_j}} \bigg\vert_{b_0,b_1,\dots,b_k} &amp;= -2\sum_{i=1}^n \left ( y_i-b_0-\sum_{j=1}^k b_j x_{ij} \right ) x_{ij} = 0
+\end{align}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(p=k+1\)</span> equations with <span class="math inline">\(p\)</span> unknown parameters</li>
+<li>The ordinary least squares estimators are the solutions to the normal equations.</li>
+</ul>
+</div>
+<div id="regression-model-in-matrix-form" class="section level3">
+<h3>Regression Model in Matrix Form</h3>
+<p><span class="math display">\[
+\mathbf{y} = \mathbf{X} \mathbf{\beta} + \mathbf{\epsilon}
+\]</span></p>
+<p>where
+<span class="math display">\[
+\mathbf{y} = 
+\begin{bmatrix}
+y_1\\
+y_2\\
+\vdots\\
+y_n
+\end{bmatrix},
+\mathbf{X} = 
+\begin{bmatrix}
+1 &amp; x_{11} &amp; x_{12} &amp; \dots &amp; x_{1k}\\
+1 &amp; x_{21} &amp; x_{22} &amp; \dots &amp; x_{2k}\\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+1 &amp; x_{n1} &amp; x_{n2} &amp; \dots &amp; x_{nk}\\
+\end{bmatrix},
+\mathbf{\beta} = 
+\begin{bmatrix}
+\beta_0\\
+\beta_1\\
+\vdots\\
+\beta_k
+\end{bmatrix},
+\mathbf{\epsilon} = 
+\begin{bmatrix}
+\epsilon_1\\
+\epsilon_2\\
+\vdots\\
+\epsilon_n
+\end{bmatrix}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\mathbf{X}\)</span>: Design matrix</li>
+<li><span class="math inline">\(\mathbf{\epsilon} \sim N(\mathbf{0},\sigma^2 \mathbf{I})\)</span></li>
+</ul>
+</div>
+<div id="least-squares-estimation-in-matrix-form" class="section level3">
+<h3>Least Squares Estimation in Matrix Form</h3>
+<p><span class="math display">\[
+\begin{align*}
+S(\mathbf{\beta}) = \sum_{i=1}^n \epsilon_i^2 &amp;= \mathbf{\epsilon^\intercal} \mathbf{\epsilon} = (\mathbf{y} - \mathbf{X}\mathbf{\beta})^\intercal(\mathbf{y} - \mathbf{X}\mathbf{\beta})\\
+&amp;=\mathbf{y}^\intercal\mathbf{y}-
+\mathbf{\beta^\intercal}\mathbf{X}^\intercal\mathbf{y}-
+\mathbf{y^\intercal}\mathbf{X}\mathbf{\beta}+
+\mathbf{\beta^\intercal}\mathbf{X^\intercal}\mathbf{X}\mathbf{\beta}
+\end{align*}
+\]</span>
+Since <span class="math inline">\(\mathbf{\beta^\intercal}\mathbf{X}^\intercal\mathbf{y}\)</span> is a <span class="math inline">\(1\times1\)</span> matrix and it’s transpose <span class="math inline">\(\mathbf{y^\intercal}\mathbf{X}\mathbf{\beta}\)</span> is the same scalar we will combine the two terms and we are left with:</p>
+<p><span class="math display">\[
+\begin{align}
+S(\mathbf{\beta}) &amp;=\mathbf{y}^\intercal\mathbf{y}-
+2\mathbf{\beta^\intercal}\mathbf{X}^\intercal\mathbf{y}+
+\mathbf{\beta^\intercal}\mathbf{X^\intercal}\mathbf{X}\mathbf{\beta}
+\end{align}
+\]</span></p>
+<p>Before we go further we need to know a few calculus matrix rules:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(\frac{\partial{\mathbf{t}^\intercal} \mathbf{a}}{\partial{t}} = \frac{\partial{\mathbf{a}^\intercal} \mathbf{t}}{\partial{t}} = \mathbf{a}\)</span></li>
+<li><span class="math inline">\(\frac{\partial{\mathbf{t}^\intercal} \mathbf{A} \mathbf{t}}{\partial{t}} = 2 \mathbf{A}\mathbf{t}\)</span></li>
+</ol>
+<p>With regards to equation <span class="math inline">\(\textcolor{red}{(4)}\)</span> we take each of the terms in order:</p>
+<ul>
+<li>The <span class="math inline">\(\mathbf{y}^\intercal\mathbf{y}\)</span> term does not have a <span class="math inline">\(\beta\)</span> term and therefore the derivative is 0</li>
+<li>With the second term: <span class="math inline">\(-2\mathbf{\beta^\intercal}\mathbf{X}^\intercal\mathbf{y}\)</span> we will use the first of the derivative rules and simply end up with <span class="math inline">\(-2\mathbf{X}^\intercal\mathbf{y}\)</span></li>
+<li>With the third term <span class="math inline">\(\mathbf{\beta^\intercal}\mathbf{X^\intercal}\mathbf{X}\mathbf{\beta}\)</span> we use the 2nd matrix derivative rule. So see this we let <span class="math inline">\(\beta\)</span> equal to the <span class="math inline">\(t\)</span> in the rule and <span class="math inline">\(\mathbf{X}^\intercal\mathbf{X}\)</span> be equal to the <span class="math inline">\(\mathbf{A}\)</span> and substituting in <span class="math inline">\(\mathbf{b}\)</span> for <span class="math inline">\(\mathbf{\beta}\)</span></li>
+</ul>
+<p>So together we are left with:</p>
+<div id="normal-equation" class="section level4">
+<h4>Normal Equation</h4>
+<p><span class="math display">\[
+\frac{\partial{S}}{\partial\beta}\bigg\vert_{\mathbf{b}} = -2 \mathbf{X^\intercal} \mathbf{y} + 2 \mathbf{X^\intercal} \mathbf{X} \mathbf{b} = 0
+\]</span>
+and then solving for <span class="math inline">\(\mathbf{b}\)</span> we have:</p>
+<p><span class="math display">\[
+\begin{align}
+\mathbf{b} = ( \mathbf{X}^\intercal \mathbf{X}) ^ {-1} \mathbf{X}^\intercal \mathbf{y}
+\end{align}
+\]</span></p>
+</div>
+<div id="hat-matrix" class="section level4">
+<h4>Hat Matrix</h4>
+<p>The vector of fitted values <span class="math inline">\(\hat{y_i}\)</span> corresponding to <span class="math inline">\(y_i\)</span> is:</p>
+<p><span class="math display">\[
+\mathbf{\hat{y}} = \mathbf{X} \mathbf{b} = \mathbf{X} ( \mathbf{X^\intercal} \mathbf{X})^{-1} \mathbf{X^\intercal} \mathbf{y} = \mathbf{H} \mathbf{y}
+\]</span></p>
+<p>Whereby the <span class="math inline">\(n \times n\)</span> matrix <span class="math inline">\(\mathbf{X} ( \mathbf{X^\intercal} \mathbf{X})^{-1} \mathbf{X^\intercal}\)</span> is called the <strong>hat matrix</strong>.</p>
+<p>The vector of residuals <span class="math inline">\(e_i = y_i = \hat{y_i}\)</span> is:</p>
+<p><span class="math display">\[
+\mathbf{e} = \mathbf{y}-\mathbf{\hat{y}} = \mathbf{y} - \mathbf{Xb} = \mathbf{y}-\mathbf{Hy}=(\mathbf{I}-\mathbf{H})\mathbf{y}
+\]</span></p>
+<p>Note:</p>
+<ul>
+<li>Both <span class="math inline">\(\mathbf{H}\)</span> and <span class="math inline">\(\mathbf{I-H}\)</span> are <strong>symmetric</strong> and <strong>idempotent</strong>. In other words, they are <strong>projection</strong> matrices</li>
+<li><span class="math inline">\(\mathbf{H}\)</span> projects <span class="math inline">\(\mathbf{y}\)</span> to <span class="math inline">\(\mathbf{\hat{y}}\)</span> on the <span class="math inline">\(p\)</span>-dimension space spanned by columns of <span class="math inline">\(\mathbf{X}\)</span>, or the column space of <span class="math inline">\(\mathbf{X}\)</span>, <span class="math inline">\(Col(\mathbf{X})\)</span></li>
+<li><span class="math inline">\(\mathbf{I-H}\)</span> projects <span class="math inline">\(\mathbf{y}\)</span> to <span class="math inline">\(\mathbf{e}\)</span> on the space <strong>perpendicular</strong> to <span class="math inline">\(Col(\mathbf{x})\)</span>, or <span class="math inline">\(Col(X)^\bot\)</span></li>
+</ul>
+</div>
+</div>
+<div id="geometrical-interpretation-of-least-squares" class="section level3">
+<h3>Geometrical Interpretation of Least Squares</h3>
+<ul>
+<li><span class="math inline">\(Col(\mathbf{X}) = \{ \mathbf{X}\mathbf{b}: \mathbf{b} \in \mathbf{R}^p \}\)</span></li>
+<li><span class="math inline">\(\mathbf{y} \notin Col(\mathbf{X})\)</span></li>
+<li><span class="math inline">\(\hat{\mathbf{y}} = \mathbf{Xb} = \mathbf{Hy} \in Col(\mathbf{X})\)</span></li>
+<li>Minimize the distance of <span class="math inline">\(\textcolor{red}{A}\)</span> to <span class="math inline">\(Col(\mathbf{X})\)</span>: Find the point in <span class="math inline">\(Col(\mathbf{X})\)</span> that is closest to <span class="math inline">\(\textcolor{red}{A}\)</span>…that is <span class="math inline">\(\textcolor{red}{C}\)</span><br />
+</li>
+<li>Distance is minimized when the point in spaces is the foot of the line from <span class="math inline">\(\textcolor{red}{A}\)</span> <strong>normal</strong> to the space. That is point <span class="math inline">\(\textcolor{red}{C}\)</span></li>
+<li><span class="math inline">\(\mathbf{e} = \mathbf{y}-\mathbf{\hat{y}} = \mathbf{y} - \mathbf{Xb} = \mathbf{y}-\mathbf{Hy}=(\mathbf{I}-\mathbf{H})\mathbf{y} \bot Col(\mathbf{X})\)</span></li>
+<li><span class="math inline">\(\mathbf{X^\intercal} (\mathbf{y} - \mathbf{Xb})=0\)</span></li>
+<li>Searching for the LS solution <strong>b</strong> that minimizes <span class="math inline">\(SS_{Res}\)</span> is the same as locatin the point <span class="math inline">\(\mathbf{Xb} \in Col(\mathbf{X})\)</span> that is as clost to <span class="math inline">\(\mathbf{y}\)</span> as possible!</li>
+</ul>
+<p><img src="images/Geometricl_Interpretation_of_Least_Squares.png" /></p>
+</div>
+<div id="properties-of-least-square-estimators" class="section level3">
+<h3>Properties of Least Square Estimators</h3>
+<p>Similar to Simple Linear Regression <strong>b</strong> is BLUE or Best Linear Unbiased Estimator.</p>
+<div id="best" class="section level4">
+<h4>1. Best</h4>
+<p>A least square estimator is best if the variance is least.</p>
+<p><span class="math display">\[
+\begin{align*}
+Cov(\mathbf{b}) &amp;= E [(\mathbf{b} - E(\mathbf{b}))(\mathbf{b} - E(\mathbf{b}))^\intercal]\\
+Var(\mathbf{b}) &amp;= Var [(\mathbf{X}^\intercal \mathbf{X})^{-1}\mathbf{X}^\intercal \mathbf{y}]\\
+&amp;=\sigma^2(\mathbf{X}^\intercal \mathbf{X})^{-1}
+\end{align*}
+\]</span></p>
+</div>
+<div id="linear" class="section level4">
+<h4>2. Linear</h4>
+<p>A least square estimator is a linear combination of y, which we see from equation <span class="math inline">\(\textcolor{red}{(5)}\)</span></p>
+</div>
+<div id="unbiased" class="section level4">
+<h4>3. Unbiased</h4>
+<p>A least square estimator is unbiased if the expected value of the estimator is the same as the actual <span class="math inline">\(\mathbf{\beta}\)</span></p>
+<p><span class="math display">\[
+\begin{align*}
+E(\mathbf{b})&amp;=E[(\mathbf{X}^\intercal \mathbf{X})^{-1}\mathbf{X}^\intercal \mathbf{y}]\\
+&amp;=E[(\mathbf{X}^\intercal \mathbf{X})^{-1}\mathbf{X}^\intercal (\mathbf{X \beta} + \mathbf{\epsilon})]\\
+&amp;=\mathbf{\beta}
+\end{align*}
+\]</span></p>
+</div>
+</div>
+<div id="estimate-of-sigma2" class="section level3">
+<h3>Estimate of <span class="math inline">\(\sigma^2\)</span></h3>
+<p><span class="math display">\[
+\begin{align*}
+SS_{Res}= \sum_{i=1}^n (y_i - \hat{y_i})^2 &amp;= \sum_{i=1}^n e_i^2 \\
+&amp;= \mathbf{e^\intercal e}\\
+&amp;= \mathbf{(y-Xb)^\intercal(y-Xb)}\\
+&amp;= \mathbf{y^\intercal y} - \mathbf{b^\intercal X^\intercal y} - \mathbf{y^\intercal Xb} +  \mathbf{b^\intercal X^\intercal  X b}
+\end{align*}
+\]</span></p>
+<p>However, just as we saw with equation <span class="math inline">\(\textcolor{red}{(4)}\)</span> above <span class="math inline">\(\mathbf{b^\intercal}\mathbf{X}^\intercal\mathbf{y}\)</span> is a <span class="math inline">\(1\times1\)</span> matrix and it’s transpose <span class="math inline">\(\mathbf{y^\intercal}\mathbf{X}\mathbf{b}\)</span> is the same scalar we will combine the two terms and we are left with:</p>
+<p><span class="math display">\[
+\begin{align*}
+SS_{Res}=  \mathbf{y^\intercal y} - 2\mathbf{b^\intercal X^\intercal y} +  \mathbf{b^\intercal X^\intercal  X b}
+\end{align*}
+\]</span></p>
+<p>However, since <span class="math inline">\(\mathbf{X^\intercal X b} = \mathbf{X^\intercal y}\)</span> we can clean up. Additionally looking at the relationship between <span class="math inline">\(MS_{res}\)</span> and <span class="math inline">\(SS_{res}\)</span>:</p>
+<p><span class="math display">\[
+\begin{align}
+SS_{Res} &amp;=  \mathbf{y^\intercal y} - \mathbf{b^\intercal X^\intercal y}\\
+MS_{Res} &amp;= \frac{SS_{Res}}{n-p} \space \space \text{with} \space p=k+1
+\end{align}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\hat{\sigma^2}=MS_{Res}\)</span> is an unbiased estimator for <span class="math inline">\(\sigma^2\)</span>, i.e. <span class="math inline">\(E[MS_{Res}] = \sigma^2\)</span></li>
+<li><span class="math inline">\(\hat{\sigma^2}\)</span> of SLR may be larger than the <span class="math inline">\(\hat{\sigma^2}\)</span> of MLR.</li>
+<li><span class="math inline">\(\hat{\sigma^2}\)</span> measures the variation of the <em>unexplained</em> noise about the fitted regression line/hyperplane, so we prefer a small residual mean square.</li>
+</ul>
+</div>
+<div id="test-for-significance-of-regression" class="section level3">
+<h3>Test for Significance of Regression</h3>
+<p>Test for significance: Determine if there is a <strong>linear</strong> relationship between the response and <strong>andy</strong> of the regressor varaibles.</p>
+<ul>
+<li><p><span class="math inline">\(H_0: \beta_1 = \beta_2 = \cdots = \beta_k = 0\)</span></p></li>
+<li><p><span class="math inline">\(H_1: \beta_j \ne 0\)</span> for at least one <span class="math inline">\(j\)</span></p></li>
+<li><p><span class="math inline">\(F_{test} &gt; F_{\alpha,1,n-2}\)</span></p></li>
+<li><p>p-value = <span class="math inline">\(P(F_{1,n-2} &gt; F_{test}) &gt; \alpha\)</span></p></li>
+</ul>
+<p>Combining all these definitions we have…</p>
+<table>
+<caption><span id="tab:unnamed-chunk-2">Table 1: </span>ANOVA Table</caption>
+<colgroup>
+<col width="13%" />
+<col width="53%" />
+<col width="13%" />
+<col width="8%" />
+<col width="11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Source of Variation</th>
+<th align="left">Sum of Squares</th>
+<th align="left">Degrees of Freedom</th>
+<th align="left">Mean Square</th>
+<th align="left"><span class="math inline">\(F_{test}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Regression</td>
+<td align="left"><span class="math inline">\(SS_R = \mathbf{b^\intercal X^\intercal y} - \frac{1}{n} \sum_{i=1}^n y_i^2\)</span></td>
+<td align="left">k</td>
+<td align="left"><span class="math inline">\(MS_R\)</span></td>
+<td align="left"><span class="math inline">\(MS_R/MS_{Res}\)</span></td>
+</tr>
+<tr class="even">
+<td align="left">Residual</td>
+<td align="left"><span class="math inline">\(SS_{Res} = \mathbf{y^\intercal y} - \mathbf{b^\intercal X^\intercal y}\)</span></td>
+<td align="left">n-k-1</td>
+<td align="left"><span class="math inline">\(MS_{Res}\)</span></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="left"><span class="math inline">\(SS_T = \mathbf{y^\intercal y} - \frac{1}{n} \sum_{i=1}^n y_i^2\)</span></td>
+<td align="left">n-1</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><em>Note: k is # of coefficients for regressors. For SLR k = 1</em></li>
+</ul>
+<p>We have determined <span class="math inline">\(SS_{Res}\)</span> in equation <span class="math inline">\(\textcolor{red}{(6)}\)</span> from above. So let’s look at how we can find <span class="math inline">\(SS_T\)</span></p>
+<p><span class="math display">\[
+\begin{align*}
+SS_T &amp;= \sum_{i=1}^n (y_i - \overline{y})^2\\
+&amp;= \sum_{i=1}^n y_i^2 + \sum_{i=1}^n -2y_i\overline{y} + \sum_{i=1}^n \overline{y}^2\\
+&amp;= \sum_{i=1}^n y_i^2 + -2 \overline{y} \sum_{i=1}^n y_i + \overline{y}^2 \sum_{i=1}^n 1\\
+\end{align*}
+\]</span></p>
+<p>Now we leverage a relationship: <span class="math inline">\(\sum_{i=1}^n y_i = n \overline{y}\)</span> to adjust the second term and cleaning up the last term whereby <span class="math inline">\(\sum_{i=1}^n 1 = n\)</span>:</p>
+<p><span class="math display">\[
+\begin{align*}
+SS_T &amp;= \sum_{i=1}^n y_i^2 + -2 \overline{y} n \overline{y} + \overline{y}^2 n\\
+&amp;= \sum_{i=1}^n y_i^2 + -2 n \overline{y}^2 + n \overline{y}^2\\
+&amp;= \sum_{i=1}^n y_i^2 + - n \overline{y}^2\\
+\end{align*}
+\]</span>
+We make two more substitution: <span class="math inline">\(\overline{y} = \frac{1}{n}\sum_{i=1}^n y_i\)</span> and the fact that <span class="math inline">\(\sum_{i=1}^n y_i^2 = \mathbf{y^\intercal y}\)</span></p>
+<p><span class="math display">\[
+\begin{align*}
+SS_T &amp;= \mathbf{y^\intercal y} + - n \left ( \frac{1}{n} \sum_{i=1}^n y_i\right )^2\\
+&amp;= \mathbf{y^\intercal y} + - \frac{n}{n^2} \sum_{i=1}^n y_i^2\\
+&amp;= \mathbf{y^\intercal y} - \frac{1}{n} \sum_{i=1}^n y_i^2\\
+\end{align*}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(SS_T = \mathbf{y^\intercal y} - \frac{1}{n} \sum_{i=1}^n y_i^2\)</span></li>
+<li><span class="math inline">\(SS_{Res} = \mathbf{y^\intercal y} - \mathbf{b^\intercal X^\intercal y}\)</span></li>
+<li><span class="math inline">\(SS_R = SS_T - SS_{Res} = \mathbf{b^\intercal X^\intercal y} - \frac{1}{n} \sum_{i=1}^n y_i^2\)</span></li>
+<li>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(F_{test} &gt; F_{\alpha,k,n-k-1}\)</span></li>
+<li><span class="math inline">\(E[MS_{Res}] = \sigma^2\)</span></li>
+<li><span class="math inline">\(E[MS_R] = \sigma^2 + \frac{\beta_{1:k}^\intercal \mathbf{X_c ^\intercal X_c \beta_{1:k}}}{k\sigma^2}\)</span> where <span class="math inline">\(\beta_{1:k}=(\beta_1,\dots,\beta_k)^\intercal\)</span></li>
+<li><span class="math inline">\(\mathbf{X_c} = \begin{bmatrix} x_{11} - \overline{x_1} &amp; x_{12} - \overline{x_2} &amp; \dots &amp; x_{1k}- \overline{x_k}\\ x_{21} - \overline{x_1} &amp; x_{22} - \overline{x_2} &amp; \dots &amp; x_{2k}- \overline{x_k}\\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\ x_{n1} - \overline{x_1} &amp; x_{n2} - \overline{x_2} &amp; \dots &amp; x_{nk}- \overline{x_k}\\ \end{bmatrix}\)</span></li>
+</ul>
+</div>
+<div id="r2-and-adjusted-r2" class="section level3">
+<h3><span class="math inline">\(R^2\)</span> and Adjusted <span class="math inline">\(R^2\)</span></h3>
+<div id="r2" class="section level4">
+<h4><span class="math inline">\(R^2\)</span></h4>
+<ul>
+<li>Calculated the same as SLR
+<span class="math display">\[
+R^2 = \frac {SS_R}{SS_T}= \frac {SS_T - SS_{Res}}{SS_T} = 1-\frac {SS_{Res}}{SS_T}
+\]</span></li>
+<li>The model with one additional predictor always gets a higher <span class="math inline">\(R^2\)</span></li>
+<li>Measures the proportion of variability in <span class="math inline">\(Y\)</span> that is explained by the regression model or the <span class="math inline">\(k\)</span> predictors</li>
+</ul>
+</div>
+<div id="adjusted-r2" class="section level4">
+<h4>Adjusted <span class="math inline">\(R^2\)</span></h4>
+<p><span class="math display">\[
+R_{adj}^2 = 1-\frac {SS_{Res}/(n-p)}{SS_T/(n-1)}
+\]</span></p>
+<ul>
+<li>Applies a penalty (through p) for the number of variables included in the model</li>
+</ul>
+</div>
+</div>
+<div id="test-on-individual-regression-coefficients" class="section level3">
+<h3>Test on Individual Regression Coefficients</h3>
+<div id="partialmarginal-test" class="section level4">
+<h4>Partial/Marginal Test</h4>
+<ul>
+<li>Tests the contribution of <span class="math inline">\(X_j\)</span> given all other regressors in the model</li>
+<li><span class="math inline">\(H_0:\beta_j = 0\)</span> and <span class="math inline">\(H_1: \beta_j \ne 0\)</span></li>
+<li><span class="math inline">\(t_{test} = \frac{b_j}{\sqrt{\hat\sigma^2 C_{jj}}}\)</span>, where <span class="math inline">\(C_{jj}\)</span> is the <span class="math inline">\(j\)</span>-th diagonal element of <span class="math inline">\((\mathbf{X^\intercal X})^{-1}\)</span></li>
+<li>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\vert t_{test} \vert \gt t_{\alpha/2,n-k-1}\)</span></li>
+</ul>
+</div>
+<div id="reduced-model-vs.-full-model" class="section level4">
+<h4>Reduced Model vs. Full Model</h4>
+<ul>
+<li>Overall test of significance: <em>all</em> predictors vs. Marginal <span class="math inline">\(t\)</span>-test: <em>one single</em> predictor</li>
+<li>Test any subset</li>
+<li><strong>Full</strong>: <span class="math inline">\(y=\beta_0+\beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 + \beta_4 x_4 + \epsilon\)</span></li>
+<li><span class="math inline">\(H_0: \beta_2 = \beta_4 = 0\)</span></li>
+<li><strong>Reduced</strong> (under <span class="math inline">\(H_0\)</span>): <span class="math inline">\(y=\beta_0+\beta_1 x_1 + \beta_3 x_3 + \epsilon\)</span></li>
+<li>Like to see if <span class="math inline">\(x_2\)</span> and <span class="math inline">\(X_4\)</span> contribute to model when <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_3\)</span> are in model
+<ul>
+<li>If yes, <span class="math inline">\(\beta_2 \ne 0\)</span> and/or <span class="math inline">\(\beta_4 \ne 0\)</span> (Reject <span class="math inline">\(H_0\)</span>)</li>
+<li>Otherwise, <span class="math inline">\(\beta_2=\beta_4=0\)</span> (Do not reject <span class="math inline">\(H_0\)</span>)</li>
+</ul></li>
+</ul>
+</div>
+<div id="extra-sum-of-squares" class="section level4">
+<h4>Extra Sum-of-Squares</h4>
+<ul>
+<li>Full Model: <span class="math inline">\(\mathbf{y} = \mathbf{X} \mathbf{\beta} + \mathbf{\epsilon}\)</span></li>
+<li>Partition coefficient vector:</li>
+</ul>
+<p><span class="math display">\[
+\beta_{p\times1} = 
+\begin{bmatrix}
+\frac{\beta_1}{\beta_2}
+\end{bmatrix}
+\]</span></p>
+<p>Where <span class="math inline">\(\beta_1\)</span> is <span class="math inline">\((p-r) \times 1\)</span> and <span class="math inline">\(\beta_2\)</span> is <span class="math inline">\(r \times 1\)</span></p>
+<ul>
+<li><span class="math inline">\(H_0\)</span>:<span class="math inline">\(\mathbf{\beta_2 = 0}\)</span></li>
+<li><span class="math inline">\(H_1\)</span>:<span class="math inline">\(\mathbf{\beta_2 \ne 0}\)</span></li>
+</ul>
+</div>
+<div id="example" class="section level4">
+<h4>Example:</h4>
+<p><span class="math inline">\(p=5\)</span>, <span class="math inline">\(r=2\)</span>, <span class="math inline">\(\beta_1 = (\beta_0,\beta_1, \beta_3)^{\intercal}\)</span>, <span class="math inline">\(\beta_2 = (\beta_2,\beta_4)^{\intercal}\)</span></p>
+<p><span class="math display">\[
+\mathbf{y} = \mathbf{X} \mathbf{\beta} + \mathbf{\epsilon} = \mathbf{X_1} \mathbf{\beta_1} + \mathbf{X_2} \mathbf{\beta_2} + \mathbf{\epsilon}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(n \times (p - r)\)</span> matrix <span class="math inline">\(\mathbf{X_1}\)</span>: the columns of <span class="math inline">\(\mathbf{X}\)</span> associated with <span class="math inline">\(\mathbf{\beta_1}\)</span></li>
+<li><span class="math inline">\(n \times r\)</span> matrix <span class="math inline">\(\mathbf{X_2}\)</span>: the columns of <span class="math inline">\(\mathbf{X}\)</span> associated with <span class="math inline">\(\mathbf{\beta_2}\)</span></li>
+</ul>
+<p><strong>Full Model:</strong></p>
+<ul>
+<li><span class="math inline">\(\mathbf{y} = \mathbf{X} \mathbf{\beta} + \mathbf{\epsilon} = \mathbf{X_1} \mathbf{\beta_1} + \mathbf{X_2} \mathbf{\beta_2} + \mathbf{\epsilon}\)</span></li>
+<li><span class="math inline">\(\mathbf{b} = ( \mathbf{X}^\intercal \mathbf{X}) ^ {-1} \mathbf{X}^\intercal \mathbf{y}\)</span></li>
+<li></li>
+</ul>
+</div>
+</div>
+</div>
