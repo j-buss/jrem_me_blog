@@ -1,0 +1,149 @@
+---
+title: "Chapter 2 - Probability"
+author: Jeremy Buss
+output: html_document
+date: "`r Sys.Date()`"
+categories:
+  - John E. Freund's Mathematical Statistics with Applications - Miller/Miller
+  - Statistics
+draft: yes
+katex: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+install.packages("blogdown")
+```
+
+
+
+## 2.1 Introduction
+
+**Classical Probability Concept** - If there are \(N\) equally likely possibilities, of which one must occur and \(n\) are regarded as favorable, or as a "success" then the probability of a "success" is given by the ratio \(\frac{n}{N}\)
+
+**Frequency Interpretation** - The probability of an event (outcome or happening) is the proportion of the time that events of the same kind will occur in the long run
+
+**Axiomatic Approach** - Probabilities are defined as "mathematical objects" that behave according to certain well-defined rules
+
+## 2.2 Sample Spaces
+
+**Experiment** - Any process of observation or measurement
+
+**Outcome** - The results one obtains from an experiment
+
+**Sample Space** - The set of all possible outcomes of an experiment; usually denoted by the letter \(S\). 
+
+**Element** or **Sample Point** - Each outcome in a sample space
+
+**Finite Set** -  A set that has a finite number of elements; Informally, a finite set is a set which one could in principle count and finish counting
+
+**Countable Set** - a set that has the same cardinality (the number of elements of the set) as some subset of the set of natural numbers \(\mathbb{N}=\{0,1,2,3,\ldots\}\); it could be finite, or infinite
+
+**Discrete Set** - Sample space contains a finite number of elements or an infinite though countable number of elements
+
+**Continuous Set** - when a sample space consists of a continuum, such as all the points of a line segment or all the points in a plane; generally the result of measurement of physical properties
+
+
+## 2.3 Events
+
+**Event** - is a subset of a sample space
+
+If \(A\) and \(B\) are any two subsets of a sample space \(S\), then:
+
+- **\(A \cup B\)** or the Union of \(A\) and \(B\) - the subset of \(S\) that contains all the elements that are either in \(A\), in \(B\), or in both
+- **\(A \cap B\)** or the Intersection of \(A\) and \(B\) - the subset of \(S\) that contains all the elements that are in both \(A\) and \(B\)
+- **\(A^\complement\)** or the complement of \(A\) is the subset of \(S\) that contains all the elements of \(S\) that are not in \(A\)
+- **\(A \subset B\)** - \(A\) is contained in \(B\)
+
+**Mutually Exclusive** - Two events having no elements in common; written as \(A \cap B = \emptyset\)
+
+**De Morgan Laws** 
+- \((A \cap B)^\complement = A^\complement \cup B^\complement \)
+- \((A \cup B)^\complement = A^\complement \cap B^\complement \)
+
+## 2.4 Probability of an Event
+
+**\(P(A)\)** - Probability of event \(A\)
+
+Following postulates of probability apply only to discrete sample spaces \(S\):
+
+- **Postulate 1** - The probability of an event is a nonnegative real number; that is, \(P(A) \ge 0\) for any subset \(A\) of \(S\)
+- **Postulate 2** - \(P(S)=1\)
+- **Postulate 3** - If \(A_1, A_2, A_3, \ldots, \) is a finite or infinite sequence of mutually exclusive events of \(S\), then 
+
+\[P(A_1 \cup A_2 \cup A_3 \cup \cdots) = P(A_1) + P(A_2) + P(A_3) + \cdots \]
+
+**Theorem 2.1** - If \(A\) is an event in a discrete sample space \(S\), then \(P(A)\) equals the sum of the probabilities of the individual outcomes comprising \(A\).
+
+**Proof** - Let \(O_1, O_2, O_3,\ldots\), be the finite or infinite sequence of outcomes that comprise the event \(A\). Thus,
+
+\[A=O_1 \cup O_2 \cup O_3 \cdots \]
+
+and since the individual outcomes, the \(O\)'s, are mutually exclusive, the third postulate or probability yields
+
+\[P(A)=P(O_1)+P(O_2)+P(O_3)+\cdots \]
+
+This completes the proof.
+
+**Theorem 2.2** - If an experiment can result in any one of \(N\) different equally likely outcomes, and if \(n\) of these outcomes together constitute event \(A\), then the probability of event \(A\) is
+
+\[P(A) = \frac{n}{N}\]
+
+**Proof** - Let \(O_1, O_2, O_3,\ldots,O_N\) represent the individual outcomes in \(S\), each with probability \(\frac{1}{N}\). If \(A\) is the union of \(n\) of these mutually exclusive outcomes, and it does not matter which ones, then
+
+\[
+\begin{align}
+P(A)&=P(O_1 \cup O_2  \cup \cdots \cup O_n)\\
+&=P(O_1) + P(O_2) + \cdots + P(O_n)\\
+&=\underbrace{\frac{1}{N} + \frac{1}{N} + \cdots + \frac{1}{N}}_{n \, \text{terms}}\\
+
+&=\frac{n}{N}
+\end{align}
+\]
+
+## 2.5 Some Rules of Probability
+
+**Theorem 2.3**
+
+
+
+**Theorem 2.4**
+
+**Theorem 2.5**
+
+**Theorem 2.6**
+
+**Theorem 2.7**
+
+**Theorem 2.8**
+
+## 2.6 Conditional Probability
+
+**Theorem 2.9**
+
+**Theorem 2.10**
+
+## 2.7 Independent Events
+
+**Theorem 2.11**
+
+## 2.8 Bayes Theorem
+
+**Theorem 2.12**
+
+**Theorem 2.13**
+
+## 2.9 Theory in Practice
+
+**Theorem 2.14**
+
+
+**Theorem 2.15**- The **reliability of a parallel system** consisting of \(n\) independent components is given by
+
+\[R_p = 1 - \prod^n_{i=1} (1-R_i)\]
+
+**Proof** - the proof of this theorem is identical to that of Theorem 2.14, with \((1 - R_i)\) replacing \(R_i\)
