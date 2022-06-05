@@ -2,8 +2,9 @@
 title: "Chapter 1 - Introduction"
 author: Jeremy Buss
 output: html_document
-date: '2022-06-04'
+date: "2022-06-05"
 categories:
+  - John E. Freund's Mathematical Statistics with Applications - Miller/Miller
   - Statistics
 draft: yes
 katex: yes
@@ -11,26 +12,91 @@ katex: yes
 
 
 
-<pre class="r"><code>install.packages(&quot;blogdown&quot;)</code></pre>
-<pre><code>## Installing package into &#39;/home/jeremyfbuss/R/x86_64-pc-linux-gnu-library/4.0&#39;
-## (as &#39;lib&#39; is unspecified)</code></pre>
 <div id="combinatorial-methods" class="section level2">
 <h2>1.2 Combinatorial Methods</h2>
 <p><strong>Theorem 1.1</strong> If an operation consists of two steps, of which the first can be done in <span class="math inline">\(n_1\)</span> ways and for each of these the second can be done in <span class="math inline">\(n_2\)</span> ways, then the whole operation can be done in <span class="math inline">\(n_1 \cdot n_2\)</span> ways.</p>
 <p><strong>Theorem 1.2</strong> If an operation consists of <span class="math inline">\(k\)</span> steps, of which the first can be done in <span class="math inline">\(n_1\)</span> ways, for each of these the second step can be done in <span class="math inline">\(n_2\)</span> ways, for each of the first two the third step can be done in <span class="math inline">\(n_3\)</span> ways, and so forth, then the whole operation can be done in <span class="math inline">\(n_1 \cdot n_2 \cdot \ldots \cdot n_k\)</span> ways.</p>
-<p><strong>Permutations</strong> - a distinct arrangement of <span class="math inline">\(n\)</span> different elements of a set</p>
+<p><strong>Permutation</strong> - a distinct arrangement of <span class="math inline">\(n\)</span> different elements of a set</p>
 <p><strong>Theorem 1.3</strong> The number of permutations of <span class="math inline">\(n\)</span> distinct objects is <span class="math inline">\(n!\)</span></p>
 <p><strong>Theorem 1.4</strong> The number of permutations of <span class="math inline">\(n\)</span> distinct objects taken <span class="math inline">\(r\)</span> at a time is
 <span class="math display">\[{}_nP_r = \frac{n!}{(n-r)!}\]</span>
-for <span class="math inline">\(r=0,1,2,\ldots,n\)</span>.
-<strong>Proof</strong> The formula <span class="math inline">\({}_nP_r=n(n-1) \cdot \ldots \cdot (n-r+1)\)</span> cannot be used for</p>
+for <span class="math inline">\(r=0,1,2,\ldots,n\)</span>.</p>
+<p><strong>Proof</strong> The formula <span class="math inline">\({}_nP_r=n(n-1) \cdot \ldots \cdot (n-r+1)\)</span> cannot be used for <span class="math inline">\(r=0\)</span>, but we do have</p>
+<p><span class="math display">\[{}_nP_0 = \frac{n!}{(n-0)!}=1\]</span></p>
+<p>For <span class="math inline">\(r=1,2,\ldots,n,\)</span> we have</p>
+<p><span class="math display">\[\begin{align}
+{}_nP_r&amp;=n(n-1)(n-2) \cdot \ldots \cdot (n-r-1)\\
+&amp;=\frac{n(n-1)(n-2) \cdot \ldots \cdot (n-r-1)(n-r)!}{(n-r)!}\\
+&amp;=\frac{n!}{(n-r)!}
+\end{align}
+\]</span></p>
+<p><strong>circular permutation</strong> - permutation for which objects are arranged in a circle</p>
+<p><strong>Theorem 1.5</strong> The number of permutations of <span class="math inline">\(n\)</span> distinct objects arranged in a circle is <span class="math inline">\((n-1)!\)</span></p>
+<p><strong>Theorem 1.6</strong> The number of permutations of <span class="math inline">\(n\)</span> objects of which <span class="math inline">\(n_1\)</span> are of one kind, <span class="math inline">\(n_2\)</span> are of a second kind, <span class="math inline">\(\ldots, n_k\)</span> are of a <span class="math inline">\(k\)</span>th kind, and <span class="math inline">\(n_1+n_2+\dots+n_k=n\)</span> is</p>
+<p><span class="math display">\[\frac{n!}{n_1! \cdot n_2! \cdot \ldots \cdot n_k!}\]</span></p>
+<p><strong>Combination</strong> - is a selection of <span class="math inline">\(r\)</span> objects taken from <span class="math inline">\(n\)</span> distinct objects without regard to the order of selection</p>
+<p><strong>Theorem 1.7</strong> The number of combinations of <span class="math inline">\(n\)</span> distinct objects taken <span class="math inline">\(r\)</span> at a time is</p>
+<p><span class="math display">\[\dbinom n r = \frac{n!}{r!(n-r)!}\]</span></p>
+<p>for <span class="math inline">\(r=0,1,2,\ldots,n\)</span></p>
+<p><strong>Partition (words)</strong> - separate <span class="math inline">\(n\)</span> distinct objects into <span class="math inline">\(k\)</span> subsets, which requires that each of the <span class="math inline">\(n\)</span> objects must belong to one and only one of the subsets</p>
+<p><strong>Partition (symbolically)</strong> - the subsets <span class="math inline">\(A_1, A_2, \ldots ,A_k\)</span> constitute a partition of set <span class="math inline">\(A\)</span> if <span class="math inline">\(A_1 \cup A_2 \cup \ldots \cup A_k = A\)</span> and <span class="math inline">\(A_i \cap A_j = \emptyset\)</span> for all <span class="math inline">\(i \ne j\)</span></p>
+<p><strong>Theorem 1.8</strong> The number of ways in which a set of <span class="math inline">\(n\)</span> distinct objects can be partitioned into <span class="math inline">\(k\)</span> subsets with <span class="math inline">\(n_1\)</span> objects in the first subset, <span class="math inline">\(n_2\)</span> objects in the second subset, <span class="math inline">\(\ldots\)</span>, and <span class="math inline">\(n_k\)</span> objects in the <span class="math inline">\(k\)</span>th subset is</p>
+<p><span class="math display">\[ \dbinom {n} {n_1, n_2, \ldots, n_k}=\frac{n!}{n_1! \cdot n_2! \cdot \ldots \cdot n_k!} \]</span></p>
+<p><strong>Proof</strong> Since the <span class="math inline">\(n_1\)</span> objects going into the first subset can be chosen in <span class="math inline">\(\dbinom n {n_1}\)</span> ways, the <span class="math inline">\(n_2\)</span> objects going into the second subset can then be chose in <span class="math inline">\(\dbinom {n-n_1} {n_2}\)</span> ways, the <span class="math inline">\(n_3\)</span> objects going into the third subset can then be chosen in <span class="math inline">\(\dbinom {n-n_1-n_2} {n_3}\)</span> ways, and so forth, it follows by Theorem 1.2 that the total number of partitions is</p>
+<p><span class="math display">\[
+\begin{align}
+\dbinom {n} {n_1,n_2,\ldots,n_k} &amp;= \dbinom n {n_1} \cdot \dbinom {n - n_1} {n_2} \cdot \ldots \cdot \dbinom {n-n_1-n_2-\cdots -n_{k-1}}{n_k}\\
+&amp;= \frac{n!}{n_1! \cdot (n-n_1)!} \cdot \frac{(n-n_1)!}{n_2! \cdot (n-n_1-n_2)!} \cdot \ldots \cdot \frac{(n-n_1-n_2-\cdots-n_{k-1})!}{n_k! \cdot 0!}\\
+&amp;= \frac{n!}{n_1! \cdot n_2! \cdot \ldots \cdot n_k!}
+\end{align}
+\]</span></p>
 </div>
 <div id="binomial-coefficients" class="section level2">
 <h2>1.3 Binomial Coefficients</h2>
+<p><strong>Theorem 1.9</strong> <span class="math inline">\((x+y)^n=\sum^n_{r=0} \dbinom n r x^{n-r} y ^r\)</span> for any positive integer <span class="math inline">\(n\)</span></p>
+<p><strong>Binomial Coefficients</strong> the coefficient of <span class="math inline">\(x^{n-r} y ^r\)</span> in the binomial expansion of <span class="math inline">\((x+y)^n\)</span></p>
+<p><strong>Theorem 1.10</strong> For any positive integers <span class="math inline">\(n\)</span> and <span class="math inline">\(r=0,1,2,\ldots,n,\)</span></p>
+<p><span class="math display">\[\dbinom n r = \dbinom n {n-r}\]</span></p>
+<p><strong>Proof</strong> We might argue that when we select a subset of <span class="math inline">\(r\)</span> objects from a set of <span class="math inline">\(n\)</span> distinct objects, we leave a subset of <span class="math inline">\(n-r\)</span> objects; hence, there are as many ways of selecting <span class="math inline">\(r\)</span> objects as there are ways of leaving (or selecting) <span class="math inline">\(n-r\)</span> objects. To prove the theorem algebraically, we write</p>
+<p><span class="math display">\[
+\begin{align}
+\dbinom n {n-r} &amp;= \frac{n!}{(n-r)![n-(n-r)]!} = \frac{n!}{(n-r)!r!}\\
+&amp;= \frac{n!}{r!(n-r)!} = \dbinom n r
+\end{align}
+\]</span></p>
+<p><strong>Theorem 1.11</strong> For any positive integer <span class="math inline">\(n\)</span> and <span class="math inline">\(r=1,2,\ldots, n-1\)</span>,</p>
+<p><span class="math display">\[\dbinom n r = \dbinom {n-1} r + \dbinom {n-1} {r-1}\]</span></p>
+<p><strong>Proof</strong> Substituting <span class="math inline">\(x=1\)</span> into <span class="math inline">\((x+y)^n\)</span>, let us write <span class="math inline">\((1+y)^n = (1+y)(1+y)^{n-1}=(1+y)^{n-1}+y(1+y)^{n-1}\)</span> and equate the coefficient of <span class="math inline">\(y^r\)</span> in <span class="math inline">\((1+y)^{n}\)</span> with that in <span class="math inline">\((1+y)^{n-1}+y(1+y)^{n-1}\)</span>. Since the coefficient of <span class="math inline">\(y^r\)</span> in <span class="math inline">\((1+y)^{n}\)</span> is <span class="math inline">\(\dbinom n r\)</span> and the coefficient of <span class="math inline">\(y^r\)</span> in <span class="math inline">\((1+y)^{n-1}+(1+y)^{n-1}\)</span> is the sum of the coefficient of <span class="math inline">\(y^r\)</span> in <span class="math inline">\((1+y)^{n-1}\)</span>, that is, <span class="math inline">\(\dbinom {n-1} r\)</span>, and the coefficient of <span class="math inline">\(y^{r-1}\)</span> in <span class="math inline">\((1+y)^{n-1}\)</span>, that is, <span class="math inline">\(\dbinom {n-1} {r-1}\)</span>, we obtain</p>
+<p><span class="math display">\[\dbinom n r = \dbinom {n-1} r + \dbinom {n-1} {r-1}\]</span></p>
+<p>which completes the proof.</p>
+<p><strong>Pascal’s Triangle (words)</strong> The first and last entries of each row are the numeral “1” each other entry in any given row is obtained by adding the two entries in the preceding row immediately to its left and its right</p>
+<p><strong>Pascal’s Triangle (numerical)</strong>
+<span class="math display">\[
+\begin{align}
+&amp; \, \quad \quad 1\\
+&amp; \; \quad 1 \quad 1 \\
+&amp; \; 1 \quad 2 \quad 1\\
+1 &amp; \quad 3 \quad 3 \quad 1 \\
+1 \quad&amp; 4 \quad 6 \quad 4 \quad 1 \\
+....&amp;.............
+\end{align}
+\]</span></p>
+<p>The subset can’t contain more elements than the original set; i.e. <span class="math inline">\(\dbinom n r = 0\)</span> whenever <span class="math inline">\(n\)</span> is a positive integer and <span class="math inline">\(r\)</span> is a positive integer greater than <span class="math inline">\(n\)</span>.</p>
 <p><strong>Theorem 1.12</strong></p>
-<p><span class="math display">\[\sum^k_{r=0} \dbinom m k \dbinom n {k-r} = \dbinom {m+n} k \]</span></p>
+<p><span class="math display">\[
+\sum^k_{r=0} \dbinom m k \dbinom n {k-r} = \dbinom {m+n} k
+\]</span></p>
 <p><strong>Proof</strong> Using the same technique as in the proof of Theorem 1.11, let us prove this theorem by equating the coefficients of <span class="math inline">\(y^k\)</span> in the expressions on both sides of the equation</p>
 <p><span class="math display">\[(1+y)^{m+n}=(1+y)^m(1+y)^n\]</span></p>
 <p>The coefficient of <span class="math inline">\(y^k\)</span> in <span class="math inline">\((1+y)^{m+n}\)</span> is <span class="math inline">\(\dbinom {m+n} k\)</span>, and the coefficient of <span class="math inline">\(y^k\)</span> in</p>
-<p><span class="math display">\[(1+y)^m(1+y)^n = \]</span></p>
+<p><span class="math display">\[(1+y)^m(1+y)^n = [ \dbinom m 0 + \dbinom m 1 y + \cdots + \dbinom m m y^m ] \times [ \dbinom n 0 + \dbinom n 1 y + \cdots + \dbinom n n y^n ] \]</span></p>
+<p>is the sum of the prodcts that we obtain by multiplying the constant term of the first factor by the coefficient of <span class="math inline">\(y^k\)</span> in the second factor, the coefficient of <span class="math inline">\(y\)</span> in the first factor by the coefficient of <span class="math inline">\(y^{k-1}\)</span> in the second factor, …, and the coefficient of <span class="math inline">\(y^k\)</span> in the first factor by the constant term of the second factor. Thus, the coefficient of <span class="math inline">\(y^k\)</span> in <span class="math inline">\((1+y)^m(1+y)^n\)</span> is</p>
+<p><span class="math display">\[
+\dbinom m 0 \dbinom n k + \dbinom m 1 \dbinom n {k-1} + \dbinom m 2 \dbinom n {n-2} + \cdots + \dbinom m k \dbinom n 0 = \sum^k_{r=0} \dbinom m r \dbinom n {k-r}
+\]</span></p>
+<p>and this completes the proof.</p>
+<p><strong>Multinomial Coefficients</strong> coefficients that arise in the expansion of <span class="math inline">\((x_1+x_2+\cdots+x_k)^n\)</span>. The multinomial coefficient of the term <span class="math inline">\(x_1^{r_1} \cdot x_2^{r_2} \cdot \ldots \cdot x_k^{r_k}\)</span> in the expansion of <span class="math inline">\((x_1+x_2+\cdots+x_k)^n\)</span> is</p>
+<p><span class="math display">\[
+\dbinom n {r_1,r_2,\ldots,r_k} = \frac {n!}{r_1! \cdot r_2! \cdot \ldots \cdot r_k!}
+\]</span></p>
 </div>
