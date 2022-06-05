@@ -190,12 +190,43 @@ P(A \cap B \cap C) &amp;= P[(A \cap B) \cap C]\\
 <p><span class="math display">\[
 P(A \cap B) = P(A) \cdot P(B)
 \]</span></p>
-<p><strong>Theorem 2.11</strong> - If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent, then</p>
+<p><strong>Theorem 2.11</strong> - If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent, then <span class="math inline">\(A\)</span> and <span class="math inline">\(B^\complement\)</span> are also independent.</p>
+<p><strong>Proof</strong> - Since <span class="math inline">\(A = (A \cap B) \cup (A \cap B^\complement)\)</span>, <span class="math inline">\(A \cap B\)</span> and <span class="math inline">\(A \cap B^\complement\)</span> are mutually exclusive, and <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent by assumption, we have</p>
+<p><span class="math display">\[
+\begin{align}
+P(A) &amp;= P[(A \cap B) \cup (A \cap B^\complement)]\\
+&amp;= P(A \cap B) + P(A \cap B^\complement)\\
+&amp;= P(A) \cdot P(B) + P(A \cap B^\complement)
+\end{align}
+\]</span></p>
+<p>It follows that</p>
+<p><span class="math display">\[
+\begin{align}
+P(A \cap B^\complement) &amp;= P(A) - P(A) \cdot P(B)\\
+&amp;= P(A) \cdot [1 - P(B)]\\
+&amp;= P(A) \cdot P(B^\complement)
+\end{align}
+\]</span></p>
+<p>and hence that <span class="math inline">\(A\)</span> and <span class="math inline">\(B^\complement\)</span> are independent.</p>
+<p><strong>Independent of more than two events</strong> - Events <span class="math inline">\(A_1, A_2, \ldots, A_k\)</span> are <strong>independent</strong> if and only if the probability of the intersections of any 2, 3,…, or <span class="math inline">\(k\)</span> of these events equals the product of their respective probabilities.</p>
 </div>
 <div id="bayes-theorem" class="section level2">
 <h2>2.8 Bayes Theorem</h2>
-<p><strong>Theorem 2.12</strong></p>
-<p><strong>Theorem 2.13</strong></p>
+<p><strong>Theorem 2.12 (aka Rule of Total probability or rule of elimination)</strong> - If the events <span class="math inline">\(B_1, B_2, \ldots, B_k\)</span> constitue a partition of the sample space <span class="math inline">\(S\)</span> and <span class="math inline">\(P(B_i) \ne 0\)</span> for <span class="math inline">\(i=1,2,\ldots,k\)</span> then for any event <span class="math inline">\(A\)</span> in <span class="math inline">\(S\)</span></p>
+<p><span class="math display">\[
+P(A) = \sum_{i=1}^k P(B_i) \cdot P(A|B_i)
+\]</span></p>
+<p><strong>Theorem 2.13 Bayes Theorem</strong> If <span class="math inline">\(B_1, B_2, \ldots, B_k\)</span> constitute a partition of the sample space <span class="math inline">\(S\)</span> and <span class="math inline">\(P(B_i) \ne 0\)</span> for <span class="math inline">\(i=1,2,\ldots,k\)</span> then for any event <span class="math inline">\(A\)</span> in <span class="math inline">\(S\)</span> such that <span class="math inline">\(P(A) \ne 0\)</span></p>
+<p><span class="math display">\[
+P(B_r|A) = \frac{P(B_r) \cdot P(A|B_r)}{\sum_{i=1}^k P(B_i) \cdot P(A|B_i)}
+\]</span></p>
+<p>for <span class="math inline">\(r = 1,2,\ldots,k\)</span></p>
+<p>In words, the probability that event <span class="math inline">\(A\)</span> was reached via the <span class="math inline">\(r\)</span>th branch of the following tree diagram, given that it was reached via one of its <span class="math inline">\(k\)</span> branches, is the ratio of the probability associated with the <span class="math inline">\(r\)</span>th branch to the sum of the probabilities associated with all <span class="math inline">\(k\)</span> branches of the tree.</p>
+<p><strong>Proof</strong> Writing <span class="math inline">\(P(B_r|A) = \frac{P(A \cap B_r)}{P(A)}\)</span> in accordance with the definition of conditional probability, we have only to substitute <span class="math inline">\(P(B_r) \cdot P(A|B_r)\)</span> for <span class="math inline">\(P(A \cap B_r)\)</span> and the formul of Theorem 2.12 for <span class="math inline">\(P(A)\)</span></p>
+<div class="figure">
+<img src="images/BayesTheoremTreeDiagram.png" alt="" />
+<p class="caption">Bayes Theorem Tree Diagram</p>
+</div>
 </div>
 <div id="theory-in-practice" class="section level2">
 <h2>2.9 Theory in Practice</h2>

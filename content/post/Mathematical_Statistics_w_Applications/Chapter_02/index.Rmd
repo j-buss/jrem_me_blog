@@ -262,13 +262,56 @@ P(A \cap B \cap C) &= P[(A \cap B) \cap C]\\
 P(A \cap B) = P(A) \cdot P(B)
 \]
 
-**Theorem 2.11** - If \(A\) and \(B\) are independent, then 
+**Theorem 2.11** - If \(A\) and \(B\) are independent, then \(A\) and \(B^\complement\) are also independent.
+
+**Proof** - Since \(A = (A \cap B) \cup (A \cap B^\complement)\), \(A \cap B\) and \(A \cap B^\complement\) are mutually exclusive, and \(A\) and \(B\) are independent by assumption, we have 
+
+\[
+\begin{align}
+P(A) &= P[(A \cap B) \cup (A \cap B^\complement)]\\
+&= P(A \cap B) + P(A \cap B^\complement)\\
+&= P(A) \cdot P(B) + P(A \cap B^\complement)
+\end{align}
+\]
+
+It follows that 
+
+
+\[
+\begin{align}
+P(A \cap B^\complement) &= P(A) - P(A) \cdot P(B)\\
+&= P(A) \cdot [1 - P(B)]\\
+&= P(A) \cdot P(B^\complement)
+\end{align}
+\]
+
+and hence that \(A\) and \(B^\complement\) are independent.
+
+**Independent of more than two events** - Events \(A_1, A_2, \ldots, A_k\) are **independent** if and only if the probability of the intersections of any 2, 3,..., or \(k\) of these events equals the product of their respective probabilities.
+
+
 
 ## 2.8 Bayes Theorem
 
-**Theorem 2.12**
+**Theorem 2.12 (aka Rule of Total probability or rule of elimination)** - If the events \(B_1, B_2, \ldots, B_k\) constitue a partition of the sample space \(S\) and \(P(B_i) \ne 0\) for \(i=1,2,\ldots,k\) then for any event \(A\) in \(S\)
 
-**Theorem 2.13**
+\[
+P(A) = \sum_{i=1}^k P(B_i) \cdot P(A|B_i)
+\]
+
+**Theorem 2.13 Bayes Theorem** If  \(B_1, B_2, \ldots, B_k\) constitute a partition of the sample space \(S\) and \(P(B_i) \ne 0\) for \(i=1,2,\ldots,k\) then for any event \(A\) in \(S\) such that \(P(A) \ne 0\)
+
+\[
+P(B_r|A) = \frac{P(B_r) \cdot P(A|B_r)}{\sum_{i=1}^k P(B_i) \cdot P(A|B_i)}
+\]
+
+for \(r = 1,2,\ldots,k\)
+
+In words, the probability that event \(A\) was reached via the \(r\)th branch of the following tree diagram, given that it was reached via one of its \(k\) branches, is the ratio of the probability associated with the \(r\)th branch to the sum of the probabilities associated with all \(k\) branches of the tree.
+
+**Proof** Writing \(P(B_r|A) = \frac{P(A \cap B_r)}{P(A)}\) in accordance with the definition of conditional probability, we have only to substitute \(P(B_r) \cdot P(A|B_r)\) for \(P(A \cap B_r)\) and the formul of Theorem 2.12 for \(P(A)\)
+
+![Bayes Theorem Tree Diagram](images/BayesTheoremTreeDiagram.png)
 
 ## 2.9 Theory in Practice
 
