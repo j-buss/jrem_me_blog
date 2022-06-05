@@ -63,33 +63,134 @@ katex: yes
 <p><strong>Theorem 2.2</strong> - If an experiment can result in any one of <span class="math inline">\(N\)</span> different equally likely outcomes, and if <span class="math inline">\(n\)</span> of these outcomes together constitute event <span class="math inline">\(A\)</span>, then the probability of event <span class="math inline">\(A\)</span> is</p>
 <p><span class="math display">\[P(A) = \frac{n}{N}\]</span></p>
 <p><strong>Proof</strong> - Let <span class="math inline">\(O_1, O_2, O_3,\ldots,O_N\)</span> represent the individual outcomes in <span class="math inline">\(S\)</span>, each with probability <span class="math inline">\(\frac{1}{N}\)</span>. If <span class="math inline">\(A\)</span> is the union of <span class="math inline">\(n\)</span> of these mutually exclusive outcomes, and it does not matter which ones, then</p>
-<p>[
-<span class="math display">\[\begin{align}
+<p><span class="math display">\[
+\begin{align}
 P(A)&amp;=P(O_1 \cup O_2  \cup \cdots \cup O_n)\\
 &amp;=P(O_1) + P(O_2) + \cdots + P(O_n)\\
 &amp;=\underbrace{\frac{1}{N} + \frac{1}{N} + \cdots + \frac{1}{N}}_{n \, \text{terms}}\\
-
 &amp;=\frac{n}{N}
-\end{align}\]</span>
-]</p>
+\end{align}
+\]</span></p>
 </div>
 <div id="some-rules-of-probability" class="section level2">
 <h2>2.5 Some Rules of Probability</h2>
-<p><strong>Theorem 2.3</strong></p>
-<p><strong>Theorem 2.4</strong></p>
-<p><strong>Theorem 2.5</strong></p>
-<p><strong>Theorem 2.6</strong></p>
-<p><strong>Theorem 2.7</strong></p>
-<p><strong>Theorem 2.8</strong></p>
+<p><strong>Theorem 2.3</strong> - If <span class="math inline">\(A\)</span> and <span class="math inline">\(A^\complement\)</span> are complementary events in a sample space <span class="math inline">\(S\)</span>, then</p>
+<p><span class="math display">\[P(A^\complement) = 1 - P(A)\]</span></p>
+<p><strong>Proof</strong> In the second and third steps of the proof that follows, we make use of the definition of a complement, according to which <span class="math inline">\(A\)</span> and <span class="math inline">\(A^\complement\)</span> are mutually exclusive and (A^= S ). Thus, we write</p>
+<p><span class="math display">\[
+\begin{align*}
+1 &amp;= P(S) &amp;&amp; \text{(by Postulate 2)} \\
+&amp;=P(A \cup A^\complement)\\
+&amp;=P(A) + P(A^\complement) &amp;&amp; \text{(by Postulate 3)}
+\end{align*}
+\]</span></p>
+<p>and it follows that <span class="math inline">\(P(A^\complement) = 1 - P(A)\)</span></p>
+<p><strong>Theorem 2.4</strong> - <span class="math inline">\(P(\emptyset)=0\)</span> for any sample space <span class="math inline">\(S\)</span>.</p>
+<p><strong>Proof</strong> Since <span class="math inline">\(S\)</span> and <span class="math inline">\(\emptyset\)</span> are mutually exclusive and <span class="math inline">\(S \cup \emptyset = S\)</span> in accordance with the definition of the empty set <span class="math inline">\(\emptyset\)</span>, it follows that</p>
+<p><span class="math display">\[
+\begin{align}
+P(S) &amp;= P(S \cup \emptyset)\\
+&amp;=P(S) + P(\emptyset) &amp;&amp; \text{(by Postulate 3)}
+\end{align}
+\]</span></p>
+<p>and, hence, that <span class="math inline">\(P(\emptyset)=0\)</span></p>
+<p><strong>Theorem 2.5</strong> - If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are events in a sample space <span class="math inline">\(S\)</span> and <span class="math inline">\(A \subset B\)</span>, then <span class="math inline">\(P(A) \le P(B)\)</span>.</p>
+<p><strong>Proof</strong> Since <span class="math inline">\(A \subset B\)</span>, we can write</p>
+<p><span class="math display">\[ B = A \cup (A^\complement \cap B) \]</span></p>
+<p>as can easily be verified by means of a Venn diagram. Then, since <span class="math inline">\(A\)</span> and <span class="math inline">\(A^\complement \cap B\)</span> are mutually exclusive, we get</p>
+<p><span class="math display">\[
+\begin{align}
+P(B) &amp;= P(A) + P(A^\complement \cap B) &amp;&amp; \text{(by Postulate 3)}\\
+&amp; \ge P(A) &amp;&amp; \text{(by Postulate 1)}
+\end{align}
+\]</span></p>
+<p><strong>Theorem 2.6</strong> - <span class="math inline">\(0 \le P(A) \le 1\)</span> for any event <span class="math inline">\(A\)</span>.</p>
+<p><strong>Proof</strong> - Using Theorem 2.5 and the fact that <span class="math inline">\(\emptyset \subset A \subset S\)</span> for any event <span class="math inline">\(A\)</span> in <span class="math inline">\(S\)</span>, we have</p>
+<p><span class="math display">\[
+P(\emptyset) \le P(A) \le P(S)
+\]</span></p>
+<p>Then, <span class="math inline">\(P(\emptyset)=0\)</span> and <span class="math inline">\(P(S)=1\)</span> leads to the result that</p>
+<p><span class="math display">\[
+0 \le P(A) \le 1
+\]</span></p>
+<p><strong>Theorem 2.7</strong> - If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are any two events in a sample space <span class="math inline">\(S\)</span>, then</p>
+<p><span class="math display">\[
+P(A \cup B) = P(A) + P(B) - P(A \cap B)
+\]</span></p>
+<p><strong>Proof</strong> - Assigning the probabilities <span class="math inline">\(a, b\)</span> and <span class="math inline">\(c\)</span> to the mutually exclusive events <span class="math inline">\(A \cap B\)</span>, <span class="math inline">\(A \cap B^\complement\)</span>, and <span class="math inline">\(A^\complement \cap B\)</span> as in the Venn diagram below. We find that:</p>
+<p><span class="math display">\[
+\begin{align}
+P(A \cup B) &amp;= a+b+c\\
+&amp;=(a+b)+(c+a)-a\\
+&amp;=P(A) + P(B) - P(A \cap B)
+\end{align}
+\]</span></p>
+<div class="figure">
+<img src="images/Theorem_2_7_Venn.png" alt="" />
+<p class="caption">Theorem 2.7 Venn Diagram</p>
+</div>
+<p><strong>Theorem 2.8</strong> - If <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, and <span class="math inline">\(C\)</span> are any three events in a sample space <span class="math inline">\(S\)</span>, then</p>
+<p><span class="math display">\[
+P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P(A \cap B \cap C)
+\]</span></p>
+<p><strong>Proof</strong> - Writing <span class="math inline">\(A \cup B \cup C\)</span> as <span class="math inline">\(A \cup (B \cup C)\)</span> and using the formula of Theorem 2.7 twice, once for <span class="math inline">\(P[A \cup (B \cup C)]\)</span> and once for <span class="math inline">\(P(B \cup C)\)</span>, we get</p>
+<p><span class="math display">\[
+\begin{align}
+P(A \cup B \cup C) &amp;= P[ A \cup (B \cup C)]\\
+&amp;= P(A) + P(B \cup C) - P[A \cap (B \cup C)]\\
+&amp;= P(A) + P(B) + P(C) - P(B \cup C) - P[A \cap (B \cup C)]
+\end{align}
+\]</span></p>
+<p>Then, using the distributive law that <span class="math inline">\(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\)</span>:</p>
+<p><span class="math display">\[
+\begin{align}
+P[A \cap (B \cup C)] &amp;= P[(A \cap B) \cup (A \cap C)] \\
+&amp;= P(A \cap B) + P(A \cap C) - P[(A \cap B) \cap (A \cap C)]\\
+&amp;= P(A \cap B) + P(A \cap C) - P(A \cap B \cap C)\\
+\end{align}
+\]</span></p>
+<p>and hence that</p>
+<p><span class="math display">\[
+P(A \cup B \cup C)= P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P(A \cap B \cap C)
+\]</span></p>
+<p><strong>Odds</strong> - the ratio of the probability thtat the evenet will occur to the probability that it will not occur, provided neither propability is zero. Odds are generally quoted in terms of positive integers having no common factor: <span class="math inline">\(p = \frac{A}{A+B}\)</span></p>
 </div>
 <div id="conditional-probability" class="section level2">
 <h2>2.6 Conditional Probability</h2>
-<p><strong>Theorem 2.9</strong></p>
-<p><strong>Theorem 2.10</strong></p>
+<p><strong>Conditional Probability</strong> - If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are any two events in a a sample space <span class="math inline">\(S\)</span> and <span class="math inline">\(P(A) \ne 0\)</span>, then the conditional probability of <span class="math inline">\(B\)</span> given <span class="math inline">\(A\)</span> is</p>
+<p><span class="math display">\[
+P(B|A) = \frac{P(A \cap B)}{P(A)}
+\]</span></p>
+<p><strong>Theorem 2.9 (Multiplication Rule)</strong>- If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are any two events in a sample space <span class="math inline">\(S\)</span> and <span class="math inline">\(P(A)\ne 0\)</span>, then
+<span class="math display">\[
+P(A \cap B)=P(A) \cdot P(B|A)
+\]</span></p>
+<p>Alternatively if <span class="math inline">\(P(B)\ne 0\)</span>, then
+<span class="math display">\[
+P(A \cap B)=P(B) \cdot P(A|B)
+\]</span></p>
+<p><strong>Multiplication Rule (words)</strong> - The probability that <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> will both occur is the product of the probability of <span class="math inline">\(A\)</span> and the conditional probability of <span class="math inline">\(B\)</span> given <span class="math inline">\(A\)</span>.</p>
+<p><strong>Sampling without replacement</strong> - executing multiple experiments back to back where the first set is not replaced before the second set is selected</p>
+<p><strong>Theorem 2.10</strong> - If <span class="math inline">\(A, B\)</span>, and <span class="math inline">\(C\)</span> are any three events in a sample space <span class="math inline">\(S\)</span> such that <span class="math inline">\(P(A \cap B) \ne 0\)</span>, then</p>
+<p><span class="math display">\[
+P(A \cap B \cap C) = P(A) \cdot P(B|A) \cdot P(C|A \cap B)
+\]</span></p>
+<p><strong>Proof</strong> - Writing <span class="math inline">\(A \cap B \cap C\)</span> as <span class="math inline">\((A \cap B) \cap C\)</span> and using the formula of Theorem 2.9 twice, we get</p>
+<p><span class="math display">\[
+\begin{align}
+P(A \cap B \cap C) &amp;= P[(A \cap B) \cap C]\\
+&amp;= P(A \cap B) \cdot P(C|A \cap B)\\
+&amp;= P(A) \cdot P(B|A) \cdot P(C|A \cap B)
+\end{align}
+\]</span></p>
 </div>
 <div id="independent-events" class="section level2">
 <h2>2.7 Independent Events</h2>
-<p><strong>Theorem 2.11</strong></p>
+<p><strong>Independence</strong> - Two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <strong>independent</strong> if and only if</p>
+<p><span class="math display">\[
+P(A \cap B) = P(A) \cdot P(B)
+\]</span></p>
+<p><strong>Theorem 2.11</strong> - If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent, then</p>
 </div>
 <div id="bayes-theorem" class="section level2">
 <h2>2.8 Bayes Theorem</h2>
@@ -98,8 +199,12 @@ P(A)&amp;=P(O_1 \cup O_2  \cup \cdots \cup O_n)\\
 </div>
 <div id="theory-in-practice" class="section level2">
 <h2>2.9 Theory in Practice</h2>
-<p><strong>Theorem 2.14</strong></p>
-<p><strong>Theorem 2.15</strong>- The <strong>reliability of a parallel system</strong> consisting of <span class="math inline">\(n\)</span> independent components is given by</p>
+<p><strong>Definition 2.7 Reliability</strong> - probability that it will function within specified limits for a specified period of time under specified environmental conditions</p>
+<p><strong>Theorem 2.14</strong> - The <strong>reliability of a series system</strong> consisting of <span class="math inline">\(n\)</span> independent components is given by</p>
+<p><span class="math display">\[R_s = \prod_{i=1}^n R_i\]</span></p>
+<p>where <span class="math inline">\(R_i\)</span> is the reliability of the <span class="math inline">\(i\)</span>th component.</p>
+<p><strong>Proof</strong> The proof follows immediately by iterating in Definition 2.5 - Independence</p>
+<p><strong>Theorem 2.15</strong> - The <strong>reliability of a parallel system</strong> consisting of <span class="math inline">\(n\)</span> independent components is given by</p>
 <p><span class="math display">\[R_p = 1 - \prod^n_{i=1} (1-R_i)\]</span></p>
 <p><strong>Proof</strong> - the proof of this theorem is identical to that of Theorem 2.14, with <span class="math inline">\((1 - R_i)\)</span> replacing <span class="math inline">\(R_i\)</span></p>
 </div>
