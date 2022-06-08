@@ -1,0 +1,24 @@
+---
+title: "Chapter 6 - Special Probability Densities"
+author: Jeremy Buss
+output: html_document
+date: "`r Sys.Date()`"
+categories:
+  - John E. Freund's Mathematical Statistics with Applications - Miller/Miller
+  - Statistics
+draft: yes
+katex: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+install.packages("blogdown")
+```
+
+
+
+## 3.1 Random Variables
