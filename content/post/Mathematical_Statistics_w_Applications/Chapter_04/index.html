@@ -2,7 +2,7 @@
 title: "Chapter 4 - Mathematical Expectation"
 author: Jeremy Buss
 output: html_document
-date: "2022-06-06"
+date: "2022-06-12"
 categories:
   - John E. Freund's Mathematical Statistics with Applications - Miller/Miller
   - Statistics
@@ -12,6 +12,356 @@ katex: yes
 
 
 
-<div id="random-variables" class="section level2">
-<h2>3.1 Random Variables</h2>
+<div id="introduction" class="section level2">
+<h2>4.1 Introduction</h2>
+<p><strong>Mathematical Expectation</strong> - Idea arising from games; the product of the amount a player stands to win and the probability that he or she will win</p>
+</div>
+<div id="the-expected-value-of-a-random-variable" class="section level2">
+<h2>4.2 The Expected Value of a Random Variable</h2>
+<p><strong>Expected Value</strong> - If <span class="math inline">\(X\)</span> is a discrete random variable and <span class="math inline">\(f(x)\)</span> si the value of its probability distribution at <span class="math inline">\(x\)</span>, the <strong>expected value of <span class="math inline">\(X\)</span></strong> is</p>
+<p><span class="math display">\[
+E(X)= \underset{x} \sum x \cdot f(x)
+\]</span></p>
+<p>Correspondingly, if <span class="math inline">\(X\)</span> si a continuous random variable and <span class="math inline">\(f(x)\)</span> is the value of its probability density at <span class="math inline">\(x\)</span>, the <strong>expected value of <span class="math inline">\(X\)</span></strong> is</p>
+<p><span class="math display">\[
+E(X)=\int_{- \infty}^{\infty} x \cdot f(x) dx
+\]</span></p>
+<p><strong>Theorem 4.1</strong> - If <span class="math inline">\(X\)</span> is a discrete random variable and <span class="math inline">\(f(x)\)</span> is the value of its probability distribution at <span class="math inline">\(x\)</span>, the expected value of <span class="math inline">\(g(x)\)</span> is given by</p>
+<p><span class="math display">\[
+E[g(x)]= \underset{x}\sum g(x) \cdot f(x)
+\]</span></p>
+<p>Correspondingly, if <span class="math inline">\(X\)</span> is a continuous random variable and <span class="math inline">\(f(x)\)</span> is the value of its probability density at <span class="math inline">\(x\)</span>, the expected value of <span class="math inline">\(g(X)\)</span> is given by</p>
+<p><span class="math display">\[
+E[g(x)]=\int_{- \infty}^{ \infty } g(x) \cdot f(x) dx
+\]</span></p>
+<p><strong>Proof</strong> Since a more general proof is behond the scope of this text, we shall prove this theorem here only for the case where <span class="math inline">\(X\)</span> is discrete and has a finate range. Since <span class="math inline">\(y=g(x)\)</span> does not necessarily define a one-to-one correspondence, suppose that <span class="math inline">\(g(x)\)</span> takes on the value <span class="math inline">\(g_i\)</span> when <span class="math inline">\(x\)</span> takes on the values <span class="math inline">\(x_{i1},x_{i2},\ldots,x_{in_i}\)</span>. Then, the probability that <span class="math inline">\(g(X)\)</span> will take on the value <span class="math inline">\(g_i\)</span> is</p>
+<p><span class="math display">\[
+P[g(X)=g_i] = \sum_{j=1}^{n_i}f(x_{ij})
+\]</span></p>
+<p>and if <span class="math inline">\(g(x)\)</span> takes on the values <span class="math inline">\(g_1,g_2,\ldots,g_m\)</span>, it follows that</p>
+<p><span class="math display">\[
+\begin{align}
+E[g(X)]&amp;= \sum_{i=1}^m g_i \cdot P[g(X)=g_i]\\
+&amp;= \sum_{i=1}^m g_i \cdot \sum_{i=1}^m f(x_{ij})\\
+&amp;= \sum_{i=1}^m \sum_{i=1}^m g_i \cdot f(x_{ij})\\
+&amp;= \sum_{x} g(x) \cdot f(x)\\
+\end{align}
+\]</span></p>
+<p>where the summation extends over all values of <span class="math inline">\(X\)</span>.</p>
+<p><strong>Theorem 4.2</strong> - If <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are constants, then</p>
+<p><span class="math display">\[
+E(aX + b)=aE(X)+b
+\]</span></p>
+<p><strong>Proof</strong> Using Theorem 4.1 with <span class="math inline">\(g(X)=aX+b\)</span>, we get</p>
+<p><span class="math display">\[
+\begin{align}
+E(aX+b)&amp;=\int_{-\infty}^{\infty}(ax+b) \cdot f(x) dx\\
+&amp;=a \int_{-\infty}^{\infty}x \cdot f(x)dx+b \int_{-\infty}^{\infty}f(x)dx\\
+&amp;=aE(X)+b
+\end{align}
+\]</span></p>
+<p><strong>Corollary 4.1</strong> - If <span class="math inline">\(a\)</span> is a constant, then
+<span class="math display">\[
+E(aX)=aE(X)
+\]</span></p>
+<p><strong>Corollary 4.2</strong> - If <span class="math inline">\(b\)</span> is a constant, then
+<span class="math display">\[
+E(b)=b
+\]</span></p>
+<p><strong>Theorem 4.3</strong> - If <span class="math inline">\(c_1, c_2, \ldots , c_n\)</span> are constants, then</p>
+<p><span class="math display">\[
+E \left [ \sum_{i=1}^n c_i g_i(X)  \right ] = \sum_{i=1}^n c_i E[g_i(X)]
+\]</span></p>
+<p><strong>Proof</strong> According to Theorem 4.1 with <span class="math inline">\(g(X)=\sum_{i=1}^{n} c_i g_i (X)\)</span>, we get</p>
+<p><span class="math display">\[
+\begin{align}
+E \left [ \sum_{i=1}^n c_i g_i(X)  \right ] &amp;= \sum_x \left [ \sum_{i=1}^n c_i g_i(x) \right ] f(x)\\
+&amp;= \sum_{i=1}^n \sum_x c_i g_i(x)f(x)\\
+&amp;= \sum_{i=1}^n c_i \sum_x g_i(x)f(x)\\
+&amp;= \sum_{i=1}^n c_i E[g_i(X) ] \\
+\end{align}
+\]</span></p>
+<p><strong>Theorem 4.4</strong> - If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are discrete random variables and <span class="math inline">\(f(x,y)\)</span> is the value of their joint probability distribution at <span class="math inline">\((x,y)\)</span>, the expected value of <span class="math inline">\(g(X,Y)\)</span> is</p>
+<p><span class="math display">\[
+E[g(X,Y)] = \sum_x \sum_y g(x,y) \cdot f(x,y)
+\]</span></p>
+<p>Correspondingly, if <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are continuous random variables and <span class="math inline">\(f(x,y)\)</span> is the value of their joint probability density at <span class="math inline">\((x,y)\)</span>, the expected value of <span class="math inline">\(g(X,Y)\)</span> is</p>
+<p><span class="math display">\[
+E[g(x,y)] = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g(x,y) f(x,y) dx dy
+\]</span></p>
+<p><strong>Theorem 4.5</strong> - If <span class="math inline">\(c_1, c_2, \ldots , c_n\)</span> are constants, then</p>
+<p><span class="math display">\[
+E \left [ \sum_{i=1}^n c_i g_i (X_1, X_2, \ldots, X_k)\right ] = \sum_{i=1}^n c_i E[g_i(X_1, X_2, \ldots, X_k)]
+\]</span></p>
+</div>
+<div id="moments" class="section level2">
+<h2>4.3 Moments</h2>
+<p><strong>Moments About the Origin</strong> - The <strong><span class="math inline">\(r\)</span>th moment about the origin</strong> of a random variable <span class="math inline">\(X\)</span>, denoted by <span class="math inline">\(\mu_r^{&#39;}\)</span>, is the expected value of <span class="math inline">\(X^{&#39;}\)</span>; symbolically</p>
+<p><span class="math display">\[
+\mu_r^{&#39;} = E(X^r)=\sum_x x^r \cdot f(x)
+\]</span></p>
+<p>for <span class="math inline">\(r=0,1,2,\ldots\)</span> when <span class="math inline">\(X\)</span> is discrete, and</p>
+<p><span class="math display">\[
+\mu_r^{&#39;}=E(X^r)=\int_{- \infty}^{\infty} x^r \cdot f(x) dx
+\]</span></p>
+<p>when <span class="math inline">\(X\)</span> is continuous</p>
+<p><strong>Mean of a Distribution</strong> - <span class="math inline">\(\mu_1^{&#39;}\)</span> is called the <strong>mean</strong> of the distribution of <span class="math inline">\(X\)</span>, or simply the <strong>mean of <span class="math inline">\(X\)</span></strong>, and it is denoted simply by <span class="math inline">\(\mu\)</span></p>
+<p><strong>Moments about the Mean</strong> - The <strong><span class="math inline">\(r\)</span>th moment about the mean</strong> of a random variable <span class="math inline">\(X\)</span>, denoted by <span class="math inline">\(\mu_r\)</span>, is the expected value of <span class="math inline">\((X-\mu)^r\)</span>, symbolically</p>
+<p><span class="math display">\[
+\mu_r = E[(X-\mu)^r]=\sum_x (x-\mu)^r \cdot f(x)
+\]</span></p>
+<p>for <span class="math inline">\(r=0,1,2,\ldots\)</span> when <span class="math inline">\(X\)</span> is discrete, and</p>
+<p><span class="math display">\[
+\mu_r=E[(X-\mu)^r]=\int_{- \infty}^{\infty} x^r \cdot f(x) dx
+\]</span></p>
+<p>when <span class="math inline">\(X\)</span> is continuous</p>
+<p><strong>Variance</strong> - <span class="math inline">\(\mu_2\)</span> is called the <strong>variance</strong> of the distribution of <span class="math inline">\(X\)</span>, or simply the <strong>variance of <span class="math inline">\(X\)</span></strong>, and is denoted by <span class="math inline">\(\sigma^2, \, \sigma_x^2, \, var(X)\)</span> or <span class="math inline">\(V(X)\)</span>. The positive square root of the variance, <span class="math inline">\(\sigma\)</span>, is call the <strong>standard deviation of <span class="math inline">\(X\)</span></strong></p>
+<p><strong>Theorem 4.6</strong></p>
+<p><span class="math display">\[
+\sigma^2 = \mu_2^{&#39;}-\mu^2
+\]</span></p>
+<p><strong>Proof</strong></p>
+<p><span class="math display">\[
+\begin{align}
+\sigma^2 &amp;= E[(X-\mu)^2]\\
+&amp;=E(X^2-2 \mu X+\mu^2)\\
+&amp;=E(X^2)-2 \mu E(X)+E(\mu^2)\\
+&amp;=E(X^2)-2 \mu \cdot \mu+\mu^2\\
+\end{align}
+\]</span></p>
+<p><strong>Theorem 4.7</strong> - If <span class="math inline">\(X\)</span> has the variance <span class="math inline">\(\sigma^2\)</span>, then</p>
+<p><span class="math display">\[
+\text{var}(aX+b)= a^2 b^2
+\]</span></p>
+</div>
+<div id="chebyshevs-theorem" class="section level2">
+<h2>4.4 Chebyshev’s Theorem</h2>
+<p><strong>Theorem 4.8</strong> or <strong>Chebyshev’s Theorem</strong> - If <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> are the mean and the standard deviation of a random variable <span class="math inline">\(X\)</span>, then for any positive constant <span class="math inline">\(k\)</span> the probability is <em>at least</em> <span class="math inline">\(1 - \frac{1}{k^2}\)</span> that <span class="math inline">\(X\)</span> will take on a value within <span class="math inline">\(k\)</span> standard deviationes fo the mean; symbolically,</p>
+<p><span class="math display">\[
+P(|x-\mu|&lt; k \sigma) \ge 1- \frac{1}{k^2}, \; \sigma \ne 0
+\]</span></p>
+<p><strong>Proof</strong> According to <em>Moments about the mean</em> and <em>Variance</em>, we write</p>
+<p><span class="math display">\[
+\sigma^2 = E[(X-\mu)^2] = \int_{-\infty}^{\infty}(x-\mu)^2 \cdot f(x) dx
+\]</span></p>
+<div class="figure">
+<img src="images/ChebyshevsTheorem.png" alt="" />
+<p class="caption"><strong>Figure 4.2</strong> Diagram of proof of Chebyshev’s theorem</p>
+</div>
+<p>Then, dividing the integral into three parts as shown in Figure 4.2, we get</p>
+<p><span class="math display">\[
+\sigma^2 = \int_{- \infty}^{\mu - k \sigma}(x - \mu)^2 \cdot f(x) dx +
+\int_{\mu - k \sigma}^{\mu + k \sigma}(x - \mu)^2 \cdot f(x) dx +
+\int_{\mu + k \sigma}^{\infty}(x - \mu)^2 \cdot f(x) dx
+\]</span></p>
+<p>Since the integrand <span class="math inline">\((x - \mu)^2 \cdot f(x)\)</span> is nonnegative, we can form the inequality</p>
+<p><span class="math display">\[
+\sigma^2 \ge \int_{- \infty}^{\mu - k \sigma}(x - \mu)^2 \cdot f(x) dx +
+\int_{\mu + k \sigma}^{\infty}(x - \mu)^2 \cdot f(x) dx
+\]</span></p>
+<p>by deleting the second integral. Therefore, since <span class="math inline">\((x-\mu)^2 \ge k^2 \sigma ^2\)</span> for <span class="math inline">\(x \le \mu - k\sigma\)</span> or <span class="math inline">\(x \ge \mu + k \sigma\)</span> it follows that</p>
+<p><span class="math display">\[
+\sigma^2 \ge \int_{- \infty}^{\mu - k \sigma} k^2 \sigma^2 \cdot f(x) dx +
+\int_{\mu + k \sigma}^{\infty}k^2 \sigma^2 \cdot f(x) dx
+\]</span></p>
+<p>and hence that</p>
+<p><span class="math display">\[
+\frac{1}{k^2} \ge \int_{- \infty}^{\mu -k \sigma} f(x) dx +
+\int_{\mu + k \sigma}^{\infty} f(x) dx
+\]</span></p>
+<p>provided <span class="math inline">\(\sigma^2 \ne 0\)</span>. Since the sum of the two integrals on the right-hand side is the probability that <span class="math inline">\(X\)</span> will take on a value less than or equal to <span class="math inline">\(\mu - k \sigma\)</span> or greater than or equal to <span class="math inline">\(\mu +k \sigma\)</span>, we have thus shown that</p>
+<p><span class="math display">\[
+P(|X-\mu| \ge k \sigma) \le \frac{1}{k^2}
+\]</span></p>
+<p>and it follows that</p>
+<p><span class="math display">\[
+P(|X-\mu| \lt k \sigma) \ge 1 - \frac{1}{k^2}
+\]</span></p>
+</div>
+<div id="moment-generating-functions" class="section level2">
+<h2>4.5 Moment-Generating Functions</h2>
+<p><strong>Moment Generating Function</strong> - The <strong>moment generating function</strong> of a random variable <span class="math inline">\(X\)</span>, where it exists, is given by</p>
+<p><span class="math display">\[
+M_X(t)= E(e^{tX}) = \sum_x e^{tX} \cdot f(x)
+\]</span></p>
+<p>when <span class="math inline">\(X\)</span> is discrete, and</p>
+<p><span class="math display">\[
+M_X(t)= E(e^{tX}) = \int_{- \infty}^{\infty}e^{tx} \cdot f(x) dx
+\]</span></p>
+<p>when <span class="math inline">\(X\)</span> is continuous</p>
+<p><strong>Theorem 4.9</strong> -</p>
+<p><span class="math display">\[
+\frac{d^r M_X(t)}{dt^r} \Bigg \vert _{t=0}=\mu_r^{&#39;}
+\]</span></p>
+<p><strong>Theorem 4.10</strong> - If <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are constatns, then:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(M_{X+a}(t) = E [e^{(X + a)t}] = e^{at} \cdot M_X (t)\)</span></li>
+<li><span class="math inline">\(M_{bX}(t) = E (e^{bXt}) = M_X (bt)\)</span></li>
+<li><span class="math inline">\(M_{\frac{X+a}{b}}(t) = E [e^{(\frac{X + a}{b})t}] = e^{\frac{a}{b}t} \cdot M_X (\frac{t}{b})\)</span></li>
+</ol>
+</div>
+<div id="product-moments" class="section level2">
+<h2>4.6 Product Moments</h2>
+<p><strong>Product Moments About the Origin</strong> - The <strong><span class="math inline">\(r\)</span>th and <span class="math inline">\(s\)</span>th product moment about the origin</strong> of the random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, dnoted by <span class="math inline">\(\mu^{&#39;}_{r,s}\)</span>, is the expected value of <span class="math inline">\(X^r Y^s\)</span>; symbolically,</p>
+<p><span class="math display">\[
+\mu^{&#39;}_{r,s}= E(X^r Y^s)=\sum_x \sum_y x^r y^s \cdot f(x,y)
+\]</span></p>
+<p>for <span class="math inline">\(r=0,1,2, \ldots\)</span> and <span class="math inline">\(s=0,1,2,\ldots\)</span> when <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are discrete, and</p>
+<p><span class="math display">\[
+\mu^{&#39;}_{r,s}= E(X^r Y^s)=\int_{- \infty}^{\infty} \int_{- \infty}^{\infty} x^r y^s \cdot f(x,y) dx dy
+\]</span></p>
+<p>when <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are continuous</p>
+<p><strong>Product Moments About the Mean</strong> - The <strong><span class="math inline">\(r\)</span>th and <span class="math inline">\(s\)</span>th product moment about the means</strong> of the random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, denoted by <span class="math inline">\(\mu_{r,s}\)</span>, is the expected value of <span class="math inline">\((X-\mu_X)^r (Y - \mu_Y)^s\)</span>; symbolically,</p>
+<p><span class="math display">\[
+\begin{align}
+\mu_{r,s} &amp;= E[(X- \mu_X)^r (Y - \mu_Y)^s)]\\
+&amp;=\sum_x \sum_y (x - \mu_X)^r (y - \mu_Y)^s \cdot f(x,y)
+\end{align}
+\]</span></p>
+<p>for <span class="math inline">\(r=0,1,2, \ldots\)</span> and <span class="math inline">\(s=0,1,2,\ldots\)</span> when <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are discrete, and</p>
+<p><span class="math display">\[
+\begin{align}
+\mu_{r,s} &amp;= E[(X- \mu_X)^r (Y - \mu_Y)^s)]\\
+&amp;= \int_{- \infty}^{\infty} \int_{- \infty}^{\infty} (x - \mu_X)^r (y - \mu_Y)^s \cdot f(x,y)
+\end{align}
+\]</span></p>
+<p>when <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are continuous</p>
+<p><strong>Covariance</strong> - <span class="math inline">\(\mu_{1,1}\)</span> is called the <strong>covaraince</strong> of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, and it is denoted by <span class="math inline">\(\sigma_{XY}\)</span>, cov(<span class="math inline">\(X,Y\)</span>), or C(<span class="math inline">\(X,Y\)</span>)</p>
+<p><strong>Theorem 4.11</strong> -</p>
+<p><span class="math display">\[
+\sigma_{XY} = \mu_{1,1}^{&#39;}-\mu_{X} \mu_{Y}
+\]</span></p>
+<p><strong>Proof</strong> - Using the various theorems about expected values, we can write</p>
+<p><span class="math display">\[
+\begin{align}
+\sigma_{XY} &amp;= E[(X-\mu_X)(Y-\mu_Y)]\\
+&amp;=E(XY-X \mu_Y - Y \mu_X - \mu_X \mu_Y)\\
+&amp;=E(XY) - \mu_Y E(X)-\mu_X E(Y) +\mu_X \mu_Y\\
+&amp;=E(XY) - \mu_Y \mu_X-\mu_X \mu_Y  +\mu_X \mu_Y\\
+&amp;=\mu_{1,1}^{&#39;}-\mu_{X} \mu_{Y}\\
+\end{align}
+\]</span></p>
+<p><strong>Theorem 4.12</strong> - If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, then <span class="math inline">\(E(XY)= E(X) \cdot E(Y)\)</span> and <span class="math inline">\(\sigma_{XY} =0\)</span></p>
+<p><strong>Proof</strong> For the discrete case we have, by definiteion,</p>
+<p><span class="math display">\[
+E(XY)=\sum_x \sum_y xy \cdot f(x,y)
+\]</span></p>
+<p>Since <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, we can write <span class="math inline">\(f(x,y)=g(x)\cdot h(y)\)</span>, where <span class="math inline">\(g(x)\)</span> and <span class="math inline">\(h(y)\)</span> are the values of the marginal distributions of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, and we get</p>
+<p><span class="math display">\[
+\begin{align}
+E(XY)&amp;=\sum_x \sum_y xy \cdot g(x) h(y)\\
+&amp;=\left [ \sum_x x \cdot g(x) \right ]\left [ \sum_y y \cdot h(y) \right ]\\
+&amp;= E(X) \cdot E(Y)
+\end{align}
+\]</span></p>
+<p>Hence,</p>
+<p><span class="math display">\[
+\begin{align}
+\sigma_{XY} &amp;= \mu_{1,1}^{&#39;}-\mu_{X} \mu_{Y}\\
+&amp;=E(X) \cdot E(Y) - E(X) \cdot E(Y)\\
+&amp;=0
+\end{align}
+\]</span></p>
+<p><strong>Theorem 4.13</strong> - If <span class="math inline">\(X_1, X_2,\ldots,X_n\)</span> are independent, then</p>
+<p><span class="math display">\[
+E(X_1, X_2,\ldots,X_n)=E(X_1)\cdot E(X_2) \cdot \ldots \cdot E(X_n)
+\]</span></p>
+</div>
+<div id="moments-of-linear-combinations-of-random-variables" class="section level2">
+<h2>4.7 Moments of Linear Combinations of Random Variables</h2>
+<p><strong>Theorem 4.14</strong> - If <span class="math inline">\(X_1, X_2,\ldots,X_n\)</span> are random variables and</p>
+<p><span class="math display">\[
+Y = \sum_{i=1}^n a_i X_i
+\]</span></p>
+<p>where <span class="math inline">\(a_1, a_2, \ldots, a_n\)</span> are constants, then</p>
+<p><span class="math display">\[
+E(Y) = \sum_{i=1}^n a_i E(X_i)
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\text{var}(Y)=\sum_{i=1}^n a_i^2 \cdot \text{var}(X_i)+ 2 \underset{i \lt j}{\sum \sum} a_i a_j \cdot \text{cov} (X_i X_j)
+\]</span></p>
+<p>where the double summation extends over all values of <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>, from 1 to <span class="math inline">\(n\)</span>, for which <span class="math inline">\(i \lt j\)</span>.</p>
+<p><strong>Proof</strong> From <strong>variance</strong> with <span class="math inline">\(g_i (X_1, X_2, \ldots, X_k)=X_i\)</span> for <span class="math inline">\(i=0,1,2, \ldots n\)</span> it follows that immediately that</p>
+<p><span class="math display">\[
+E(Y)=E \left ( \sum_{i=1}^n a_iX_i \right ) = \sum_{i=1}^n a_i E(X_i)
+\]</span></p>
+<p>and this proves the first part of the theorem. To obtain the expression for the variance of <span class="math inline">\(Y\)</span>, let us write <span class="math inline">\(\mu_i\)</span> for <span class="math inline">\(E(X_i)\)</span> so that we get</p>
+<p><span class="math display">\[
+\begin{align}
+\text{var}(Y) = E([Y-E(Y)]^2)&amp;=E \left \{  \left [ \sum_{i=1}^n a_i X_i  - \sum_{i=1}^n a_i E(X_i)\right ]^2 \right \}\\
+&amp;=E \left \{  \left [ \sum_{i=1}^n a_i (X_i  - \mu_i)\right ]^2 \right \}
+\end{align}
+\]</span></p>
+<p>Then, expanding by means of the multinomial theorem, according to which <span class="math inline">\((a+b+c+d)^2\)</span>, for example, equals <span class="math inline">\(a^2+b^2+c^c+d^2+2ab+2ac+2ad+2bc+2bd+2cd\)</span>, and again referring to Theorem 4.5, we get</p>
+<p><span class="math display">\[
+\begin{align}
+\text{var}(Y) &amp;= \sum_{i=1}^n a_i^2 E[(X_i - \mu_i)^2]+ 2 \underset{i&lt;j}{\sum \sum}a_i a_j E[(X_i - \mu_i)(X_j - \mu_j)]\\
+&amp;= \sum_{i=1}^n a_i^2 \cdot \text{var} (X_i)+ 2 \underset{i&lt;j}{\sum \sum}a_i a_j \cdot \text{cov}(X_i,X_j)\\
+\end{align}
+\]</span></p>
+<p>Note that we have tacitly made use of the fact that <span class="math inline">\(\text{cov}(X_i, X_j)=\text{cov}(X_j,X_i)\)</span></p>
+<p><strong>Corollary 4.3</strong> - If the random variables <span class="math inline">\(X_1, X_2,\ldots,X_n\)</span> are independent and <span class="math inline">\(Y=\sum_{i=1}^n a_i X_i\)</span>, then</p>
+<p><span class="math display">\[
+\text{var}(Y)=\sum_{i=1}^n a_i^2 \cdot \text{var}(X_i)
+\]</span></p>
+<p><strong>Theorem 4.15</strong> - If <span class="math inline">\(X_1, X_2,\ldots,X_n\)</span> are random variables and</p>
+<p><span class="math display">\[
+\begin{align}
+Y_1=\sum_{i=1}^n a_i X_i \; \text{and} \; Y_2=\sum_{i=1}^n b_i X_i
+\end{align}
+\]</span></p>
+<p>where <span class="math inline">\(a_1,a_2,\ldots,a_n,b_1, b_2, \ldots, b_n\)</span> are constants, then</p>
+<p><span class="math display">\[
+\begin{align}
+\text{cov}(Y_1,Y_2) = \sum_{i=1}^n a_i b_i \cdot \text{var} (X_i)+ \underset{i&lt;j}{\sum \sum}(a_i b_j + a_j b_i) \cdot \text{cov}(X_i,X_j)\\
+\end{align}
+\]</span></p>
+<p><strong>Corollary 4.4</strong> - If the random variables <span class="math inline">\(X_1, X_2,\ldots,X_n\)</span> are independent, <span class="math inline">\(Y_1=\sum_{i=1}^n a_i X_i\)</span> and <span class="math inline">\(Y_2=\sum_{i=1}^n b_i X_i\)</span></p>
+<p><span class="math display">\[
+\text{cov}(Y_1, Y_2)=\sum_{i=1}^n a_i b_i \cdot \text{var}(X_i)
+\]</span></p>
+</div>
+<div id="conditional-expectations" class="section level2">
+<h2>4.8 Conditional Expectations</h2>
+<p><strong>Conditional Expectation</strong> - If <span class="math inline">\(X\)</span> is a discrete random variable, and <span class="math inline">\(f(x|y)\)</span> is the value of the conditional probability distribution of <span class="math inline">\(X\)</span> give <span class="math inline">\(Y=y\)</span> at <span class="math inline">\(x\)</span>, the **conditioanl expectation of <span class="math inline">\(u(X)\)</span> given <span class="math inline">\(Y=y\)</span> is</p>
+<p><span class="math display">\[
+E[(u(X)|y)]=\sum_x u(x)\cdot f(x|y)
+\]</span></p>
+<p>Correspondingly, if <span class="math inline">\(X\)</span> is a continuous variable and <span class="math inline">\(f(x|y)\)</span> is the value of the conditional probability distribution of <span class="math inline">\(X\)</span> given <span class="math inline">\(Y=y\)</span> at <span class="math inline">\(x\)</span>, the <strong>conditional expectation of <span class="math inline">\(u(X)\)</span> given <span class="math inline">\(Y=y\)</span></strong> is</p>
+<p><span class="math display">\[
+E[(u(X)|y)]=\int_{- \infty}^{\infty} u(x)\cdot f(x|y)dx
+\]</span></p>
+</div>
+<div id="the-theory-in-practice" class="section level2">
+<h2>4.9 The Theory in Practice</h2>
+<p><strong>Conditional Mean</strong></p>
+<p><span class="math display">\[
+\mu_{X|y}=E(X|y)
+\]</span></p>
+<p><strong>Conditional Variance</strong> - of <span class="math inline">\(X\)</span> given <span class="math inline">\(Y=y\)</span></p>
+<p><span class="math display">\[
+\begin{align}
+\sigma_{X|y}^2&amp;=E[(X - \mu_{X|y})^2|y]\\
+&amp;=E(X^2|y)-\mu_{X|y}^2
+\end{align}
+\]</span></p>
+<p><strong>Sample Mean</strong></p>
+<p><span class="math display">\[
+\overline{x}=\sum_{i=1}^n \frac{x_i}{n}
+\]</span></p>
+<p><strong>Median</strong> - Arrange the observations in ascending order:</p>
+<ul>
+<li>if the number of observations <span class="math inline">\(n\)</span> is odd, then the median is the observation at position <span class="math inline">\(\frac{n+1}{2}\)</span></li>
+<li>if the number of observations <span class="math inline">\(n\)</span> is even, then the median is the average of the two observations at
+<span class="math inline">\(\frac{n}{2}\)</span> and <span class="math inline">\(\frac{n}{2} + 1\)</span></li>
+</ul>
+<p><strong>Sample Standard Deviation</strong></p>
+<p><span class="math display">\[
+s=\sqrt{\frac{\sum_{i=1}^n (x-\overline{x})^2}{n-1}}
+\]</span></p>
+<p>but since this requires finding the mean first the following is equivalent, but doesn’t require finding the mean</p>
+<p><span class="math display">\[
+s=\sqrt{\frac{n\sum_{i=1}^n x_i^2-(\sum_{i=1}^n x_i)^2}{n(n-1)}}
+\]</span></p>
 </div>
