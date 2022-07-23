@@ -23,15 +23,15 @@ install.packages("blogdown")
 
 ## 1.2 Combinatorial Methods
 
-**Theorem 1.1** If an operation consists of two steps, of which the first can be done in \(n_1\) ways and for each of these the second can be done in \(n_2\) ways, then the whole operation can be done in \(n_1 \cdot n_2\) ways.
+**Theorem 1.1 [2-steps]** If an operation consists of two steps, of which the first can be done in \(n_1\) ways and for each of these the second can be done in \(n_2\) ways, then the whole operation can be done in \(n_1 \cdot n_2\) ways.
 
-**Theorem 1.2** If an operation consists of \(k\) steps, of which the first can be done in \(n_1\) ways, for each of these the second step can be done in \(n_2\) ways, for each of the first two the third step can be done in \(n_3\) ways, and so forth, then the whole operation can be done in \(n_1 \cdot n_2 \cdot \ldots \cdot n_k\) ways.
+**Theorem 1.2 [k-steps]** If an operation consists of \(k\) steps, of which the first can be done in \(n_1\) ways, for each of these the second step can be done in \(n_2\) ways, for each of the first two the third step can be done in \(n_3\) ways, and so forth, then the whole operation can be done in \(n_1 \cdot n_2 \cdot \ldots \cdot n_k\) ways.
 
 **Permutation** - a distinct arrangement of \(n\) different elements of a set
 
-**Theorem 1.3** The number of permutations of \(n\) distinct objects is \(n!\)
+**Theorem 1.3 [# of permutations]** The number of permutations of \(n\) distinct objects is \(n!\)
 
-**Theorem 1.4** The number of permutations of \(n\) distinct objects taken \(r\) at a time is
+**Theorem 1.4 [# of permutations, r at a time]** The number of permutations of \(n\) distinct objects taken \(r\) at a time is
 \[{}_nP_r = \frac{n!}{(n-r)!}\]
 for \(r=0,1,2,\ldots,n\).
 
@@ -50,15 +50,15 @@ For \(r=1,2,\ldots,n,\) we have
 
 **circular permutation** - permutation for which objects are arranged in a circle
 
-**Theorem 1.5** The number of permutations of \(n\) distinct objects arranged in a circle is \((n-1)!\)
+**Theorem 1.5 [Circular Permutations]** The number of permutations of \(n\) distinct objects arranged in a circle is \((n-1)!\)
 
-**Theorem 1.6** The number of permutations of \(n\) objects of which \(n_1\) are of one kind, \(n_2\) are of a second kind, \(\ldots, n_k\) are of a \(k\)th kind, and \(n_1+n_2+\dots+n_k=n\) is
+**Theorem 1.6 [Permutations of \(n\) objects]** The number of permutations of \(n\) objects of which \(n_1\) are of one kind, \(n_2\) are of a second kind, \(\ldots, n_k\) are of a \(k\)th kind, and \(n_1+n_2+\dots+n_k=n\) is
 
 \[\frac{n!}{n_1! \cdot n_2! \cdot \ldots \cdot n_k!}\]
 
 **Combination** - is a selection of \(r\) objects taken from \(n\) distinct objects without regard to the order of selection
 
-**Theorem 1.7** The number of combinations of \(n\) distinct objects taken \(r\) at a time is 
+**Theorem 1.7 [Combination]** The number of combinations of \(n\) distinct objects taken \(r\) at a time is 
 
 \[\dbinom n r = \frac{n!}{r!(n-r)!}\]
 
@@ -68,7 +68,7 @@ for \(r=0,1,2,\ldots,n\)
 
 **Partition (symbolically)** - the subsets \(A_1, A_2, \ldots ,A_k\) constitute a partition of set \(A\) if \(A_1 \cup A_2 \cup \ldots \cup A_k = A\) and \(A_i \cap A_j = \emptyset\) for all \(i \ne j\)
 
-**Theorem 1.8** The number of ways in which a set of \(n\) distinct objects can be partitioned into \(k\) subsets with \(n_1\) objects in the first subset, \(n_2\) objects in the second subset, \(\ldots\), and \(n_k\) objects in the \(k\)th subset is 
+**Theorem 1.8 [\(n\) objects into \(k\) subsets]** The number of ways in which a set of \(n\) distinct objects can be partitioned into \(k\) subsets with \(n_1\) objects in the first subset, \(n_2\) objects in the second subset, \(\ldots\), and \(n_k\) objects in the \(k\)th subset is 
 
 \[ \dbinom {n} {n_1, n_2, \ldots, n_k}=\frac{n!}{n_1! \cdot n_2! \cdot \ldots \cdot n_k!} \]
 
@@ -85,11 +85,11 @@ for \(r=0,1,2,\ldots,n\)
 
 ## 1.3 Binomial Coefficients
 
-**Theorem 1.9** \((x+y)^n=\sum^n_{r=0} \dbinom n r x^{n-r} y ^r\) for any positive integer \(n\)
+**Theorem 1.9 [Binomial Coefficient]** \((x+y)^n=\sum^n_{r=0} \dbinom n r x^{n-r} y ^r\) for any positive integer \(n\)
 
 **Binomial Coefficients** the coefficient of  \(x^{n-r} y ^r\) in the binomial expansion of \((x+y)^n\)
 
-**Theorem 1.10** For any positive integers \(n\) and \(r=0,1,2,\ldots,n,\)
+**Theorem 1.10 [Combination of the complimentary set]** For any positive integers \(n\) and \(r=0,1,2,\ldots,n,\)
 
 \[\dbinom n r = \dbinom n {n-r}\]
 
@@ -102,7 +102,7 @@ for \(r=0,1,2,\ldots,n\)
 \end{align}
 \]
 
-**Theorem 1.11** For any positive integer \(n\) and \(r=1,2,\ldots, n-1\),
+**Theorem 1.11 [Combination for Pascal's Triangle]** For any positive integer \(n\) and \(r=1,2,\ldots, n-1\),
 
 \[\dbinom n r = \dbinom {n-1} r + \dbinom {n-1} {r-1}\]
 
@@ -128,7 +128,7 @@ which completes the proof.
 
 The subset can't contain more elements than the original set; i.e. \(\dbinom n r = 0\) whenever \(n\) is a positive integer and \(r\) is a positive integer greater than \(n\). 
 
-**Theorem 1.12** 
+**Theorem 1.12 [Sums of combinations]** 
 
 \[
 \sum^k_{r=0} \dbinom m k \dbinom n {k-r} = \dbinom {m+n} k 

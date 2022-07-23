@@ -21,4 +21,78 @@ install.packages("blogdown")
 
 
 
-## 3.1 Random Variables
+## 5.1 Introduction
+
+**parameters** - quantities that are constants for particular distributions, but can take on different values for different members of famiiles of distributions of the same kind
+
+## 5.2 The Discrete Uniform Distribution
+
+**Discrete Uniform Distribution** - A random variable \(X\) has a **discrete uniform distribution** and it is referred to as a discrete uniform random variable if and only if it probability distribution is given by
+
+\[
+f(x) = \frac{1}{k} \; \text{for} \, x = x_1, x_2, \dots, x_k
+\]
+
+where \(x_i \ne x_j\) when \(i \ne j\)
+
+## 5.3 The Bernoulli Distribution
+
+**Bernoulli Distribution** - A random variable \(X\) has a **Bernoulli distribution** and it is referred to as a Bernoulli random variable if and only if its probability distribution is given by
+
+\[
+f(x; \theta) = \theta ^x (1-\theta)^{1-x} \; \text{for} \, x=0,1
+\]
+
+**Bernoulli Trial** - an experiment to which a Bernoulli distribution applies; an experiment that has two possible outcomes "success" and "failure"
+
+## 5.4 The Binomial Distribution
+
+**Binomial Distribution** - A random variable \(X\) has a **Binomial distribution** and it is referred to as a binomail random variable if and only if its probability distribution is given by
+
+\[
+b(x; n, \theta)= \dbinom n x \theta^x (1-\theta)^{n-x} \; \text{for} \, x=0,1,2,\dots,n
+\]
+
+**Theorem 5.1 [Binomial Distribution - Complementary]**
+
+\[
+b(x; n, \theta)=b(n-x; n, 1 - \theta)
+\]
+
+**Theorem 5.2 [Binomial Distribution - Mean and Variance]**
+The mean and variance of the binomial distribution are
+
+\[
+\mu = n\theta \;\; \text{and} \;\; \sigma^2 = n \theta(1-\theta)
+\]
+
+**Theorem 5.2 [Binomial Distribution - Mean and Variance - Proof]**
+
+\[
+\]
+
+where we omitted the term corresponding to \(x=0\), which is 0, and canceled the \(x\) against the first factor of \(x!=x(x-1)\) in the denominator of \(\dbinom n x\). Then, factoring out the factor \(n\) in \(n! = n(n-1)!\) and one factor \(\theta\), we get
+
+\[
+\]
+
+and, letting \(y=x-1\) and \(m = n-1\), this becomes
+
+\[
+\]
+
+since the last summation is the sum of all the values of a binomial distribution with the parameters \(m\) and \(\theta\), and hence equal to 1.
+
+To find expressions for 
+
+## 5.5 The Negative Binomial and Geometric Distributions
+
+## 5.6 The Hypergeometric Distribution
+
+## 5.7 The Poisson Distribution
+
+## 5.8 The Multinomial Distribution
+
+## 5.9 The Multivariate Hypergeometric Distribution
+
+

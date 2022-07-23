@@ -25,7 +25,7 @@ install.packages("blogdown")
 
 **Random Variable** - If \(S\) is a sample space with a probability measure and \(X\) is a real-valued function defined over the elements of \(S\), then \(X\) is called a **random variable**
 
-**Discrete Random Variables** - random variables whose range is finite or contably infinite
+**Discrete Random Variables** - random variables whose range is finite or countably infinite
 
 ## 3.2 Probability Distributions
 
@@ -148,12 +148,12 @@ for any region \(A\) in the \(xy\)-plane
 
 \[
 \begin{align}
-F(x,y)=P(X \le x, Y \e y)= \int^\infty_{-\infty} \int^\infty_{-\infty} f(s,t) ds dt && \text{for} -\infty \lt x \lt \infty\\
+F(x,y)=P(X \le x, Y \le y)= \int^\infty_{-\infty} \int^\infty_{-\infty} f(s,t) ds dt && \text{for} -\infty \lt x \lt \infty\\
 &&-\infty \lt y \lt \infty\\
 \end{align}
 \]
 
-where \(f(s,t)\) is the joint probablity density of \(X\) and \(Y\) at \((s,t)\), is called the **joint distribution function of X and Y**
+where \(f(s,t)\) is the joint probability density of \(X\) and \(Y\) at \((s,t)\), is called the **joint distribution function of X and Y**
 
 ## 3.6 Marginal Distributions
 
@@ -163,15 +163,15 @@ where \(f(s,t)\) is the joint probablity density of \(X\) and \(Y\) at \((s,t)\)
 g(x)=\underset{y}\sum f(x,y)
 \]
 
-for each \(x\) within the range of \(X\) is called the **marginal distribution of X\). Correspondingly, the function given by
+for each \(x\) within the range of \(X\) is called the **marginal distribution of \(X\)**. Correspondingly, the function given by
 
 \[
 h(y)=\underset{x}\sum f(x,y)
 \]
 
-for each \(y\) within the range of \(Y\) is called the **marginal distribution of \(Y\)
+for each \(y\) within the range of \(Y\) is called the **marginal distribution of \(Y\)**
 
-**Marginal Density** - If \(X\) and \(Y\) are continuous random variables and \(f(x,y)\) is the value of their joint probability density ad \(x,y)\), the function given by
+**Marginal Density** - If \(X\) and \(Y\) are continuous random variables and \(f(x,y)\) is the value of their joint probability density at \((x,y)\), the function given by
 
 \[
 \begin{align}
@@ -234,6 +234,7 @@ f(x_1,x_2,\ldots,x_n)=f_1(x_1)\cdot f_2(x_2)\cdot \ldots f_n(x_n)
 \]
 
 for all \((x_1, x_2, \ldots, x_n)\) within their range
+
 ## 3.8 Theory in Practice
 
 **Frequency Distribution** - A grouping of numerical data into classes having definite upper and lower limits
@@ -246,6 +247,6 @@ for all \((x_1, x_2, \ldots, x_n)\) within their range
 
 **mode** - the value that appears most frequently in a data set; in a histogram it may be less general and refer to data values that are high points where the mode is a bar in a histogram that is surrounded by bars of lower frequency
 
-**bimodal** - histogram exibiting two modes
+**bimodal** - histogram exhibiting two modes
 
 **multimodal** - histogram exhibiting more than two modes

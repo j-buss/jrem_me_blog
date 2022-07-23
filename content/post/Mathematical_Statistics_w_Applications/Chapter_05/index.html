@@ -2,7 +2,7 @@
 title: "Chapter 5 - Special Probability Distributions"
 author: Jeremy Buss
 output: html_document
-date: "2022-06-06"
+date: "2022-07-23"
 categories:
   - John E. Freund's Mathematical Statistics with Applications - Miller/Miller
   - Statistics
@@ -12,6 +12,65 @@ katex: yes
 
 
 
-<div id="random-variables" class="section level2">
-<h2>3.1 Random Variables</h2>
+<div id="introduction" class="section level2">
+<h2>5.1 Introduction</h2>
+<p><strong>parameters</strong> - quantities that are constants for particular distributions, but can take on different values for different members of famiiles of distributions of the same kind</p>
+</div>
+<div id="the-discrete-uniform-distribution" class="section level2">
+<h2>5.2 The Discrete Uniform Distribution</h2>
+<p><strong>Discrete Uniform Distribution</strong> - A random variable <span class="math inline">\(X\)</span> has a <strong>discrete uniform distribution</strong> and it is referred to as a discrete uniform random variable if and only if it probability distribution is given by</p>
+<p><span class="math display">\[
+f(x) = \frac{1}{k} \; \text{for} \, x = x_1, x_2, \dots, x_k
+\]</span></p>
+<p>where <span class="math inline">\(x_i \ne x_j\)</span> when <span class="math inline">\(i \ne j\)</span></p>
+</div>
+<div id="the-bernoulli-distribution" class="section level2">
+<h2>5.3 The Bernoulli Distribution</h2>
+<p><strong>Bernoulli Distribution</strong> - A random variable <span class="math inline">\(X\)</span> has a <strong>Bernoulli distribution</strong> and it is referred to as a Bernoulli random variable if and only if its probability distribution is given by</p>
+<p><span class="math display">\[
+f(x; \theta) = \theta ^x (1-\theta)^{1-x} \; \text{for} \, x=0,1
+\]</span></p>
+<p><strong>Bernoulli Trial</strong> - an experiment to which a Bernoulli distribution applies; an experiment that has two possible outcomes “success” and “failure”</p>
+</div>
+<div id="the-binomial-distribution" class="section level2">
+<h2>5.4 The Binomial Distribution</h2>
+<p><strong>Binomial Distribution</strong> - A random variable <span class="math inline">\(X\)</span> has a <strong>Binomial distribution</strong> and it is referred to as a binomail random variable if and only if its probability distribution is given by</p>
+<p><span class="math display">\[
+b(x; n, \theta)= \dbinom n x \theta^x (1-\theta)^{n-x} \; \text{for} \, x=0,1,2,\dots,n
+\]</span></p>
+<p><strong>Theorem 5.1 [Binomial Distribution - Complementary]</strong></p>
+<p><span class="math display">\[
+b(x; n, \theta)=b(n-x; n, 1 - \theta)
+\]</span></p>
+<p><strong>Theorem 5.2 [Binomial Distribution - Mean and Variance]</strong>
+The mean and variance of the binomial distribution are</p>
+<p><span class="math display">\[
+\mu = n\theta \;\; \text{and} \;\; \sigma^2 = n \theta(1-\theta)
+\]</span></p>
+<p><strong>Theorem 5.2 [Binomial Distribution - Mean and Variance - Proof]</strong></p>
+<p><span class="math display">\[
+\]</span></p>
+<p>where we omitted the term corresponding to <span class="math inline">\(x=0\)</span>, which is 0, and canceled the <span class="math inline">\(x\)</span> against the first factor of <span class="math inline">\(x!=x(x-1)\)</span> in the denominator of <span class="math inline">\(\dbinom n x\)</span>. Then, factoring out the factor <span class="math inline">\(n\)</span> in <span class="math inline">\(n! = n(n-1)!\)</span> and one factor <span class="math inline">\(\theta\)</span>, we get</p>
+<p><span class="math display">\[
+\]</span></p>
+<p>and, letting <span class="math inline">\(y=x-1\)</span> and <span class="math inline">\(m = n-1\)</span>, this becomes</p>
+<p><span class="math display">\[
+\]</span></p>
+<p>since the last summation is the sum of all the values of a binomial distribution with the parameters <span class="math inline">\(m\)</span> and <span class="math inline">\(\theta\)</span>, and hence equal to 1.</p>
+<p>To find expressions for</p>
+</div>
+<div id="the-negative-binomial-and-geometric-distributions" class="section level2">
+<h2>5.5 The Negative Binomial and Geometric Distributions</h2>
+</div>
+<div id="the-hypergeometric-distribution" class="section level2">
+<h2>5.6 The Hypergeometric Distribution</h2>
+</div>
+<div id="the-poisson-distribution" class="section level2">
+<h2>5.7 The Poisson Distribution</h2>
+</div>
+<div id="the-multinomial-distribution" class="section level2">
+<h2>5.8 The Multinomial Distribution</h2>
+</div>
+<div id="the-multivariate-hypergeometric-distribution" class="section level2">
+<h2>5.9 The Multivariate Hypergeometric Distribution</h2>
 </div>

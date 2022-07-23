@@ -2,7 +2,7 @@
 title: "Chapter 2 - Probability"
 author: Jeremy Buss
 output: html_document
-date: "2022-06-05"
+date: "2022-07-23"
 categories:
   - John E. Freund's Mathematical Statistics with Applications - Miller/Miller
   - Statistics
@@ -76,7 +76,7 @@ P(A)&amp;=P(O_1 \cup O_2  \cup \cdots \cup O_n)\\
 <h2>2.5 Some Rules of Probability</h2>
 <p><strong>Theorem 2.3</strong> - If <span class="math inline">\(A\)</span> and <span class="math inline">\(A^\complement\)</span> are complementary events in a sample space <span class="math inline">\(S\)</span>, then</p>
 <p><span class="math display">\[P(A^\complement) = 1 - P(A)\]</span></p>
-<p><strong>Proof</strong> In the second and third steps of the proof that follows, we make use of the definition of a complement, according to which <span class="math inline">\(A\)</span> and <span class="math inline">\(A^\complement\)</span> are mutually exclusive and (A^= S ). Thus, we write</p>
+<p><strong>Proof</strong> In the second and third steps of the proof that follows, we make use of the definition of a complement, according to which <span class="math inline">\(A\)</span> and <span class="math inline">\(A^\complement\)</span> are mutually exclusive and <span class="math inline">\(A \cup A^\complement = S\)</span>. Thus, we write</p>
 <p><span class="math display">\[
 \begin{align*}
 1 &amp;= P(S) &amp;&amp; \text{(by Postulate 2)} \\
@@ -153,11 +153,11 @@ P[A \cap (B \cup C)] &amp;= P[(A \cap B) \cup (A \cap C)] \\
 <p><span class="math display">\[
 P(A \cup B \cup C)= P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P(A \cap B \cap C)
 \]</span></p>
-<p><strong>Odds</strong> - the ratio of the probability thtat the evenet will occur to the probability that it will not occur, provided neither propability is zero. Odds are generally quoted in terms of positive integers having no common factor: <span class="math inline">\(p = \frac{A}{A+B}\)</span></p>
+<p><strong>Odds</strong> - the ratio of the probability that the event will occur to the probability that it will not occur, provided neither probability is zero. Odds are generally quoted in terms of positive integers having no common factor: <span class="math inline">\(p = \frac{A}{A+B}\)</span></p>
 </div>
 <div id="conditional-probability" class="section level2">
 <h2>2.6 Conditional Probability</h2>
-<p><strong>Conditional Probability</strong> - If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are any two events in a a sample space <span class="math inline">\(S\)</span> and <span class="math inline">\(P(A) \ne 0\)</span>, then the conditional probability of <span class="math inline">\(B\)</span> given <span class="math inline">\(A\)</span> is</p>
+<p><strong>Conditional Probability</strong> - If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are any two events in a sample space <span class="math inline">\(S\)</span> and <span class="math inline">\(P(A) \ne 0\)</span>, then the conditional probability of <span class="math inline">\(B\)</span> given <span class="math inline">\(A\)</span> is</p>
 <p><span class="math display">\[
 P(B|A) = \frac{P(A \cap B)}{P(A)}
 \]</span></p>
@@ -222,7 +222,7 @@ P(B_r|A) = \frac{P(B_r) \cdot P(A|B_r)}{\sum_{i=1}^k P(B_i) \cdot P(A|B_i)}
 \]</span></p>
 <p>for <span class="math inline">\(r = 1,2,\ldots,k\)</span></p>
 <p>In words, the probability that event <span class="math inline">\(A\)</span> was reached via the <span class="math inline">\(r\)</span>th branch of the following tree diagram, given that it was reached via one of its <span class="math inline">\(k\)</span> branches, is the ratio of the probability associated with the <span class="math inline">\(r\)</span>th branch to the sum of the probabilities associated with all <span class="math inline">\(k\)</span> branches of the tree.</p>
-<p><strong>Proof</strong> Writing <span class="math inline">\(P(B_r|A) = \frac{P(A \cap B_r)}{P(A)}\)</span> in accordance with the definition of conditional probability, we have only to substitute <span class="math inline">\(P(B_r) \cdot P(A|B_r)\)</span> for <span class="math inline">\(P(A \cap B_r)\)</span> and the formul of Theorem 2.12 for <span class="math inline">\(P(A)\)</span></p>
+<p><strong>Proof</strong> Writing <span class="math inline">\(P(B_r|A) = \frac{P(A \cap B_r)}{P(A)}\)</span> in accordance with the definition of conditional probability, we have only to substitute <span class="math inline">\(P(B_r) \cdot P(A|B_r)\)</span> for <span class="math inline">\(P(A \cap B_r)\)</span> and the formula of Theorem 2.12 for <span class="math inline">\(P(A)\)</span></p>
 <div class="figure">
 <img src="images/BayesTheoremTreeDiagram.png" alt="" />
 <p class="caption">Bayes Theorem Tree Diagram</p>

@@ -2,7 +2,7 @@
 title: "Chapter 3 - Probability Distributions and Probability Densities"
 author: Jeremy Buss
 output: html_document
-date: "2022-06-07"
+date: "2022-07-23"
 categories:
   - John E. Freund's Mathematical Statistics with Applications - Miller/Miller
   - Statistics
@@ -15,7 +15,7 @@ katex: yes
 <div id="random-variables" class="section level2">
 <h2>3.1 Random Variables</h2>
 <p><strong>Random Variable</strong> - If <span class="math inline">\(S\)</span> is a sample space with a probability measure and <span class="math inline">\(X\)</span> is a real-valued function defined over the elements of <span class="math inline">\(S\)</span>, then <span class="math inline">\(X\)</span> is called a <strong>random variable</strong></p>
-<p><strong>Discrete Random Variables</strong> - random variables whose range is finite or contably infinite</p>
+<p><strong>Discrete Random Variables</strong> - random variables whose range is finite or countably infinite</p>
 </div>
 <div id="probability-distributions" class="section level2">
 <h2>3.2 Probability Distributions</h2>
@@ -109,11 +109,11 @@ P(X,Y) \in A = \underset{A}\iint f(x,y)dxdy
 <p><strong>Joint Distribution Function</strong> - If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are continuous random variables, the function given by</p>
 <p><span class="math display">\[
 \begin{align}
-F(x,y)=P(X \le x, Y \e y)= \int^\infty_{-\infty} \int^\infty_{-\infty} f(s,t) ds dt &amp;&amp; \text{for} -\infty \lt x \lt \infty\\
+F(x,y)=P(X \le x, Y \le y)= \int^\infty_{-\infty} \int^\infty_{-\infty} f(s,t) ds dt &amp;&amp; \text{for} -\infty \lt x \lt \infty\\
 &amp;&amp;-\infty \lt y \lt \infty\\
 \end{align}
 \]</span></p>
-<p>where <span class="math inline">\(f(s,t)\)</span> is the joint probablity density of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> at <span class="math inline">\((s,t)\)</span>, is called the <strong>joint distribution function of X and Y</strong></p>
+<p>where <span class="math inline">\(f(s,t)\)</span> is the joint probability density of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> at <span class="math inline">\((s,t)\)</span>, is called the <strong>joint distribution function of X and Y</strong></p>
 </div>
 <div id="marginal-distributions" class="section level2">
 <h2>3.6 Marginal Distributions</h2>
@@ -121,12 +121,12 @@ F(x,y)=P(X \le x, Y \e y)= \int^\infty_{-\infty} \int^\infty_{-\infty} f(s,t) ds
 <p><span class="math display">\[
 g(x)=\underset{y}\sum f(x,y)
 \]</span></p>
-<p>for each <span class="math inline">\(x\)</span> within the range of <span class="math inline">\(X\)</span> is called the **marginal distribution of X). Correspondingly, the function given by</p>
+<p>for each <span class="math inline">\(x\)</span> within the range of <span class="math inline">\(X\)</span> is called the <strong>marginal distribution of <span class="math inline">\(X\)</span></strong>. Correspondingly, the function given by</p>
 <p><span class="math display">\[
 h(y)=\underset{x}\sum f(x,y)
 \]</span></p>
-<p>for each <span class="math inline">\(y\)</span> within the range of <span class="math inline">\(Y\)</span> is called the **marginal distribution of <span class="math inline">\(Y\)</span></p>
-<p><strong>Marginal Density</strong> - If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are continuous random variables and <span class="math inline">\(f(x,y)\)</span> is the value of their joint probability density ad <span class="math inline">\(x,y)\)</span>, the function given by</p>
+<p>for each <span class="math inline">\(y\)</span> within the range of <span class="math inline">\(Y\)</span> is called the <strong>marginal distribution of <span class="math inline">\(Y\)</span></strong></p>
+<p><strong>Marginal Density</strong> - If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are continuous random variables and <span class="math inline">\(f(x,y)\)</span> is the value of their joint probability density at <span class="math inline">\((x,y)\)</span>, the function given by</p>
 <p><span class="math display">\[
 \begin{align}
 g(x)= \int_{-\infty}^{\infty} f(x,y)dy &amp;&amp; \text{for} -\infty \lt x \lt \infty\\
@@ -172,13 +172,15 @@ w(x|y)=\frac{f(x,y)}{g(y)} &amp;&amp; g(y) \ne 0
 <p><span class="math display">\[
 f(x_1,x_2,\ldots,x_n)=f_1(x_1)\cdot f_2(x_2)\cdot \ldots f_n(x_n)
 \]</span></p>
-<p>for all <span class="math inline">\((x_1, x_2, \ldots, x_n)\)</span> within their range
-## 3.8 Theory in Practice</p>
+<p>for all <span class="math inline">\((x_1, x_2, \ldots, x_n)\)</span> within their range</p>
+</div>
+<div id="theory-in-practice" class="section level2">
+<h2>3.8 Theory in Practice</h2>
 <p><strong>Frequency Distribution</strong> - A grouping of numerical data into classes having definite upper and lower limits</p>
 <p><strong>stem-and-leaf display</strong> - device for presenting quantitative data similar to histogram; generally grouped in 10s</p>
 <p><strong>positive skewness</strong> - long right-hand tail</p>
 <p><strong>negative skewness</strong> - long left-hand tail</p>
 <p><strong>mode</strong> - the value that appears most frequently in a data set; in a histogram it may be less general and refer to data values that are high points where the mode is a bar in a histogram that is surrounded by bars of lower frequency</p>
-<p><strong>bimodal</strong> - histogram exibiting two modes</p>
+<p><strong>bimodal</strong> - histogram exhibiting two modes</p>
 <p><strong>multimodal</strong> - histogram exhibiting more than two modes</p>
 </div>

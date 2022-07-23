@@ -110,7 +110,7 @@ P(A)&=P(O_1 \cup O_2  \cup \cdots \cup O_n)\\
 
 \[P(A^\complement) = 1 - P(A)\]
 
-**Proof** In the second and third steps of the proof that follows, we make use of the definition of a complement, according to which \(A\) and \(A^\complement\) are mutually exclusive and (\A \cup A^\complement = S \). Thus, we write
+**Proof** In the second and third steps of the proof that follows, we make use of the definition of a complement, according to which \(A\) and \(A^\complement\) are mutually exclusive and \(A \cup A^\complement = S \). Thus, we write
 
 \[
 \begin{align*}
@@ -214,11 +214,11 @@ and hence that
 P(A \cup B \cup C)= P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P(A \cap B \cap C)
 \]
 
-**Odds** - the ratio of the probability thtat the evenet will occur to the probability that it will not occur, provided neither propability is zero. Odds are generally quoted in terms of positive integers having no common factor: \(p = \frac{A}{A+B}\)
+**Odds** - the ratio of the probability that the event will occur to the probability that it will not occur, provided neither probability is zero. Odds are generally quoted in terms of positive integers having no common factor: \(p = \frac{A}{A+B}\)
 
 ## 2.6 Conditional Probability
 
-**Conditional Probability** - If \(A\) and \(B\) are any two events in a a sample space \(S\) and \(P(A) \ne 0\), then the conditional probability of \(B\) given \(A\) is
+**Conditional Probability** - If \(A\) and \(B\) are any two events in a sample space \(S\) and \(P(A) \ne 0\), then the conditional probability of \(B\) given \(A\) is
 
 \[
 P(B|A) = \frac{P(A \cap B)}{P(A)}
@@ -309,7 +309,7 @@ for \(r = 1,2,\ldots,k\)
 
 In words, the probability that event \(A\) was reached via the \(r\)th branch of the following tree diagram, given that it was reached via one of its \(k\) branches, is the ratio of the probability associated with the \(r\)th branch to the sum of the probabilities associated with all \(k\) branches of the tree.
 
-**Proof** Writing \(P(B_r|A) = \frac{P(A \cap B_r)}{P(A)}\) in accordance with the definition of conditional probability, we have only to substitute \(P(B_r) \cdot P(A|B_r)\) for \(P(A \cap B_r)\) and the formul of Theorem 2.12 for \(P(A)\)
+**Proof** Writing \(P(B_r|A) = \frac{P(A \cap B_r)}{P(A)}\) in accordance with the definition of conditional probability, we have only to substitute \(P(B_r) \cdot P(A|B_r)\) for \(P(A \cap B_r)\) and the formula of Theorem 2.12 for \(P(A)\)
 
 ![Bayes Theorem Tree Diagram](images/BayesTheoremTreeDiagram.png)
 
