@@ -69,30 +69,233 @@ The mean and variance of the binomial distribution are
 **Theorem 5.2 [Binomial Distribution - Mean and Variance - Proof]**
 
 \[
+\begin{align}
+\mu &= \sum_{x=0}^n x \cdot \dbinom n x \theta^x (1-\theta)^{n-x}\\
+&= \sum_{x=1}^n \frac{n!}{(x-1)!(n-x)!}\theta^x(1-\theta)^{n-x}
+\end{align}
 \]
 
 where we omitted the term corresponding to \(x=0\), which is 0, and canceled the \(x\) against the first factor of \(x!=x(x-1)\) in the denominator of \(\dbinom n x\). Then, factoring out the factor \(n\) in \(n! = n(n-1)!\) and one factor \(\theta\), we get
 
 \[
+\mu = n \theta \sum_{x=1}^n x \cdot \dbinom {n-1} {x-1} \theta^{x-1} (1-\theta)^{n-x}\\
 \]
 
 and, letting \(y=x-1\) and \(m = n-1\), this becomes
 
 \[
+\mu = n \theta \sum_{x=1}^m x \cdot \dbinom {m} {y} \theta^{y}(1-\theta)^{m-y}=n \theta
 \]
 
 since the last summation is the sum of all the values of a binomial distribution with the parameters \(m\) and \(\theta\), and hence equal to 1.
 
-To find expressions for 
+To find expressions for \(\mu_2^{'}\) and \(\sigma^2\), let us make use of the fact that \(E(X^2) = E[X(X-1)]+E(X)\) and first evaluate \(E[X(X-1)]\). Duplicating for all practical purposes the steps use before, we thus get
+
+\[
+\begin{align}
+E[X(X-1)] &= \sum_{x=0}^n x (x-1) \dbinom n x \theta^x (1-\theta)^{n-x}\\
+&= \sum_{x=2}^n \frac {n!} {(x-2)!(n-x)!} \theta^{x} (1-\theta)^{n-x}\\
+&=n(n-1)\theta^2 \cdot \sum_{x=2}^n \dbinom {n-2}{x-2}\theta^{x-2} (1-\theta)^{n-x}
+\end{align}
+\]
+
+and, letting \(y=x-2\) and \(m=n-2\), this becomes
+
+\[
+\begin{align}
+E[X(X-1)] &= n(n-1)\theta^2 \cdot \sum_{x=0}^m \dbinom m y \theta^y (1-\theta)^{m-y}\\
+&= n(n-1)\theta^2
+\end{align}
+\]
+
+Therefore,
+
+\[
+\mu_2^{'} = E[X(X-1)] + E(X) = n(n-1) \theta^2 + n \theta
+\]
+
+and, finally
+
+\[
+\begin{align}
+\sigma^2 &= \mu_2^{'} - \mu^2\\
+&=n(n-1)\theta^2 + n\theta - n^2\theta^2 \\
+&=n\theta(1-\theta)
+\end{align}
+\]
+
+**Theorem 5.3 [Binomial w/ parameters]**
+
+If \(X\) has a binomial distribution with the parameters \(n\) and \(\theta\) and \(Y=\frac{X}{n}\), then
+
+\[
+E(Y)=\theta \;\; \text{and} \;\; \sigma_Y^2 = \frac{\theta(1-\theta)}{n}
+\]
+
+**Theorem 5.4 [Binomial Moment Generation]** - The moment-generating fucntion of the binomial distribution is given by 
+
+\[
+M_X(t) = [1 + \theta(e^t-1)]^n
+\]
+
+**Theorem 5.4 [Binomial Moment Generation - Proof]**
+By using the definitions of Moment Generating Functions and Binomial Distribution, we get 
+
+\[
+\begin{align}
+M_X(t)&=\sum_{x=0}^n e^{xt} \dbinom n x \theta^x (1 - \theta)^{n-x}\\
+&=\sum_{x=0}^n \dbinom n x (\theta e^t)^x (1 - \theta)^{n-x}
+\end{align}
+\]
+
+and by Theorem 1.9 [Binomial Coefficient] this summation is easily recognized as the binomial expansion of \([\theta e^t + (1-\theta)]^n=[1+\theta(e^t - 1)]^n\)
 
 ## 5.5 The Negative Binomial and Geometric Distributions
 
+**Negative Binomial Distribution** A random variable \(X\) has a **negative binomial distribution** and it is referred to as a negative binomial random variable if and only if
+
+\[
+b^*(x;k,\theta) = \dbinom {x-1} {k-1} \theta^k(1-\theta)^{x-k} \; \; \text{for} \, x=k,k+1,k+2,\dots
+\]
+
+**binomial waiting-time distributions** - another name for negative binomial distributions
+
+**Pascal distributions** - another name for negative binomial distributions
+
+**Theorem 5.5 [Negative Binomial Distribution w/ a table]**
+
+\[
+b^*(x;k,\theta)= \frac{k}{x}\cdot b(k;x,\theta)
+\]
+
+**Theorem 5.6 [Negative Binomial Distribution mean and variance]** - The mean and the variance of the negative binomial distribution are
+
+\[
+\mu = \frac{k}{\theta} \;\; \text{and} \;\; \sigma^2=\frac{k}{\theta} \left ( \frac{1}{\theta}-1 \right )
+\]
+
+**Geometric Distribution** - A random variable \(X\) has a **geometric distribution** and it is referred to as a geometric random varaible if and only if its probability distribution is given by
+
+\[
+g(x;\theta)=\theta(1-\theta)^{x-1} \;\; \text{for} \, x=1,2,3,\dots
+\]
+
 ## 5.6 The Hypergeometric Distribution
+
+**Hypergeometric Distribution** A random variable \(X\) has a **hypergeometric distribution** and it is referred to as a hypergeometric random variable if and only if its probability distribution is given by
+
+\[
+h(x;n,N,M)=\frac{\dbinom M x \dbinom {N-M}{n-x}}{\dbinom N n} \;\; {\text{for} \, x=0,1,2,\dots,n} \;\; x \le M \, \text{and} \, n-x \le N-M
+\]
+
+**Theorem 5.7 [Hypergeometric Distribution mean and variance]** The mean and the variance of the hypergeometric distribution are
+
+\[
+\mu = \frac{nM}{N} \;\; \text{and} \;\; \sigma^2=\frac{nM(N-M)(N-n)}{N^2(N-1)}
+\]
+
+**Theorem 5.7 [Hypergeometric Distribution mean and variance - Proof]** - To determine the mean, let us directly evaluate the sum
+
+\[
+\begin{align}
+\mu &= \sum_{x=0}^n x \cdot \frac {\dbinom M x \dbinom {N-M} {n-x}}{\dbinom N n}\\
+&=\sum_{x=1}^n \frac{M!}{(x-1)!(M-x)!} \cdot \frac {\dbinom {N-M} {n-x}}{\dbinom N n}
+\end{align}
+\]
+
+where we omitted the term corrsponding to \(x=0\), which is 0, and canceled the \(x\) against the first factor of \(x!=x(x-1)!\) in the denominator of \(\dbinom M x\). Then factoring out \(M/\dbinom N n\), we get
+
+\[
+\mu = \frac{M}{\dbinom N n} \cdot \sum_{x=1}^n \dbinom {M-1} {x-1} \dbinom {N-M}{n-x}
+\]
+
+and, letting \(y=x-1\) and \(m=n-1\), this becomes
+
+\[
+\mu = \frac{M}{\dbinom N n} \cdot \sum_{x=0}^m \dbinom {M-1} {y} \dbinom {N-M}{m-y}
+\]
+
+Finally, using Theorem 1.12 [Sums of combinations] we get 
+
+\[
+\mu = \frac{M}{\dbinom N n} \cdot \dbinom {N-1} {m} = \frac{M}{\dbinom N n} \cdot \dbinom {N-1} {n-1}= \frac{nM}{N}
+\]
+
+To obtain the formula for \(\sigma^2\), we proceed as in the proof of Theorem 5.2 [Binomial Distribution - Mean and Variance] by first evaluating \(E[X(x-1]\) and then making use of the fact that \(E(X^2)=E[X(X-1)]+E(X)\). We thus get
+
+\[
+\begin{align}
+\sigma^2 & =\frac{M(M-1)n(n-1)}{N(N-1)} + \frac{nM}{N} - \left ( \frac{nM}{N} \right )^2 \\
+&=\frac{nM(N-M)(N-n)}{N^2(N-1)}
+\end{align}
+\]
+
+**Proof of the following excercise 5.27**
+
+\[
+E[X(X-1)]=\frac{M(M-1)n(n-1)}{N(N-1)}
+\]
 
 ## 5.7 The Poisson Distribution
 
+**Poisson Distribution** - A random variable has a **Poisson distribution** and it is referred to as a Poisson random varaible if and only if its probability distribution is given by
+
+\[
+p(x;\lambda) = \frac{\lambda^x e^{-\lambda}}{x!} \;\; \text{for} \, x=0,1,2,\dots
+\]
+
+**Theorem 5.8 [Poisson distribution mean and variance]** The mean and variance of the Poisson distribution are given by 
+
+\[
+\mu = \lambda \;\; \text{and} \;\; \sigma^2=\lambda
+\]
+
+**Theorem 5.9 [Poisson distribution moment generating function]** 
+
+\[
+M_X(t)=e^{\lambda(e^t-1)}
+\]
+
+**Theorem 5.9 [Poisson distribution moment generating function - Proof]**
+Using the definition for Moment-generating Functions
+
+\[
+M_X(t)=\sum_{x=0}^\infty e^{xt} \cdot \frac{\lambda^x e^{-\lambda}}{x!} = e^{-\lambda} \cdot \sum_{x=0}^\infty \frac{(\lambda e^{t})^x}{x!} 
+\]
+
+where \(\sum_{x=0}^\infty \frac{(\lambda e^{t})^x}{x!}\) can be recognized as the Maclaurin's series of \(e^z\) with \(z=\lambda e^t\). Thus
+
+\[
+M_X(t)=e^{- \lambda} \cdot e^{\lambda e^t}=e^{\lambda (e^t - 1)}
+\]
+
+
 ## 5.8 The Multinomial Distribution
+
+**Multinomial Distribution** The random variables \(X_1, X_2,\dots,X_n\) have a **multinomial distribution** and they are referred to as multinomial random variables if and only if their joint probabiltiy distribution is given by
+
+\[
+f(x_1,x_2,\dots,x_k;n,\theta_1, \theta_2,\dots,\theta_k)= \dbinom n {x_1, x_2, \dots, x_k} \cdot \theta_1^{x_1} \cdot \theta_2^{x_2} \cdot \dots \cdot \theta_k^{x_k}
+\]
+
+for \(x_i=0,1,\dots,n\) for each \(i\), where \(\sum_{i=1}^k=n\) and \(\sum_{i=1}^k \theta_i=1\)
 
 ## 5.9 The Multivariate Hypergeometric Distribution
 
+**Multivariate Hypergeometric Distribution** The random variables \(X_1, X_2,\dots,X_k\) have a **multivariate hypergeometric distribution** and they are referred to as multivariate hypergeometric random varaibles if and only if their joint probability distribution is given by
 
+\[
+f(x_1,x_2,\dots,x_k;n,M_1,M_2,\dots,M_k)= \frac{ \dbinom {M_1} {x_1} \dbinom {M_2} {x_2} \cdot \ldots \cdot \dbinom {M_k} {x_k}}{\dbinom N n}
+\]
+
+for \(x_i=0,1,2, \dots ,n\) and \(x_i \le M_i\) for each \(i\), where \(\sum_{i=1}^k x_i = n\) and \(\sum_{i=1}^k M_i = N\)
+
+## 5.10 The Theory in Practice
+
+**Probability of Acceptance** - If \(n\) is the size of the sample taken from each large lot and \(c\) is the acceptnace number, the **probability of acceptance** is closely approximated by
+
+\[
+L(p) = \sum_{k=0}^c b(k;n,p)=B(c;n,p)
+\]
+
+where \(p\) is the actual proportion of defectives in teh log

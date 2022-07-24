@@ -2,7 +2,7 @@
 title: "Chapter 6 - Special Probability Densities"
 author: Jeremy Buss
 output: html_document
-date: "2022-06-06"
+date: "2022-07-24"
 categories:
   - John E. Freund's Mathematical Statistics with Applications - Miller/Miller
   - Statistics
@@ -12,6 +12,191 @@ katex: yes
 
 
 
-<div id="random-variables" class="section level2">
-<h2>3.1 Random Variables</h2>
+<div id="introduction" class="section level2">
+<h2>6.1 Introduction</h2>
+</div>
+<div id="the-uniform-distribution" class="section level2">
+<h2>6.2 The Uniform Distribution</h2>
+<p><strong>Uniform Distribution</strong> A random variable <span class="math inline">\(X\)</span> has a <strong>uniform distribution</strong> and it is referred to as a continuous uniform random varaible if and only if its probability density is given by</p>
+<p><span class="math display">\[
+u(x;\alpha,\beta)=
+\begin{cases}
+\frac{1}{\beta - \alpha} &amp; \text{for } \alpha \lt x \lt \beta \\
+0 &amp; \text{elsewhere}
+\end{cases}
+\]</span></p>
+<p><strong>Theorem 6.1 [Uniform Distribution mean and variance]</strong> The mean and variance of the uniform distribution are given by</p>
+<p><span class="math display">\[
+\mu = \frac{\alpha + \beta}{2} \;\; \text{and} \;\; \sigma^2=\frac{1}{12}(\beta - \alpha)^2
+\]</span></p>
+</div>
+<div id="the-gamma-exponential-and-chi-square-distributions" class="section level2">
+<h2>6.3 The Gamma, Exponential, and Chi-Square Distributions</h2>
+<p><strong>Gamma Function Integral Definition</strong></p>
+<p><span class="math display">\[
+\Gamma(\alpha) = \int_0^{\infty} y^{\alpha-1} e^{-y} dy \; \; \text{for } \alpha \gt 0
+\]</span></p>
+<p><strong>Gamma Function Factorial Definition</strong></p>
+<p><span class="math display">\[
+\Gamma(\alpha) = (\alpha - 1) \Gamma(\alpha - 1)
+\]</span></p>
+<p>or another way</p>
+<p><span class="math display">\[
+\Gamma(\alpha) = (\alpha - 1)!
+\]</span></p>
+<p><strong>Gamma Distribution</strong> - A random variable <span class="math inline">\(X\)</span> has a <strong>gamma distribution</strong> and it is referred to as a gamma random variable if and only if its probability density is given by</p>
+<p><span class="math display">\[
+g(x; \alpha, \beta)
+\begin{cases}
+\frac{1}{\beta^\alpha \Gamma(\alpha)}x^{\alpha - 1} e^{-x/\beta} &amp; \text{for } x \gt 0\\
+0 &amp; \text{elsewhere}
+\end{cases}
+\]</span></p>
+<p>where <span class="math inline">\(\alpha &gt; 0\)</span> and <span class="math inline">\(\beta \gt 0\)</span></p>
+<p><strong>Exponential Distribution</strong> - A random variable <span class="math inline">\(X\)</span> has an <strong>exponential distribution</strong> and it is referred to as an exponential random variable if and only if its probability density is given by</p>
+<p><span class="math display">\[
+g(x; \theta)
+\begin{cases}
+\frac{1}{\theta} e^{-x/\theta} &amp; \text{for } x \gt 0\\
+0 &amp; \text{elsewhere}
+\end{cases}
+\]</span></p>
+<p>where <span class="math inline">\(\theta &gt; 0\)</span></p>
+<p><strong>Chi-Square Distribution</strong> - A random variable <span class="math inline">\(X\)</span> has a <strong>chi-square distribution</strong> and it is referred to as a chi-square random variable if and only if its probability density is given by</p>
+<p><span class="math display">\[
+f(x; \nu)
+\begin{cases}
+\frac{1}{2^{\nu/2} \Gamma(\nu / 2)} x^{\frac{\nu-2}{2}} e^{\frac{-x}{2}} &amp; \text{for } x \gt 0\\
+0 &amp; \text{elsewhere}
+\end{cases}
+\]</span></p>
+<p>where <span class="math inline">\(\theta &gt; 0\)</span></p>
+<p><strong>Theorem 6.2 [Gamma Distribution - <span class="math inline">\(r\)</span>th moment about Origin]</strong></p>
+<p><span class="math display">\[
+\mu^{&#39;}_r = \frac{\beta^r\Gamma(\alpha + r)}{\Gamma(\alpha)}
+\]</span></p>
+<p><strong>Theorem 6.2 [Gamma Distribution - <span class="math inline">\(r\)</span>th moment about Origin - Proof]</strong></p>
+<p>Using definition of moments about the origin</p>
+<p><span class="math display">\[
+\mu^{&#39;}_r = \int_o^{\infty} x^r \cdot \frac{1}{\beta^{\alpha} \Gamma(\alpha)} x^{\alpha-1} e^{-x/\beta} dx = \frac{\beta^r}{\Gamma(\alpha)} \cdot \int_0^{\infty} y^{\alpha+r-1} e^{-y} dy
+\]</span></p>
+<p>where we let <span class="math inline">\(y=\frac{x}{\beta}\)</span>. Since the integral on the right is <span class="math inline">\(\Gamma(r+\alpha)\)</span> according to the definition of the gamma function.</p>
+<p><strong>Theorem 6.3 [Gamma distribution mean and variance]</strong></p>
+<p><span class="math display">\[
+\mu = \alpha \beta \;\; \text{and} \;\; \sigma^2 = \alpha \beta^2
+\]</span></p>
+<p><strong>Theorem 6.3 [Gamma distribution mean and variance - Proof]</strong></p>
+<p>Using Theorem 6.2 [Gamma Distribution - <span class="math inline">\(r\)</span>th moment about Origin] with <span class="math inline">\(r=1\)</span> and <span class="math inline">\(r=2\)</span>, we get</p>
+<p><span class="math display">\[
+\mu_1^{&#39;} = \frac{\beta \Gamma (\alpha + 1)}{\Gamma(\alpha)} = \alpha \beta
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\mu_2^{&#39;} = \frac{\beta^2 \Gamma (\alpha + 2)}{\Gamma(\alpha)} = \alpha (\alpha + 1) \beta^2
+\]</span></p>
+<p>so <span class="math inline">\(\mu=\alpha \beta\)</span> and <span class="math inline">\(\sigma^2=\alpha (\alpha + 1 )\beta^2 - (\alpha \beta)^2=\alpha \beta^2\)</span></p>
+<p><strong>Exponential Distribution [mean and variance]</strong></p>
+<p><span class="math display">\[
+\mu = \theta \;\; \text{and} \;\; \sigma^2=\theta^2
+\]</span></p>
+<p><strong>Chi-square Distribution [mean and variance]</strong></p>
+<p><span class="math display">\[
+\mu = \nu \;\; \text{and} \;\; \sigma^2=2\nu
+\]</span></p>
+<p><strong>Theorem 6.4 [Gamma Distribution Moment Generating Function]</strong></p>
+<p><span class="math display">\[
+M_X(t)=(1-\beta t)^{-\alpha}
+\]</span></p>
+</div>
+<div id="the-beta-distribution" class="section level2">
+<h2>6.4 The Beta Distribution</h2>
+<p><strong>Beta Distribution</strong> - A random variable <span class="math inline">\(X\)</span> has an <strong>beta distribution</strong> and it is referred to as a beta random variable if and only if its probability density is given by</p>
+<p><span class="math display">\[
+f(x; \alpha, \beta)
+\begin{cases}
+\frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha) \cdot \Gamma(\beta)} x^{\alpha -1} (1-x)^{\beta -1} &amp; \text{for } 0 \lt x \lt 1\\
+0 &amp; \text{elsewhere}
+\end{cases}
+\]</span></p>
+<p>where <span class="math inline">\(\alpha \gt 0\)</span> and <span class="math inline">\(\beta \gt 0\)</span></p>
+<p><strong>Beta Distribution [mean and variance]</strong></p>
+<p><span class="math display">\[
+\mu = \frac{\alpha}{\alpha + \beta} \;\; \text{and} \;\; \sigma^2 = \frac{\alpha \beta}{(\alpha + \beta)^2(\alpha + \beta + 1)}
+\]</span></p>
+<p><strong>Beta Distribution [mean and variance - Proof]</strong></p>
+<p>By definition</p>
+<p><span class="math display">\[
+\begin{align}
+&amp;=\frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha) \cdot \Gamma(\beta)} \cdot \int_0^1 x \cdot x^{\alpha - 1} (1-x)^{\beta-1} dx\\
+&amp;=\frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha) \cdot \Gamma(\beta)} \cdot \frac{\Gamma(\alpha + 1) \cdot \Gamma(\beta)}{\Gamma(\alpha + \beta + 1)}\\
+&amp;=\frac{\alpha}{\alpha + \beta}
+\end{align}
+\]</span></p>
+<p>where we recognized the integral as <span class="math inline">\(B(\alpha + 1, \beta)\)</span> and made use of the fact that <span class="math inline">\(\Gamma(\alpha + 1)=\alpha \cdot \Gamma (\alpha)\)</span> and <span class="math inline">\(\Gamma(\alpha + \beta + 1)=(\alpha + \beta) \cdot \Gamma (\alpha + \beta)\)</span>. Similar steps yield</p>
+<p><span class="math display">\[
+\mu_2^{&#39;}= \frac{(\alpha + 1)\alpha}{(\alpha + \beta + 1)(\alpha + \beta)}
+\]</span></p>
+<p>and if follows that</p>
+<p><span class="math display">\[
+\begin{align}
+\sigma^2&amp;=\frac{(\alpha + 1)\alpha}{(\alpha + \beta + 1)(\alpha + \beta)} - \left ( \frac{\alpha}{\alpha + \beta} \right )^2\\
+&amp;=\frac{\alpha \beta}{(\alpha + \beta)^2(\alpha + \beta+1)}
+\end{align}
+\]</span></p>
+</div>
+<div id="the-normal-distribution" class="section level2">
+<h2>6.5 The Normal Distribution</h2>
+<p><strong>Normal Distribution</strong> A random variable <span class="math inline">\(X\)</span> has a <strong>normal distribution</strong> and it is referred to as a normal random variable if and only if its probability density is given by</p>
+<p><span class="math display">\[
+n(x;\mu,\sigma)=\frac{1}{\sigma \sqrt{2 \pi}}e^{-\frac{1}{2} \left ( \frac{x-\mu}{\sigma} \right )^2} \;\; \text{for} \, -\infty \lt x \lt \infty
+\]</span></p>
+<p>where <span class="math inline">\(\sigma \gt 0\)</span></p>
+<p><strong>Normal Distribution [Moment generating function]</strong></p>
+<p><span class="math display">\[
+M_X(t)=e^{\mu t + \frac{1}{2}\sigma^2 t^2}
+\]</span></p>
+<p><strong>Normal Distribution [Moment generating function - Proof]</strong></p>
+<p>By definition</p>
+<p><span class="math display">\[
+\begin{align}
+M_X(t)&amp;=\int_{-\infty}^{\infty} e^{xt} \cdot \frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{1}{2} \left ( \frac{x-\mu}{\sigma} \right ) ^2} \\
+&amp;=\frac{1}{\sigma \sqrt{2 \pi}} \cdot \int_{-\infty}^{\infty} e^{-\frac{1}{2 \sigma^2} [-2xt\sigma^2+(x-\mu)^2]} dx
+\end{align}
+\]</span></p>
+<p>and if we complete the square, that is use the identity</p>
+<p><span class="math display">\[
+-2xt\sigma^2 + (x-\mu)^2 = [x-(\mu+t \sigma^2)]^2 - 2\mu t \sigma^2 - t^2 \sigma^4
+\]</span></p>
+<p>we get</p>
+<p><span class="math display">\[
+M_X(t) = e^{\mu t + \frac{1}{2} t^2 \sigma^2} \left \{ \frac{1}{\sigma \sqrt{2 \pi}} \cdot \int_{- \infty}^{\infty} e^{-\frac{1}{2} \left [ \frac{x-(\mu+t\sigma^2)}{\sigma} \right ]^2} dx \right \}
+\]</span></p>
+<p>Since the quantity inside the braces is the integral from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(\infty\)</span> of a normal density with the parameters <span class="math inline">\(\mu + t \sigma^2\)</span> and <span class="math inline">\(\sigma\)</span>, and hence is equal to 1, it follows that</p>
+<p><span class="math display">\[
+M_X(t) = e^{\mu t + \frac{1}{2} \sigma^2 t^2}
+\]</span></p>
+<p><strong>Standard Normal Distribution</strong> - The normal distribution with <span class="math inline">\(\mu=0\)</span> and <span class="math inline">\(\sigma=1\)</span> is referred to as the <strong>standard normal distribution</strong></p>
+<p><strong>Theorem 6.7 [Z-score]</strong> If <span class="math inline">\(X\)</span> has a normal distribution with the mean <span class="math inline">\(\mu\)</span> and the standard deviation <span class="math inline">\(\sigma\)</span>, then</p>
+<p><span class="math display">\[
+Z= \frac{X-\mu}{\sigma}
+\]</span></p>
+<p>has the standard normal distribution.</p>
+<p><strong>Theorem 6.7 [Z-score - Proof]</strong></p>
+<p>Since the relationship between the values of <span class="math inline">\(X\)</span> and <span class="math inline">\(Z\)</span> is linear, <span class="math inline">\(Z\)</span> must take on a value between <span class="math inline">\(z_1=\frac{x_1 - \mu}{\sigma}\)</span> and <span class="math inline">\(z_2=\frac{x_2 - \mu}{\sigma}\)</span> when <span class="math inline">\(X\)</span> takes on a value between <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>. Hence we can write:</p>
+<p><span class="math display">\[
+\begin{align}
+P(x_1 \lt X \lt x_2)&amp;=\frac{1}{\sqrt{2 \pi \sigma}} \int_{x_1}^{x_2} e^{-\frac{1}{2} \left ( \frac{x-\mu}{\sigma} \right )^2} dx\\
+&amp;=\frac{1}{\sqrt{2 \pi}} \int_{z_1}^{z_2} e^{-\frac{1}{2} z^2} dz\\
+&amp;=\int_{z_1}^{z_2} n(z;0,1) dz\\
+&amp;=P(z_1 \lt Z \lt z_2)\\
+\end{align}
+\]</span></p>
+<p>Where <span class="math inline">\(Z\)</span> is seen to be a random variable having the standard normal distribution</p>
+</div>
+<div id="the-normal-approximation-to-the-binomial-distribution" class="section level2">
+<h2>6.6 The Normal Approximation to the Binomial Distribution</h2>
+<p><strong>Theorem 6.8</strong></p>
+</div>
+<div id="bivariate-normal-distribution" class="section level2">
+<h2>6.7 Bivariate Normal Distribution</h2>
 </div>
