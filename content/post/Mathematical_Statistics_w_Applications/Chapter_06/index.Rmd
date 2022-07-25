@@ -210,13 +210,13 @@ n(x;\mu,\sigma)=\frac{1}{\sigma \sqrt{2 \pi}}e^{-\frac{1}{2} \left ( \frac{x-\mu
 
 where \(\sigma \gt 0 \)
 
-**Normal Distribution [Moment generating function]**
+**Theorem 6.6 [Normal Distribution Moment generating function]**
 
 \[
 M_X(t)=e^{\mu t + \frac{1}{2}\sigma^2 t^2}
 \]
 
-**Normal Distribution [Moment generating function - Proof]**
+**Theorem 6.6 [Normal Distribution Moment generating function - Proof]**
 
 By definition
 
@@ -272,7 +272,121 @@ Where \(Z\) is seen to be a random variable having the standard normal distribut
 
 ## 6.6 The Normal Approximation to the Binomial Distribution
 
-**Theorem 6.8** 
+**Theorem 6.8 [Normal Approx to Binomial Distribution]** If \(X\) is a random variable having a binomial distribution with the parmeters \(n\) and \(\theta\), then the moment generating function of 
+
+\[
+Z = \frac{X-n \theta}{\sqrt{n \theta (1-\theta)}}
+\]
+
+approaches that of the standard normla distribution when \(n\rightarrow \infty\)
+
+**Theorem 6.8 [Normal Approx to Binomial Distribution - Proof]**
+
+Making use of Theorem 4.10 and 5.4 [Binomial Moment Generation] we can write
+
+\[
+\]
+
+where \(\mu=n\theta\) and \(\sigma = \sqrt{n \theta (1 - \theta)}\). Then, taking logarithms and substituting the Maclaurin's series of \(e^{t/\sigma}\), we get
+
+\[
+\begin{align}
+ln M_{\frac{X-\mu}{\sigma}} (t) &= - \frac{\mu t}{\sigma} + n \cdot ln[1+ \theta(e^{t/\sigma }-1)] \\
+&=- \frac{\mu t}{\sigma} + n \cdot ln \left [ 1+ \theta \left \{ \frac{t}{\sigma} + \frac{1}{2} \left ( \frac{t}{\sigma} \right )^2 + \frac{1}{6} \left ( \frac{t}{\sigma} \right )^3 + \cdots \right \} \right ] \\
+\end{align}
+\]
+
+and, using the infinite series \(\ln(1+x)=x - \frac{1}{2} x^2 + \frac{1}{3} x^3 + \cdots\), which converges for \(|x| < 1\), to expand this logarithm, if follows that
+
+\[
+\begin{align}
+ln M_{\frac{X-\mu}{\sigma}} (t) = - \frac{\mu t}{\sigma} &+ n \theta \left [ \frac{t}{\sigma} + \frac{1}{2} \left ( \frac{t}{\sigma} \right )^2 + \frac{1}{6} \left ( \frac{t}{\sigma} \right )^3 + \cdots \right ] \\
+&- \frac{n \theta^2}{2} \left [ \frac{t}{\sigma} + \frac{1}{2} \left ( \frac{t}{\sigma} \right )^2 + \frac{1}{6} \left ( \frac{t}{\sigma} \right )^3 + \cdots \right ]^2\\
+&+ \frac{n \theta^3}{3} \left [ \frac{t}{\sigma} + \frac{1}{2} \left ( \frac{t}{\sigma} \right )^2 + \frac{1}{6} \left ( \frac{t}{\sigma} \right )^3 + \cdots \right ]^3\\
+&- \cdots\\
+\end{align}
+\]
+
+Collecting power of \(t\), we obtain
+
+\[
+\begin{align}
+\ln M_{\frac{X-\mu}{\sigma}} (t) =&  \left ( - \frac{\mu}{\sigma} + \frac{n\theta}{\sigma} \right) t + \left ( \frac{n\theta}{2\sigma^2} - \frac{n\theta^2}{2\sigma^2} \right ) t^2 \\
++&\left ( \frac{n\theta}{6\sigma^3} - \frac{n\theta^2}{2\sigma^3} + \frac{n\theta^3}{3\sigma^3} \right ) t^3 + \cdots \\
+&=\frac{1}{\sigma^2} \left ( \frac{n\theta - n\theta^2}{2}\right )t^2 + \frac{n}{\sigma^3} \left ( \frac{\theta - 3\theta^2 +2 \theta^3}{6}\right )t^3\\
+\end{align}
+\]
+
+since \(\mu = n \theta\). Then, substituting \(\sigma = \sqrt{n \theta (1 - \theta)}\), we find that
+
+\[
+\ln M_{\frac{X-\mu}{\sigma}} (t) = \frac{1}{2} t^2 + \frac{n}{\sigma^3} \left ( \frac{\theta - 3 \theta^2 + 2 \theta^3}{6} \right ) t^3 + \cdots
+\]
+
+For \(r \gt 2\) the coefficient of \(t^r\) is a constant time \( \frac{n}{\sigma^r}), which approaches 0 when \( n \rightarrow \infty \). It follows that
+
+\[
+\lim_{n \rightarrow \infty} \ln M_{\frac{X-\mu}{\sigma}} (t) = \frac{1}{2} t^2
+\]
+
+and since the limit of a logarithm equals the logarithm of the limit (provided the two limits exists), we conclude that 
+
+\[
+\lim_{n \rightarrow \infty} M_{\frac{X-\mu}{\sigma}} (t) = e^{\frac{1}{2} t^2}
+\]
+
+whic is the moment-generating function of Theorem 6.6 [Normal Distribution Moment generating function] with \(\mu=0\) and \( \sigma = 1\)
 
 ## 6.7 Bivariate Normal Distribution
 
+**Bivariate Normal Distribution** a pair of random variables \(X\) and \(Y\) have a **bivariate normal distribution** and they are referred to as jointly normally distributed random varaibles if and only if their joint probability density is given by
+
+\[
+f(x,y) = \frac{e^{ - \frac{1}{2(1 - \rho)^2} \left [ \left ( \frac{x-\mu_1}{\sigma_1} \right )^2 - 2 \rho \left ( \frac{x-\mu_1}{\sigma_1} \right )\left ( \frac{y -\mu_2}{\sigma_2} \right )+\left ( \frac{y-\mu_2}{\sigma_2} \right )^2 \right ]}}{2 \pi \sigma_1 \sigma_2 \sqrt{1 - \rho^2}}
+\]
+
+for \(- \infty \lt x \lt \infty \) and \(- \infty \lt y \lt \infty \), where \(\sigma_1 \gt 0, \sigma_2 \gt 0,\) and \(-1 \lt \rho \lt 1\)
+
+**Theorem 6.9 [Bivariate Normal Distribution Conditional Density]** If \(X\) and \(Y\) have a bivariate normal distribution, the conditional density of \(Y\) and \(X=x\) is a normal distribution with the mean
+
+\[
+\mu_{Y|x}=\mu_2 + \rho \frac{\sigma_2}{\sigma_1} (x-\mu_1)
+\]
+
+and the variance 
+
+\[
+\sigma_{Y|x}^2 = \sigma_2^2(1-\rho^2)
+\]
+
+and the conditional density of \(X\) and \(Y=y\) is a normal distribution with the mean 
+
+\[
+\mu_{X|y}=\mu_1 + \rho \frac{\sigma_1}{\sigma_2} (y-\mu_2)
+\]
+
+and the variance 
+
+\[
+\sigma_{X|y}^2 = \sigma_1^2(1-\rho^2)
+\]
+
+**Theorem 6.9 [Bivariate Normal Distribution Conditional Density - Proof]** Writing \(w(y|x) = \frac{f(x,y)}{g(x)}\) in accordance with the definition of Conditional Density and letting \(u=\frac{x-\mu_1}{\sigma_1}\) and \(\nu=\frac{y-\mu_2}{\sigma_2}\) to simplify the notation, we get
+
+\[
+\begin{align}
+w(y|x)&=\frac{\frac{1}{2 \pi \sigma_1 \sigma_2 \sqrt{1-\rho^2}}e^{-\frac{1}{2(1-\rho^2)}[u^2-2 \rho u \nu + \nu^2]}}{\frac{1}{\sqrt{2 \pi \sigma_1}}e^{-\frac{1}{2}u^2}}\\
+&=\frac{1}{\sqrt{2 \pi \sigma_2} \sqrt{1-\rho^2}} e^{-\frac{1}{2(1-\rho^2)}[\nu^2-2 \rho u \nu + \rho^2 u^2]}\\
+&=\frac{1}{\sqrt{2 \pi \sigma_2} \sqrt{1-\rho^2}} e^{-\frac{1}{2}\left [ \frac{\nu - pu}{\sqrt{1-\rho^2}} \right ] ^2}\\
+\end{align}
+\]
+
+Then, expressing this result in terms of the original variables, we obtain
+
+\[
+w(y|x) = \frac{1}{\sigma_2 \sqrt{2 \pi}\sqrt{1-\rho^2}} e ^{- \frac{1}{2} \left [ \frac{y- \{\mu_2 + \rho \frac{\sigma_2}{\sigma_1}(x-\mu_1)}{\sigma_2 \sqrt{1-\rho^2}}\right ]^2}
+\]
+
+for \(- \infty \lt y \lt \infty\)
+
+**Theorem 6.10 [Bivariate Normal Distribution Independence]** If two random variables have a bivariate normal distribution, they are independent if and only if \(\rho=0\)
