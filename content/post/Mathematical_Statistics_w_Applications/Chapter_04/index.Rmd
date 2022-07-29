@@ -27,19 +27,19 @@ install.packages("blogdown")
 
 ## 4.2 The Expected Value of a Random Variable
 
-**Expected Value** - If \(X\) is a discrete random variable and \(f(x)\) si the value of its probability distribution at \(x\), the **expected value of \(X\)** is
+**Expected Value** - If \(X\) is a discrete random variable and \(f(x)\) is the value of its probability distribution at \(x\), the **expected value of \(X\)** is
 
 \[
 E(X)= \underset{x} \sum x \cdot f(x)
 \]
 
-Correspondingly, if \(X\) si a continuous random variable and \(f(x)\) is the value of its probability density at \(x\), the **expected value of \(X\)** is
+Correspondingly, if \(X\) is a continuous random variable and \(f(x)\) is the value of its probability density at \(x\), the **expected value of \(X\)** is
 
 \[
 E(X)=\int_{- \infty}^{\infty} x \cdot f(x) dx
 \]
 
-**Theorem 4.1** - If \(X\) is a discrete random variable and \(f(x)\) is the value of its probability distribution at \(x\), the expected value of \(g(x)\) is given by
+**Theorem 4.1 [Expected Value w/ function of X]** - If \(X\) is a discrete random variable and \(f(x)\) is the value of its probability distribution at \(x\), the expected value of \(g(x)\) is given by
 
 \[
 E[g(x)]= \underset{x}\sum g(x) \cdot f(x)
@@ -51,7 +51,7 @@ Correspondingly, if \(X\) is a continuous random variable and \(f(x)\) is the va
 E[g(x)]=\int_{- \infty}^{ \infty } g(x) \cdot f(x) dx
 \]
 
-**Proof** Since a more general proof is behond the scope of this text, we shall prove this theorem here only for the case where \(X\) is discrete and has a finate range. Since \(y=g(x)\) does not necessarily define a one-to-one correspondence, suppose that \(g(x)\) takes on the value \(g_i\) when \(x\) takes on the values \(x_{i1},x_{i2},\ldots,x_{in_i}\). Then, the probability that \(g(X)\) will take on the value \(g_i\) is
+**Theorem 4.1 [Expected Value w/ function of X - Proof]** Since a more general proof is beyond the scope of this text, we shall prove this theorem here only for the case where \(X\) is discrete and has a finite range. Since \(y=g(x)\) does not necessarily define a one-to-one correspondence, suppose that \(g(x)\) takes on the value \(g_i\) when \(x\) takes on the values \(x_{i1},x_{i2},\ldots,x_{in_i}\). Then, the probability that \(g(X)\) will take on the value \(g_i\) is
 
 \[
 P[g(X)=g_i] = \sum_{j=1}^{n_i}f(x_{ij})
@@ -62,21 +62,21 @@ and if \(g(x)\) takes on the values \(g_1,g_2,\ldots,g_m\), it follows that
 \[
 \begin{align}
 E[g(X)]&= \sum_{i=1}^m g_i \cdot P[g(X)=g_i]\\
-&= \sum_{i=1}^m g_i \cdot \sum_{i=1}^m f(x_{ij})\\
-&= \sum_{i=1}^m \sum_{i=1}^m g_i \cdot f(x_{ij})\\
+&= \sum_{i=1}^m g_i \cdot \sum_{j=1}^{n_i} f(x_{ij})\\
+&= \sum_{i=1}^m \sum_{j=1}^{n_i} g_i \cdot f(x_{ij})\\
 &= \sum_{x} g(x) \cdot f(x)\\
 \end{align}
 \]
 
 where the summation extends over all values of \(X\).
 
-**Theorem 4.2** - If \(a\) and \(b\) are constants, then 
+**Theorem 4.2 [Expected Value coefficient and sum of constants]** - If \(a\) and \(b\) are constants, then 
 
 \[
 E(aX + b)=aE(X)+b
 \]
 
-**Proof** Using Theorem 4.1 with \(g(X)=aX+b\), we get
+**Theorem 4.2 [Expected Value coefficient and sum of constants - Proof]** Using Theorem 4.1 with \(g(X)=aX+b\), we get
 
 \[
 \begin{align}
@@ -96,24 +96,24 @@ E(aX)=aE(X)
 E(b)=b
 \]
 
-**Theorem 4.3** - If \(c_1, c_2, \ldots , c_n\) are constants, then 
+**Theorem 4.3 [Expected values for Summation]** - If \(c_1, c_2, \ldots , c_n\) are constants, then 
 
 \[
-E \left [ \sum_{i=1}^n c_i g_i(X)  \right ] = \sum_{i=1}^n c_i E[g_i(X)]
+E \left [ \sum_{i=1}^n c_i g_i(X) \right ] = \sum_{i=1}^n c_i E[g_i(X)]
 \]
 
-**Proof** According to Theorem 4.1 with \(g(X)=\sum_{i=1}^{n} c_i g_i (X)\), we get
+**Theorem 4.3 [Expected values for Summation - Proof]** According to Theorem 4.1 with \(g(X)=\sum_{i=1}^{n} c_i g_i (X)\), we get
 
 \[
 \begin{align}
-E \left [ \sum_{i=1}^n c_i g_i(X)  \right ] &= \sum_x \left [ \sum_{i=1}^n c_i g_i(x) \right ] f(x)\\
+E \left [ \sum_{i=1}^n c_i g_i(X) \right ] &= \sum_x \left [ \sum_{i=1}^n c_i g_i(x) \right ] f(x)\\
 &= \sum_{i=1}^n \sum_x c_i g_i(x)f(x)\\
 &= \sum_{i=1}^n c_i \sum_x g_i(x)f(x)\\
 &= \sum_{i=1}^n c_i E[g_i(X) ] \\
 \end{align}
 \]
 
-**Theorem 4.4** - If \(X\) and \(Y\) are discrete random variables and \(f(x,y)\) is the value of their joint probability distribution at \((x,y)\), the expected value of \(g(X,Y)\) is
+**Theorem 4.4 [Expected Value for Joint Probability]** - If \(X\) and \(Y\) are discrete random variables and \(f(x,y)\) is the value of their joint probability distribution at \((x,y)\), the expected value of \(g(X,Y)\) is
 
 \[
 E[g(X,Y)] = \sum_x \sum_y g(x,y) \cdot f(x,y)
@@ -125,7 +125,7 @@ Correspondingly, if \(X\) and \(Y\) are continuous random variables and \(f(x,y)
 E[g(x,y)] = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g(x,y) f(x,y) dx dy
 \]
 
-**Theorem 4.5** - If \(c_1, c_2, \ldots , c_n\) are constants, then 
+**Theorem 4.5 [Expected values for Summation (multiple random variables)]** - If \(c_1, c_2, \ldots , c_n\) are constants, then 
 
 \[
 E \left [ \sum_{i=1}^n c_i g_i (X_1, X_2, \ldots, X_k)\right ] = \sum_{i=1}^n c_i E[g_i(X_1, X_2, \ldots, X_k)]
@@ -166,7 +166,7 @@ when \(X\) is continuous
 
 **Variance** - \(\mu_2\) is called the **variance** of the distribution of \(X\), or simply the **variance of \(X\)**, and is denoted by \(\sigma^2, \, \sigma_x^2, \, var(X)\) or \(V(X)\). The positive square root of the variance, \(\sigma\), is call the **standard deviation of \(X\)**
 
-**Theorem 4.6**
+**Theorem 4.6 [Variance]**
 
 \[
 \sigma^2 = \mu_2^{'}-\mu^2
@@ -180,13 +180,14 @@ when \(X\) is continuous
 &=E(X^2-2 \mu X+\mu^2)\\
 &=E(X^2)-2 \mu E(X)+E(\mu^2)\\
 &=E(X^2)-2 \mu \cdot \mu+\mu^2\\
+&= \mu_2'-\mu^2
 \end{align}
 \]
 
-**Theorem 4.7** - If \(X\) has the variance \(\sigma^2\), then
+**Theorem 4.7 [Coefficients and sums for variance]** - If \(X\) has the variance \(\sigma^2\), then
 
 \[
-\text{var}(aX+b)= a^2 b^2
+\text{var}(aX+b)= a^2 \sigma^2
 \]
 
 ## 4.4 Chebyshev's Theorem
@@ -264,13 +265,13 @@ M_X(t)= E(e^{tX}) = \int_{- \infty}^{\infty}e^{tx} \cdot f(x) dx
 
 when \(X\) is continuous
 
-**Theorem 4.9** - 
+**Theorem 4.9 [Derivative of Moment Generating Function]** - 
 
 \[
 \frac{d^r M_X(t)}{dt^r} \Bigg \vert _{t=0}=\mu_r^{'}
 \]
 
-**Theorem 4.10** - If \(a\) and \(b\) are constatns, then:
+**Theorem 4.10** - If \(a\) and \(b\) are constants, then:
 
   1. \( M_{X+a}(t) = E [e^{(X + a)t}] = e^{at} \cdot M_X (t)\)
   2. \( M_{bX}(t) = E (e^{bXt}) = M_X (bt)\)
@@ -278,7 +279,7 @@ when \(X\) is continuous
 
 ## 4.6 Product Moments
 
-**Product Moments About the Origin** - The **\(r\)th and \(s\)th product moment about the origin** of the random variables \(X\) and \(Y\), dnoted by \(\mu^{'}_{r,s}\), is the expected value of \(X^r Y^s\); symbolically,
+**Product Moments About the Origin** - The **\(r\)th and \(s\)th product moment about the origin** of the random variables \(X\) and \(Y\), denoted by \(\mu^{'}_{r,s}\), is the expected value of \(X^r Y^s\); symbolically,
 
 \[
 \mu^{'}_{r,s}= E(X^r Y^s)=\sum_x \sum_y x^r y^s \cdot f(x,y)
@@ -315,7 +316,7 @@ when \(X\) and \(Y\) are continuous
 
 **Covariance** - \(\mu_{1,1}\) is called the **covaraince** of \(X\) and \(Y\), and it is denoted by \(\sigma_{XY}\), cov(\(X,Y\)), or C(\(X,Y\))
 
-**Theorem 4.11** - 
+**Theorem 4.11 [Covariance]** - 
 
 \[
 \sigma_{XY} = \mu_{1,1}^{'}-\mu_{X} \mu_{Y}

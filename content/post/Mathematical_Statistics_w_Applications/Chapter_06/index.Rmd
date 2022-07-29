@@ -387,6 +387,6 @@ Then, expressing this result in terms of the original variables, we obtain
 w(y|x) = \frac{1}{\sigma_2 \sqrt{2 \pi}\sqrt{1-\rho^2}} e ^{- \frac{1}{2} \left [ \frac{y- \{\mu_2 + \rho \frac{\sigma_2}{\sigma_1}(x-\mu_1)}{\sigma_2 \sqrt{1-\rho^2}}\right ]^2}
 \]
 
-for \(- \infty \lt y \lt \infty\)
+for \(- \infty \lt y \lt \infty\), and it can be seen by inspection that this is a normal density with the mean \(\mu_{Y|x} = \mu_2 + \rho \frac{\sigma_2}{\sigma_1}(x - \mu_1)\) and the variance \(\sigma_{Y|x}^2=\sigma_2^2(1 -\rho^2)\). The corresponding results for the conditional density of \(X\) given \(Y=y\) follow by symmetry.
 
 **Theorem 6.10 [Bivariate Normal Distribution Independence]** If two random variables have a bivariate normal distribution, they are independent if and only if \(\rho=0\)

@@ -2,7 +2,7 @@
 title: "Chapter 7 - Functions of Random Variables"
 author: Jeremy Buss
 output: html_document
-date: "2022-07-24"
+date: "2022-07-26"
 categories:
   - John E. Freund's Mathematical Statistics with Applications - Miller/Miller
   - Statistics
@@ -20,12 +20,84 @@ katex: yes
 </div>
 <div id="transformation-technique-one-variable" class="section level2">
 <h2>7.3 Transformation Technique: One Variable</h2>
+<p><strong>Theorem 7.1</strong> Let <span class="math inline">\(f(x)\)</span> be the value of the probability density of the continuous random variable <span class="math inline">\(X\)</span> at <span class="math inline">\(x\)</span>. If the function given by <span class="math inline">\(y=u(x)\)</span> is differentiable and either increasing or decreasing for all values within the range of <span class="math inline">\(X\)</span> for which <span class="math inline">\(f(x)\ne 0\)</span>, then, for these values of <span class="math inline">\(x\)</span>, the equation <span class="math inline">\(y=u(x)\)</span> can be uniquely solved for <span class="math inline">\(x\)</span> to give <span class="math inline">\(x=w(y)\)</span>, and for the corresponding values of <span class="math inline">\(y\)</span> the probability density of <span class="math inline">\(Y=u(X)\)</span> is given by</p>
+<p><span class="math display">\[
+g(y)=f[w(y)] \cdot |w&#39; (y)| \;\; \text{provided } u&#39;(x) \ne 0
+\]</span></p>
+<p>Elsewhere, <span class="math inline">\(g(y)=0\)</span></p>
+<p><strong>Theorem 7.1 [Proof]</strong> First, let us prove the case where the function given by <span class="math inline">\(y=u(x)\)</span> is increasing. As can be seen</p>
+<p><img src="images/Figure7.3_IncreasingFunction.png" /></p>
+<p><span class="math inline">\(X\)</span> must take on a value between <span class="math inline">\(w(a)\)</span> and <span class="math inline">\(w(b)\)</span> when <span class="math inline">\(Y\)</span> takes on a value between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>. Hence</p>
+<p><span class="math display">\[
+\begin{align}
+P(a \lt Y \lt b ) &amp;= P[w(a) &lt; X &lt; w(b)]\\
+&amp;=\int_{w(a)}^{w(b)} f(x) dx\\
+&amp;=\int_{a}^{b} f[w(y)]w&#39;(y) dy\\
+\end{align}
+\]</span></p>
+<p>Where we performed the change of variable <span class="math inline">\(y=u(x)\)</span>, or equivalently <span class="math inline">\(x=w(y)\)</span>, in the integral. In accordance with definition of probability density function the integrand gives the probability density of <span class="math inline">\(Y\)</span> as long as <span class="math inline">\(w&#39;(y)\)</span> exists, and we can write</p>
+<p><span class="math display">\[
+g(y) = f[w(y)]w&#39;(y)
+\]</span></p>
+<p>When the function given by <span class="math inline">\(y=u(x)\)</span> is decreasing, it can be seen</p>
+<p><img src="images/Figure7.3_DecreasingFunction.png" /></p>
+<p>that <span class="math inline">\(X\)</span> must take on a value between <span class="math inline">\(w(b)\)</span> and <span class="math inline">\(w(a)\)</span> when <span class="math inline">\(Y\)</span> takes on a value between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>. Hence,</p>
+<p><span class="math display">\[
+\begin{align}
+P(a \lt Y \lt b ) &amp;= P[w(b) &lt; X &lt; w(a)]\\
+&amp;=\int_{w(b)}^{w(a)} f(x) dx\\
+&amp;=\int_{b}^{a} f[w(y)]w&#39;(y) dy\\
+&amp;=-\int_{a}^{b} f[w(y)]w&#39;(y) dy\\
+\end{align}
+\]</span></p>
+<p>where we performed the same change of variable as before, and it follows that</p>
+<p><span class="math display">\[
+g(y)=-f[w(y)]w&#39;(y)
+\]</span></p>
+<p>Since <span class="math inline">\(w&#39;(y)= \frac{dx}{dy} = \frac{1}{\frac{dy}{dx}}\)</span> is positive when the function given by <span class="math inline">\(y=u(x)\)</span> is increasing, and -w’{y} is positive when the function given by <span class="math inline">\(y=u(x)\)</span> is decreasing, we can combine the two cases by writing</p>
+<p><span class="math display">\[
+g(y) = f[w(y)]\cdot|w&#39;(y)|
+\]</span></p>
 </div>
 <div id="transformation-technique-several-variables" class="section level2">
 <h2>7.4 Transformation Technique: Several Variables</h2>
+<p><strong>Theorem 7.2</strong> Let <span class="math inline">\(f(x_1,x_2)\)</span> be the value of the joint probability density of the continuous random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> at <span class="math inline">\((x_1, x_2)\)</span>. If the functions given by <span class="math inline">\(y_1=u_1(x_1,x_2)\)</span> and <span class="math inline">\(y_2=u_2(x_1,x_2)\)</span> are partially differentiable with respect to both <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>and represent a one-to-one transformation for all values within the range <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> for wich <span class="math inline">\(f(x_1,x_2)\ne0\)</span>, then, for these values of <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>, the equations <span class="math inline">\(y_1=u_1(x_1,x_2)\)</span> and <span class="math inline">\(y_2=u_2(x_1,x_2)\)</span> can be uniquely solved for <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> to give <span class="math inline">\(x_1=w_1(y_1,y_2)\)</span> and <span class="math inline">\(x_2=w_2(y_1,y_2)\)</span>, and for the corresponding values of <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span>, the join probability density of <span class="math inline">\(Y_1=u_1(X_1,X_2)\)</span> and <span class="math inline">\(Y_2=u_2(X_1,X_2)\)</span> is given by</p>
+<p><span class="math display">\[
+g(y_1, y_2) = f[w_1(y_1,y_2),w_2(y_1,y_2)]\cdot |J|
+\]</span></p>
+<p>Here, <span class="math inline">\(J\)</span> called the <strong>Jacobian</strong> of the transformation, is the determinant</p>
+<p><span class="math display">\[
+J= \left |
+\begin{matrix}
+\frac{\partial x_1}{\partial y_1} &amp; \frac{\partial x_1}{\partial y_2}\\
+\frac{\partial x_2}{\partial y_1} &amp; \frac{\partial x_2}{\partial y_2}\\
+\end{matrix}
+\right |
+\]</span></p>
+<p>Elsewhere, <span class="math inline">\(g(y_1,y_2) = 0\)</span></p>
 </div>
 <div id="moment-generating-function-technique" class="section level2">
 <h2>7.5 Moment-Generating Function Technique</h2>
+<p><strong>Theorem 7.3 [Moment-Generating Function Technique] </strong> If <span class="math inline">\(X_1, X_2, \dots,\)</span> and <span class="math inline">\(X_n\)</span> are independent random variables and <span class="math inline">\(Y=X_1 + X_2 + \cdots + X_n\)</span>, then</p>
+<p><span class="math display">\[
+M_Y(t) = \prod_{i=1}^n M_{X_i}(t)
+\]</span></p>
+<p>where <span class="math inline">\(M_X(t)\)</span> is the value of the moment-generating function of <span class="math inline">\(X_i\)</span> at <span class="math inline">\(t\)</span>.</p>
+<p><strong>Theorem 7.3 [Moment-Generating Function Technique - Proof] </strong> - Making use of the fact that the random variables are independent and hence</p>
+<p><span class="math display">\[
+f(x_1, x_2,\dots,x_n)=f_1(x_1)\cdot f_2(x_2)\cdot \dots \cdot f_n(x_n)
+\]</span></p>
+<p>according to Independence of Discrete Random Variables definition, we can write</p>
+<p><span class="math display">\[
+\begin{align}
+M_Y(t)&amp;=E(e^{Yt})\\
+&amp;=E \left [ e^{(X_1+X_2+\cdots+X_n)t} \right ]\\
+&amp;=\int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty} e^{(x_1+x_2+\cdots+x_n)t}f(x_1,x_2,\dots,x_n) dx_1 dx_2 \cdots dx_n\\
+&amp;=\int_{-\infty}^{\infty}e^{x_1t}f_1(x_1)dx_1 \cdot \int_{-\infty}^{\infty}e^{x_2t}f_2(x_2)dx_2 \cdots \int_{-\infty}^{\infty}e^{x_nt}f_n(x_n)dx_n \\
+&amp;=\prod_{i=1}^n M_{X_i}(t)\\
+\end{align}
+\]</span></p>
+<p>which proves the theorem for the continuous case. To prove it for the discrete case, we have only to replace all the integrals by sums</p>
 </div>
 <div id="the-theory-in-application" class="section level2">
 <h2>7.6 The Theory in Application</h2>

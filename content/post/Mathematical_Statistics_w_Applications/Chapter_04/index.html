@@ -2,7 +2,7 @@
 title: "Chapter 4 - Mathematical Expectation"
 author: Jeremy Buss
 output: html_document
-date: "2022-06-12"
+date: "2022-07-29"
 categories:
   - John E. Freund's Mathematical Statistics with Applications - Miller/Miller
   - Statistics
@@ -18,15 +18,15 @@ katex: yes
 </div>
 <div id="the-expected-value-of-a-random-variable" class="section level2">
 <h2>4.2 The Expected Value of a Random Variable</h2>
-<p><strong>Expected Value</strong> - If <span class="math inline">\(X\)</span> is a discrete random variable and <span class="math inline">\(f(x)\)</span> si the value of its probability distribution at <span class="math inline">\(x\)</span>, the <strong>expected value of <span class="math inline">\(X\)</span></strong> is</p>
+<p><strong>Expected Value</strong> - If <span class="math inline">\(X\)</span> is a discrete random variable and <span class="math inline">\(f(x)\)</span> is the value of its probability distribution at <span class="math inline">\(x\)</span>, the <strong>expected value of <span class="math inline">\(X\)</span></strong> is</p>
 <p><span class="math display">\[
 E(X)= \underset{x} \sum x \cdot f(x)
 \]</span></p>
-<p>Correspondingly, if <span class="math inline">\(X\)</span> si a continuous random variable and <span class="math inline">\(f(x)\)</span> is the value of its probability density at <span class="math inline">\(x\)</span>, the <strong>expected value of <span class="math inline">\(X\)</span></strong> is</p>
+<p>Correspondingly, if <span class="math inline">\(X\)</span> is a continuous random variable and <span class="math inline">\(f(x)\)</span> is the value of its probability density at <span class="math inline">\(x\)</span>, the <strong>expected value of <span class="math inline">\(X\)</span></strong> is</p>
 <p><span class="math display">\[
 E(X)=\int_{- \infty}^{\infty} x \cdot f(x) dx
 \]</span></p>
-<p><strong>Theorem 4.1</strong> - If <span class="math inline">\(X\)</span> is a discrete random variable and <span class="math inline">\(f(x)\)</span> is the value of its probability distribution at <span class="math inline">\(x\)</span>, the expected value of <span class="math inline">\(g(x)\)</span> is given by</p>
+<p><strong>Theorem 4.1 [Expected Value w/ function of X]</strong> - If <span class="math inline">\(X\)</span> is a discrete random variable and <span class="math inline">\(f(x)\)</span> is the value of its probability distribution at <span class="math inline">\(x\)</span>, the expected value of <span class="math inline">\(g(x)\)</span> is given by</p>
 <p><span class="math display">\[
 E[g(x)]= \underset{x}\sum g(x) \cdot f(x)
 \]</span></p>
@@ -34,7 +34,7 @@ E[g(x)]= \underset{x}\sum g(x) \cdot f(x)
 <p><span class="math display">\[
 E[g(x)]=\int_{- \infty}^{ \infty } g(x) \cdot f(x) dx
 \]</span></p>
-<p><strong>Proof</strong> Since a more general proof is behond the scope of this text, we shall prove this theorem here only for the case where <span class="math inline">\(X\)</span> is discrete and has a finate range. Since <span class="math inline">\(y=g(x)\)</span> does not necessarily define a one-to-one correspondence, suppose that <span class="math inline">\(g(x)\)</span> takes on the value <span class="math inline">\(g_i\)</span> when <span class="math inline">\(x\)</span> takes on the values <span class="math inline">\(x_{i1},x_{i2},\ldots,x_{in_i}\)</span>. Then, the probability that <span class="math inline">\(g(X)\)</span> will take on the value <span class="math inline">\(g_i\)</span> is</p>
+<p><strong>Theorem 4.1 [Expected Value w/ function of X - Proof]</strong> Since a more general proof is beyond the scope of this text, we shall prove this theorem here only for the case where <span class="math inline">\(X\)</span> is discrete and has a finite range. Since <span class="math inline">\(y=g(x)\)</span> does not necessarily define a one-to-one correspondence, suppose that <span class="math inline">\(g(x)\)</span> takes on the value <span class="math inline">\(g_i\)</span> when <span class="math inline">\(x\)</span> takes on the values <span class="math inline">\(x_{i1},x_{i2},\ldots,x_{in_i}\)</span>. Then, the probability that <span class="math inline">\(g(X)\)</span> will take on the value <span class="math inline">\(g_i\)</span> is</p>
 <p><span class="math display">\[
 P[g(X)=g_i] = \sum_{j=1}^{n_i}f(x_{ij})
 \]</span></p>
@@ -42,17 +42,17 @@ P[g(X)=g_i] = \sum_{j=1}^{n_i}f(x_{ij})
 <p><span class="math display">\[
 \begin{align}
 E[g(X)]&amp;= \sum_{i=1}^m g_i \cdot P[g(X)=g_i]\\
-&amp;= \sum_{i=1}^m g_i \cdot \sum_{i=1}^m f(x_{ij})\\
-&amp;= \sum_{i=1}^m \sum_{i=1}^m g_i \cdot f(x_{ij})\\
+&amp;= \sum_{i=1}^m g_i \cdot \sum_{j=1}^{n_i} f(x_{ij})\\
+&amp;= \sum_{i=1}^m \sum_{j=1}^{n_i} g_i \cdot f(x_{ij})\\
 &amp;= \sum_{x} g(x) \cdot f(x)\\
 \end{align}
 \]</span></p>
 <p>where the summation extends over all values of <span class="math inline">\(X\)</span>.</p>
-<p><strong>Theorem 4.2</strong> - If <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are constants, then</p>
+<p><strong>Theorem 4.2 [Expected Value coefficient and sum of constants]</strong> - If <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are constants, then</p>
 <p><span class="math display">\[
 E(aX + b)=aE(X)+b
 \]</span></p>
-<p><strong>Proof</strong> Using Theorem 4.1 with <span class="math inline">\(g(X)=aX+b\)</span>, we get</p>
+<p><strong>Theorem 4.2 [Expected Value coefficient and sum of constants - Proof]</strong> Using Theorem 4.1 with <span class="math inline">\(g(X)=aX+b\)</span>, we get</p>
 <p><span class="math display">\[
 \begin{align}
 E(aX+b)&amp;=\int_{-\infty}^{\infty}(ax+b) \cdot f(x) dx\\
@@ -68,20 +68,20 @@ E(aX)=aE(X)
 <span class="math display">\[
 E(b)=b
 \]</span></p>
-<p><strong>Theorem 4.3</strong> - If <span class="math inline">\(c_1, c_2, \ldots , c_n\)</span> are constants, then</p>
+<p><strong>Theorem 4.3 [Expected values for Summation]</strong> - If <span class="math inline">\(c_1, c_2, \ldots , c_n\)</span> are constants, then</p>
 <p><span class="math display">\[
-E \left [ \sum_{i=1}^n c_i g_i(X)  \right ] = \sum_{i=1}^n c_i E[g_i(X)]
+E \left [ \sum_{i=1}^n c_i g_i(X) \right ] = \sum_{i=1}^n c_i E[g_i(X)]
 \]</span></p>
-<p><strong>Proof</strong> According to Theorem 4.1 with <span class="math inline">\(g(X)=\sum_{i=1}^{n} c_i g_i (X)\)</span>, we get</p>
+<p><strong>Theorem 4.3 [Expected values for Summation - Proof]</strong> According to Theorem 4.1 with <span class="math inline">\(g(X)=\sum_{i=1}^{n} c_i g_i (X)\)</span>, we get</p>
 <p><span class="math display">\[
 \begin{align}
-E \left [ \sum_{i=1}^n c_i g_i(X)  \right ] &amp;= \sum_x \left [ \sum_{i=1}^n c_i g_i(x) \right ] f(x)\\
+E \left [ \sum_{i=1}^n c_i g_i(X) \right ] &amp;= \sum_x \left [ \sum_{i=1}^n c_i g_i(x) \right ] f(x)\\
 &amp;= \sum_{i=1}^n \sum_x c_i g_i(x)f(x)\\
 &amp;= \sum_{i=1}^n c_i \sum_x g_i(x)f(x)\\
 &amp;= \sum_{i=1}^n c_i E[g_i(X) ] \\
 \end{align}
 \]</span></p>
-<p><strong>Theorem 4.4</strong> - If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are discrete random variables and <span class="math inline">\(f(x,y)\)</span> is the value of their joint probability distribution at <span class="math inline">\((x,y)\)</span>, the expected value of <span class="math inline">\(g(X,Y)\)</span> is</p>
+<p><strong>Theorem 4.4 [Expected Value for Joint Probability]</strong> - If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are discrete random variables and <span class="math inline">\(f(x,y)\)</span> is the value of their joint probability distribution at <span class="math inline">\((x,y)\)</span>, the expected value of <span class="math inline">\(g(X,Y)\)</span> is</p>
 <p><span class="math display">\[
 E[g(X,Y)] = \sum_x \sum_y g(x,y) \cdot f(x,y)
 \]</span></p>
@@ -89,7 +89,7 @@ E[g(X,Y)] = \sum_x \sum_y g(x,y) \cdot f(x,y)
 <p><span class="math display">\[
 E[g(x,y)] = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g(x,y) f(x,y) dx dy
 \]</span></p>
-<p><strong>Theorem 4.5</strong> - If <span class="math inline">\(c_1, c_2, \ldots , c_n\)</span> are constants, then</p>
+<p><strong>Theorem 4.5 [Expected values for Summation (multiple random variables)]</strong> - If <span class="math inline">\(c_1, c_2, \ldots , c_n\)</span> are constants, then</p>
 <p><span class="math display">\[
 E \left [ \sum_{i=1}^n c_i g_i (X_1, X_2, \ldots, X_k)\right ] = \sum_{i=1}^n c_i E[g_i(X_1, X_2, \ldots, X_k)]
 \]</span></p>
@@ -116,7 +116,7 @@ E \left [ \sum_{i=1}^n c_i g_i (X_1, X_2, \ldots, X_k)\right ] = \sum_{i=1}^n c_
 \]</span></p>
 <p>when <span class="math inline">\(X\)</span> is continuous</p>
 <p><strong>Variance</strong> - <span class="math inline">\(\mu_2\)</span> is called the <strong>variance</strong> of the distribution of <span class="math inline">\(X\)</span>, or simply the <strong>variance of <span class="math inline">\(X\)</span></strong>, and is denoted by <span class="math inline">\(\sigma^2, \, \sigma_x^2, \, var(X)\)</span> or <span class="math inline">\(V(X)\)</span>. The positive square root of the variance, <span class="math inline">\(\sigma\)</span>, is call the <strong>standard deviation of <span class="math inline">\(X\)</span></strong></p>
-<p><strong>Theorem 4.6</strong></p>
+<p><strong>Theorem 4.6 [Variance]</strong></p>
 <p><span class="math display">\[
 \sigma^2 = \mu_2^{&#39;}-\mu^2
 \]</span></p>
@@ -127,11 +127,12 @@ E \left [ \sum_{i=1}^n c_i g_i (X_1, X_2, \ldots, X_k)\right ] = \sum_{i=1}^n c_
 &amp;=E(X^2-2 \mu X+\mu^2)\\
 &amp;=E(X^2)-2 \mu E(X)+E(\mu^2)\\
 &amp;=E(X^2)-2 \mu \cdot \mu+\mu^2\\
+&amp;= \mu_2&#39;-\mu^2
 \end{align}
 \]</span></p>
-<p><strong>Theorem 4.7</strong> - If <span class="math inline">\(X\)</span> has the variance <span class="math inline">\(\sigma^2\)</span>, then</p>
+<p><strong>Theorem 4.7 [Coefficients and sums for variance]</strong> - If <span class="math inline">\(X\)</span> has the variance <span class="math inline">\(\sigma^2\)</span>, then</p>
 <p><span class="math display">\[
-\text{var}(aX+b)= a^2 b^2
+\text{var}(aX+b)= a^2 \sigma^2
 \]</span></p>
 </div>
 <div id="chebyshevs-theorem" class="section level2">
@@ -189,11 +190,11 @@ M_X(t)= E(e^{tX}) = \sum_x e^{tX} \cdot f(x)
 M_X(t)= E(e^{tX}) = \int_{- \infty}^{\infty}e^{tx} \cdot f(x) dx
 \]</span></p>
 <p>when <span class="math inline">\(X\)</span> is continuous</p>
-<p><strong>Theorem 4.9</strong> -</p>
+<p><strong>Theorem 4.9 [Derivative of Moment Generating Function]</strong> -</p>
 <p><span class="math display">\[
 \frac{d^r M_X(t)}{dt^r} \Bigg \vert _{t=0}=\mu_r^{&#39;}
 \]</span></p>
-<p><strong>Theorem 4.10</strong> - If <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are constatns, then:</p>
+<p><strong>Theorem 4.10</strong> - If <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are constants, then:</p>
 <ol style="list-style-type: decimal">
 <li><span class="math inline">\(M_{X+a}(t) = E [e^{(X + a)t}] = e^{at} \cdot M_X (t)\)</span></li>
 <li><span class="math inline">\(M_{bX}(t) = E (e^{bXt}) = M_X (bt)\)</span></li>
@@ -202,7 +203,7 @@ M_X(t)= E(e^{tX}) = \int_{- \infty}^{\infty}e^{tx} \cdot f(x) dx
 </div>
 <div id="product-moments" class="section level2">
 <h2>4.6 Product Moments</h2>
-<p><strong>Product Moments About the Origin</strong> - The <strong><span class="math inline">\(r\)</span>th and <span class="math inline">\(s\)</span>th product moment about the origin</strong> of the random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, dnoted by <span class="math inline">\(\mu^{&#39;}_{r,s}\)</span>, is the expected value of <span class="math inline">\(X^r Y^s\)</span>; symbolically,</p>
+<p><strong>Product Moments About the Origin</strong> - The <strong><span class="math inline">\(r\)</span>th and <span class="math inline">\(s\)</span>th product moment about the origin</strong> of the random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, denoted by <span class="math inline">\(\mu^{&#39;}_{r,s}\)</span>, is the expected value of <span class="math inline">\(X^r Y^s\)</span>; symbolically,</p>
 <p><span class="math display">\[
 \mu^{&#39;}_{r,s}= E(X^r Y^s)=\sum_x \sum_y x^r y^s \cdot f(x,y)
 \]</span></p>
@@ -227,7 +228,7 @@ M_X(t)= E(e^{tX}) = \int_{- \infty}^{\infty}e^{tx} \cdot f(x) dx
 \]</span></p>
 <p>when <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are continuous</p>
 <p><strong>Covariance</strong> - <span class="math inline">\(\mu_{1,1}\)</span> is called the <strong>covaraince</strong> of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, and it is denoted by <span class="math inline">\(\sigma_{XY}\)</span>, cov(<span class="math inline">\(X,Y\)</span>), or C(<span class="math inline">\(X,Y\)</span>)</p>
-<p><strong>Theorem 4.11</strong> -</p>
+<p><strong>Theorem 4.11 [Covariance]</strong> -</p>
 <p><span class="math display">\[
 \sigma_{XY} = \mu_{1,1}^{&#39;}-\mu_{X} \mu_{Y}
 \]</span></p>
