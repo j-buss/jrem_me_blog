@@ -32,7 +32,7 @@ install.packages("blogdown")
 **Probability Distribution** - If \(X\) is a discrete random variable, the function given by \(f(x)=P(X=x)\) for each \(x\) within the range of \(X\) is called the **probability distribution** of \(X\)
 
 
-**Theorem 3.1** - A function can serve as the probability distribution of a discrete random variable \(X\) if and only if its values, \(f(x)\), satisfy the conditions:
+**Theorem 3.1 [Probability Distribution - Discrete Conditions]** - A function can serve as the probability distribution of a discrete random variable \(X\) if and only if its values, \(f(x)\), satisfy the conditions:
   1. \(f(x) \ge 0\) for each value within its domain;
   2. \(\sum_{x} f(x)=1\), where the summation extends over all the values within its domain. 
 
@@ -46,12 +46,12 @@ F(x)=P(X \le x) = \sum_{t \le X} f(t) && \text{for} \,-\infty \lt x \lt \infty
 
 where \(f(t)\) is the value of the probability distribution of \(X\) at \(t\), is called the **distribution function**, or the **cumulative distribution** of \(X\)
 
-**Theorem 3.2** The values \(F(x)\) of the distribution function of a discrete random variable \(X\) satisfy the conditions:
+**Theorem 3.2 [Distribution Function - Discrete Conditions]** The values \(F(x)\) of the distribution function of a discrete random variable \(X\) satisfy the conditions:
 
   1. \(F(- \infty ) = 0\) and \(F(\infty) = 1\);
   2. if \(a \lt b\), then \(F(a) \le F(b)\) for any real numbers \(a\) and \(b\)
 
-**Theorem 3.3** - If the range of a random variable \(X\) consists of the values \(x_1 \lt x_2 \lt x_3 \lt \cdots \lt x_n\), then \(f(x_1)=F(x_1)\) and
+**Theorem 3.3 [Probability Distribution from Cumulative Distribution - Discrete]** - If the range of a random variable \(X\) consists of the values \(x_1 \lt x_2 \lt x_3 \lt \cdots \lt x_n\), then \(f(x_1)=F(x_1)\) and
 
 \[
 \begin{align}
@@ -71,13 +71,13 @@ P(a \le X \le b) = \int_a^b f(x)dx
 
 for any real constants \(a\) and \(b\) with \(a \le b\)
 
-**Theorem 3.4** - If \(X\) is a continuous random variable and \(a\) and \(b\) are real constants with \(a \le b\), then
+**Theorem 3.4 [Endpoints not needed]** - If \(X\) is a continuous random variable and \(a\) and \(b\) are real constants with \(a \le b\), then
 
 \[
 P(a \le X \le b) = P(a \le X \lt b) = P(a \lt X \le b) = P(a \lt X \lt b)
 \]
 
-**Theorem 3.5** - A function can serve as a probability density of a continuous random variable \(X\) if its values, \(f(x)\), satisfy the conditions:
+**Theorem 3.5 [Probability Density - Continuous Conditions]** - A function can serve as a probability density of a continuous random variable \(X\) if its values, \(f(x)\), satisfy the conditions:
   
   1. \(f(x) \ge 0\) for \(- \infty \lt x \lt \infty \)
   2. \(\int_{-\infty}^{\infty} f(x) dx = 1\)
@@ -90,7 +90,7 @@ F(x)=P(X \le x)= \int_{- \infty}^{x} f(t) dt && \text{for} \, -\infty \lt x \lt 
 \end{align}
 \]
 
-**Theorem 3.6** - If \(f(x)\) and \(F(x)\) are the values of the probability density and the distribution function of \(X\) at \(x\), then
+**Theorem 3.6 [Derivative of Distribution Function is Probability Density]** - If \(f(x)\) and \(F(x)\) are the values of the probability density and the distribution function of \(X\) at \(x\), then
 
 \[
 P(a \le X \le b) = F(b)-F(a)
@@ -114,7 +114,7 @@ where the derivative exists.
 
 **Joint Probability Distribution** - If \(X\) and \(Y\) are discrete random variables, the function given by \(f(x,y)=P(X=x,Y=y)\) for each pair of values \((x,y)\) within the range of \(X\) and \(Y\) is called the **joint probability distribution** of \(X\) and \(Y\)
 
-**Theorem 3.7** - A bivariate function can serve as the joint probability distribution of a pair of discrete random variables \(X\) and \(Y\) if and only if its values, \(f(x,y)\), satisfy the conditions:
+**Theorem 3.7 [Joint Probability Distribution - Discrete Conditions]** - A bivariate function can serve as the joint probability distribution of a pair of discrete random variables \(X\) and \(Y\) if and only if its values, \(f(x,y)\), satisfy the conditions:
 
   1. \(f(x,y) \ge 0\) for each pair of values \((x,y)\) within its domain
   2. \(\sum_x \sum_y f(x,y)=1\), where the double summation extends over all possible pairs \((x,y)\) within its domain
@@ -139,7 +139,7 @@ P(X,Y) \in A = \underset{A}\iint f(x,y)dxdy
 
 for any region \(A\) in the \(xy\)-plane
 
-**Theorem 3.8** - A bivariate function can serve as a joint probability density function of a pair of continuous random variables \(X\) and \(Y\) if its values, \(f(x,y)\), satisfy the conditions:
+**Theorem 3.8 [Joint Probability Density Function - Continuous Conditions]** - A bivariate function can serve as a joint probability density function of a pair of continuous random variables \(X\) and \(Y\) if its values, \(f(x,y)\), satisfy the conditions:
 
   1. \(f(x,y) \geq 0\) for \(- \infty \lt x \lt \infty \), \(- \infty \lt y \lt \infty \)
   2. \(\int^\infty_{-\infty} \int^\infty_{-\infty} f(x,y) dx dy = 1\)

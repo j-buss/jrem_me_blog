@@ -31,7 +31,7 @@ install.packages("blogdown")
 
 **Theorem 1.3 [# of permutations]** The number of permutations of \(n\) distinct objects is \(n!\)
 
-**Theorem 1.4 [# of permutations, r at a time]** The number of permutations of \(n\) distinct objects taken \(r\) at a time is
+**Theorem 1.4 [# of permutations, \(r\) at a time]** The number of permutations of \(n\) distinct objects taken \(r\) at a time is
 \[{}_nP_r = \frac{n!}{(n-r)!}\]
 for \(r=0,1,2,\ldots,n\).
 
