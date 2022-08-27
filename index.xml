@@ -18,6 +18,16 @@ Theorem 1.2 [k-steps] If an operation consists of \(k\) steps, of which the firs
     </item>
     
     <item>
+      <title>Chapter 2 - Probability</title>
+      <link>/2022/08/27/chapter-2-probability/</link>
+      <pubDate>Sat, 27 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/08/27/chapter-2-probability/</guid>
+      <description>2.1 Introduction Classical Probability Concept - If there are \(N\) equally likely possibilities, of which one must occur and \(n\) are regarded as favorable, or as a “success” then the probability of a “success” is given by the ratio \(\frac{n}{N}\)
+Frequency Interpretation - The probability of an event (outcome or happening) is the proportion of the time that events of the same kind will occur in the long run</description>
+    </item>
+    
+    <item>
       <title>Derivatives</title>
       <link>/2022/04/09/derivatives/</link>
       <pubDate>Sat, 09 Apr 2022 00:00:00 +0000</pubDate>

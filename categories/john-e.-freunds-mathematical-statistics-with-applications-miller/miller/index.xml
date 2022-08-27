@@ -16,5 +16,15 @@
 Theorem 1.2 [k-steps] If an operation consists of \(k\) steps, of which the first can be done in \(n_1\) ways, for each of these the second step can be done in \(n_2\) ways, for each of the first two the third step can be done in \(n_3\) ways, and so forth, then the whole operation can be done in \(n_1 \cdot n_2 \cdot \ldots \cdot n_k\) ways.</description>
     </item>
     
+    <item>
+      <title>Chapter 2 - Probability</title>
+      <link>/2022/08/27/chapter-2-probability/</link>
+      <pubDate>Sat, 27 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/08/27/chapter-2-probability/</guid>
+      <description>2.1 Introduction Classical Probability Concept - If there are \(N\) equally likely possibilities, of which one must occur and \(n\) are regarded as favorable, or as a “success” then the probability of a “success” is given by the ratio \(\frac{n}{N}\)
+Frequency Interpretation - The probability of an event (outcome or happening) is the proportion of the time that events of the same kind will occur in the long run</description>
+    </item>
+    
   </channel>
 </rss>

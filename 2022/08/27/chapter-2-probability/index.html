@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.100.1" />
+
+
+<title>Chapter 2 - Probability - jrem.me - wonder.explore.share</title>
+<meta property="og:title" content="Chapter 2 - Probability - jrem.me - wonder.explore.share">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/categories/">Categories</a></li>
+    
+    <li><a href="https://github.com/j-buss">GitHub</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">10 min read</span>
+    
+
+    <h1 class="article-title">Chapter 2 - Probability</h1>
+
+    
+    <span class="article-date">2022-08-27</span>
+    
+
+    <div class="article-content">
+      
+
+
+<div id="introduction" class="section level2">
+<h2>2.1 Introduction</h2>
+<p><strong>Classical Probability Concept</strong> - If there are <span class="math inline">\(N\)</span> equally likely possibilities, of which one must occur and <span class="math inline">\(n\)</span> are regarded as favorable, or as a “success” then the probability of a “success” is given by the ratio <span class="math inline">\(\frac{n}{N}\)</span></p>
+<p><strong>Frequency Interpretation</strong> - The probability of an event (outcome or happening) is the proportion of the time that events of the same kind will occur in the long run</p>
+<p><strong>Axiomatic Approach</strong> - Probabilities are defined as “mathematical objects” that behave according to certain well-defined rules</p>
+</div>
+<div id="sample-spaces" class="section level2">
+<h2>2.2 Sample Spaces</h2>
+<p><strong>Experiment</strong> - Any process of observation or measurement</p>
+<p><strong>Outcome</strong> - The results one obtains from an experiment</p>
+<p><strong>Sample Space</strong> - The set of all possible outcomes of an experiment; usually denoted by the letter <span class="math inline">\(S\)</span>.</p>
+<p><strong>Element</strong> or <strong>Sample Point</strong> - Each outcome in a sample space</p>
+<p><strong>Finite Set</strong> - A set that has a finite number of elements; Informally, a finite set is a set which one could in principle count and finish counting</p>
+<p><strong>Countable Set</strong> - a set that has the same cardinality (the number of elements of the set) as some subset of the set of natural numbers <span class="math inline">\(\mathbb{N}=\{0,1,2,3,\ldots\}\)</span>; it could be finite, or infinite</p>
+<p><strong>Discrete Set</strong> - Sample space contains a finite number of elements or an infinite though countable number of elements</p>
+<p><strong>Continuous Set</strong> - when a sample space consists of a continuum, such as all the points of a line segment or all the points in a plane; generally the result of measurement of physical properties</p>
+</div>
+<div id="events" class="section level2">
+<h2>2.3 Events</h2>
+<p><strong>Event</strong> - is a subset of a sample space</p>
+<p>If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are any two subsets of a sample space <span class="math inline">\(S\)</span>, then:</p>
+<ul>
+<li><strong><span class="math inline">\(A \cup B\)</span></strong> or the Union of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> - the subset of <span class="math inline">\(S\)</span> that contains all the elements that are either in <span class="math inline">\(A\)</span>, in <span class="math inline">\(B\)</span>, or in both</li>
+<li><strong><span class="math inline">\(A \cap B\)</span></strong> or the Intersection of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> - the subset of <span class="math inline">\(S\)</span> that contains all the elements that are in both <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span></li>
+<li><strong><span class="math inline">\(A^\complement\)</span></strong> or the complement of <span class="math inline">\(A\)</span> is the subset of <span class="math inline">\(S\)</span> that contains all the elements of <span class="math inline">\(S\)</span> that are not in <span class="math inline">\(A\)</span></li>
+<li><strong><span class="math inline">\(A \subset B\)</span></strong> - <span class="math inline">\(A\)</span> is contained in <span class="math inline">\(B\)</span></li>
+</ul>
+<p><strong>Mutually Exclusive</strong> - Two events having no elements in common; written as <span class="math inline">\(A \cap B = \emptyset\)</span></p>
+<p><strong>De Morgan Laws</strong>
+- <span class="math inline">\((A \cap B)^\complement = A^\complement \cup B^\complement\)</span>
+- <span class="math inline">\((A \cup B)^\complement = A^\complement \cap B^\complement\)</span></p>
+</div>
+<div id="probability-of-an-event" class="section level2">
+<h2>2.4 Probability of an Event</h2>
+<p><strong><span class="math inline">\(P(A)\)</span></strong> - Probability of event <span class="math inline">\(A\)</span></p>
+<p>Following postulates of probability apply only to discrete sample spaces <span class="math inline">\(S\)</span>:</p>
+<ul>
+<li><strong>Postulate 1</strong> - The probability of an event is a nonnegative real number; that is, <span class="math inline">\(P(A) \ge 0\)</span> for any subset <span class="math inline">\(A\)</span> of <span class="math inline">\(S\)</span></li>
+<li><strong>Postulate 2</strong> - <span class="math inline">\(P(S)=1\)</span></li>
+<li><strong>Postulate 3</strong> - If <span class="math inline">\(A_1, A_2, A_3, \ldots,\)</span> is a finite or infinite sequence of mutually exclusive events of <span class="math inline">\(S\)</span>, then</li>
+</ul>
+<p><span class="math display">\[P(A_1 \cup A_2 \cup A_3 \cup \cdots) = P(A_1) + P(A_2) + P(A_3) + \cdots \]</span></p>
+<p><strong>Theorem 2.1 [Sum of Probabilities]</strong> - If <span class="math inline">\(A\)</span> is an event in a discrete sample space <span class="math inline">\(S\)</span>, then <span class="math inline">\(P(A)\)</span> equals the sum of the probabilities of the individual outcomes comprising <span class="math inline">\(A\)</span>.</p>
+<p><strong>Proof</strong> - Let <span class="math inline">\(O_1, O_2, O_3,\ldots\)</span>, be the finite or infinite sequence of outcomes that comprise the event <span class="math inline">\(A\)</span>. Thus,</p>
+<p><span class="math display">\[A=O_1 \cup O_2 \cup O_3 \cdots \]</span></p>
+<p>and since the individual outcomes, the <span class="math inline">\(O\)</span>’s, are mutually exclusive, the third postulate or probability yields</p>
+<p><span class="math display">\[P(A)=P(O_1)+P(O_2)+P(O_3)+\cdots \]</span></p>
+<p>This completes the proof.</p>
+<p><strong>Theorem 2.2 [Fraction of Outcomes]</strong> - If an experiment can result in any one of <span class="math inline">\(N\)</span> different equally likely outcomes, and if <span class="math inline">\(n\)</span> of these outcomes together constitute event <span class="math inline">\(A\)</span>, then the probability of event <span class="math inline">\(A\)</span> is</p>
+<p><span class="math display">\[P(A) = \frac{n}{N}\]</span></p>
+<p><strong>Proof</strong> - Let <span class="math inline">\(O_1, O_2, O_3,\ldots,O_N\)</span> represent the individual outcomes in <span class="math inline">\(S\)</span>, each with probability <span class="math inline">\(\frac{1}{N}\)</span>. If <span class="math inline">\(A\)</span> is the union of <span class="math inline">\(n\)</span> of these mutually exclusive outcomes, and it does not matter which ones, then</p>
+<p><span class="math display">\[
+\begin{align}
+P(A)&amp;=P(O_1 \cup O_2  \cup \cdots \cup O_n)\\
+&amp;=P(O_1) + P(O_2) + \cdots + P(O_n)\\
+&amp;=\underbrace{\frac{1}{N} + \frac{1}{N} + \cdots + \frac{1}{N}}_{n \, \text{terms}}\\
+&amp;=\frac{n}{N}
+\end{align}
+\]</span></p>
+</div>
+<div id="some-rules-of-probability" class="section level2">
+<h2>2.5 Some Rules of Probability</h2>
+<p><strong>Theorem 2.3 [Complement of a set]</strong> - If <span class="math inline">\(A\)</span> and <span class="math inline">\(A^\complement\)</span> are complementary events in a sample space <span class="math inline">\(S\)</span>, then</p>
+<p><span class="math display">\[P(A^\complement) = 1 - P(A)\]</span></p>
+<p><strong>Proof</strong> In the second and third steps of the proof that follows, we make use of the definition of a complement, according to which <span class="math inline">\(A\)</span> and <span class="math inline">\(A^\complement\)</span> are mutually exclusive and <span class="math inline">\(A \cup A^\complement = S\)</span>. Thus, we write</p>
+<p><span class="math display">\[
+\begin{align*}
+1 &amp;= P(S) &amp;&amp; \text{(by Postulate 2)} \\
+&amp;=P(A \cup A^\complement)\\
+&amp;=P(A) + P(A^\complement) &amp;&amp; \text{(by Postulate 3)}
+\end{align*}
+\]</span></p>
+<p>and it follows that <span class="math inline">\(P(A^\complement) = 1 - P(A)\)</span></p>
+<p><strong>Theorem 2.4 [Empty set]</strong> - <span class="math inline">\(P(\emptyset)=0\)</span> for any sample space <span class="math inline">\(S\)</span>.</p>
+<p><strong>Proof</strong> Since <span class="math inline">\(S\)</span> and <span class="math inline">\(\emptyset\)</span> are mutually exclusive and <span class="math inline">\(S \cup \emptyset = S\)</span> in accordance with the definition of the empty set <span class="math inline">\(\emptyset\)</span>, it follows that</p>
+<p><span class="math display">\[
+\begin{align}
+P(S) &amp;= P(S \cup \emptyset)\\
+&amp;=P(S) + P(\emptyset) &amp;&amp; \text{(by Postulate 3)}
+\end{align}
+\]</span></p>
+<p>and, hence, that <span class="math inline">\(P(\emptyset)=0\)</span></p>
+<p><strong>Theorem 2.5 [My Space is Bigger]</strong> - If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are events in a sample space <span class="math inline">\(S\)</span> and <span class="math inline">\(A \subset B\)</span>, then <span class="math inline">\(P(A) \le P(B)\)</span>.</p>
+<p><strong>Proof</strong> Since <span class="math inline">\(A \subset B\)</span>, we can write</p>
+<p><span class="math display">\[ B = A \cup (A^\complement \cap B) \]</span></p>
+<p>as can easily be verified by means of a Venn diagram. Then, since <span class="math inline">\(A\)</span> and <span class="math inline">\(A^\complement \cap B\)</span> are mutually exclusive, we get</p>
+<p><span class="math display">\[
+\begin{align}
+P(B) &amp;= P(A) + P(A^\complement \cap B) &amp;&amp; \text{(by Postulate 3)}\\
+&amp; \ge P(A) &amp;&amp; \text{(by Postulate 1)}
+\end{align}
+\]</span></p>
+<p><strong>Theorem 2.6 [Probability Sandwich]</strong> - <span class="math inline">\(0 \le P(A) \le 1\)</span> for any event <span class="math inline">\(A\)</span>.</p>
+<p><strong>Proof</strong> - Using Theorem 2.5 and the fact that <span class="math inline">\(\emptyset \subset A \subset S\)</span> for any event <span class="math inline">\(A\)</span> in <span class="math inline">\(S\)</span>, we have</p>
+<p><span class="math display">\[
+P(\emptyset) \le P(A) \le P(S)
+\]</span></p>
+<p>Then, <span class="math inline">\(P(\emptyset)=0\)</span> and <span class="math inline">\(P(S)=1\)</span> leads to the result that</p>
+<p><span class="math display">\[
+0 \le P(A) \le 1
+\]</span></p>
+<p><strong>Theorem 2.7 [Discount Double Check]</strong> - If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are any two events in a sample space <span class="math inline">\(S\)</span>, then</p>
+<p><span class="math display">\[
+P(A \cup B) = P(A) + P(B) - P(A \cap B)
+\]</span></p>
+<p><strong>Proof</strong> - Assigning the probabilities <span class="math inline">\(a, b\)</span> and <span class="math inline">\(c\)</span> to the mutually exclusive events <span class="math inline">\(A \cap B\)</span>, <span class="math inline">\(A \cap B^\complement\)</span>, and <span class="math inline">\(A^\complement \cap B\)</span> as in the Venn diagram below. We find that:</p>
+<p><span class="math display">\[
+\begin{align}
+P(A \cup B) &amp;= a+b+c\\
+&amp;=(a+b)+(c+a)-a\\
+&amp;=P(A) + P(B) - P(A \cap B)
+\end{align}
+\]</span></p>
+<div class="figure">
+<img src="images/Theorem_2_7_Venn.png" alt="" />
+<p class="caption">Theorem 2.7 Venn Diagram</p>
+</div>
+<p><strong>Theorem 2.8 [Discount Triple Check]</strong> - If <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, and <span class="math inline">\(C\)</span> are any three events in a sample space <span class="math inline">\(S\)</span>, then</p>
+<p><span class="math display">\[
+P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P(A \cap B \cap C)
+\]</span></p>
+<p><strong>Proof</strong> - Writing <span class="math inline">\(A \cup B \cup C\)</span> as <span class="math inline">\(A \cup (B \cup C)\)</span> and using the formula of Theorem 2.7 twice, once for <span class="math inline">\(P[A \cup (B \cup C)]\)</span> and once for <span class="math inline">\(P(B \cup C)\)</span>, we get</p>
+<p><span class="math display">\[
+\begin{align}
+P(A \cup B \cup C) &amp;= P[ A \cup (B \cup C)]\\
+&amp;= P(A) + P(B \cup C) - P[A \cap (B \cup C)]\\
+&amp;= P(A) + P(B) + P(C) - P(B \cup C) - P[A \cap (B \cup C)]
+\end{align}
+\]</span></p>
+<p>Then, using the distributive law that <span class="math inline">\(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\)</span>:</p>
+<p><span class="math display">\[
+\begin{align}
+P[A \cap (B \cup C)] &amp;= P[(A \cap B) \cup (A \cap C)] \\
+&amp;= P(A \cap B) + P(A \cap C) - P[(A \cap B) \cap (A \cap C)]\\
+&amp;= P(A \cap B) + P(A \cap C) - P(A \cap B \cap C)\\
+\end{align}
+\]</span></p>
+<p>and hence that</p>
+<p><span class="math display">\[
+P(A \cup B \cup C)= P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P(A \cap B \cap C)
+\]</span></p>
+<p><strong>Odds</strong> - the ratio of the probability that the event will occur to the probability that it will not occur, provided neither probability is zero. Odds are generally quoted in terms of positive integers having no common factor: <span class="math inline">\(p = \frac{A}{A+B}\)</span></p>
+</div>
+<div id="conditional-probability" class="section level2">
+<h2>2.6 Conditional Probability</h2>
+<p><strong>Conditional Probability</strong> - If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are any two events in a sample space <span class="math inline">\(S\)</span> and <span class="math inline">\(P(A) \ne 0\)</span>, then the conditional probability of <span class="math inline">\(B\)</span> given <span class="math inline">\(A\)</span> is</p>
+<p><span class="math display">\[
+P(B|A) = \frac{P(A \cap B)}{P(A)}
+\]</span></p>
+<p><strong>Theorem 2.9 [Multiplication Rule]</strong>- If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are any two events in a sample space <span class="math inline">\(S\)</span> and <span class="math inline">\(P(A)\ne 0\)</span>, then
+<span class="math display">\[
+P(A \cap B)=P(A) \cdot P(B|A)
+\]</span></p>
+<p>Alternatively if <span class="math inline">\(P(B)\ne 0\)</span>, then
+<span class="math display">\[
+P(A \cap B)=P(B) \cdot P(A|B)
+\]</span></p>
+<p><strong>Multiplication Rule (words)</strong> - The probability that <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> will both occur is the product of the probability of <span class="math inline">\(A\)</span> and the conditional probability of <span class="math inline">\(B\)</span> given <span class="math inline">\(A\)</span>.</p>
+<p><strong>Sampling without replacement</strong> - executing multiple experiments back to back where the first set is not replaced before the second set is selected</p>
+<p><strong>Theorem 2.10 [Intersecting 3]</strong> - If <span class="math inline">\(A, B\)</span>, and <span class="math inline">\(C\)</span> are any three events in a sample space <span class="math inline">\(S\)</span> such that <span class="math inline">\(P(A \cap B) \ne 0\)</span>, then</p>
+<p><span class="math display">\[
+P(A \cap B \cap C) = P(A) \cdot P(B|A) \cdot P(C|A \cap B)
+\]</span></p>
+<p><strong>Proof</strong> - Writing <span class="math inline">\(A \cap B \cap C\)</span> as <span class="math inline">\((A \cap B) \cap C\)</span> and using the formula of Theorem 2.9 twice, we get</p>
+<p><span class="math display">\[
+\begin{align}
+P(A \cap B \cap C) &amp;= P[(A \cap B) \cap C]\\
+&amp;= P(A \cap B) \cdot P(C|A \cap B)\\
+&amp;= P(A) \cdot P(B|A) \cdot P(C|A \cap B)
+\end{align}
+\]</span></p>
+</div>
+<div id="independent-events" class="section level2">
+<h2>2.7 Independent Events</h2>
+<p><strong>Independence</strong> - Two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <strong>independent</strong> if and only if</p>
+<p><span class="math display">\[
+P(A \cap B) = P(A) \cdot P(B)
+\]</span></p>
+<p><strong>Theorem 2.11 [Independent Complement]</strong> - If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent, then <span class="math inline">\(A\)</span> and <span class="math inline">\(B^\complement\)</span> are also independent.</p>
+<p><strong>Proof</strong> - Since <span class="math inline">\(A = (A \cap B) \cup (A \cap B^\complement)\)</span>, <span class="math inline">\(A \cap B\)</span> and <span class="math inline">\(A \cap B^\complement\)</span> are mutually exclusive, and <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent by assumption, we have</p>
+<p><span class="math display">\[
+\begin{align}
+P(A) &amp;= P[(A \cap B) \cup (A \cap B^\complement)]\\
+&amp;= P(A \cap B) + P(A \cap B^\complement)\\
+&amp;= P(A) \cdot P(B) + P(A \cap B^\complement)
+\end{align}
+\]</span></p>
+<p>It follows that</p>
+<p><span class="math display">\[
+\begin{align}
+P(A \cap B^\complement) &amp;= P(A) - P(A) \cdot P(B)\\
+&amp;= P(A) \cdot [1 - P(B)]\\
+&amp;= P(A) \cdot P(B^\complement)
+\end{align}
+\]</span></p>
+<p>and hence that <span class="math inline">\(A\)</span> and <span class="math inline">\(B^\complement\)</span> are independent.</p>
+<p><strong>Independent of more than two events</strong> - Events <span class="math inline">\(A_1, A_2, \ldots, A_k\)</span> are <strong>independent</strong> if and only if the probability of the intersections of any 2, 3,…, or <span class="math inline">\(k\)</span> of these events equals the product of their respective probabilities.</p>
+</div>
+<div id="bayes-theorem" class="section level2">
+<h2>2.8 Bayes Theorem</h2>
+<p><strong>Theorem 2.12 [Rule of Total probability or Rule of Elimination]</strong> - If the events <span class="math inline">\(B_1, B_2, \ldots, B_k\)</span> constitue a partition of the sample space <span class="math inline">\(S\)</span> and <span class="math inline">\(P(B_i) \ne 0\)</span> for <span class="math inline">\(i=1,2,\ldots,k\)</span> then for any event <span class="math inline">\(A\)</span> in <span class="math inline">\(S\)</span></p>
+<p><span class="math display">\[
+P(A) = \sum_{i=1}^k P(B_i) \cdot P(A|B_i)
+\]</span></p>
+<p><strong>Theorem 2.13 [Bayes Theorem]</strong> If <span class="math inline">\(B_1, B_2, \ldots, B_k\)</span> constitute a partition of the sample space <span class="math inline">\(S\)</span> and <span class="math inline">\(P(B_i) \ne 0\)</span> for <span class="math inline">\(i=1,2,\ldots,k\)</span> then for any event <span class="math inline">\(A\)</span> in <span class="math inline">\(S\)</span> such that <span class="math inline">\(P(A) \ne 0\)</span></p>
+<p><span class="math display">\[
+P(B_r|A) = \frac{P(B_r) \cdot P(A|B_r)}{\sum_{i=1}^k P(B_i) \cdot P(A|B_i)}
+\]</span></p>
+<p>for <span class="math inline">\(r = 1,2,\ldots,k\)</span></p>
+<p>In words, the probability that event <span class="math inline">\(A\)</span> was reached via the <span class="math inline">\(r\)</span>th branch of the following tree diagram, given that it was reached via one of its <span class="math inline">\(k\)</span> branches, is the ratio of the probability associated with the <span class="math inline">\(r\)</span>th branch to the sum of the probabilities associated with all <span class="math inline">\(k\)</span> branches of the tree.</p>
+<p><strong>Proof</strong> Writing <span class="math inline">\(P(B_r|A) = \frac{P(A \cap B_r)}{P(A)}\)</span> in accordance with the definition of conditional probability, we have only to substitute <span class="math inline">\(P(B_r) \cdot P(A|B_r)\)</span> for <span class="math inline">\(P(A \cap B_r)\)</span> and the formula of Theorem 2.12 for <span class="math inline">\(P(A)\)</span></p>
+<div class="figure">
+<img src="images/BayesTheoremTreeDiagram.png" alt="" />
+<p class="caption">Bayes Theorem Tree Diagram</p>
+</div>
+</div>
+<div id="theory-in-practice" class="section level2">
+<h2>2.9 Theory in Practice</h2>
+<p><strong>Definition 2.7 Reliability</strong> - probability that it will function within specified limits for a specified period of time under specified environmental conditions</p>
+<p><strong>Theorem 2.14 [Reliability of a Series System]</strong> - The <strong>reliability of a series system</strong> consisting of <span class="math inline">\(n\)</span> independent components is given by</p>
+<p><span class="math display">\[R_s = \prod_{i=1}^n R_i\]</span></p>
+<p>where <span class="math inline">\(R_i\)</span> is the reliability of the <span class="math inline">\(i\)</span>th component.</p>
+<p><strong>Proof</strong> The proof follows immediately by iterating in Definition 2.5 - Independence</p>
+<p><strong>Theorem 2.15 [Reliability of a Parallel System]</strong> - The <strong>reliability of a parallel system</strong> consisting of <span class="math inline">\(n\)</span> independent components is given by</p>
+<p><span class="math display">\[R_p = 1 - \prod^n_{i=1} (1-R_i)\]</span></p>
+<p><strong>Proof</strong> - the proof of this theorem is identical to that of Theorem 2.14, with <span class="math inline">\((1 - R_i)\)</span> replacing <span class="math inline">\(R_i\)</span></p>
+<p><strong>Additional Resources:</strong></p>
+<ul>
+<li><a href="./files/Chapter_02_Theorem_Notes.pdf">Chapter_02_Theorem_Notes.pdf</a> <a href="./files/Chapter_02_Theorem_Notes.tex">(tex)</a></li>
+<li><a href="./files/Chapter_02_Theorems_Proof_Worksheet.pdf">Chapter_02_Theorems_Proof_Worksheet.pdf</a> <a href="./files/Chapter_02_Theorems_Proof_Worksheet.tex">(tex)</a></li>
+<li><a href="./files/Chapter_02_Theorems_Full_Exam.pdf">Chapter_02_Theorems_Full_Exam.pdf</a> <a href="./files/Chapter_02_Theorems_Full_Exam.tex">(tex)</a></li>
+</ul>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+
