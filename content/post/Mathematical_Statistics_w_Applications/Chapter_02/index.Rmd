@@ -6,7 +6,7 @@ date: "`r Sys.Date()`"
 categories:
   - John E. Freund's Mathematical Statistics with Applications - Miller/Miller
   - Statistics
-draft: yes
+draft: no
 katex: yes
 ---
 
@@ -317,7 +317,7 @@ In words, the probability that event \(A\) was reached via the \(r\)th branch of
 
 **Definition 2.7 Reliability** - probability that it will function within specified limits for a specified period of time under specified environmental conditions
 
-**Theorem 2.14** - The **reliability of a series system** consisting of \(n\) independent components is given by 
+**Theorem 2.14 [Reliability of a Series System]** - The **reliability of a series system** consisting of \(n\) independent components is given by 
 
 \[R_s = \prod_{i=1}^n R_i\]
 
@@ -325,7 +325,7 @@ where \(R_i\) is the reliability of the \(i\)th component.
 
 **Proof** The proof follows immediately by iterating in Definition 2.5 - Independence
 
-**Theorem 2.15** - The **reliability of a parallel system** consisting of \(n\) independent components is given by
+**Theorem 2.15 [Reliability of a Parallel System]** - The **reliability of a parallel system** consisting of \(n\) independent components is given by
 
 \[R_p = 1 - \prod^n_{i=1} (1-R_i)\]
 
@@ -333,6 +333,6 @@ where \(R_i\) is the reliability of the \(i\)th component.
 
 **Additional Resources:**
 
-[Download file](./file/test.tex)
-
-[pdf file](./file/print.pdf)
+- [Chapter_02_Theorem_Notes.pdf](./files/Chapter_02_Theorem_Notes.pdf) [(tex)](./files/Chapter_02_Theorem_Notes.tex)
+- [Chapter_02_Theorems_Proof_Worksheet.pdf](./files/Chapter_02_Theorems_Proof_Worksheet.pdf) [(tex)](./files/Chapter_02_Theorems_Proof_Worksheet.tex)
+- [Chapter_02_Theorems_Full_Exam.pdf](./files/Chapter_02_Theorems_Full_Exam.pdf) [(tex)](./files/Chapter_02_Theorems_Full_Exam.tex) 
