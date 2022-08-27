@@ -41,7 +41,8 @@ for \(r=0,1,2,\ldots,n\).
 
 For \(r=1,2,\ldots,n,\) we have
 
-\[\begin{align}
+\[
+\begin{align}
 {}_nP_r&=n(n-1)(n-2) \cdot \ldots \cdot (n-r-1)\\
 &=\frac{n(n-1)(n-2) \cdot \ldots \cdot (n-r-1)(n-r)!}{(n-r)!}\\
 &=\frac{n!}{(n-r)!}
@@ -155,3 +156,9 @@ and this completes the proof.
 \[
 \dbinom n {r_1,r_2,\ldots,r_k} = \frac {n!}{r_1! \cdot r_2! \cdot \ldots \cdot r_k!}
 \]
+
+**Additional Resources:**
+
+[Download file](./files/Chapter_01_Theorem_Notes.tex)
+
+[pdf file](./file/print.pdf)

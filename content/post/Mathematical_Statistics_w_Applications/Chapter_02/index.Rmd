@@ -330,3 +330,9 @@ where \(R_i\) is the reliability of the \(i\)th component.
 \[R_p = 1 - \prod^n_{i=1} (1-R_i)\]
 
 **Proof** - the proof of this theorem is identical to that of Theorem 2.14, with \((1 - R_i)\) replacing \(R_i\)
+
+**Additional Resources:**
+
+[Download file](./file/test.tex)
+
+[pdf file](./file/print.pdf)

@@ -159,7 +159,7 @@ when \(X\) is continuous
 for \(r=0,1,2,\ldots\) when \(X\) is discrete, and
 
 \[
-\mu_r=E[(X-\mu)^r]=\int_{- \infty}^{\infty} x^r \cdot f(x) dx
+\mu_r=E[(X-\mu)^r]=\int_{- \infty}^{\infty} (x-\mu)^r \cdot f(x) dx
 \]
 
 when \(X\) is continuous
