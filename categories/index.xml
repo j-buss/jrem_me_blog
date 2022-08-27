@@ -6,7 +6,16 @@
     <description>Recent content in Categories on jrem.me - wonder.explore.share</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 09 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 27 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Statistics</title>
+      <link>/categories/statistics/</link>
+      <pubDate>Sat, 27 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/statistics/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Calculus</title>
       <link>/categories/calculus/</link>
@@ -94,6 +103,15 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/categories/introduction-to-statistical-learning-james/witten/hastie/tibshirani/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>John E. Freund&#39;s Mathematical Statistics with Applications - Miller/Miller</title>
+      <link>/categories/john-e.-freunds-mathematical-statistics-with-applications-miller/miller/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/john-e.-freunds-mathematical-statistics-with-applications-miller/miller/</guid>
       <description></description>
     </item>
     

@@ -2,22 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/categories/calculus/</loc>
-    <lastmod>2022-04-09T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/categories/</loc>
+    <lastmod>2022-08-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/2022/08/27/chapter-1-introduction/</loc>
+    <lastmod>2022-08-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/</loc>
+    <lastmod>2022-08-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/post/</loc>
+    <lastmod>2022-08-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/statistics/</loc>
+    <lastmod>2022-08-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/calculus/</loc>
     <lastmod>2022-04-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/2022/04/09/derivatives/</loc>
     <lastmod>2022-04-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/2022/04/09/integration/</loc>
-    <lastmod>2022-04-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/</loc>
-    <lastmod>2022-04-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/post/</loc>
     <lastmod>2022-04-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/2022/04/03/limits-and-continuity/</loc>
@@ -125,5 +131,7 @@
     <loc>/categories/introduction-to-linear-regression-analysis-montgomery/peck/vining/</loc>
   </url><url>
     <loc>/categories/introduction-to-statistical-learning-james/witten/hastie/tibshirani/</loc>
+  </url><url>
+    <loc>/categories/john-e.-freunds-mathematical-statistics-with-applications-miller/miller/</loc>
   </url>
 </urlset>

@@ -6,7 +6,17 @@
     <description>Recent content on jrem.me - wonder.explore.share</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 09 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 27 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 1 - Introduction</title>
+      <link>/2022/08/27/chapter-1-introduction/</link>
+      <pubDate>Sat, 27 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/08/27/chapter-1-introduction/</guid>
+      <description>1.2 Combinatorial Methods Theorem 1.1 [2-steps] If an operation consists of two steps, of which the first can be done in \(n_1\) ways and for each of these the second can be done in \(n_2\) ways, then the whole operation can be done in \(n_1 \cdot n_2\) ways.
+Theorem 1.2 [k-steps] If an operation consists of \(k\) steps, of which the first can be done in \(n_1\) ways, for each of these the second step can be done in \(n_2\) ways, for each of the first two the third step can be done in \(n_3\) ways, and so forth, then the whole operation can be done in \(n_1 \cdot n_2 \cdot \ldots \cdot n_k\) ways.</description>
+    </item>
+    
     <item>
       <title>Derivatives</title>
       <link>/2022/04/09/derivatives/</link>
