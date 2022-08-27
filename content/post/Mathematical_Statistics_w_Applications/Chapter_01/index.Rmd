@@ -6,7 +6,7 @@ date: "`r Sys.Date()`"
 categories:
   - John E. Freund's Mathematical Statistics with Applications - Miller/Miller
   - Statistics
-draft: yes
+draft: no
 katex: yes
 ---
 
@@ -159,6 +159,6 @@ and this completes the proof.
 
 **Additional Resources:**
 
-[Download file](./files/Chapter_01_Theorem_Notes.tex)
-
-[pdf file](./file/print.pdf)
+- Chapter 1 - Theorem Notes [tex](./files/Chapter_01_Theorem_Notes.tex) [pdf](./files/Chapter_01_Theorem_Notes.pdf)
+- Chapter 1 - Theorem Proof Worksheet [tex](./files/Chapter_01_Theorems_Proof_Worksheet.tex) [pdf](./files/Chapter_01_Theorems_Proof_Worksheet.pdf)
+- Chapter 1 - Theorem Exam [tex](./files/Chapter_01_Theorems_Full_Exam.tex) [pdf](./files/Chapter_01_Theorems_Full_Exam.pdf)
