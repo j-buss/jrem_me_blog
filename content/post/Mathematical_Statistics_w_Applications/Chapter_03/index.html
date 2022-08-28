@@ -2,11 +2,11 @@
 title: "Chapter 3 - Probability Distributions and Probability Densities"
 author: Jeremy Buss
 output: html_document
-date: "2022-08-19"
+date: "2022-08-28"
 categories:
   - John E. Freund's Mathematical Statistics with Applications - Miller/Miller
   - Statistics
-draft: yes
+draft: no
 katex: yes
 ---
 
@@ -26,16 +26,16 @@ katex: yes
 <p><strong>Distribution Function</strong> - If <span class="math inline">\(X\)</span> is a discrete random variable, the function given by</p>
 <p><span class="math display">\[
 \begin{align}
-F(x)=P(X \le x) = \sum_{t \le X} f(t) &amp;&amp; \text{for} \,-\infty \lt x \lt \infty
+F(x)=P(X \leq x) = \sum_{t \leq X} f(t) &amp;&amp; \text{for} \,-\infty &lt; x &lt; \infty
 \end{align}
 \]</span></p>
 <p>where <span class="math inline">\(f(t)\)</span> is the value of the probability distribution of <span class="math inline">\(X\)</span> at <span class="math inline">\(t\)</span>, is called the <strong>distribution function</strong>, or the <strong>cumulative distribution</strong> of <span class="math inline">\(X\)</span></p>
 <p><strong>Theorem 3.2 [Distribution Function - Discrete Conditions]</strong> The values <span class="math inline">\(F(x)\)</span> of the distribution function of a discrete random variable <span class="math inline">\(X\)</span> satisfy the conditions:</p>
 <ol style="list-style-type: decimal">
 <li><span class="math inline">\(F(- \infty ) = 0\)</span> and <span class="math inline">\(F(\infty) = 1\)</span>;</li>
-<li>if <span class="math inline">\(a \lt b\)</span>, then <span class="math inline">\(F(a) \le F(b)\)</span> for any real numbers <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span></li>
+<li>if <span class="math inline">\(a &lt; b\)</span>, then <span class="math inline">\(F(a) \leq F(b)\)</span> for any real numbers <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span></li>
 </ol>
-<p><strong>Theorem 3.3 [Probability Distribution from Cumulative Distribution - Discrete]</strong> - If the range of a random variable <span class="math inline">\(X\)</span> consists of the values <span class="math inline">\(x_1 \lt x_2 \lt x_3 \lt \cdots \lt x_n\)</span>, then <span class="math inline">\(f(x_1)=F(x_1)\)</span> and</p>
+<p><strong>Theorem 3.3 [Probability Distribution from Cumulative Distribution - Discrete]</strong> - If the range of a random variable <span class="math inline">\(X\)</span> consists of the values <span class="math inline">\(x_1 &lt; x_2 &lt; x_3 &lt; \cdots &lt; x_n\)</span>, then <span class="math inline">\(f(x_1)=F(x_1)\)</span> and</p>
 <p><span class="math display">\[
 \begin{align}
 f(x_i)=F(x_i)-F(x_{i-1}) &amp;&amp; \text{for} \; i = 2,3,\ldots,n
@@ -49,29 +49,30 @@ f(x_i)=F(x_i)-F(x_{i-1}) &amp;&amp; \text{for} \; i = 2,3,\ldots,n
 <h2>3.4 Probability Density Functions</h2>
 <p><strong>Probability Density Function</strong> - A function with values <span class="math inline">\(f(x)\)</span>, defined over the set of all real numbers, is called a <strong>probability density function</strong> or abreviated as <strong>p.d.f.</strong> of the continuous random variable <span class="math inline">\(X\)</span> if and only if</p>
 <p><span class="math display">\[
-P(a \le X \le b) = \int_a^b f(x)dx
+P(a \leqq X \leq b) = \int_a^b f(x)dx
 \]</span></p>
-<p>for any real constants <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> with <span class="math inline">\(a \le b\)</span></p>
-<p><strong>Theorem 3.4 [Endpoints not needed]</strong> - If <span class="math inline">\(X\)</span> is a continuous random variable and <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are real constants with <span class="math inline">\(a \le b\)</span>, then</p>
+<p>for any real constants <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> with <span class="math inline">\(a \leq b\)</span></p>
+<p><strong>Theorem 3.4 [Endpoints not needed]</strong> - If <span class="math inline">\(X\)</span> is a continuous random variable and <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are real constants with <span class="math inline">\(a \leq b\)</span>, then</p>
 <p><span class="math display">\[
-P(a \le X \le b) = P(a \le X \lt b) = P(a \lt X \le b) = P(a \lt X \lt b)
+P(a \leq X \leq b) = P(a \leq X &lt; b) = P(a &lt; X \leq b) = P(a &lt; X &lt; b)
 \]</span></p>
 <p><strong>Theorem 3.5 [Probability Density - Continuous Conditions]</strong> - A function can serve as a probability density of a continuous random variable <span class="math inline">\(X\)</span> if its values, <span class="math inline">\(f(x)\)</span>, satisfy the conditions:</p>
 <ol style="list-style-type: decimal">
-<li><span class="math inline">\(f(x) \ge 0\)</span> for <span class="math inline">\(- \infty \lt x \lt \infty\)</span></li>
+<li><span class="math inline">\(f(x) \ge 0\)</span> for <span class="math inline">\(- \infty &lt; x &lt; \infty\)</span></li>
 <li><span class="math inline">\(\int_{-\infty}^{\infty} f(x) dx = 1\)</span></li>
 </ol>
 <p><strong>Distribution Function</strong> - If <span class="math inline">\(X\)</span> is a continuous random variable and the value of its probability density at <span class="math inline">\(t\)</span> is <span class="math inline">\(f(t)\)</span>, then the function given by</p>
 <p><span class="math display">\[
 \begin{align}
-F(x)=P(X \le x)= \int_{- \infty}^{x} f(t) dt &amp;&amp; \text{for} \, -\infty \lt x \lt \infty
+F(x)=P(X \leq x)= \int_{- \infty}^{x} f(t) dt &amp;&amp; \text{for} \, -\infty &lt; x &lt; \infty
 \end{align}
 \]</span></p>
+<p>is called the <strong>distribution function</strong> or the <strong>cumulative distribution function</strong> of <span class="math inline">\(X\)</span></p>
 <p><strong>Theorem 3.6 [Derivative of Distribution Function is Probability Density]</strong> - If <span class="math inline">\(f(x)\)</span> and <span class="math inline">\(F(x)\)</span> are the values of the probability density and the distribution function of <span class="math inline">\(X\)</span> at <span class="math inline">\(x\)</span>, then</p>
 <p><span class="math display">\[
-P(a \le X \le b) = F(b)-F(a)
+P(a \leq X \leq b) = F(b)-F(a)
 \]</span></p>
-<p>for any real constants <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> with <span class="math inline">\(a \le b\)</span>, and</p>
+<p>for any real constants <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> with <span class="math inline">\(a \leq b\)</span>, and</p>
 <p><span class="math display">\[
 f(x)=\frac{dF(x)}{dx}
 \]</span></p>
@@ -91,11 +92,11 @@ f(x)=\frac{dF(x)}{dx}
 <p><strong>Joint Distribution Function</strong> If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are discrete random variables, the function given by</p>
 <p><span class="math display">\[
 \begin{align}
-F(x,y)=P(X \le x, Y \le y) = \sum_{s \le x} \sum_{t \le y} f(s,t) &amp;&amp; \text{for} \, - \infty \lt x \lt \infty\\
-&amp;&amp; \text{for} \, - \infty \lt y \lt \infty
+F(x,y)=P(X \leq x, Y \leq y) = \sum_{s \leq x} \sum_{t \leq y} f(s,t) &amp;&amp; \text{for} \, - \infty &lt; x &lt; \infty\\
+&amp;&amp; \text{for} \, - \infty &lt; y &lt; \infty
 \end{align}
 \]</span></p>
-<p>where <span class="math inline">\(f(s,t)\)</span> is the value of the joint probablity distribution of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> at <span class="math inline">\((s,t)\)</span>, is called the <strong>joint distribution function</strong> or the <strong>joint cumulative distribution</strong> of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></p>
+<p>where <span class="math inline">\(f(s,t)\)</span> is the value of the joint probability distribution of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> at <span class="math inline">\((s,t)\)</span>, is called the <strong>joint distribution function</strong> or the <strong>joint cumulative distribution</strong> of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></p>
 <p><strong>Joint Probability Density Function</strong> - A bivariate function with values <span class="math inline">\(f(x,y)\)</span> defined over the <span class="math inline">\(xy\)</span>-plane is called a <strong>joint probability density function</strong> of the continuous random variables <span class="math inline">\(X\)</span> <span class="math inline">\(Y\)</span> if and only if</p>
 <p><span class="math display">\[
 P(X,Y) \in A = \underset{A}\iint f(x,y)dxdy
@@ -103,14 +104,14 @@ P(X,Y) \in A = \underset{A}\iint f(x,y)dxdy
 <p>for any region <span class="math inline">\(A\)</span> in the <span class="math inline">\(xy\)</span>-plane</p>
 <p><strong>Theorem 3.8 [Joint Probability Density Function - Continuous Conditions]</strong> - A bivariate function can serve as a joint probability density function of a pair of continuous random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> if its values, <span class="math inline">\(f(x,y)\)</span>, satisfy the conditions:</p>
 <ol style="list-style-type: decimal">
-<li><span class="math inline">\(f(x,y) \geq 0\)</span> for <span class="math inline">\(- \infty \lt x \lt \infty\)</span>, <span class="math inline">\(- \infty \lt y \lt \infty\)</span></li>
+<li><span class="math inline">\(f(x,y) \geq 0\)</span> for <span class="math inline">\(- \infty &lt; x &lt; \infty\)</span>, <span class="math inline">\(- \infty &lt; y &lt; \infty\)</span></li>
 <li><span class="math inline">\(\int^\infty_{-\infty} \int^\infty_{-\infty} f(x,y) dx dy = 1\)</span></li>
 </ol>
 <p><strong>Joint Distribution Function</strong> - If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are continuous random variables, the function given by</p>
 <p><span class="math display">\[
 \begin{align}
-F(x,y)=P(X \le x, Y \le y)= \int^\infty_{-\infty} \int^\infty_{-\infty} f(s,t) ds dt &amp;&amp; \text{for} -\infty \lt x \lt \infty\\
-&amp;&amp;-\infty \lt y \lt \infty\\
+F(x,y)=P(X \leq x, Y \leq y)= \int^\infty_{-\infty} \int^\infty_{-\infty} f(s,t) ds dt &amp;&amp; \text{for} -\infty &lt; x &lt; \infty\\
+&amp;&amp;-\infty &lt; y &lt; \infty\\
 \end{align}
 \]</span></p>
 <p>where <span class="math inline">\(f(s,t)\)</span> is the joint probability density of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> at <span class="math inline">\((s,t)\)</span>, is called the <strong>joint distribution function of X and Y</strong></p>
@@ -129,13 +130,13 @@ h(y)=\underset{x}\sum f(x,y)
 <p><strong>Marginal Density</strong> - If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are continuous random variables and <span class="math inline">\(f(x,y)\)</span> is the value of their joint probability density at <span class="math inline">\((x,y)\)</span>, the function given by</p>
 <p><span class="math display">\[
 \begin{align}
-g(x)= \int_{-\infty}^{\infty} f(x,y)dy &amp;&amp; \text{for} -\infty \lt x \lt \infty\\
+g(x)= \int_{-\infty}^{\infty} f(x,y)dy &amp;&amp; \text{for} -\infty &lt; x &lt; \infty\\
 \end{align}
 \]</span></p>
 <p>is called the <strong>marginal density of <span class="math inline">\(X\)</span></strong>. Correspondingly, the function given by</p>
 <p><span class="math display">\[
 \begin{align}
-h(x)= \int_{-\infty}^{\infty} f(x,y)dx &amp;&amp; \text{for} -\infty \lt y \lt \infty\\
+h(x)= \int_{-\infty}^{\infty} f(x,y)dx &amp;&amp; \text{for} -\infty &lt; y &lt; \infty\\
 \end{align}
 \]</span></p>
 <p>is called the <strong>marginal density of <span class="math inline">\(Y\)</span></strong>.</p>
@@ -161,18 +162,18 @@ w(x|y)=\frac{f(x,y)}{g(y)} &amp;&amp; g(y) \ne 0
 f(x|y)=\frac{f(x,y)}{h(y)} &amp;&amp; h(y) \ne 0
 \end{align}
 \]</span></p>
-<p>for <span class="math inline">\(-\infty \lt x \lt \infty\)</span>, is called the <strong>conditional density of <span class="math inline">\(X\)</span> given <span class="math inline">\(Y=y\)</span></strong>. Correspondingly, if <span class="math inline">\(g(x)\)</span> is the value of the marginal density of <span class="math inline">\(X\)</span> at <span class="math inline">\(x\)</span>, the function given by</p>
+<p>for <span class="math inline">\(-\infty &lt; x &lt; \infty\)</span>, is called the <strong>conditional density of <span class="math inline">\(X\)</span> given <span class="math inline">\(Y=y\)</span></strong>. Correspondingly, if <span class="math inline">\(g(x)\)</span> is the value of the marginal density of <span class="math inline">\(X\)</span> at <span class="math inline">\(x\)</span>, the function given by</p>
 <p><span class="math display">\[
 \begin{align}
 w(x|y)=\frac{f(x,y)}{g(y)} &amp;&amp; g(y) \ne 0
 \end{align}
 \]</span></p>
-<p>for <span class="math inline">\(-\infty \lt y \lt \infty\)</span>, is called the <strong>conditional density of <span class="math inline">\(Y\)</span> given <span class="math inline">\(X=x\)</span></strong>.</p>
+<p>for <span class="math inline">\(-\infty &lt; y &lt; \infty\)</span>, is called the <strong>conditional density of <span class="math inline">\(Y\)</span> given <span class="math inline">\(X=x\)</span></strong>.</p>
 <p><strong>Independence of Discrete Random Variables</strong> - If <span class="math inline">\(f(x_1,x_2,\ldots , x_n)\)</span> is the value of the joint probability distribution of the discrete random variables <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> at <span class="math inline">\((x_1, x_2, \ldots x_n)\)</span> and <span class="math inline">\(f_i(x_i)\)</span> is the value of the marginal distribution of <span class="math inline">\(X_i\)</span> at <span class="math inline">\(x_i\)</span> for <span class="math inline">\(i=1,2,\ldots,n\)</span>, then <span class="math inline">\(n\)</span> random variables are <strong>independent</strong> if and only if</p>
 <p><span class="math display">\[
 f(x_1,x_2,\ldots,x_n)=f_1(x_1)\cdot f_2(x_2)\cdot \ldots f_n(x_n)
 \]</span></p>
-<p>for all <span class="math inline">\((x_1, x_2, \ldots, x_n)\)</span> within their range</p>
+<p>for all <span class="math inline">\((x_1, x_2, \ldots, x_n)\)</span> within their range.</p>
 </div>
 <div id="theory-in-practice" class="section level2">
 <h2>3.8 Theory in Practice</h2>
@@ -183,4 +184,9 @@ f(x_1,x_2,\ldots,x_n)=f_1(x_1)\cdot f_2(x_2)\cdot \ldots f_n(x_n)
 <p><strong>mode</strong> - the value that appears most frequently in a data set; in a histogram it may be less general and refer to data values that are high points where the mode is a bar in a histogram that is surrounded by bars of lower frequency</p>
 <p><strong>bimodal</strong> - histogram exhibiting two modes</p>
 <p><strong>multimodal</strong> - histogram exhibiting more than two modes</p>
+<p><strong>Additional Resources:</strong></p>
+<ul>
+<li><a href="./files/Chapter_03_Notes.pdf">Chapter_03_Theorem_Notes.pdf</a> <a href="./files/Chapter_03_Notes.tex">(tex)</a></li>
+<li><a href="./files/Chapter_03_Theorems_Full_Exam.pdf">Chapter_03_Theorems_Full_Exam.pdf</a> <a href="./files/Chapter_03_Theorems_Full_Exam.tex">(tex)</a></li>
+</ul>
 </div>

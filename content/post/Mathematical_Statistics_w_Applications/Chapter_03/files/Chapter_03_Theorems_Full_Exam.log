@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2022.8.25)  28 AUG 2022 12:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2022.8.25)  28 AUG 2022 12:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**Chapter_02_Theorems_Full_Exam.tex
-(./Chapter_02_Theorems_Full_Exam.tex
+**Chapter_03_Theorems_Full_Exam.tex
+(./Chapter_03_Theorems_Full_Exam.tex
 LaTeX2e <2020-10-01> patch level 4
 L3 programming layer <2021-01-09> xparse <2020-03-03>
 (/usr/share/texlive/texmf-dist/tex/latex/exam/exam.cls
@@ -167,8 +167,8 @@ File: l3backend-pdftex.def 2020-01-29 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count304
 \l__pdf_internal_box=\box50
 )
-(./Chapter_02_Theorems_Full_Exam.aux)
-\openout1 = `Chapter_02_Theorems_Full_Exam.aux'.
+(./Chapter_03_Theorems_Full_Exam.aux)
+\openout1 = `Chapter_03_Theorems_Full_Exam.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
 LaTeX Font Info:    ... okay on input line 5.
@@ -186,23 +186,23 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 5.
 LaTeX Font Info:    ... okay on input line 5.
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
-] [2] [3] [4]
-This exam contains 15 questions with 13 parts, 0 subparts, and 0 subsubparts.
-(./Chapter_02_Theorems_Full_Exam.aux) ) 
+] [2]
+This exam contains 8 questions with 0 parts, 0 subparts, and 0 subsubparts.
+(./Chapter_03_Theorems_Full_Exam.aux) ) 
 Here is how much of TeX's memory you used:
- 2227 strings out of 481209
- 31800 string characters out of 5914747
+ 2151 strings out of 481209
+ 30694 string characters out of 5914747
  318338 words of memory out of 5000000
- 19232 multiletter control sequences out of 15000+600000
+ 19156 multiletter control sequences out of 15000+600000
  403430 words of font info for 27 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 67i,9n,74p,225b,282s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 67i,9n,74p,225b,276s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmr10.pfb>
-Output written on Chapter_02_Theorems_Full_Exam.pdf (4 pages, 19934 bytes).
+Output written on Chapter_03_Theorems_Full_Exam.pdf (2 pages, 18084 bytes).
 PDF statistics:
- 21 PDF objects out of 1000 (max. 8388607)
- 13 compressed objects within 1 object stream
+ 15 PDF objects out of 1000 (max. 8388607)
+ 9 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

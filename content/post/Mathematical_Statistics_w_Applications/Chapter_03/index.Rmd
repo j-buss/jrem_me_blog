@@ -6,7 +6,7 @@ date: "`r Sys.Date()`"
 categories:
   - John E. Freund's Mathematical Statistics with Applications - Miller/Miller
   - Statistics
-draft: yes
+draft: no
 katex: yes
 ---
 
@@ -40,7 +40,7 @@ install.packages("blogdown")
 
 \[
 \begin{align}
-F(x)=P(X \le x) = \sum_{t \le X} f(t) && \text{for} \,-\infty \lt x \lt \infty
+F(x)=P(X \leq x) = \sum_{t \leq X} f(t) && \text{for} \,-\infty < x < \infty
 \end{align}
 \]
 
@@ -49,9 +49,9 @@ where \(f(t)\) is the value of the probability distribution of \(X\) at \(t\), i
 **Theorem 3.2 [Distribution Function - Discrete Conditions]** The values \(F(x)\) of the distribution function of a discrete random variable \(X\) satisfy the conditions:
 
   1. \(F(- \infty ) = 0\) and \(F(\infty) = 1\);
-  2. if \(a \lt b\), then \(F(a) \le F(b)\) for any real numbers \(a\) and \(b\)
+  2. if \(a < b\), then \(F(a) \leq F(b)\) for any real numbers \(a\) and \(b\)
 
-**Theorem 3.3 [Probability Distribution from Cumulative Distribution - Discrete]** - If the range of a random variable \(X\) consists of the values \(x_1 \lt x_2 \lt x_3 \lt \cdots \lt x_n\), then \(f(x_1)=F(x_1)\) and
+**Theorem 3.3 [Probability Distribution from Cumulative Distribution - Discrete]** - If the range of a random variable \(X\) consists of the values \(x_1 < x_2 < x_3 < \cdots < x_n\), then \(f(x_1)=F(x_1)\) and
 
 \[
 \begin{align}
@@ -66,37 +66,39 @@ f(x_i)=F(x_i)-F(x_{i-1}) && \text{for} \; i = 2,3,\ldots,n
 **Probability Density Function** - A function with values \(f(x)\), defined over the set of all real numbers, is called a **probability density function** or abreviated as **p.d.f.** of the continuous random variable \(X\) if and only if 
 
 \[
-P(a \le X \le b) = \int_a^b f(x)dx
+P(a \leqq X \leq b) = \int_a^b f(x)dx
 \]
 
-for any real constants \(a\) and \(b\) with \(a \le b\)
+for any real constants \(a\) and \(b\) with \(a \leq b\)
 
-**Theorem 3.4 [Endpoints not needed]** - If \(X\) is a continuous random variable and \(a\) and \(b\) are real constants with \(a \le b\), then
+**Theorem 3.4 [Endpoints not needed]** - If \(X\) is a continuous random variable and \(a\) and \(b\) are real constants with \(a \leq b\), then
 
 \[
-P(a \le X \le b) = P(a \le X \lt b) = P(a \lt X \le b) = P(a \lt X \lt b)
+P(a \leq X \leq b) = P(a \leq X < b) = P(a < X \leq b) = P(a < X < b)
 \]
 
 **Theorem 3.5 [Probability Density - Continuous Conditions]** - A function can serve as a probability density of a continuous random variable \(X\) if its values, \(f(x)\), satisfy the conditions:
   
-  1. \(f(x) \ge 0\) for \(- \infty \lt x \lt \infty \)
+  1. \(f(x) \ge 0\) for \(- \infty < x < \infty \)
   2. \(\int_{-\infty}^{\infty} f(x) dx = 1\)
 
 **Distribution Function** - If \(X\) is a continuous random variable and the value of its probability density at \(t\) is \(f(t)\), then the function given by
 
 \[
 \begin{align}
-F(x)=P(X \le x)= \int_{- \infty}^{x} f(t) dt && \text{for} \, -\infty \lt x \lt \infty
+F(x)=P(X \leq x)= \int_{- \infty}^{x} f(t) dt && \text{for} \, -\infty < x < \infty
 \end{align}
 \]
+
+is called the **distribution function** or the **cumulative distribution function** of \(X\)
 
 **Theorem 3.6 [Derivative of Distribution Function is Probability Density]** - If \(f(x)\) and \(F(x)\) are the values of the probability density and the distribution function of \(X\) at \(x\), then
 
 \[
-P(a \le X \le b) = F(b)-F(a)
+P(a \leq X \leq b) = F(b)-F(a)
 \]
 
-for any real constants \(a\) and \(b\) with \(a \le b\), and
+for any real constants \(a\) and \(b\) with \(a \leq b\), and
 
 \[
 f(x)=\frac{dF(x)}{dx}
@@ -124,12 +126,12 @@ where the derivative exists.
 
 \[
 \begin{align}
-F(x,y)=P(X \le x, Y \le y) = \sum_{s \le x} \sum_{t \le y} f(s,t) && \text{for} \, - \infty \lt x \lt \infty\\
-&& \text{for} \, - \infty \lt y \lt \infty
+F(x,y)=P(X \leq x, Y \leq y) = \sum_{s \leq x} \sum_{t \leq y} f(s,t) && \text{for} \, - \infty < x < \infty\\
+&& \text{for} \, - \infty < y < \infty
 \end{align}
 \]
 
-where \(f(s,t)\) is the value of the joint probablity distribution of \(X\) and \(Y\) at \((s,t)\), is called the **joint distribution function** or the **joint cumulative distribution** of \(X\) and \(Y\)
+where \(f(s,t)\) is the value of the joint probability distribution of \(X\) and \(Y\) at \((s,t)\), is called the **joint distribution function** or the **joint cumulative distribution** of \(X\) and \(Y\)
 
 **Joint Probability Density Function** - A bivariate function with values \(f(x,y)\) defined over the \(xy\)-plane is called a **joint probability density function** of the continuous random variables \(X\) \(Y\) if and only if
 
@@ -141,15 +143,15 @@ for any region \(A\) in the \(xy\)-plane
 
 **Theorem 3.8 [Joint Probability Density Function - Continuous Conditions]** - A bivariate function can serve as a joint probability density function of a pair of continuous random variables \(X\) and \(Y\) if its values, \(f(x,y)\), satisfy the conditions:
 
-  1. \(f(x,y) \geq 0\) for \(- \infty \lt x \lt \infty \), \(- \infty \lt y \lt \infty \)
+  1. \(f(x,y) \geq 0\) for \(- \infty < x < \infty \), \(- \infty < y < \infty \)
   2. \(\int^\infty_{-\infty} \int^\infty_{-\infty} f(x,y) dx dy = 1\)
 
 **Joint Distribution Function** - If \(X\) and \(Y\) are continuous random variables, the function given by 
 
 \[
 \begin{align}
-F(x,y)=P(X \le x, Y \le y)= \int^\infty_{-\infty} \int^\infty_{-\infty} f(s,t) ds dt && \text{for} -\infty \lt x \lt \infty\\
-&&-\infty \lt y \lt \infty\\
+F(x,y)=P(X \leq x, Y \leq y)= \int^\infty_{-\infty} \int^\infty_{-\infty} f(s,t) ds dt && \text{for} -\infty < x < \infty\\
+&&-\infty < y < \infty\\
 \end{align}
 \]
 
@@ -175,7 +177,7 @@ for each \(y\) within the range of \(Y\) is called the **marginal distribution o
 
 \[
 \begin{align}
-g(x)= \int_{-\infty}^{\infty} f(x,y)dy && \text{for} -\infty \lt x \lt \infty\\
+g(x)= \int_{-\infty}^{\infty} f(x,y)dy && \text{for} -\infty < x < \infty\\
 \end{align}
 \]
 
@@ -183,7 +185,7 @@ is called the **marginal density of \(X\)**. Correspondingly, the function given
 
 \[
 \begin{align}
-h(x)= \int_{-\infty}^{\infty} f(x,y)dx && \text{for} -\infty \lt y \lt \infty\\
+h(x)= \int_{-\infty}^{\infty} f(x,y)dx && \text{for} -\infty < y < \infty\\
 \end{align}
 \]
 
@@ -217,7 +219,7 @@ f(x|y)=\frac{f(x,y)}{h(y)} && h(y) \ne 0
 \end{align}
 \]
 
-for \(-\infty \lt x \lt \infty \), is called the **conditional density of \(X\) given \(Y=y\)**. Correspondingly, if \(g(x)\) is the value of the marginal density of \(X\) at \(x\), the function given by
+for \(-\infty < x < \infty \), is called the **conditional density of \(X\) given \(Y=y\)**. Correspondingly, if \(g(x)\) is the value of the marginal density of \(X\) at \(x\), the function given by
 
 \[
 \begin{align}
@@ -225,7 +227,7 @@ w(x|y)=\frac{f(x,y)}{g(y)} && g(y) \ne 0
 \end{align}
 \]
 
-for \(-\infty \lt y \lt \infty \), is called the **conditional density of \(Y\) given \(X=x\)**.
+for \(-\infty < y < \infty \), is called the **conditional density of \(Y\) given \(X=x\)**.
 
 **Independence of Discrete Random Variables** - If \(f(x_1,x_2,\ldots , x_n)\) is the value of the joint probability distribution of the discrete random variables \(X_1, X_2, \ldots, X_n\) at \((x_1, x_2, \ldots x_n)\) and \(f_i(x_i)\) is the value of the marginal distribution of \(X_i\) at \(x_i\) for \(i=1,2,\ldots,n\), then \(n\) random variables are **independent** if and only if
 
@@ -233,7 +235,7 @@ for \(-\infty \lt y \lt \infty \), is called the **conditional density of \(Y\) 
 f(x_1,x_2,\ldots,x_n)=f_1(x_1)\cdot f_2(x_2)\cdot \ldots f_n(x_n)
 \]
 
-for all \((x_1, x_2, \ldots, x_n)\) within their range
+for all \((x_1, x_2, \ldots, x_n)\) within their range.
 
 ## 3.8 Theory in Practice
 
@@ -250,3 +252,8 @@ for all \((x_1, x_2, \ldots, x_n)\) within their range
 **bimodal** - histogram exhibiting two modes
 
 **multimodal** - histogram exhibiting more than two modes
+
+**Additional Resources:**
+
+- [Chapter_03_Theorem_Notes.pdf](./files/Chapter_03_Notes.pdf) [(tex)](./files/Chapter_03_Notes.tex)
+- [Chapter_03_Theorems_Full_Exam.pdf](./files/Chapter_03_Theorems_Full_Exam.pdf) [(tex)](./files/Chapter_03_Theorems_Full_Exam.tex) 
