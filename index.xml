@@ -6,7 +6,18 @@
     <description>Recent content on jrem.me - wonder.explore.share</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 27 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 3 - Probability Distributions and Probability Densities</title>
+      <link>/2022/08/28/chapter-3-probability-distributions-and-probability-densities/</link>
+      <pubDate>Sun, 28 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/08/28/chapter-3-probability-distributions-and-probability-densities/</guid>
+      <description>3.1 Random Variables Random Variable - If \(S\) is a sample space with a probability measure and \(X\) is a real-valued function defined over the elements of \(S\), then \(X\) is called a random variable
+Discrete Random Variables - random variables whose range is finite or countably infinite
+3.2 Probability Distributions Probability Distribution - If \(X\) is a discrete random variable, the function given by \(f(x)=P(X=x)\) for each \(x\) within the range of \(X\) is called the probability distribution of \(X\)</description>
+    </item>
+    
     <item>
       <title>Chapter 1 - Introduction</title>
       <link>/2022/08/27/chapter-1-introduction/</link>
