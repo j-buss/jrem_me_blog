@@ -438,7 +438,7 @@ where \(a_1,a_2,\ldots,a_n,b_1, b_2, \ldots, b_n\) are constants, then
 \end{align}
 \]
 
-**Corollary 4.4** - If the random variables \(X_1, X_2,\ldots,X_n\) are independent, \(Y_1=\sum_{i=1}^n a_i X_i\) and \(Y_2=\sum_{i=1}^n b_i X_i\)
+**Corollary 4.4** - If the random variables \(X_1, X_2,\ldots,X_n\) are independent, \(Y_1=\sum_{i=1}^n a_i X_i\) and \(Y_2=\sum_{i=1}^n b_i X_i\) then
 
 \[
 \text{cov}(Y_1, Y_2)=\sum_{i=1}^n a_i b_i \cdot \text{var}(X_i)
@@ -458,8 +458,6 @@ Correspondingly, if \(X\) is a continuous variable and \(f(x|y)\) is the value o
 E[(u(X)|y)]=\int_{- \infty}^{\infty} u(x)\cdot f(x|y)dx
 \]
 
-## 4.9 The Theory in Practice
-
 **Conditional Mean** 
 
 \[
@@ -474,6 +472,10 @@ E[(u(X)|y)]=\int_{- \infty}^{\infty} u(x)\cdot f(x|y)dx
 &=E(X^2|y)-\mu_{X|y}^2
 \end{align}
 \]
+
+## 4.9 The Theory in Practice
+
+
 
 **Sample Mean** 
 
@@ -498,3 +500,7 @@ but since this requires finding the mean first the following is equivalent, but 
 \[
 s=\sqrt{\frac{n\sum_{i=1}^n x_i^2-(\sum_{i=1}^n x_i)^2}{n(n-1)}}
 \]
+
+**Additional Resources:**
+
+- [Chapter_04_Theorem_Notes.pdf](./files/Chapter_04_Notes.pdf) [(tex)](./files/Chapter_04_Notes.tex)

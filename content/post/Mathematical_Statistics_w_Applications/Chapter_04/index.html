@@ -2,7 +2,7 @@
 title: "Chapter 4 - Mathematical Expectation"
 author: Jeremy Buss
 output: html_document
-date: "2022-08-22"
+date: "2022-08-28"
 categories:
   - John E. Freund's Mathematical Statistics with Applications - Miller/Miller
   - Statistics
@@ -318,7 +318,7 @@ Y_1=\sum_{i=1}^n a_i X_i \; \text{and} \; Y_2=\sum_{i=1}^n b_i X_i
 \text{cov}(Y_1,Y_2) = \sum_{i=1}^n a_i b_i \cdot \text{var} (X_i)+ \underset{i&lt;j}{\sum \sum}(a_i b_j + a_j b_i) \cdot \text{cov}(X_i,X_j)\\
 \end{align}
 \]</span></p>
-<p><strong>Corollary 4.4</strong> - If the random variables <span class="math inline">\(X_1, X_2,\ldots,X_n\)</span> are independent, <span class="math inline">\(Y_1=\sum_{i=1}^n a_i X_i\)</span> and <span class="math inline">\(Y_2=\sum_{i=1}^n b_i X_i\)</span></p>
+<p><strong>Corollary 4.4</strong> - If the random variables <span class="math inline">\(X_1, X_2,\ldots,X_n\)</span> are independent, <span class="math inline">\(Y_1=\sum_{i=1}^n a_i X_i\)</span> and <span class="math inline">\(Y_2=\sum_{i=1}^n b_i X_i\)</span> then</p>
 <p><span class="math display">\[
 \text{cov}(Y_1, Y_2)=\sum_{i=1}^n a_i b_i \cdot \text{var}(X_i)
 \]</span></p>
@@ -333,9 +333,6 @@ E[(u(X)|y)]=\sum_x u(x)\cdot f(x|y)
 <p><span class="math display">\[
 E[(u(X)|y)]=\int_{- \infty}^{\infty} u(x)\cdot f(x|y)dx
 \]</span></p>
-</div>
-<div id="the-theory-in-practice" class="section level2">
-<h2>4.9 The Theory in Practice</h2>
 <p><strong>Conditional Mean</strong></p>
 <p><span class="math display">\[
 \mu_{X|y}=E(X|y)
@@ -347,6 +344,9 @@ E[(u(X)|y)]=\int_{- \infty}^{\infty} u(x)\cdot f(x|y)dx
 &amp;=E(X^2|y)-\mu_{X|y}^2
 \end{align}
 \]</span></p>
+</div>
+<div id="the-theory-in-practice" class="section level2">
+<h2>4.9 The Theory in Practice</h2>
 <p><strong>Sample Mean</strong></p>
 <p><span class="math display">\[
 \overline{x}=\sum_{i=1}^n \frac{x_i}{n}
@@ -365,4 +365,8 @@ s=\sqrt{\frac{\sum_{i=1}^n (x-\overline{x})^2}{n-1}}
 <p><span class="math display">\[
 s=\sqrt{\frac{n\sum_{i=1}^n x_i^2-(\sum_{i=1}^n x_i)^2}{n(n-1)}}
 \]</span></p>
+<p><strong>Additional Resources:</strong></p>
+<ul>
+<li><a href="./files/Chapter_04_Notes.pdf">Chapter_04_Theorem_Notes.pdf</a> <a href="./files/Chapter_04_Notes.tex">(tex)</a></li>
+</ul>
 </div>

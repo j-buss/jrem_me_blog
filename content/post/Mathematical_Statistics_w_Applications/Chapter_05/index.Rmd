@@ -299,3 +299,7 @@ L(p) = \sum_{k=0}^c b(k;n,p)=B(c;n,p)
 \]
 
 where \(p\) is the actual proportion of defectives in teh log
+
+**Additional Resources:**
+
+- [Chapter_05_Theorem_Notes.pdf](./files/Chapter_05_Notes.pdf) [(tex)](./files/Chapter_05_Notes.tex)

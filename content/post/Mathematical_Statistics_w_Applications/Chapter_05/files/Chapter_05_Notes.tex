@@ -1,0 +1,114 @@
+\documentclass[
+10pt,reqno
+]{amsart}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[rightcaption]{sidecap}
+\usepackage{amsthm}
+\graphicspath{ {../images/} }
+\setcounter{section}{5}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\title{Chapter 5 - Special Probability Distributions}
+\setlength{\parindent}{0pt}
+\begin{document}
+\maketitle
+
+
+\section*{5.1 Introduction}
+
+\textbf{parameters} quantities that are constants for particular distributions, but can take on different values for different members of famiiles of distributions of the same kind
+
+\section*{5.2 The Discrete Uniform Distribution}
+
+\begin{definition}[Discrete Uniform Distribution]
+A random variable \(X\) has a \textbf{discrete uniform distribution} and it is referred to as a discrete uniform random variable if and only if it probability distribution is given by
+\[
+f(x) = \frac{1}{k} \; \text{for} \, x = x_1, x_2, \dots, x_k
+\]
+where \(x_i \ne x_j\) when \(i \ne j\)
+\end{definition}
+
+\section*{5.3 The Bernoulli Distribution}
+
+\begin{definition}
+A random variable \(X\) has a \textbf{Bernoulli distribution} and it is referred to as a Bernoulli random variable if and only if its probability distribution is given by
+\[
+f(x; \theta) = \theta ^x (1-\theta)^{1-x} \; \text{for} \, x=0,1
+\]
+\end{definition}
+
+\textbf{Bernoulli Trial} an experiment to which a Bernoulli distribution applies; an experiment that has two possible outcomes "success" and "failure"
+
+\section*{5.4 The Binomial Distribution}
+
+\begin{definition}
+A random variable \(X\) has a \textbf{Binomial distribution} and it is referred to as a binomial random variable if and only if its probability distribution is given by
+\[
+b(x; n, \theta)= \dbinom n x \theta^x (1-\theta)^{n-x} \; \text{for} \, x=0,1,2,\dots,n
+\]
+\end{definition}
+
+\begin{theorem}[Binomial Distribution - Complementary]
+\[
+b(x; n, \theta)=b(n-x; n, 1 - \theta)
+\]
+\end{theorem}
+
+\begin{proof}
+TBD Exercise 5.5
+\end{proof}
+
+\newpage
+
+\begin{theorem}[Binomial Distribution - Mean and Variance]
+The mean and variance of the binomial distribution are
+\[
+\mu = n\theta \;\; \text{and} \;\; \sigma^2 = n \theta(1-\theta)
+\]
+\end{theorem}
+
+\begin{proof}
+\begin{align*}
+\mu &= \sum_{x=0}^n x \cdot \dbinom n x \theta^x (1-\theta)^{n-x}\\
+&= \sum_{x=1}^n \frac{n!}{(x-1)!(n-x)!}\theta^x(1-\theta)^{n-x}
+\end{align*}
+where we omitted the term corresponding to \(x=0\), which is 0, and canceled the \(x\) against the first factor of \(x!=x(x-1)\) in the denominator of \(\dbinom n x\). Then, factoring out the factor \(n\) in \(n! = n(n-1)!\) and one factor \(\theta\), we get
+\[
+\mu = n \theta \sum_{x=1}^n x \cdot \dbinom {n-1} {x-1} \theta^{x-1} (1-\theta)^{n-x}\\
+\]
+and, letting \(y=x-1\) and \(m = n-1\), this becomes
+\[
+\mu = n \theta \sum_{x=1}^m x \cdot \dbinom {m} {y} \theta^{y}(1-\theta)^{m-y}=n \theta
+\]
+since the last summation is the sum of all the values of a binomial distribution with the parameters \(m\) and \(\theta\), and hence equal to 1.
+To find expressions for \(\mu_2^{'}\) and \(\sigma^2\), let us make use of the fact that \(E(X^2) = E[X(X-1)]+E(X)\) and first evaluate \(E[X(X-1)]\). Duplicating for all practical purposes the steps use before, we thus get
+\begin{align*}
+E[X(X-1)] &= \sum_{x=0}^n x (x-1) \dbinom n x \theta^x (1-\theta)^{n-x}\\
+&= \sum_{x=2}^n \frac {n!} {(x-2)!(n-x)!} \theta^{x} (1-\theta)^{n-x}\\
+&=n(n-1)\theta^2 \cdot \sum_{x=2}^n \dbinom {n-2}{x-2}\theta^{x-2} (1-\theta)^{n-x}
+\end{align*}
+and, letting \(y=x-2\) and \(m=n-2\), this becomes
+\begin{align*}
+E[X(X-1)] &= n(n-1)\theta^2 \cdot \sum_{x=0}^m \dbinom m y \theta^y (1-\theta)^{m-y}\\
+&= n(n-1)\theta^2
+\end{align*}
+Therefore,
+\[
+\mu_2^{'} = E[X(X-1)] + E(X) = n(n-1) \theta^2 + n \theta
+\]
+and, finally
+\begin{align*}
+\sigma^2 &= \mu_2^{'} - \mu^2\\
+&=n(n-1)\theta^2 + n\theta - n^2\theta^2 \\
+&=n\theta(1-\theta)
+\end{align*}
+\end{proof}
+
+
+\end{document}
