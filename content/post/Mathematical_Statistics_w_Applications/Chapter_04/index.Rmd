@@ -6,7 +6,7 @@ date: "`r Sys.Date()`"
 categories:
   - John E. Freund's Mathematical Statistics with Applications - Miller/Miller
   - Statistics
-draft: yes
+draft: no
 katex: yes
 ---
 
@@ -271,7 +271,7 @@ when \(X\) is continuous
 \frac{d^r M_X(t)}{dt^r} \Bigg \vert _{t=0}=\mu_r^{'}
 \]
 
-**Theorem 4.10** - If \(a\) and \(b\) are constants, then:
+**Theorem 4.10[Moment Generating Function - Utilize Constants]** - If \(a\) and \(b\) are constants, then:
 
   1. \( M_{X+a}(t) = E [e^{(X + a)t}] = e^{at} \cdot M_X (t)\)
   2. \( M_{bX}(t) = E (e^{bXt}) = M_X (bt)\)
@@ -334,7 +334,7 @@ when \(X\) and \(Y\) are continuous
 \end{align}
 \]
 
-**Theorem 4.12** - If \(X\) and \(Y\) are independent, then \(E(XY)= E(X) \cdot E(Y)\) and \(\sigma_{XY} =0 \)
+**Theorem 4.12[Covariance of Independents]** - If \(X\) and \(Y\) are independent, then \(E(XY)= E(X) \cdot E(Y)\) and \(\sigma_{XY} =0 \)
 
 **Proof** For the discrete case we have, by definiteion, 
 
@@ -362,7 +362,7 @@ Hence,
 \end{align}
 \]
 
-**Theorem 4.13** - If \(X_1, X_2,\ldots,X_n\) are independent, then 
+**Theorem 4.13[Product Moments of Many Independent Random Variables]** - If \(X_1, X_2,\ldots,X_n\) are independent, then 
 
 \[
 E(X_1, X_2,\ldots,X_n)=E(X_1)\cdot E(X_2) \cdot \ldots \cdot E(X_n)
@@ -370,7 +370,7 @@ E(X_1, X_2,\ldots,X_n)=E(X_1)\cdot E(X_2) \cdot \ldots \cdot E(X_n)
 
 ## 4.7 Moments of Linear Combinations of Random Variables
 
-**Theorem 4.14** - If \(X_1, X_2,\ldots,X_n\) are random variables and 
+**Theorem 4.14[Mean and Variance of a Linear Combination of \(n\) Random Variables]** - If \(X_1, X_2,\ldots,X_n\) are random variables and 
 
 \[
 Y = \sum_{i=1}^n a_i X_i
@@ -422,7 +422,7 @@ Note that we have tacitly made use of the fact that \(\text{cov}(X_i, X_j)=\text
 \text{var}(Y)=\sum_{i=1}^n a_i^2 \cdot \text{var}(X_i)
 \]
 
-**Theorem 4.15** - If \(X_1, X_2,\ldots,X_n\) are random variables and
+**Theorem 4.15[Covariance of Two Linear Combinations of \(n\) Random Variables]** - If \(X_1, X_2,\ldots,X_n\) are random variables and
 
 \[
 \begin{align}

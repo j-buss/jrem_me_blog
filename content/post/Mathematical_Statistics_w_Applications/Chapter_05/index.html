@@ -2,11 +2,11 @@
 title: "Chapter 5 - Special Probability Distributions"
 author: Jeremy Buss
 output: html_document
-date: "2022-08-28"
+date: "2022-08-29"
 categories:
   - John E. Freund's Mathematical Statistics with Applications - Miller/Miller
   - Statistics
-draft: yes
+draft: no
 katex: yes
 ---
 
@@ -34,7 +34,7 @@ f(x; \theta) = \theta ^x (1-\theta)^{1-x} \; \text{for} \, x=0,1
 </div>
 <div id="the-binomial-distribution" class="section level2">
 <h2>5.4 The Binomial Distribution</h2>
-<p><strong>Binomial Distribution</strong> - A random variable <span class="math inline">\(X\)</span> has a <strong>Binomial distribution</strong> and it is referred to as a binomail random variable if and only if its probability distribution is given by</p>
+<p><strong>Binomial Distribution</strong> - A random variable <span class="math inline">\(X\)</span> has a <strong>Binomial distribution</strong> and it is referred to as a binomial random variable if and only if its probability distribution is given by</p>
 <p><span class="math display">\[
 b(x; n, \theta)= \dbinom n x \theta^x (1-\theta)^{n-x} \; \text{for} \, x=0,1,2,\dots,n
 \]</span></p>
@@ -60,10 +60,10 @@ The mean and variance of the binomial distribution are</p>
 \]</span></p>
 <p>and, letting <span class="math inline">\(y=x-1\)</span> and <span class="math inline">\(m = n-1\)</span>, this becomes</p>
 <p><span class="math display">\[
-\mu = n \theta \sum_{x=1}^m x \cdot \dbinom {m} {y} \theta^{y}(1-\theta)^{m-y}=n \theta
+\mu = n \theta \sum_{x=0}^m x \cdot \dbinom {m} {y} \theta^{y}(1-\theta)^{m-y}=n \theta
 \]</span></p>
 <p>since the last summation is the sum of all the values of a binomial distribution with the parameters <span class="math inline">\(m\)</span> and <span class="math inline">\(\theta\)</span>, and hence equal to 1.</p>
-<p>To find expressions for <span class="math inline">\(\mu_2^{&#39;}\)</span> and <span class="math inline">\(\sigma^2\)</span>, let us make use of the fact that <span class="math inline">\(E(X^2) = E[X(X-1)]+E(X)\)</span> and first evaluate <span class="math inline">\(E[X(X-1)]\)</span>. Duplicating for all practical purposes the steps use before, we thus get</p>
+<p>To find expressions for <span class="math inline">\(\mu_2^{&#39;}\)</span> and <span class="math inline">\(\sigma^2\)</span>, let us make use of the fact that <span class="math inline">\(E(X^2) = E[X(X-1)]+E(X)\)</span> and first evaluate <span class="math inline">\(E[X(X-1)]\)</span>. Duplicating for all practical purposes the steps used before, we thus get</p>
 <p><span class="math display">\[
 \begin{align}
 E[X(X-1)] &amp;= \sum_{x=0}^n x (x-1) \dbinom n x \theta^x (1-\theta)^{n-x}\\
@@ -95,7 +95,7 @@ E[X(X-1)] &amp;= n(n-1)\theta^2 \cdot \sum_{x=0}^m \dbinom m y \theta^y (1-\thet
 <p><span class="math display">\[
 E(Y)=\theta \;\; \text{and} \;\; \sigma_Y^2 = \frac{\theta(1-\theta)}{n}
 \]</span></p>
-<p><strong>Theorem 5.4 [Binomial Moment Generation]</strong> - The moment-generating fucntion of the binomial distribution is given by</p>
+<p><strong>Theorem 5.4 [Binomial Moment Generation]</strong> - The moment-generating function of the binomial distribution is given by</p>
 <p><span class="math display">\[
 M_X(t) = [1 + \theta(e^t-1)]^n
 \]</span></p>
@@ -108,6 +108,14 @@ M_X(t)&amp;=\sum_{x=0}^n e^{xt} \dbinom n x \theta^x (1 - \theta)^{n-x}\\
 \end{align}
 \]</span></p>
 <p>and by Theorem 1.9 [Binomial Coefficient] this summation is easily recognized as the binomial expansion of <span class="math inline">\([\theta e^t + (1-\theta)]^n=[1+\theta(e^t - 1)]^n\)</span></p>
+<p><strong>Factorial Moment</strong></p>
+<p><span class="math display">\[
+\mu_{(r)}^{&#39;}=E[X(X-1)(X-2)\cdot \ldots \cdot (X-r+1)]
+\]</span></p>
+<p><strong>Factorial Moment-Generating Function</strong>
+<span class="math display">\[
+F_X(t)=E(t^X) = \sum_x t^x \cdot f(x)
+\]</span></p>
 </div>
 <div id="the-negative-binomial-and-geometric-distributions" class="section level2">
 <h2>5.5 The Negative Binomial and Geometric Distributions</h2>
@@ -121,10 +129,14 @@ b^*(x;k,\theta) = \dbinom {x-1} {k-1} \theta^k(1-\theta)^{x-k} \; \; \text{for} 
 <p><span class="math display">\[
 b^*(x;k,\theta)= \frac{k}{x}\cdot b(k;x,\theta)
 \]</span></p>
+<p><strong>Theorem 5.5 [Negative Binomial Distribution w/ a table - Proof]</strong></p>
+<p>TBD Exercise 5.18</p>
 <p><strong>Theorem 5.6 [Negative Binomial Distribution mean and variance]</strong> - The mean and the variance of the negative binomial distribution are</p>
 <p><span class="math display">\[
 \mu = \frac{k}{\theta} \;\; \text{and} \;\; \sigma^2=\frac{k}{\theta} \left ( \frac{1}{\theta}-1 \right )
 \]</span></p>
+<p><strong>Theorem 5.6 [Negative Binomial Distribution mean and variance - Proof]</strong>
+TBD Exercise 5.19</p>
 <p><strong>Geometric Distribution</strong> - A random variable <span class="math inline">\(X\)</span> has a <strong>geometric distribution</strong> and it is referred to as a geometric random varaible if and only if its probability distribution is given by</p>
 <p><span class="math display">\[
 g(x;\theta)=\theta(1-\theta)^{x-1} \;\; \text{for} \, x=1,2,3,\dots
@@ -147,7 +159,7 @@ h(x;n,N,M)=\frac{\dbinom M x \dbinom {N-M}{n-x}}{\dbinom N n} \;\; {\text{for} \
 &amp;=\sum_{x=1}^n \frac{M!}{(x-1)!(M-x)!} \cdot \frac {\dbinom {N-M} {n-x}}{\dbinom N n}
 \end{align}
 \]</span></p>
-<p>where we omitted the term corrsponding to <span class="math inline">\(x=0\)</span>, which is 0, and canceled the <span class="math inline">\(x\)</span> against the first factor of <span class="math inline">\(x!=x(x-1)!\)</span> in the denominator of <span class="math inline">\(\dbinom M x\)</span>. Then factoring out <span class="math inline">\(M/\dbinom N n\)</span>, we get</p>
+<p>where we omitted the term corresponding to <span class="math inline">\(x=0\)</span>, which is 0, and canceled the <span class="math inline">\(x\)</span> against the first factor of <span class="math inline">\(x!=x(x-1)!\)</span> in the denominator of <span class="math inline">\(\dbinom M x\)</span>. Then factoring out <span class="math inline">\(M/\dbinom N n\)</span>, we get</p>
 <p><span class="math display">\[
 \mu = \frac{M}{\dbinom N n} \cdot \sum_{x=1}^n \dbinom {M-1} {x-1} \dbinom {N-M}{n-x}
 \]</span></p>
@@ -159,7 +171,12 @@ h(x;n,N,M)=\frac{\dbinom M x \dbinom {N-M}{n-x}}{\dbinom N n} \;\; {\text{for} \
 <p><span class="math display">\[
 \mu = \frac{M}{\dbinom N n} \cdot \dbinom {N-1} {m} = \frac{M}{\dbinom N n} \cdot \dbinom {N-1} {n-1}= \frac{nM}{N}
 \]</span></p>
-<p>To obtain the formula for <span class="math inline">\(\sigma^2\)</span>, we proceed as in the proof of Theorem 5.2 [Binomial Distribution - Mean and Variance] by first evaluating <span class="math inline">\(E[X(x-1]\)</span> and then making use of the fact that <span class="math inline">\(E(X^2)=E[X(X-1)]+E(X)\)</span>. We thus get</p>
+<p>To obtain the formula for <span class="math inline">\(\sigma^2\)</span>, we proceed as in the proof of Theorem 5.2 [Binomial Distribution - Mean and Variance] by first evaluating <span class="math inline">\(E[X(X-1]\)</span> and then making use of the fact that <span class="math inline">\(E(X^2)=E[X(X-1)]+E(X)\)</span>.</p>
+<p>Leaving it to the reader to show that</p>
+<p><span class="math display">\[
+E[X(X-1)]=\frac{M(M-1)n(n-1)}{N(N-1)}
+\]</span></p>
+<p>in Exercise 5.27. We thus get</p>
 <p><span class="math display">\[
 \begin{align}
 \sigma^2 &amp; =\frac{M(M-1)n(n-1)}{N(N-1)} + \frac{nM}{N} - \left ( \frac{nM}{N} \right )^2 \\
@@ -181,12 +198,14 @@ p(x;\lambda) = \frac{\lambda^x e^{-\lambda}}{x!} \;\; \text{for} \, x=0,1,2,\dot
 <p><span class="math display">\[
 \mu = \lambda \;\; \text{and} \;\; \sigma^2=\lambda
 \]</span></p>
+<p><strong>Theorem 5.8 [Poisson distribution mean and variance - Proof]</strong>
+TBD Exercise 5.33</p>
 <p><strong>Theorem 5.9 [Poisson distribution moment generating function]</strong></p>
 <p><span class="math display">\[
 M_X(t)=e^{\lambda(e^t-1)}
 \]</span></p>
 <p><strong>Theorem 5.9 [Poisson distribution moment generating function - Proof]</strong>
-Using the definition for Moment-generating Functions</p>
+Using the definition for Moment-generating Functions and Poisson Distribution</p>
 <p><span class="math display">\[
 M_X(t)=\sum_{x=0}^\infty e^{xt} \cdot \frac{\lambda^x e^{-\lambda}}{x!} = e^{-\lambda} \cdot \sum_{x=0}^\infty \frac{(\lambda e^{t})^x}{x!}
 \]</span></p>
@@ -217,7 +236,7 @@ f(x_1,x_2,\dots,x_k;n,M_1,M_2,\dots,M_k)= \frac{ \dbinom {M_1} {x_1} \dbinom {M_
 <p><span class="math display">\[
 L(p) = \sum_{k=0}^c b(k;n,p)=B(c;n,p)
 \]</span></p>
-<p>where <span class="math inline">\(p\)</span> is the actual proportion of defectives in teh log</p>
+<p>where <span class="math inline">\(p\)</span> is the actual proportion of defectives in the lot.</p>
 <p><strong>Additional Resources:</strong></p>
 <ul>
 <li><a href="./files/Chapter_05_Notes.pdf">Chapter_05_Theorem_Notes.pdf</a> <a href="./files/Chapter_05_Notes.tex">(tex)</a></li>

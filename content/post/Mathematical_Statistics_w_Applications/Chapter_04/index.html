@@ -2,11 +2,11 @@
 title: "Chapter 4 - Mathematical Expectation"
 author: Jeremy Buss
 output: html_document
-date: "2022-08-28"
+date: "2022-08-30"
 categories:
   - John E. Freund's Mathematical Statistics with Applications - Miller/Miller
   - Statistics
-draft: yes
+draft: no
 katex: yes
 ---
 
@@ -194,7 +194,7 @@ M_X(t)= E(e^{tX}) = \int_{- \infty}^{\infty}e^{tx} \cdot f(x) dx
 <p><span class="math display">\[
 \frac{d^r M_X(t)}{dt^r} \Bigg \vert _{t=0}=\mu_r^{&#39;}
 \]</span></p>
-<p><strong>Theorem 4.10</strong> - If <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are constants, then:</p>
+<p><strong>Theorem 4.10[Moment Generating Function - Utilize Constants]</strong> - If <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are constants, then:</p>
 <ol style="list-style-type: decimal">
 <li><span class="math inline">\(M_{X+a}(t) = E [e^{(X + a)t}] = e^{at} \cdot M_X (t)\)</span></li>
 <li><span class="math inline">\(M_{bX}(t) = E (e^{bXt}) = M_X (bt)\)</span></li>
@@ -242,7 +242,7 @@ M_X(t)= E(e^{tX}) = \int_{- \infty}^{\infty}e^{tx} \cdot f(x) dx
 &amp;=\mu_{1,1}^{&#39;}-\mu_{X} \mu_{Y}\\
 \end{align}
 \]</span></p>
-<p><strong>Theorem 4.12</strong> - If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, then <span class="math inline">\(E(XY)= E(X) \cdot E(Y)\)</span> and <span class="math inline">\(\sigma_{XY} =0\)</span></p>
+<p><strong>Theorem 4.12[Covariance of Independents]</strong> - If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, then <span class="math inline">\(E(XY)= E(X) \cdot E(Y)\)</span> and <span class="math inline">\(\sigma_{XY} =0\)</span></p>
 <p><strong>Proof</strong> For the discrete case we have, by definiteion,</p>
 <p><span class="math display">\[
 E(XY)=\sum_x \sum_y xy \cdot f(x,y)
@@ -263,14 +263,14 @@ E(XY)&amp;=\sum_x \sum_y xy \cdot g(x) h(y)\\
 &amp;=0
 \end{align}
 \]</span></p>
-<p><strong>Theorem 4.13</strong> - If <span class="math inline">\(X_1, X_2,\ldots,X_n\)</span> are independent, then</p>
+<p><strong>Theorem 4.13[Product Moments of Many Independent Random Variables]</strong> - If <span class="math inline">\(X_1, X_2,\ldots,X_n\)</span> are independent, then</p>
 <p><span class="math display">\[
 E(X_1, X_2,\ldots,X_n)=E(X_1)\cdot E(X_2) \cdot \ldots \cdot E(X_n)
 \]</span></p>
 </div>
 <div id="moments-of-linear-combinations-of-random-variables" class="section level2">
 <h2>4.7 Moments of Linear Combinations of Random Variables</h2>
-<p><strong>Theorem 4.14</strong> - If <span class="math inline">\(X_1, X_2,\ldots,X_n\)</span> are random variables and</p>
+<p><strong>Theorem 4.14[Mean and Variance of a Linear Combination of <span class="math inline">\(n\)</span> Random Variables]</strong> - If <span class="math inline">\(X_1, X_2,\ldots,X_n\)</span> are random variables and</p>
 <p><span class="math display">\[
 Y = \sum_{i=1}^n a_i X_i
 \]</span></p>
@@ -306,7 +306,7 @@ E(Y)=E \left ( \sum_{i=1}^n a_iX_i \right ) = \sum_{i=1}^n a_i E(X_i)
 <p><span class="math display">\[
 \text{var}(Y)=\sum_{i=1}^n a_i^2 \cdot \text{var}(X_i)
 \]</span></p>
-<p><strong>Theorem 4.15</strong> - If <span class="math inline">\(X_1, X_2,\ldots,X_n\)</span> are random variables and</p>
+<p><strong>Theorem 4.15[Covariance of Two Linear Combinations of <span class="math inline">\(n\)</span> Random Variables]</strong> - If <span class="math inline">\(X_1, X_2,\ldots,X_n\)</span> are random variables and</p>
 <p><span class="math display">\[
 \begin{align}
 Y_1=\sum_{i=1}^n a_i X_i \; \text{and} \; Y_2=\sum_{i=1}^n b_i X_i

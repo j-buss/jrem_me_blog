@@ -248,7 +248,7 @@ P(|X-\mu| < k \sigma) \ge 1 - \frac{1}{k^2}
 
 \section*{4.5 Moment-Generating Function}
 
-\begin{definition}
+\begin{definition}[Moment Generating Function]
 The \textbf{moment generating function} of a random variable \(X\), where it exists, is given by
 \[
 M_X(t)= E(e^{tX}) = \sum_x e^{tX} \cdot f(x)
@@ -266,7 +266,7 @@ when \(X\) is continuous.
 \]
 \end{theorem}
 
-\begin{theorem}
+\begin{theorem}[Moment Generating Function - Utilize Constants]
 If \(a\) and \(b\) are constants, then:
 \begin{enumerate}
 	\item \( M_{X+a}(t) = E [e^{(X + a)t}] = e^{at} \cdot M_X (t)\)
@@ -293,7 +293,7 @@ for \(r=0,1,2, \ldots \) and \(s=0,1,2,\ldots\) when \(X\) and \(Y\) are discret
 when \(X\) and \(Y\) are continuous.
 \end{definition}
 
-\begin{definition}
+\begin{definition}[Product Moments About the Mean]
 The \textbf{\(r\)th and \(s\)th product moment about the means} of the random variables \(X\) and \(Y\), denoted by \(\mu_{r,s}\), is the expected value of \((X-\mu_X)^r (Y - \mu_Y)^s\); symbolically,
 \begin{align*}
 \mu_{r,s} &= E[(X- \mu_X)^r (Y - \mu_Y)^s)]\\
@@ -311,7 +311,7 @@ when \(X\) and \(Y\) are continuous.
 \(\mu_{1,1}\) is called the \textbf{covaraince} of \(X\) and \(Y\), and it is denoted by \(\sigma_{XY}\), cov(\(X,Y\)), or C(\(X,Y\))
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}[Covariance]
 \[
 \sigma_{XY} = \mu_{1,1}^{'}-\mu_{X} \mu_{Y}
 \]
@@ -328,7 +328,7 @@ Using the various theorems about expected values, we can write
 \end{align*}
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}[Covariance of Independents]
 If \(X\) and \(Y\) are independent, then \(E(XY)= E(X) \cdot E(Y)\) and \(\sigma_{XY} =0 \)
 \end{theorem}
 \begin{proof}
@@ -350,7 +350,7 @@ Hence,
 \end{align*}
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}[Product Moments of Many Independent Random Variables]
 If \(X_1, X_2,\ldots,X_n\) are independent, then 
 \[
 E(X_1, X_2,\ldots,X_n)=E(X_1)\cdot E(X_2) \cdot \ldots \cdot E(X_n)
@@ -361,7 +361,7 @@ E(X_1, X_2,\ldots,X_n)=E(X_1)\cdot E(X_2) \cdot \ldots \cdot E(X_n)
 
 \section*{4.7 Moments of Linear Combinations of Random Variables}
 
-\begin{theorem}
+\begin{theorem}[Mean and Variance of a Linear Combination of \(n\) Random Variables]
 If \(X_1, X_2,\ldots,X_n\) are random variables and 
 \[
 Y = \sum_{i=1}^n a_i X_i
@@ -402,7 +402,7 @@ If the random variables \(X_1, X_2,\ldots,X_n\) are independent and \(Y=\sum_{i=
 \]
 \end{corollary}
 
-\begin{theorem}
+\begin{theorem}[Covariance of Two Linear Combinations of \(n\) Random Variables]
 If \(X_1, X_2,\ldots,X_n\) are random variables and
 \begin{align*}
 Y_1=\sum_{i=1}^n a_i X_i \; \text{and} \; Y_2=\sum_{i=1}^n b_i X_i
@@ -422,7 +422,7 @@ If the random variables \(X_1, X_2,\ldots,X_n\) are independent, \(Y_1=\sum_{i=1
 
 \section*{4.8 Conditional Expectations}
 
-\begin{definition}
+\begin{definition}[Conditional Expectation]
 If \(X\) is a discrete random variable, and \(f(x|y)\) is the value of the conditional probability distribution of \(X\) give \(Y=y\) at \(x\), the \textbf{conditional expectation of \(u(X)\) given \(Y=y\)} is
 \[
 E[(u(X)|y)]=\sum_x u(x)\cdot f(x|y)

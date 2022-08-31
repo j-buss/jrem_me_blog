@@ -6,7 +6,7 @@ date: "`r Sys.Date()`"
 categories:
   - John E. Freund's Mathematical Statistics with Applications - Miller/Miller
   - Statistics
-draft: yes
+draft: no
 katex: yes
 ---
 
@@ -47,7 +47,7 @@ f(x; \theta) = \theta ^x (1-\theta)^{1-x} \; \text{for} \, x=0,1
 
 ## 5.4 The Binomial Distribution
 
-**Binomial Distribution** - A random variable \(X\) has a **Binomial distribution** and it is referred to as a binomail random variable if and only if its probability distribution is given by
+**Binomial Distribution** - A random variable \(X\) has a **Binomial distribution** and it is referred to as a binomial random variable if and only if its probability distribution is given by
 
 \[
 b(x; n, \theta)= \dbinom n x \theta^x (1-\theta)^{n-x} \; \text{for} \, x=0,1,2,\dots,n
@@ -84,12 +84,12 @@ where we omitted the term corresponding to \(x=0\), which is 0, and canceled the
 and, letting \(y=x-1\) and \(m = n-1\), this becomes
 
 \[
-\mu = n \theta \sum_{x=1}^m x \cdot \dbinom {m} {y} \theta^{y}(1-\theta)^{m-y}=n \theta
+\mu = n \theta \sum_{x=0}^m x \cdot \dbinom {m} {y} \theta^{y}(1-\theta)^{m-y}=n \theta
 \]
 
 since the last summation is the sum of all the values of a binomial distribution with the parameters \(m\) and \(\theta\), and hence equal to 1.
 
-To find expressions for \(\mu_2^{'}\) and \(\sigma^2\), let us make use of the fact that \(E(X^2) = E[X(X-1)]+E(X)\) and first evaluate \(E[X(X-1)]\). Duplicating for all practical purposes the steps use before, we thus get
+To find expressions for \(\mu_2^{'}\) and \(\sigma^2\), let us make use of the fact that \(E(X^2) = E[X(X-1)]+E(X)\) and first evaluate \(E[X(X-1)]\). Duplicating for all practical purposes the steps used before, we thus get
 
 \[
 \begin{align}
@@ -132,11 +132,14 @@ If \(X\) has a binomial distribution with the parameters \(n\) and \(\theta\) an
 E(Y)=\theta \;\; \text{and} \;\; \sigma_Y^2 = \frac{\theta(1-\theta)}{n}
 \]
 
-**Theorem 5.4 [Binomial Moment Generation]** - The moment-generating fucntion of the binomial distribution is given by 
+**Theorem 5.4 [Binomial Moment Generation]** - The moment-generating function of the binomial distribution is given by 
 
 \[
 M_X(t) = [1 + \theta(e^t-1)]^n
 \]
+
+
+
 
 **Theorem 5.4 [Binomial Moment Generation - Proof]**
 By using the definitions of Moment Generating Functions and Binomial Distribution, we get 
@@ -149,6 +152,17 @@ M_X(t)&=\sum_{x=0}^n e^{xt} \dbinom n x \theta^x (1 - \theta)^{n-x}\\
 \]
 
 and by Theorem 1.9 [Binomial Coefficient] this summation is easily recognized as the binomial expansion of \([\theta e^t + (1-\theta)]^n=[1+\theta(e^t - 1)]^n\)
+
+**Factorial Moment** 
+
+\[
+\mu_{(r)}^{'}=E[X(X-1)(X-2)\cdot \ldots \cdot (X-r+1)]
+\]
+
+**Factorial Moment-Generating Function** 
+\[
+F_X(t)=E(t^X) = \sum_x t^x \cdot f(x)
+\]
 
 ## 5.5 The Negative Binomial and Geometric Distributions
 
@@ -168,11 +182,18 @@ b^*(x;k,\theta) = \dbinom {x-1} {k-1} \theta^k(1-\theta)^{x-k} \; \; \text{for} 
 b^*(x;k,\theta)= \frac{k}{x}\cdot b(k;x,\theta)
 \]
 
+**Theorem 5.5 [Negative Binomial Distribution w/ a table - Proof]**
+
+TBD Exercise 5.18
+
 **Theorem 5.6 [Negative Binomial Distribution mean and variance]** - The mean and the variance of the negative binomial distribution are
 
 \[
 \mu = \frac{k}{\theta} \;\; \text{and} \;\; \sigma^2=\frac{k}{\theta} \left ( \frac{1}{\theta}-1 \right )
 \]
+
+**Theorem 5.6 [Negative Binomial Distribution mean and variance - Proof]**
+TBD Exercise 5.19
 
 **Geometric Distribution** - A random variable \(X\) has a **geometric distribution** and it is referred to as a geometric random varaible if and only if its probability distribution is given by
 
@@ -203,7 +224,7 @@ h(x;n,N,M)=\frac{\dbinom M x \dbinom {N-M}{n-x}}{\dbinom N n} \;\; {\text{for} \
 \end{align}
 \]
 
-where we omitted the term corrsponding to \(x=0\), which is 0, and canceled the \(x\) against the first factor of \(x!=x(x-1)!\) in the denominator of \(\dbinom M x\). Then factoring out \(M/\dbinom N n\), we get
+where we omitted the term corresponding to \(x=0\), which is 0, and canceled the \(x\) against the first factor of \(x!=x(x-1)!\) in the denominator of \(\dbinom M x\). Then factoring out \(M/\dbinom N n\), we get
 
 \[
 \mu = \frac{M}{\dbinom N n} \cdot \sum_{x=1}^n \dbinom {M-1} {x-1} \dbinom {N-M}{n-x}
@@ -221,7 +242,15 @@ Finally, using Theorem 1.12 [Sums of combinations] we get
 \mu = \frac{M}{\dbinom N n} \cdot \dbinom {N-1} {m} = \frac{M}{\dbinom N n} \cdot \dbinom {N-1} {n-1}= \frac{nM}{N}
 \]
 
-To obtain the formula for \(\sigma^2\), we proceed as in the proof of Theorem 5.2 [Binomial Distribution - Mean and Variance] by first evaluating \(E[X(x-1]\) and then making use of the fact that \(E(X^2)=E[X(X-1)]+E(X)\). We thus get
+To obtain the formula for \(\sigma^2\), we proceed as in the proof of Theorem 5.2 [Binomial Distribution - Mean and Variance] by first evaluating \(E[X(X-1]\) and then making use of the fact that \(E(X^2)=E[X(X-1)]+E(X)\). 
+
+Leaving it to the reader to show that 
+
+\[
+E[X(X-1)]=\frac{M(M-1)n(n-1)}{N(N-1)}
+\]
+
+in Exercise 5.27. We thus get
 
 \[
 \begin{align}
@@ -250,6 +279,9 @@ p(x;\lambda) = \frac{\lambda^x e^{-\lambda}}{x!} \;\; \text{for} \, x=0,1,2,\dot
 \mu = \lambda \;\; \text{and} \;\; \sigma^2=\lambda
 \]
 
+**Theorem 5.8 [Poisson distribution mean and variance - Proof]**
+TBD Exercise 5.33
+
 **Theorem 5.9 [Poisson distribution moment generating function]** 
 
 \[
@@ -257,7 +289,7 @@ M_X(t)=e^{\lambda(e^t-1)}
 \]
 
 **Theorem 5.9 [Poisson distribution moment generating function - Proof]**
-Using the definition for Moment-generating Functions
+Using the definition for Moment-generating Functions and Poisson Distribution
 
 \[
 M_X(t)=\sum_{x=0}^\infty e^{xt} \cdot \frac{\lambda^x e^{-\lambda}}{x!} = e^{-\lambda} \cdot \sum_{x=0}^\infty \frac{(\lambda e^{t})^x}{x!} 
@@ -298,7 +330,7 @@ for \(x_i=0,1,2, \dots ,n\) and \(x_i \le M_i\) for each \(i\), where \(\sum_{i=
 L(p) = \sum_{k=0}^c b(k;n,p)=B(c;n,p)
 \]
 
-where \(p\) is the actual proportion of defectives in teh log
+where \(p\) is the actual proportion of defectives in the lot.
 
 **Additional Resources:**
 

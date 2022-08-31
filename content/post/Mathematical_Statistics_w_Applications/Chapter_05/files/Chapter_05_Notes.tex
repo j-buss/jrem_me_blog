@@ -31,12 +31,12 @@ A random variable \(X\) has a \textbf{discrete uniform distribution} and it is r
 \[
 f(x) = \frac{1}{k} \; \text{for} \, x = x_1, x_2, \dots, x_k
 \]
-where \(x_i \ne x_j\) when \(i \ne j\)
+where \(x_i \ne x_j\) when \(i \ne j\).
 \end{definition}
 
 \section*{5.3 The Bernoulli Distribution}
 
-\begin{definition}
+\begin{definition}[Bernoulli Distribution]
 A random variable \(X\) has a \textbf{Bernoulli distribution} and it is referred to as a Bernoulli random variable if and only if its probability distribution is given by
 \[
 f(x; \theta) = \theta ^x (1-\theta)^{1-x} \; \text{for} \, x=0,1
@@ -47,7 +47,8 @@ f(x; \theta) = \theta ^x (1-\theta)^{1-x} \; \text{for} \, x=0,1
 
 \section*{5.4 The Binomial Distribution}
 
-\begin{definition}
+\begin{definition}[Binomial Distribution]
+\label{dfn:BinomialDistribution}
 A random variable \(X\) has a \textbf{Binomial distribution} and it is referred to as a binomial random variable if and only if its probability distribution is given by
 \[
 b(x; n, \theta)= \dbinom n x \theta^x (1-\theta)^{n-x} \; \text{for} \, x=0,1,2,\dots,n
@@ -84,10 +85,10 @@ where we omitted the term corresponding to \(x=0\), which is 0, and canceled the
 \]
 and, letting \(y=x-1\) and \(m = n-1\), this becomes
 \[
-\mu = n \theta \sum_{x=1}^m x \cdot \dbinom {m} {y} \theta^{y}(1-\theta)^{m-y}=n \theta
+\mu = n \theta \sum_{x=0}^m x \cdot \dbinom {m} {y} \theta^{y}(1-\theta)^{m-y}=n \theta
 \]
 since the last summation is the sum of all the values of a binomial distribution with the parameters \(m\) and \(\theta\), and hence equal to 1.
-To find expressions for \(\mu_2^{'}\) and \(\sigma^2\), let us make use of the fact that \(E(X^2) = E[X(X-1)]+E(X)\) and first evaluate \(E[X(X-1)]\). Duplicating for all practical purposes the steps use before, we thus get
+To find expressions for \(\mu_2^{'}\) and \(\sigma^2\), let us make use of the fact that \(E(X^2) = E[X(X-1)]+E(X)\) and first evaluate \(E[X(X-1)]\). Duplicating for all practical purposes the steps used before, we thus get
 \begin{align*}
 E[X(X-1)] &= \sum_{x=0}^n x (x-1) \dbinom n x \theta^x (1-\theta)^{n-x}\\
 &= \sum_{x=2}^n \frac {n!} {(x-2)!(n-x)!} \theta^{x} (1-\theta)^{n-x}\\
@@ -110,5 +111,193 @@ and, finally
 \end{align*}
 \end{proof}
 
+\begin{theorem}[Binomial w/ parameters]
+If \(X\) has a binomial distribution with the parameters \(n\) and \(\theta\) and \(Y=\frac{X}{n}\), then
+\[
+E(Y)=\theta \;\; \text{and} \;\; \sigma_Y^2 = \frac{\theta(1-\theta)}{n}
+\]
+\end{theorem}
+
+\begin{theorem}[Binomial Moment Generation]
+The moment-generating function of the binomial distribution is given by 
+\[
+M_X(t) = [1 + \theta(e^t-1)]^n
+\]
+\end{theorem}
+
+\begin{proof}
+By using the Definition 4.6 Moment Generating Functions and Definition ~\ref{dfn:BinomialDistribution} Binomial Distribution, we get 
+\begin{align*}
+M_X(t)&=\sum_{x=0}^n e^{xt} \dbinom n x \theta^x (1 - \theta)^{n-x}\\
+&=\sum_{x=0}^n \dbinom n x (\theta e^t)^x (1 - \theta)^{n-x}
+\end{align*}
+and by Theorem 1.9 [Binomial Coefficient] this summation is easily recognized as the binomial expansion of \([\theta e^t + (1-\theta)]^n=[1+\theta(e^t - 1)]^n\)
+\end{proof}
+
+\textbf{Factorial Moment}
+\[
+\mu_{(r)}^{'}=E[X(X-1)(X-2)\cdot \ldots \cdot (X-r+1)]
+\]
+
+\textbf{Factorial Moment-Generating Function}
+\[
+F_X(t)=E(t^X) = \sum_x t^x \cdot f(x)
+\]
+
+\section*{5.5 The Negative Binomial and Geometric Distributions}
+
+\begin{definition}[Negative Binomial Distribution]
+A random variable \(X\) has a \textbf{negative binomial distribution} and it is referred to as a negative binomial random variable if and only if
+\[
+b^*(x;k,\theta) = \dbinom {x-1} {k-1} \theta^k(1-\theta)^{x-k} \; \; \text{for} \, x=k,k+1,k+2,\dots
+\]
+\end{definition}
+
+\textbf{binomial waiting-time distributions} another name for negative binomial distributions
+
+\textbf{Pascal distributions} another name for negative binomial distributions
+
+\begin{theorem}[Negative Binomial Distribution w/ a table]
+\[
+b^*(x;k,\theta)= \frac{k}{x}\cdot b(k;x,\theta)
+\]
+\end{theorem}
+
+\begin{proof}
+TBD Exercise 5.18
+\end{proof}
+
+\begin{theorem}[Negative Binomial Distribution - mean and variance]
+The mean and the variance of the negative binomial distribution are
+\[
+\mu = \frac{k}{\theta} \;\; \text{and} \;\; \sigma^2=\frac{k}{\theta} \left ( \frac{1}{\theta}-1 \right )
+\]
+\end{theorem}
+\begin{proof}
+TBD Exercise 5.19
+\end{proof}
+
+\begin{definition}[Geometric Distribution]
+A random variable \(X\) has a \textbf{geometric distribution} and it is referred to as a geometric random varaible if and only if its probability distribution is given by
+\[
+g(x;\theta)=\theta(1-\theta)^{x-1} \;\; \text{for} \, x=1,2,3,\dots
+\]
+\end{definition}
+
+\section*{5.6 The Hypergeometric Distribution}
+
+\begin{definition}[Hypergeometric Distribution]
+A random variable \(X\) has a \textbf{hypergeometric distribution} and it is referred to as a hypergeometric random variable if and only if its probability distribution is given by
+\[
+h(x;n,N,M)=\frac{\dbinom M x \dbinom {N-M}{n-x}}{\dbinom N n} \;\; {\text{for} \, x=0,1,2,\dots,n} \;\; x \le M \, \text{and} \, n-x \le N-M
+\]
+\end{definition}
+
+\begin{theorem}[Hypergeometric Distribution - mean and varaince]
+The mean and the variance of the hypergeometric distribution are
+\[
+\mu = \frac{nM}{N} \;\; \text{and} \;\; \sigma^2=\frac{nM(N-M)(N-n)}{N^2(N-1)}
+\]
+\end{theorem}
+
+\begin{proof}
+To determine the mean, let us directly evaluate the sum
+\begin{align*}
+\mu &= \sum_{x=0}^n x \cdot \frac {\dbinom M x \dbinom {N-M} {n-x}}{\dbinom N n}\\
+&=\sum_{x=1}^n \frac{M!}{(x-1)!(M-x)!} \cdot \frac {\dbinom {N-M} {n-x}}{\dbinom N n}
+\end{align*}
+where we omitted the term corresponding to \(x=0\), which is 0, and canceled the \(x\) against the first factor of \(x!=x(x-1)!\) in the denominator of \(\dbinom M x\). Then factoring out \(M/\dbinom N n\), we get
+\[
+\mu = \frac{M}{\dbinom N n} \cdot \sum_{x=1}^n \dbinom {M-1} {x-1} \dbinom {N-M}{n-x}
+\]
+and, letting \(y=x-1\) and \(m=n-1\), this becomes
+\[
+\mu = \frac{M}{\dbinom N n} \cdot \sum_{x=0}^m \dbinom {M-1} {y} \dbinom {N-M}{m-y}
+\]
+Finally, using Theorem 1.12 [Sums of combinations] we get 
+\[
+\mu = \frac{M}{\dbinom N n} \cdot \dbinom {N-1} {m} = \frac{M}{\dbinom N n} \cdot \dbinom {N-1} {n-1}= \frac{nM}{N}
+\]
+To obtain the formula for \(\sigma^2\), we proceed as in the proof of Theorem 5.2 [Binomial Distribution - Mean and Variance] by first evaluating \(E[X(X-1]\) and then making use of the fact that \(E(X^2)=E[X(X-1)]+E(X)\). 
+Leaving it to the reader to show that 
+\[
+E[X(X-1)]=\frac{M(M-1)n(n-1)}{N(N-1)}
+\]
+in Exercise 5.27. We thus get
+\begin{align*}
+\sigma^2 & =\frac{M(M-1)n(n-1)}{N(N-1)} + \frac{nM}{N} - \left ( \frac{nM}{N} \right )^2 \\
+&=\frac{nM(N-M)(N-n)}{N^2(N-1)}
+\end{align*}
+\textbf{Proof of the following excercise 5.27}
+\[
+E[X(X-1)]=\frac{M(M-1)n(n-1)}{N(N-1)}
+\]
+\end{proof}
+
+\section*{5.7 Poisson Distribution}
+
+\begin{definition}[Poisson Distribution]
+\label{dfn:PoissonDistr}
+A random variable has a \textbf{Poisson distribution} and it is referred to as a Poisson random varaible if and only if its probability distribution is given by
+\[
+p(x;\lambda) = \frac{\lambda^x e^{-\lambda}}{x!} \;\; \text{for} \, x=0,1,2,\dots
+\]
+\end{definition}
+
+\begin{theorem}[Poisson Distribution mean and variance]
+The mean and variance of the Poisson distribution are given by 
+\[
+\mu = \lambda \;\; \text{and} \;\; \sigma^2=\lambda
+\]
+\end{theorem}
+
+\begin{proof}
+TBD Exercise 5.33
+\end{proof}
+
+\begin{theorem}[Poisson Distribution Moment Generating Function]
+\[
+M_X(t)=e^{\lambda(e^t-1)}
+\]
+\end{theorem}
+
+\begin{proof}
+Using the definition for Moment-generating Functions and Definition ~\ref{dfn:PoissonDistr} 
+\[
+M_X(t)=\sum_{x=0}^\infty e^{xt} \cdot \frac{\lambda^x e^{-\lambda}}{x!} = e^{-\lambda} \cdot \sum_{x=0}^\infty \frac{(\lambda e^{t})^x}{x!} 
+\]
+where \(\sum_{x=0}^\infty \frac{(\lambda e^{t})^x}{x!}\) can be recognized as the Maclaurin's series of \(e^z\) with \(z=\lambda e^t\). Thus
+\[
+M_X(t)=e^{- \lambda} \cdot e^{\lambda e^t}=e^{\lambda (e^t - 1)}
+\]
+\end{proof}
+
+\section*{5.8 Multinomial Distribution}
+
+\begin{definition}[Multinomial Distribution] 
+The random variables \(X_1, X_2,\dots,X_n\) have a \textbf{multinomial distribution} and they are referred to as multinomial random variables if and only if their joint probabiltiy distribution is given by
+\[
+f(x_1,x_2,\dots,x_k;n,\theta_1, \theta_2,\dots,\theta_k)= \dbinom n {x_1, x_2, \dots, x_k} \cdot \theta_1^{x_1} \cdot \theta_2^{x_2} \cdot \dots \cdot \theta_k^{x_k}
+\]
+for \(x_i=0,1,\dots,n\) for each \(i\), where \(\sum_{i=1}^k=n\) and \(\sum_{i=1}^k \theta_i=1\).
+\end{definition}
+
+\section*{5.9 Multivariate Hypergeometric Distribution}
+
+\begin{definition}[Multivariate Hypergeometric Distribution]
+The random variables \(X_1, X_2,\dots,X_k\) have a \textbf{multivariate hypergeometric distribution} and they are referred to as multivariate hypergeometric random varaibles if and only if their joint probability distribution is given by
+\[
+f(x_1,x_2,\dots,x_k;n,M_1,M_2,\dots,M_k)= \frac{ \dbinom {M_1} {x_1} \dbinom {M_2} {x_2} \cdot \ldots \cdot \dbinom {M_k} {x_k}}{\dbinom N n}
+\]
+for \(x_i=0,1,2, \dots ,n\) and \(x_i \le M_i\) for each \(i\), where \(\sum_{i=1}^k x_i = n\) and \(\sum_{i=1}^k M_i = N\).
+\end{definition}
+
+\begin{theorem}[Probability of Acceptance]
+If \(n\) is the size of the sample taken from each large lot and \(c\) is the acceptnace number, the \textbf{probability of acceptance} is closely approximated by
+\[
+L(p) = \sum_{k=0}^c b(k;n,p)=B(c;n,p)
+\]
+where \(p\) is the actual proportion of defectives in the lot.
+\end{theorem}
 
 \end{document}
