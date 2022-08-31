@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.100.1" />
+
+
+<title>Chapter 5 - Special Probability Distributions - jrem.me - wonder.explore.share</title>
+<meta property="og:title" content="Chapter 5 - Special Probability Distributions - jrem.me - wonder.explore.share">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="/categories/">Categories</a></li>
+    
+    <li><a href="https://github.com/j-buss">GitHub</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">7 min read</span>
+    
+
+    <h1 class="article-title">Chapter 5 - Special Probability Distributions</h1>
+
+    
+    <span class="article-date">2022-08-29</span>
+    
+
+    <div class="article-content">
+      
+
+
+<div id="introduction" class="section level2">
+<h2>5.1 Introduction</h2>
+<p><strong>parameters</strong> - quantities that are constants for particular distributions, but can take on different values for different members of famiiles of distributions of the same kind</p>
+</div>
+<div id="the-discrete-uniform-distribution" class="section level2">
+<h2>5.2 The Discrete Uniform Distribution</h2>
+<p><strong>Discrete Uniform Distribution</strong> - A random variable <span class="math inline">\(X\)</span> has a <strong>discrete uniform distribution</strong> and it is referred to as a discrete uniform random variable if and only if it probability distribution is given by</p>
+<p><span class="math display">\[
+f(x) = \frac{1}{k} \; \text{for} \, x = x_1, x_2, \dots, x_k
+\]</span></p>
+<p>where <span class="math inline">\(x_i \ne x_j\)</span> when <span class="math inline">\(i \ne j\)</span></p>
+</div>
+<div id="the-bernoulli-distribution" class="section level2">
+<h2>5.3 The Bernoulli Distribution</h2>
+<p><strong>Bernoulli Distribution</strong> - A random variable <span class="math inline">\(X\)</span> has a <strong>Bernoulli distribution</strong> and it is referred to as a Bernoulli random variable if and only if its probability distribution is given by</p>
+<p><span class="math display">\[
+f(x; \theta) = \theta ^x (1-\theta)^{1-x} \; \text{for} \, x=0,1
+\]</span></p>
+<p><strong>Bernoulli Trial</strong> - an experiment to which a Bernoulli distribution applies; an experiment that has two possible outcomes “success” and “failure”</p>
+</div>
+<div id="the-binomial-distribution" class="section level2">
+<h2>5.4 The Binomial Distribution</h2>
+<p><strong>Binomial Distribution</strong> - A random variable <span class="math inline">\(X\)</span> has a <strong>Binomial distribution</strong> and it is referred to as a binomial random variable if and only if its probability distribution is given by</p>
+<p><span class="math display">\[
+b(x; n, \theta)= \dbinom n x \theta^x (1-\theta)^{n-x} \; \text{for} \, x=0,1,2,\dots,n
+\]</span></p>
+<p><strong>Theorem 5.1 [Binomial Distribution - Complementary]</strong></p>
+<p><span class="math display">\[
+b(x; n, \theta)=b(n-x; n, 1 - \theta)
+\]</span></p>
+<p><strong>Theorem 5.2 [Binomial Distribution - Mean and Variance]</strong>
+The mean and variance of the binomial distribution are</p>
+<p><span class="math display">\[
+\mu = n\theta \;\; \text{and} \;\; \sigma^2 = n \theta(1-\theta)
+\]</span></p>
+<p><strong>Theorem 5.2 [Binomial Distribution - Mean and Variance - Proof]</strong></p>
+<p><span class="math display">\[
+\begin{align}
+\mu &amp;= \sum_{x=0}^n x \cdot \dbinom n x \theta^x (1-\theta)^{n-x}\\
+&amp;= \sum_{x=1}^n \frac{n!}{(x-1)!(n-x)!}\theta^x(1-\theta)^{n-x}
+\end{align}
+\]</span></p>
+<p>where we omitted the term corresponding to <span class="math inline">\(x=0\)</span>, which is 0, and canceled the <span class="math inline">\(x\)</span> against the first factor of <span class="math inline">\(x!=x(x-1)\)</span> in the denominator of <span class="math inline">\(\dbinom n x\)</span>. Then, factoring out the factor <span class="math inline">\(n\)</span> in <span class="math inline">\(n! = n(n-1)!\)</span> and one factor <span class="math inline">\(\theta\)</span>, we get</p>
+<p><span class="math display">\[
+\mu = n \theta \sum_{x=1}^n x \cdot \dbinom {n-1} {x-1} \theta^{x-1} (1-\theta)^{n-x}\\
+\]</span></p>
+<p>and, letting <span class="math inline">\(y=x-1\)</span> and <span class="math inline">\(m = n-1\)</span>, this becomes</p>
+<p><span class="math display">\[
+\mu = n \theta \sum_{x=0}^m x \cdot \dbinom {m} {y} \theta^{y}(1-\theta)^{m-y}=n \theta
+\]</span></p>
+<p>since the last summation is the sum of all the values of a binomial distribution with the parameters <span class="math inline">\(m\)</span> and <span class="math inline">\(\theta\)</span>, and hence equal to 1.</p>
+<p>To find expressions for <span class="math inline">\(\mu_2^{&#39;}\)</span> and <span class="math inline">\(\sigma^2\)</span>, let us make use of the fact that <span class="math inline">\(E(X^2) = E[X(X-1)]+E(X)\)</span> and first evaluate <span class="math inline">\(E[X(X-1)]\)</span>. Duplicating for all practical purposes the steps used before, we thus get</p>
+<p><span class="math display">\[
+\begin{align}
+E[X(X-1)] &amp;= \sum_{x=0}^n x (x-1) \dbinom n x \theta^x (1-\theta)^{n-x}\\
+&amp;= \sum_{x=2}^n \frac {n!} {(x-2)!(n-x)!} \theta^{x} (1-\theta)^{n-x}\\
+&amp;=n(n-1)\theta^2 \cdot \sum_{x=2}^n \dbinom {n-2}{x-2}\theta^{x-2} (1-\theta)^{n-x}
+\end{align}
+\]</span></p>
+<p>and, letting <span class="math inline">\(y=x-2\)</span> and <span class="math inline">\(m=n-2\)</span>, this becomes</p>
+<p><span class="math display">\[
+\begin{align}
+E[X(X-1)] &amp;= n(n-1)\theta^2 \cdot \sum_{x=0}^m \dbinom m y \theta^y (1-\theta)^{m-y}\\
+&amp;= n(n-1)\theta^2
+\end{align}
+\]</span></p>
+<p>Therefore,</p>
+<p><span class="math display">\[
+\mu_2^{&#39;} = E[X(X-1)] + E(X) = n(n-1) \theta^2 + n \theta
+\]</span></p>
+<p>and, finally</p>
+<p><span class="math display">\[
+\begin{align}
+\sigma^2 &amp;= \mu_2^{&#39;} - \mu^2\\
+&amp;=n(n-1)\theta^2 + n\theta - n^2\theta^2 \\
+&amp;=n\theta(1-\theta)
+\end{align}
+\]</span></p>
+<p><strong>Theorem 5.3 [Binomial w/ parameters]</strong></p>
+<p>If <span class="math inline">\(X\)</span> has a binomial distribution with the parameters <span class="math inline">\(n\)</span> and <span class="math inline">\(\theta\)</span> and <span class="math inline">\(Y=\frac{X}{n}\)</span>, then</p>
+<p><span class="math display">\[
+E(Y)=\theta \;\; \text{and} \;\; \sigma_Y^2 = \frac{\theta(1-\theta)}{n}
+\]</span></p>
+<p><strong>Theorem 5.4 [Binomial Moment Generation]</strong> - The moment-generating function of the binomial distribution is given by</p>
+<p><span class="math display">\[
+M_X(t) = [1 + \theta(e^t-1)]^n
+\]</span></p>
+<p><strong>Theorem 5.4 [Binomial Moment Generation - Proof]</strong>
+By using the definitions of Moment Generating Functions and Binomial Distribution, we get</p>
+<p><span class="math display">\[
+\begin{align}
+M_X(t)&amp;=\sum_{x=0}^n e^{xt} \dbinom n x \theta^x (1 - \theta)^{n-x}\\
+&amp;=\sum_{x=0}^n \dbinom n x (\theta e^t)^x (1 - \theta)^{n-x}
+\end{align}
+\]</span></p>
+<p>and by Theorem 1.9 [Binomial Coefficient] this summation is easily recognized as the binomial expansion of <span class="math inline">\([\theta e^t + (1-\theta)]^n=[1+\theta(e^t - 1)]^n\)</span></p>
+<p><strong>Factorial Moment</strong></p>
+<p><span class="math display">\[
+\mu_{(r)}^{&#39;}=E[X(X-1)(X-2)\cdot \ldots \cdot (X-r+1)]
+\]</span></p>
+<p><strong>Factorial Moment-Generating Function</strong>
+<span class="math display">\[
+F_X(t)=E(t^X) = \sum_x t^x \cdot f(x)
+\]</span></p>
+</div>
+<div id="the-negative-binomial-and-geometric-distributions" class="section level2">
+<h2>5.5 The Negative Binomial and Geometric Distributions</h2>
+<p><strong>Negative Binomial Distribution</strong> A random variable <span class="math inline">\(X\)</span> has a <strong>negative binomial distribution</strong> and it is referred to as a negative binomial random variable if and only if</p>
+<p><span class="math display">\[
+b^*(x;k,\theta) = \dbinom {x-1} {k-1} \theta^k(1-\theta)^{x-k} \; \; \text{for} \, x=k,k+1,k+2,\dots
+\]</span></p>
+<p><strong>binomial waiting-time distributions</strong> - another name for negative binomial distributions</p>
+<p><strong>Pascal distributions</strong> - another name for negative binomial distributions</p>
+<p><strong>Theorem 5.5 [Negative Binomial Distribution w/ a table]</strong></p>
+<p><span class="math display">\[
+b^*(x;k,\theta)= \frac{k}{x}\cdot b(k;x,\theta)
+\]</span></p>
+<p><strong>Theorem 5.5 [Negative Binomial Distribution w/ a table - Proof]</strong></p>
+<p>TBD Exercise 5.18</p>
+<p><strong>Theorem 5.6 [Negative Binomial Distribution mean and variance]</strong> - The mean and the variance of the negative binomial distribution are</p>
+<p><span class="math display">\[
+\mu = \frac{k}{\theta} \;\; \text{and} \;\; \sigma^2=\frac{k}{\theta} \left ( \frac{1}{\theta}-1 \right )
+\]</span></p>
+<p><strong>Theorem 5.6 [Negative Binomial Distribution mean and variance - Proof]</strong>
+TBD Exercise 5.19</p>
+<p><strong>Geometric Distribution</strong> - A random variable <span class="math inline">\(X\)</span> has a <strong>geometric distribution</strong> and it is referred to as a geometric random varaible if and only if its probability distribution is given by</p>
+<p><span class="math display">\[
+g(x;\theta)=\theta(1-\theta)^{x-1} \;\; \text{for} \, x=1,2,3,\dots
+\]</span></p>
+</div>
+<div id="the-hypergeometric-distribution" class="section level2">
+<h2>5.6 The Hypergeometric Distribution</h2>
+<p><strong>Hypergeometric Distribution</strong> A random variable <span class="math inline">\(X\)</span> has a <strong>hypergeometric distribution</strong> and it is referred to as a hypergeometric random variable if and only if its probability distribution is given by</p>
+<p><span class="math display">\[
+h(x;n,N,M)=\frac{\dbinom M x \dbinom {N-M}{n-x}}{\dbinom N n} \;\; {\text{for} \, x=0,1,2,\dots,n} \;\; x \le M \, \text{and} \, n-x \le N-M
+\]</span></p>
+<p><strong>Theorem 5.7 [Hypergeometric Distribution mean and variance]</strong> The mean and the variance of the hypergeometric distribution are</p>
+<p><span class="math display">\[
+\mu = \frac{nM}{N} \;\; \text{and} \;\; \sigma^2=\frac{nM(N-M)(N-n)}{N^2(N-1)}
+\]</span></p>
+<p><strong>Theorem 5.7 [Hypergeometric Distribution mean and variance - Proof]</strong> - To determine the mean, let us directly evaluate the sum</p>
+<p><span class="math display">\[
+\begin{align}
+\mu &amp;= \sum_{x=0}^n x \cdot \frac {\dbinom M x \dbinom {N-M} {n-x}}{\dbinom N n}\\
+&amp;=\sum_{x=1}^n \frac{M!}{(x-1)!(M-x)!} \cdot \frac {\dbinom {N-M} {n-x}}{\dbinom N n}
+\end{align}
+\]</span></p>
+<p>where we omitted the term corresponding to <span class="math inline">\(x=0\)</span>, which is 0, and canceled the <span class="math inline">\(x\)</span> against the first factor of <span class="math inline">\(x!=x(x-1)!\)</span> in the denominator of <span class="math inline">\(\dbinom M x\)</span>. Then factoring out <span class="math inline">\(M/\dbinom N n\)</span>, we get</p>
+<p><span class="math display">\[
+\mu = \frac{M}{\dbinom N n} \cdot \sum_{x=1}^n \dbinom {M-1} {x-1} \dbinom {N-M}{n-x}
+\]</span></p>
+<p>and, letting <span class="math inline">\(y=x-1\)</span> and <span class="math inline">\(m=n-1\)</span>, this becomes</p>
+<p><span class="math display">\[
+\mu = \frac{M}{\dbinom N n} \cdot \sum_{x=0}^m \dbinom {M-1} {y} \dbinom {N-M}{m-y}
+\]</span></p>
+<p>Finally, using Theorem 1.12 [Sums of combinations] we get</p>
+<p><span class="math display">\[
+\mu = \frac{M}{\dbinom N n} \cdot \dbinom {N-1} {m} = \frac{M}{\dbinom N n} \cdot \dbinom {N-1} {n-1}= \frac{nM}{N}
+\]</span></p>
+<p>To obtain the formula for <span class="math inline">\(\sigma^2\)</span>, we proceed as in the proof of Theorem 5.2 [Binomial Distribution - Mean and Variance] by first evaluating <span class="math inline">\(E[X(X-1]\)</span> and then making use of the fact that <span class="math inline">\(E(X^2)=E[X(X-1)]+E(X)\)</span>.</p>
+<p>Leaving it to the reader to show that</p>
+<p><span class="math display">\[
+E[X(X-1)]=\frac{M(M-1)n(n-1)}{N(N-1)}
+\]</span></p>
+<p>in Exercise 5.27. We thus get</p>
+<p><span class="math display">\[
+\begin{align}
+\sigma^2 &amp; =\frac{M(M-1)n(n-1)}{N(N-1)} + \frac{nM}{N} - \left ( \frac{nM}{N} \right )^2 \\
+&amp;=\frac{nM(N-M)(N-n)}{N^2(N-1)}
+\end{align}
+\]</span></p>
+<p><strong>Proof of the following excercise 5.27</strong></p>
+<p><span class="math display">\[
+E[X(X-1)]=\frac{M(M-1)n(n-1)}{N(N-1)}
+\]</span></p>
+</div>
+<div id="the-poisson-distribution" class="section level2">
+<h2>5.7 The Poisson Distribution</h2>
+<p><strong>Poisson Distribution</strong> - A random variable has a <strong>Poisson distribution</strong> and it is referred to as a Poisson random varaible if and only if its probability distribution is given by</p>
+<p><span class="math display">\[
+p(x;\lambda) = \frac{\lambda^x e^{-\lambda}}{x!} \;\; \text{for} \, x=0,1,2,\dots
+\]</span></p>
+<p><strong>Theorem 5.8 [Poisson distribution mean and variance]</strong> The mean and variance of the Poisson distribution are given by</p>
+<p><span class="math display">\[
+\mu = \lambda \;\; \text{and} \;\; \sigma^2=\lambda
+\]</span></p>
+<p><strong>Theorem 5.8 [Poisson distribution mean and variance - Proof]</strong>
+TBD Exercise 5.33</p>
+<p><strong>Theorem 5.9 [Poisson distribution moment generating function]</strong></p>
+<p><span class="math display">\[
+M_X(t)=e^{\lambda(e^t-1)}
+\]</span></p>
+<p><strong>Theorem 5.9 [Poisson distribution moment generating function - Proof]</strong>
+Using the definition for Moment-generating Functions and Poisson Distribution</p>
+<p><span class="math display">\[
+M_X(t)=\sum_{x=0}^\infty e^{xt} \cdot \frac{\lambda^x e^{-\lambda}}{x!} = e^{-\lambda} \cdot \sum_{x=0}^\infty \frac{(\lambda e^{t})^x}{x!}
+\]</span></p>
+<p>where <span class="math inline">\(\sum_{x=0}^\infty \frac{(\lambda e^{t})^x}{x!}\)</span> can be recognized as the Maclaurin’s series of <span class="math inline">\(e^z\)</span> with <span class="math inline">\(z=\lambda e^t\)</span>. Thus</p>
+<p><span class="math display">\[
+M_X(t)=e^{- \lambda} \cdot e^{\lambda e^t}=e^{\lambda (e^t - 1)}
+\]</span></p>
+</div>
+<div id="the-multinomial-distribution" class="section level2">
+<h2>5.8 The Multinomial Distribution</h2>
+<p><strong>Multinomial Distribution</strong> The random variables <span class="math inline">\(X_1, X_2,\dots,X_n\)</span> have a <strong>multinomial distribution</strong> and they are referred to as multinomial random variables if and only if their joint probabiltiy distribution is given by</p>
+<p><span class="math display">\[
+f(x_1,x_2,\dots,x_k;n,\theta_1, \theta_2,\dots,\theta_k)= \dbinom n {x_1, x_2, \dots, x_k} \cdot \theta_1^{x_1} \cdot \theta_2^{x_2} \cdot \dots \cdot \theta_k^{x_k}
+\]</span></p>
+<p>for <span class="math inline">\(x_i=0,1,\dots,n\)</span> for each <span class="math inline">\(i\)</span>, where <span class="math inline">\(\sum_{i=1}^k=n\)</span> and <span class="math inline">\(\sum_{i=1}^k \theta_i=1\)</span></p>
+</div>
+<div id="the-multivariate-hypergeometric-distribution" class="section level2">
+<h2>5.9 The Multivariate Hypergeometric Distribution</h2>
+<p><strong>Multivariate Hypergeometric Distribution</strong> The random variables <span class="math inline">\(X_1, X_2,\dots,X_k\)</span> have a <strong>multivariate hypergeometric distribution</strong> and they are referred to as multivariate hypergeometric random varaibles if and only if their joint probability distribution is given by</p>
+<p><span class="math display">\[
+f(x_1,x_2,\dots,x_k;n,M_1,M_2,\dots,M_k)= \frac{ \dbinom {M_1} {x_1} \dbinom {M_2} {x_2} \cdot \ldots \cdot \dbinom {M_k} {x_k}}{\dbinom N n}
+\]</span></p>
+<p>for <span class="math inline">\(x_i=0,1,2, \dots ,n\)</span> and <span class="math inline">\(x_i \le M_i\)</span> for each <span class="math inline">\(i\)</span>, where <span class="math inline">\(\sum_{i=1}^k x_i = n\)</span> and <span class="math inline">\(\sum_{i=1}^k M_i = N\)</span></p>
+</div>
+<div id="the-theory-in-practice" class="section level2">
+<h2>5.10 The Theory in Practice</h2>
+<p><strong>Probability of Acceptance</strong> - If <span class="math inline">\(n\)</span> is the size of the sample taken from each large lot and <span class="math inline">\(c\)</span> is the acceptnace number, the <strong>probability of acceptance</strong> is closely approximated by</p>
+<p><span class="math display">\[
+L(p) = \sum_{k=0}^c b(k;n,p)=B(c;n,p)
+\]</span></p>
+<p>where <span class="math inline">\(p\)</span> is the actual proportion of defectives in the lot.</p>
+<p><strong>Additional Resources:</strong></p>
+<ul>
+<li><a href="./files/Chapter_05_Notes.pdf">Chapter_05_Theorem_Notes.pdf</a> <a href="./files/Chapter_05_Notes.tex">(tex)</a></li>
+</ul>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+

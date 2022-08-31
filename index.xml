@@ -6,7 +6,29 @@
     <description>Recent content on jrem.me - wonder.explore.share</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 28 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 30 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chapter 4 - Mathematical Expectation</title>
+      <link>/2022/08/30/chapter-4-mathematical-expectation/</link>
+      <pubDate>Tue, 30 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/08/30/chapter-4-mathematical-expectation/</guid>
+      <description>4.1 Introduction Mathematical Expectation - Idea arising from games; the product of the amount a player stands to win and the probability that he or she will win
+4.2 The Expected Value of a Random Variable Expected Value - If \(X\) is a discrete random variable and \(f(x)\) is the value of its probability distribution at \(x\), the expected value of \(X\) is
+\[ E(X)= \underset{x} \sum x \cdot f(x) \]</description>
+    </item>
+    
+    <item>
+      <title>Chapter 5 - Special Probability Distributions</title>
+      <link>/2022/08/29/chapter-5-special-probability-distributions/</link>
+      <pubDate>Mon, 29 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/2022/08/29/chapter-5-special-probability-distributions/</guid>
+      <description>5.1 Introduction parameters - quantities that are constants for particular distributions, but can take on different values for different members of famiiles of distributions of the same kind
+5.2 The Discrete Uniform Distribution Discrete Uniform Distribution - A random variable \(X\) has a discrete uniform distribution and it is referred to as a discrete uniform random variable if and only if it probability distribution is given by
+\[ f(x) = \frac{1}{k} \; \text{for} \, x = x_1, x_2, \dots, x_k \]</description>
+    </item>
+    
     <item>
       <title>Chapter 3 - Probability Distributions and Probability Densities</title>
       <link>/2022/08/28/chapter-3-probability-distributions-and-probability-densities/</link>
