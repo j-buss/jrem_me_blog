@@ -1,0 +1,8 @@
+\contentsline {section}{\tocsection {}{}{1 Uniform Distribution}}{2}{}%
+\contentsline {section}{\tocsection {}{}{3.2 Probability Distributions}}{2}{}%
+\contentsline {section}{\tocsection {}{}{3.3 Continuous Random Variables}}{2}{}%
+\contentsline {section}{\tocsection {}{}{3.4 Probability Density Functions}}{2}{}%
+\contentsline {section}{\tocsection {}{}{3.5 Multivariate Distributions}}{3}{}%
+\contentsline {section}{\tocsection {}{}{3.6 Marginal Distributions}}{5}{}%
+\contentsline {section}{\tocsection {}{}{3.7 Conditional Distributions}}{5}{}%
+\contentsline {section}{\tocsection {}{}{3.8 Theory in Practice}}{6}{}%
