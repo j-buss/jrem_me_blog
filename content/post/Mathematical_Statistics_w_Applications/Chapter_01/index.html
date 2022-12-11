@@ -2,7 +2,7 @@
 title: "Chapter 1 - Introduction"
 author: Jeremy Buss
 output: html_document
-date: "2022-08-27"
+date: "2022-12-10"
 categories:
   - John E. Freund's Mathematical Statistics with Applications - Miller/Miller
   - Statistics
@@ -21,19 +21,20 @@ katex: yes
 <p><strong>Theorem 1.4 [# of permutations, <span class="math inline">\(r\)</span> at a time]</strong> The number of permutations of <span class="math inline">\(n\)</span> distinct objects taken <span class="math inline">\(r\)</span> at a time is
 <span class="math display">\[{}_nP_r = \frac{n!}{(n-r)!}\]</span>
 for <span class="math inline">\(r=0,1,2,\ldots,n\)</span>.</p>
-<p><strong>Proof</strong> The formula <span class="math inline">\({}_nP_r=n(n-1) \cdot \ldots \cdot (n-r+1)\)</span> cannot be used for <span class="math inline">\(r=0\)</span>, but we do have</p>
+<p><strong>Proof</strong></p>
+<p>For <span class="math inline">\(r=0\)</span> we have</p>
 <p><span class="math display">\[{}_nP_0 = \frac{n!}{(n-0)!}=1\]</span></p>
 <p>For <span class="math inline">\(r=1,2,\ldots,n,\)</span> we have</p>
 <p><span class="math display">\[
 \begin{align}
-{}_nP_r&amp;=n(n-1)(n-2) \cdot \ldots \cdot (n-r-1)\\
-&amp;=\frac{n(n-1)(n-2) \cdot \ldots \cdot (n-r-1)(n-r)!}{(n-r)!}\\
+{}_nP_r&amp;=n(n-1)(n-2) \cdot \ldots \cdot (n-r+1)\\
+&amp;=\frac{n(n-1)(n-2) \cdot \ldots \cdot (n-r+1)(n-r)!}{(n-r)!}\\
 &amp;=\frac{n!}{(n-r)!}
 \end{align}
 \]</span></p>
 <p><strong>circular permutation</strong> - permutation for which objects are arranged in a circle</p>
 <p><strong>Theorem 1.5 [Circular Permutations]</strong> The number of permutations of <span class="math inline">\(n\)</span> distinct objects arranged in a circle is <span class="math inline">\((n-1)!\)</span></p>
-<p><strong>Theorem 1.6 [Permutations of <span class="math inline">\(n\)</span> objects]</strong> The number of permutations of <span class="math inline">\(n\)</span> objects of which <span class="math inline">\(n_1\)</span> are of one kind, <span class="math inline">\(n_2\)</span> are of a second kind, <span class="math inline">\(\ldots, n_k\)</span> are of a <span class="math inline">\(k\)</span>th kind, and <span class="math inline">\(n_1+n_2+\dots+n_k=n\)</span> is</p>
+<p><strong>Theorem 1.6 [Permutations of <span class="math inline">\(n\)</span> objects <span class="math inline">\(k\)</span> kinds]</strong> The number of permutations of <span class="math inline">\(n\)</span> objects of which <span class="math inline">\(n_1\)</span> are of one kind, <span class="math inline">\(n_2\)</span> are of a second kind, <span class="math inline">\(\ldots, n_k\)</span> are of a <span class="math inline">\(k\)</span>th kind, and <span class="math inline">\(n_1+n_2+\dots+n_k=n\)</span> is</p>
 <p><span class="math display">\[\frac{n!}{n_1! \cdot n_2! \cdot \ldots \cdot n_k!}\]</span></p>
 <p><strong>Combination</strong> - is a selection of <span class="math inline">\(r\)</span> objects taken from <span class="math inline">\(n\)</span> distinct objects without regard to the order of selection</p>
 <p><strong>Theorem 1.7 [Combination]</strong> The number of combinations of <span class="math inline">\(n\)</span> distinct objects taken <span class="math inline">\(r\)</span> at a time is</p>
@@ -85,12 +86,12 @@ for <span class="math inline">\(r=0,1,2,\ldots,n\)</span>.</p>
 <p>The subset can’t contain more elements than the original set; i.e. <span class="math inline">\(\dbinom n r = 0\)</span> whenever <span class="math inline">\(n\)</span> is a positive integer and <span class="math inline">\(r\)</span> is a positive integer greater than <span class="math inline">\(n\)</span>.</p>
 <p><strong>Theorem 1.12 [Sums of combinations]</strong></p>
 <p><span class="math display">\[
-\sum^k_{r=0} \dbinom m k \dbinom n {k-r} = \dbinom {m+n} k
+\sum^k_{r=0} \dbinom m r \dbinom n {k-r} = \dbinom {m+n} k
 \]</span></p>
 <p><strong>Proof</strong> Using the same technique as in the proof of Theorem 1.11, let us prove this theorem by equating the coefficients of <span class="math inline">\(y^k\)</span> in the expressions on both sides of the equation</p>
 <p><span class="math display">\[(1+y)^{m+n}=(1+y)^m(1+y)^n\]</span></p>
 <p>The coefficient of <span class="math inline">\(y^k\)</span> in <span class="math inline">\((1+y)^{m+n}\)</span> is <span class="math inline">\(\dbinom {m+n} k\)</span>, and the coefficient of <span class="math inline">\(y^k\)</span> in</p>
-<p><span class="math display">\[(1+y)^m(1+y)^n = [ \dbinom m 0 + \dbinom m 1 y + \cdots + \dbinom m m y^m ] \times [ \dbinom n 0 + \dbinom n 1 y + \cdots + \dbinom n n y^n ] \]</span></p>
+<p><span class="math display">\[(1+y)^m(1+y)^n = \left [ \dbinom m 0 + \dbinom m 1 y + \cdots + \dbinom m m y^m \right ] \times \left [ \dbinom n 0 + \dbinom n 1 y + \cdots + \dbinom n n y^n \right ] \]</span></p>
 <p>is the sum of the prodcts that we obtain by multiplying the constant term of the first factor by the coefficient of <span class="math inline">\(y^k\)</span> in the second factor, the coefficient of <span class="math inline">\(y\)</span> in the first factor by the coefficient of <span class="math inline">\(y^{k-1}\)</span> in the second factor, …, and the coefficient of <span class="math inline">\(y^k\)</span> in the first factor by the constant term of the second factor. Thus, the coefficient of <span class="math inline">\(y^k\)</span> in <span class="math inline">\((1+y)^m(1+y)^n\)</span> is</p>
 <p><span class="math display">\[
 \dbinom m 0 \dbinom n k + \dbinom m 1 \dbinom n {k-1} + \dbinom m 2 \dbinom n {n-2} + \cdots + \dbinom m k \dbinom n 0 = \sum^k_{r=0} \dbinom m r \dbinom n {k-r}

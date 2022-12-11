@@ -214,6 +214,13 @@ and hence that
 P(A \cup B \cup C)= P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P(A \cap B \cap C)
 \]
 
+**General Principle of Inclusion Exclusion**
+\[
+  \begin{align*}
+    \left | \bigcup_{i=1}^n A_i \right | = \sum_{i=1}^n \left | A_i \right | - \sum _{1 \le i < j \le n} \left | A_i \cap A_j \right | + \sum _{1 \le i < j < k \le n} \left | A_i \cap A_j \cap A_k \right | - \ldots + (-1)^{n-1} \left | \bigcap_{i=1}^n A_i \right |
+  \end{align*}
+\]
+
 **Odds** - the ratio of the probability that the event will occur to the probability that it will not occur, provided neither probability is zero. Odds are generally quoted in terms of positive integers having no common factor: \(p = \frac{A}{A+B}\)
 
 ## 2.6 Conditional Probability
@@ -287,13 +294,13 @@ P(A \cap B^\complement) &= P(A) - P(A) \cdot P(B)\\
 
 and hence that \(A\) and \(B^\complement\) are independent.
 
-**Independent of more than two events** - Events \(A_1, A_2, \ldots, A_k\) are **independent** if and only if the probability of the intersections of any 2, 3,..., or \(k\) of these events equals the product of their respective probabilities.
+**Independence of more than two events** - Events \(A_1, A_2, \ldots, A_k\) are **independent** if and only if the probability of the intersections of any 2, 3,..., or \(k\) of these events equals the product of their respective probabilities.
 
 
 
 ## 2.8 Bayes Theorem
 
-**Theorem 2.12 [Rule of Total probability or Rule of Elimination]** - If the events \(B_1, B_2, \ldots, B_k\) constitue a partition of the sample space \(S\) and \(P(B_i) \ne 0\) for \(i=1,2,\ldots,k\) then for any event \(A\) in \(S\)
+**Theorem 2.12 [Rule of Total probability or Rule of Elimination]** - If the events \(B_1, B_2, \ldots, B_k\) constitute a partition of the sample space \(S\) and \(P(B_i) \ne 0\) for \(i=1,2,\ldots,k\) then for any event \(A\) in \(S\)
 
 \[
 P(A) = \sum_{i=1}^k P(B_i) \cdot P(A|B_i)
@@ -309,9 +316,11 @@ for \(r = 1,2,\ldots,k\)
 
 In words, the probability that event \(A\) was reached via the \(r\)th branch of the following tree diagram, given that it was reached via one of its \(k\) branches, is the ratio of the probability associated with the \(r\)th branch to the sum of the probabilities associated with all \(k\) branches of the tree.
 
+![Bayes Theorem Tree Diagram](images/BayesTheoremTreeDiagram.png)
+
 **Proof** Writing \(P(B_r|A) = \frac{P(A \cap B_r)}{P(A)}\) in accordance with the definition of conditional probability, we have only to substitute \(P(B_r) \cdot P(A|B_r)\) for \(P(A \cap B_r)\) and the formula of Theorem 2.12 for \(P(A)\)
 
-![Bayes Theorem Tree Diagram](images/BayesTheoremTreeDiagram.png)
+
 
 ## 2.9 Theory in Practice
 

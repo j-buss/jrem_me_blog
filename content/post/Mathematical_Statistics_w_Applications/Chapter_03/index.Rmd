@@ -32,11 +32,11 @@ install.packages("blogdown")
 **Probability Distribution** - If \(X\) is a discrete random variable, the function given by \(f(x)=P(X=x)\) for each \(x\) within the range of \(X\) is called the **probability distribution** of \(X\)
 
 
-**Theorem 3.1 [Probability Distribution - Discrete Conditions]** - A function can serve as the probability distribution of a discrete random variable \(X\) if and only if its values, \(f(x)\), satisfy the conditions:
+**Theorem 3.1 [Probability Distribution - Conditions for a Discrete Random Variable]** - A function can serve as the probability distribution of a discrete random variable \(X\) if and only if its values, \(f(x)\), satisfy the conditions:
   1. \(f(x) \ge 0\) for each value within its domain;
   2. \(\sum_{x} f(x)=1\), where the summation extends over all the values within its domain. 
 
-**Distribution Function** - If \(X\) is a discrete random variable, the function given by
+**Distribution Function [Discrete Random Variable]** - If \(X\) is a discrete random variable, the function given by
 
 \[
 \begin{align}
@@ -46,7 +46,7 @@ F(x)=P(X \leq x) = \sum_{t \leq X} f(t) && \text{for} \,-\infty < x < \infty
 
 where \(f(t)\) is the value of the probability distribution of \(X\) at \(t\), is called the **distribution function**, or the **cumulative distribution** of \(X\)
 
-**Theorem 3.2 [Distribution Function - Discrete Conditions]** The values \(F(x)\) of the distribution function of a discrete random variable \(X\) satisfy the conditions:
+**Theorem 3.2 [Distribution Function - Conditions for a Discrete Random Variable]** The values \(F(x)\) of the distribution function of a discrete random variable \(X\) satisfy the conditions:
 
   1. \(F(- \infty ) = 0\) and \(F(\infty) = 1\);
   2. if \(a < b\), then \(F(a) \leq F(b)\) for any real numbers \(a\) and \(b\)
@@ -63,7 +63,7 @@ f(x_i)=F(x_i)-F(x_{i-1}) && \text{for} \; i = 2,3,\ldots,n
 
 ## 3.4 Probability Density Functions
 
-**Probability Density Function** - A function with values \(f(x)\), defined over the set of all real numbers, is called a **probability density function** or abreviated as **p.d.f.** of the continuous random variable \(X\) if and only if 
+**Probability Density Function [Continuous Random Variable]** - A function with values \(f(x)\), defined over the set of all real numbers, is called a **probability density function** or abbreviated as **p.d.f.** of the continuous random variable \(X\) if and only if 
 
 \[
 P(a \leqq X \leq b) = \int_a^b f(x)dx
@@ -77,12 +77,12 @@ for any real constants \(a\) and \(b\) with \(a \leq b\)
 P(a \leq X \leq b) = P(a \leq X < b) = P(a < X \leq b) = P(a < X < b)
 \]
 
-**Theorem 3.5 [Probability Density - Continuous Conditions]** - A function can serve as a probability density of a continuous random variable \(X\) if its values, \(f(x)\), satisfy the conditions:
+**Theorem 3.5 [Probability Density - Conditions for Continuous Random Variable]** - A function can serve as a probability density of a continuous random variable \(X\) if its values, \(f(x)\), satisfy the conditions:
   
   1. \(f(x) \ge 0\) for \(- \infty < x < \infty \)
   2. \(\int_{-\infty}^{\infty} f(x) dx = 1\)
 
-**Distribution Function** - If \(X\) is a continuous random variable and the value of its probability density at \(t\) is \(f(t)\), then the function given by
+**Distribution Function [Continuous Random Variable] ** - If \(X\) is a continuous random variable and the value of its probability density at \(t\) is \(f(t)\), then the function given by
 
 \[
 \begin{align}
@@ -116,13 +116,13 @@ where the derivative exists.
 
 **Joint Probability Distribution** - If \(X\) and \(Y\) are discrete random variables, the function given by \(f(x,y)=P(X=x,Y=y)\) for each pair of values \((x,y)\) within the range of \(X\) and \(Y\) is called the **joint probability distribution** of \(X\) and \(Y\)
 
-**Theorem 3.7 [Joint Probability Distribution - Discrete Conditions]** - A bivariate function can serve as the joint probability distribution of a pair of discrete random variables \(X\) and \(Y\) if and only if its values, \(f(x,y)\), satisfy the conditions:
+**Theorem 3.7 [Joint Probability Distribution - Conditions for Discrete Random Variable]** - A bivariate function can serve as the joint probability distribution of a pair of discrete random variables \(X\) and \(Y\) if and only if its values, \(f(x,y)\), satisfy the conditions:
 
   1. \(f(x,y) \ge 0\) for each pair of values \((x,y)\) within its domain
   2. \(\sum_x \sum_y f(x,y)=1\), where the double summation extends over all possible pairs \((x,y)\) within its domain
 
 
-**Joint Distribution Function** If \(X\) and \(Y\) are discrete random variables, the function given by
+**Joint Distribution Function [Discrete Random Variable]** If \(X\) and \(Y\) are discrete random variables, the function given by
 
 \[
 \begin{align}
@@ -159,7 +159,7 @@ where \(f(s,t)\) is the joint probability density of \(X\) and \(Y\) at \((s,t)\
 
 ## 3.6 Marginal Distributions
 
-**Marginal Distribution** - If \(X\) and \(Y\) are discrete random variables and \(f(x,y)\) is the value of their joint probability distribution at \((x,y)\), the function given by
+**Marginal Distribution [Discrete Random Variables]** - If \(X\) and \(Y\) are discrete random variables and \(f(x,y)\) is the value of their joint probability distribution at \((x,y)\), the function given by
 
 \[
 g(x)=\underset{y}\sum f(x,y)
@@ -193,7 +193,7 @@ is called the **marginal density of \(Y\)**.
 
 ## 3.7 Conditional Distributions
 
-**Conditional Distribution** - If \(f(x,y)\) is the value of the joint probability distribution of the discrete random variables \(X\) and \(Y\) at \((x,y)\) and \(h(y)\) is the value of the marginal distribution of \(Y\) at \(y\), the function given by
+**Conditional Distribution [Discrete Random Variables]** - If \(f(x,y)\) is the value of the joint probability distribution of the discrete random variables \(X\) and \(Y\) at \((x,y)\) and \(h(y)\) is the value of the marginal distribution of \(Y\) at \(y\), the function given by
 
 \[
 \begin{align}
@@ -205,13 +205,13 @@ for each \(x\) within the range of \(X\) is called the **conditional distributio
 
 \[
 \begin{align}
-w(x|y)=\frac{f(x,y)}{g(y)} && g(y) \ne 0
+f(y|x)=\frac{f(x,y)}{g(x)} && g(x) \ne 0
 \end{align}
 \]
 
 for each \(y\) within the range of \(Y\) is called the **conditional distribution of \(Y\) given \(X=x\)**.
 
-**Conditional Density** - If \(f(x,y)\) is the value of the joint density of the continuous random variables \(X\) and \(Y\) at \((x,y)\) and \(h(y)\) is the value of the marginal distribution of \(Y\) at \(y\), the function given by
+**Conditional Density [Continuous Random Variables]** - If \(f(x,y)\) is the value of the joint density of the continuous random variables \(X\) and \(Y\) at \((x,y)\) and \(h(y)\) is the value of the marginal distribution of \(Y\) at \(y\), the function given by
 
 \[
 \begin{align}

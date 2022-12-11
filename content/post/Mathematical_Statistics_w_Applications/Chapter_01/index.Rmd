@@ -35,7 +35,9 @@ install.packages("blogdown")
 \[{}_nP_r = \frac{n!}{(n-r)!}\]
 for \(r=0,1,2,\ldots,n\).
 
-**Proof** The formula \({}_nP_r=n(n-1) \cdot \ldots \cdot (n-r+1)\) cannot be used for \(r=0\), but we do have
+**Proof** 
+
+For \(r=0\) we have
 
 \[{}_nP_0 = \frac{n!}{(n-0)!}=1\]
 
@@ -43,8 +45,8 @@ For \(r=1,2,\ldots,n,\) we have
 
 \[
 \begin{align}
-{}_nP_r&=n(n-1)(n-2) \cdot \ldots \cdot (n-r-1)\\
-&=\frac{n(n-1)(n-2) \cdot \ldots \cdot (n-r-1)(n-r)!}{(n-r)!}\\
+{}_nP_r&=n(n-1)(n-2) \cdot \ldots \cdot (n-r+1)\\
+&=\frac{n(n-1)(n-2) \cdot \ldots \cdot (n-r+1)(n-r)!}{(n-r)!}\\
 &=\frac{n!}{(n-r)!}
 \end{align}
 \]
@@ -53,7 +55,7 @@ For \(r=1,2,\ldots,n,\) we have
 
 **Theorem 1.5 [Circular Permutations]** The number of permutations of \(n\) distinct objects arranged in a circle is \((n-1)!\)
 
-**Theorem 1.6 [Permutations of \(n\) objects]** The number of permutations of \(n\) objects of which \(n_1\) are of one kind, \(n_2\) are of a second kind, \(\ldots, n_k\) are of a \(k\)th kind, and \(n_1+n_2+\dots+n_k=n\) is
+**Theorem 1.6 [Permutations of \(n\) objects \(k\) kinds]** The number of permutations of \(n\) objects of which \(n_1\) are of one kind, \(n_2\) are of a second kind, \(\ldots, n_k\) are of a \(k\)th kind, and \(n_1+n_2+\dots+n_k=n\) is
 
 \[\frac{n!}{n_1! \cdot n_2! \cdot \ldots \cdot n_k!}\]
 
@@ -132,7 +134,7 @@ The subset can't contain more elements than the original set; i.e. \(\dbinom n r
 **Theorem 1.12 [Sums of combinations]** 
 
 \[
-\sum^k_{r=0} \dbinom m k \dbinom n {k-r} = \dbinom {m+n} k 
+\sum^k_{r=0} \dbinom m r \dbinom n {k-r} = \dbinom {m+n} k 
 \]
 
 **Proof** Using the same technique as in the proof of Theorem 1.11, let us prove this theorem by equating the coefficients of \(y^k\) in the expressions on both sides of the equation
@@ -141,7 +143,7 @@ The subset can't contain more elements than the original set; i.e. \(\dbinom n r
 
 The coefficient of \(y^k\) in \((1+y)^{m+n}\) is \(\dbinom {m+n} k\), and the coefficient of \(y^k\) in 
 
-\[(1+y)^m(1+y)^n = [ \dbinom m 0 + \dbinom m 1 y + \cdots + \dbinom m m y^m ] \times [ \dbinom n 0 + \dbinom n 1 y + \cdots + \dbinom n n y^n ] \]
+\[(1+y)^m(1+y)^n = \left [ \dbinom m 0 + \dbinom m 1 y + \cdots + \dbinom m m y^m \right ] \times \left [ \dbinom n 0 + \dbinom n 1 y + \cdots + \dbinom n n y^n \right ] \]
 
 is the sum of the prodcts that we obtain by multiplying the constant term of the first factor by the coefficient of \(y^k\) in the second factor, the coefficient of \(y\) in the first factor by the coefficient of \(y^{k-1}\) in the second factor, ..., and the coefficient of \(y^k\) in the first factor by the constant term of the second factor. Thus, the coefficient of \(y^k\) in \((1+y)^m(1+y)^n\) is
 

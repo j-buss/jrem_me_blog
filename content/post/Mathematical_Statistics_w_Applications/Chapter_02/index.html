@@ -2,7 +2,7 @@
 title: "Chapter 2 - Probability"
 author: Jeremy Buss
 output: html_document
-date: "2022-08-27"
+date: "2022-12-10"
 categories:
   - John E. Freund's Mathematical Statistics with Applications - Miller/Miller
   - Statistics
@@ -153,6 +153,12 @@ P[A \cap (B \cup C)] &amp;= P[(A \cap B) \cup (A \cap C)] \\
 <p><span class="math display">\[
 P(A \cup B \cup C)= P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P(A \cap B \cap C)
 \]</span></p>
+<p><strong>General Principle of Inclusion Exclusion</strong>
+<span class="math display">\[
+  \begin{align*}
+    \left | \bigcup_{i=1}^n A_i \right | = \sum_{i=1}^n \left | A_i \right | - \sum _{1 \le i &lt; j \le n} \left | A_i \cap A_j \right | + \sum _{1 \le i &lt; j &lt; k \le n} \left | A_i \cap A_j \cap A_k \right | - \ldots + (-1)^{n-1} \left | \bigcap_{i=1}^n A_i \right |
+  \end{align*}
+\]</span></p>
 <p><strong>Odds</strong> - the ratio of the probability that the event will occur to the probability that it will not occur, provided neither probability is zero. Odds are generally quoted in terms of positive integers having no common factor: <span class="math inline">\(p = \frac{A}{A+B}\)</span></p>
 </div>
 <div id="conditional-probability" class="section level2">
@@ -208,11 +214,11 @@ P(A \cap B^\complement) &amp;= P(A) - P(A) \cdot P(B)\\
 \end{align}
 \]</span></p>
 <p>and hence that <span class="math inline">\(A\)</span> and <span class="math inline">\(B^\complement\)</span> are independent.</p>
-<p><strong>Independent of more than two events</strong> - Events <span class="math inline">\(A_1, A_2, \ldots, A_k\)</span> are <strong>independent</strong> if and only if the probability of the intersections of any 2, 3,…, or <span class="math inline">\(k\)</span> of these events equals the product of their respective probabilities.</p>
+<p><strong>Independence of more than two events</strong> - Events <span class="math inline">\(A_1, A_2, \ldots, A_k\)</span> are <strong>independent</strong> if and only if the probability of the intersections of any 2, 3,…, or <span class="math inline">\(k\)</span> of these events equals the product of their respective probabilities.</p>
 </div>
 <div id="bayes-theorem" class="section level2">
 <h2>2.8 Bayes Theorem</h2>
-<p><strong>Theorem 2.12 [Rule of Total probability or Rule of Elimination]</strong> - If the events <span class="math inline">\(B_1, B_2, \ldots, B_k\)</span> constitue a partition of the sample space <span class="math inline">\(S\)</span> and <span class="math inline">\(P(B_i) \ne 0\)</span> for <span class="math inline">\(i=1,2,\ldots,k\)</span> then for any event <span class="math inline">\(A\)</span> in <span class="math inline">\(S\)</span></p>
+<p><strong>Theorem 2.12 [Rule of Total probability or Rule of Elimination]</strong> - If the events <span class="math inline">\(B_1, B_2, \ldots, B_k\)</span> constitute a partition of the sample space <span class="math inline">\(S\)</span> and <span class="math inline">\(P(B_i) \ne 0\)</span> for <span class="math inline">\(i=1,2,\ldots,k\)</span> then for any event <span class="math inline">\(A\)</span> in <span class="math inline">\(S\)</span></p>
 <p><span class="math display">\[
 P(A) = \sum_{i=1}^k P(B_i) \cdot P(A|B_i)
 \]</span></p>
@@ -222,11 +228,11 @@ P(B_r|A) = \frac{P(B_r) \cdot P(A|B_r)}{\sum_{i=1}^k P(B_i) \cdot P(A|B_i)}
 \]</span></p>
 <p>for <span class="math inline">\(r = 1,2,\ldots,k\)</span></p>
 <p>In words, the probability that event <span class="math inline">\(A\)</span> was reached via the <span class="math inline">\(r\)</span>th branch of the following tree diagram, given that it was reached via one of its <span class="math inline">\(k\)</span> branches, is the ratio of the probability associated with the <span class="math inline">\(r\)</span>th branch to the sum of the probabilities associated with all <span class="math inline">\(k\)</span> branches of the tree.</p>
-<p><strong>Proof</strong> Writing <span class="math inline">\(P(B_r|A) = \frac{P(A \cap B_r)}{P(A)}\)</span> in accordance with the definition of conditional probability, we have only to substitute <span class="math inline">\(P(B_r) \cdot P(A|B_r)\)</span> for <span class="math inline">\(P(A \cap B_r)\)</span> and the formula of Theorem 2.12 for <span class="math inline">\(P(A)\)</span></p>
 <div class="figure">
 <img src="images/BayesTheoremTreeDiagram.png" alt="" />
 <p class="caption">Bayes Theorem Tree Diagram</p>
 </div>
+<p><strong>Proof</strong> Writing <span class="math inline">\(P(B_r|A) = \frac{P(A \cap B_r)}{P(A)}\)</span> in accordance with the definition of conditional probability, we have only to substitute <span class="math inline">\(P(B_r) \cdot P(A|B_r)\)</span> for <span class="math inline">\(P(A \cap B_r)\)</span> and the formula of Theorem 2.12 for <span class="math inline">\(P(A)\)</span></p>
 </div>
 <div id="theory-in-practice" class="section level2">
 <h2>2.9 Theory in Practice</h2>

@@ -2,7 +2,7 @@
 title: "Chapter 3 - Probability Distributions and Probability Densities"
 author: Jeremy Buss
 output: html_document
-date: "2022-08-28"
+date: "2022-12-11"
 categories:
   - John E. Freund's Mathematical Statistics with Applications - Miller/Miller
   - Statistics
@@ -20,17 +20,17 @@ katex: yes
 <div id="probability-distributions" class="section level2">
 <h2>3.2 Probability Distributions</h2>
 <p><strong>Probability Distribution</strong> - If <span class="math inline">\(X\)</span> is a discrete random variable, the function given by <span class="math inline">\(f(x)=P(X=x)\)</span> for each <span class="math inline">\(x\)</span> within the range of <span class="math inline">\(X\)</span> is called the <strong>probability distribution</strong> of <span class="math inline">\(X\)</span></p>
-<p><strong>Theorem 3.1 [Probability Distribution - Discrete Conditions]</strong> - A function can serve as the probability distribution of a discrete random variable <span class="math inline">\(X\)</span> if and only if its values, <span class="math inline">\(f(x)\)</span>, satisfy the conditions:
+<p><strong>Theorem 3.1 [Probability Distribution - Conditions for a Discrete Random Variable]</strong> - A function can serve as the probability distribution of a discrete random variable <span class="math inline">\(X\)</span> if and only if its values, <span class="math inline">\(f(x)\)</span>, satisfy the conditions:
 1. <span class="math inline">\(f(x) \ge 0\)</span> for each value within its domain;
 2. <span class="math inline">\(\sum_{x} f(x)=1\)</span>, where the summation extends over all the values within its domain.</p>
-<p><strong>Distribution Function</strong> - If <span class="math inline">\(X\)</span> is a discrete random variable, the function given by</p>
+<p><strong>Distribution Function [Discrete Random Variable]</strong> - If <span class="math inline">\(X\)</span> is a discrete random variable, the function given by</p>
 <p><span class="math display">\[
 \begin{align}
 F(x)=P(X \leq x) = \sum_{t \leq X} f(t) &amp;&amp; \text{for} \,-\infty &lt; x &lt; \infty
 \end{align}
 \]</span></p>
 <p>where <span class="math inline">\(f(t)\)</span> is the value of the probability distribution of <span class="math inline">\(X\)</span> at <span class="math inline">\(t\)</span>, is called the <strong>distribution function</strong>, or the <strong>cumulative distribution</strong> of <span class="math inline">\(X\)</span></p>
-<p><strong>Theorem 3.2 [Distribution Function - Discrete Conditions]</strong> The values <span class="math inline">\(F(x)\)</span> of the distribution function of a discrete random variable <span class="math inline">\(X\)</span> satisfy the conditions:</p>
+<p><strong>Theorem 3.2 [Distribution Function - Conditions for a Discrete Random Variable]</strong> The values <span class="math inline">\(F(x)\)</span> of the distribution function of a discrete random variable <span class="math inline">\(X\)</span> satisfy the conditions:</p>
 <ol style="list-style-type: decimal">
 <li><span class="math inline">\(F(- \infty ) = 0\)</span> and <span class="math inline">\(F(\infty) = 1\)</span>;</li>
 <li>if <span class="math inline">\(a &lt; b\)</span>, then <span class="math inline">\(F(a) \leq F(b)\)</span> for any real numbers <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span></li>
@@ -47,7 +47,7 @@ f(x_i)=F(x_i)-F(x_{i-1}) &amp;&amp; \text{for} \; i = 2,3,\ldots,n
 </div>
 <div id="probability-density-functions" class="section level2">
 <h2>3.4 Probability Density Functions</h2>
-<p><strong>Probability Density Function</strong> - A function with values <span class="math inline">\(f(x)\)</span>, defined over the set of all real numbers, is called a <strong>probability density function</strong> or abreviated as <strong>p.d.f.</strong> of the continuous random variable <span class="math inline">\(X\)</span> if and only if</p>
+<p><strong>Probability Density Function [Continuous Random Variable]</strong> - A function with values <span class="math inline">\(f(x)\)</span>, defined over the set of all real numbers, is called a <strong>probability density function</strong> or abbreviated as <strong>p.d.f.</strong> of the continuous random variable <span class="math inline">\(X\)</span> if and only if</p>
 <p><span class="math display">\[
 P(a \leqq X \leq b) = \int_a^b f(x)dx
 \]</span></p>
@@ -56,12 +56,12 @@ P(a \leqq X \leq b) = \int_a^b f(x)dx
 <p><span class="math display">\[
 P(a \leq X \leq b) = P(a \leq X &lt; b) = P(a &lt; X \leq b) = P(a &lt; X &lt; b)
 \]</span></p>
-<p><strong>Theorem 3.5 [Probability Density - Continuous Conditions]</strong> - A function can serve as a probability density of a continuous random variable <span class="math inline">\(X\)</span> if its values, <span class="math inline">\(f(x)\)</span>, satisfy the conditions:</p>
+<p><strong>Theorem 3.5 [Probability Density - Conditions for Continuous Random Variable]</strong> - A function can serve as a probability density of a continuous random variable <span class="math inline">\(X\)</span> if its values, <span class="math inline">\(f(x)\)</span>, satisfy the conditions:</p>
 <ol style="list-style-type: decimal">
 <li><span class="math inline">\(f(x) \ge 0\)</span> for <span class="math inline">\(- \infty &lt; x &lt; \infty\)</span></li>
 <li><span class="math inline">\(\int_{-\infty}^{\infty} f(x) dx = 1\)</span></li>
 </ol>
-<p><strong>Distribution Function</strong> - If <span class="math inline">\(X\)</span> is a continuous random variable and the value of its probability density at <span class="math inline">\(t\)</span> is <span class="math inline">\(f(t)\)</span>, then the function given by</p>
+<p><strong>Distribution Function [Continuous Random Variable] </strong> - If <span class="math inline">\(X\)</span> is a continuous random variable and the value of its probability density at <span class="math inline">\(t\)</span> is <span class="math inline">\(f(t)\)</span>, then the function given by</p>
 <p><span class="math display">\[
 \begin{align}
 F(x)=P(X \leq x)= \int_{- \infty}^{x} f(t) dt &amp;&amp; \text{for} \, -\infty &lt; x &lt; \infty
@@ -84,12 +84,12 @@ f(x)=\frac{dF(x)}{dx}
 <p><strong>multivariate</strong> - situations covering any finite number of random variables</p>
 <p><strong>univariate</strong> - situations with one random variable</p>
 <p><strong>Joint Probability Distribution</strong> - If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are discrete random variables, the function given by <span class="math inline">\(f(x,y)=P(X=x,Y=y)\)</span> for each pair of values <span class="math inline">\((x,y)\)</span> within the range of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> is called the <strong>joint probability distribution</strong> of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></p>
-<p><strong>Theorem 3.7 [Joint Probability Distribution - Discrete Conditions]</strong> - A bivariate function can serve as the joint probability distribution of a pair of discrete random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> if and only if its values, <span class="math inline">\(f(x,y)\)</span>, satisfy the conditions:</p>
+<p><strong>Theorem 3.7 [Joint Probability Distribution - Conditions for Discrete Random Variable]</strong> - A bivariate function can serve as the joint probability distribution of a pair of discrete random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> if and only if its values, <span class="math inline">\(f(x,y)\)</span>, satisfy the conditions:</p>
 <ol style="list-style-type: decimal">
 <li><span class="math inline">\(f(x,y) \ge 0\)</span> for each pair of values <span class="math inline">\((x,y)\)</span> within its domain</li>
 <li><span class="math inline">\(\sum_x \sum_y f(x,y)=1\)</span>, where the double summation extends over all possible pairs <span class="math inline">\((x,y)\)</span> within its domain</li>
 </ol>
-<p><strong>Joint Distribution Function</strong> If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are discrete random variables, the function given by</p>
+<p><strong>Joint Distribution Function [Discrete Random Variable]</strong> If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are discrete random variables, the function given by</p>
 <p><span class="math display">\[
 \begin{align}
 F(x,y)=P(X \leq x, Y \leq y) = \sum_{s \leq x} \sum_{t \leq y} f(s,t) &amp;&amp; \text{for} \, - \infty &lt; x &lt; \infty\\
@@ -118,7 +118,7 @@ F(x,y)=P(X \leq x, Y \leq y)= \int^\infty_{-\infty} \int^\infty_{-\infty} f(s,t)
 </div>
 <div id="marginal-distributions" class="section level2">
 <h2>3.6 Marginal Distributions</h2>
-<p><strong>Marginal Distribution</strong> - If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are discrete random variables and <span class="math inline">\(f(x,y)\)</span> is the value of their joint probability distribution at <span class="math inline">\((x,y)\)</span>, the function given by</p>
+<p><strong>Marginal Distribution [Discrete Random Variables]</strong> - If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are discrete random variables and <span class="math inline">\(f(x,y)\)</span> is the value of their joint probability distribution at <span class="math inline">\((x,y)\)</span>, the function given by</p>
 <p><span class="math display">\[
 g(x)=\underset{y}\sum f(x,y)
 \]</span></p>
@@ -143,7 +143,7 @@ h(x)= \int_{-\infty}^{\infty} f(x,y)dx &amp;&amp; \text{for} -\infty &lt; y &lt;
 </div>
 <div id="conditional-distributions" class="section level2">
 <h2>3.7 Conditional Distributions</h2>
-<p><strong>Conditional Distribution</strong> - If <span class="math inline">\(f(x,y)\)</span> is the value of the joint probability distribution of the discrete random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> at <span class="math inline">\((x,y)\)</span> and <span class="math inline">\(h(y)\)</span> is the value of the marginal distribution of <span class="math inline">\(Y\)</span> at <span class="math inline">\(y\)</span>, the function given by</p>
+<p><strong>Conditional Distribution [Discrete Random Variables]</strong> - If <span class="math inline">\(f(x,y)\)</span> is the value of the joint probability distribution of the discrete random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> at <span class="math inline">\((x,y)\)</span> and <span class="math inline">\(h(y)\)</span> is the value of the marginal distribution of <span class="math inline">\(Y\)</span> at <span class="math inline">\(y\)</span>, the function given by</p>
 <p><span class="math display">\[
 \begin{align}
 f(x|y)=\frac{f(x,y)}{h(y)} &amp;&amp; h(y) \ne 0
@@ -152,11 +152,11 @@ f(x|y)=\frac{f(x,y)}{h(y)} &amp;&amp; h(y) \ne 0
 <p>for each <span class="math inline">\(x\)</span> within the range of <span class="math inline">\(X\)</span> is called the <strong>conditional distribution of <span class="math inline">\(X\)</span> given <span class="math inline">\(Y=y\)</span></strong>. Correspondingly, if <span class="math inline">\(g(x)\)</span> is the value of the marginal distribution of <span class="math inline">\(X\)</span> at <span class="math inline">\(x\)</span>, the function given by</p>
 <p><span class="math display">\[
 \begin{align}
-w(x|y)=\frac{f(x,y)}{g(y)} &amp;&amp; g(y) \ne 0
+f(y|x)=\frac{f(x,y)}{g(x)} &amp;&amp; g(x) \ne 0
 \end{align}
 \]</span></p>
 <p>for each <span class="math inline">\(y\)</span> within the range of <span class="math inline">\(Y\)</span> is called the <strong>conditional distribution of <span class="math inline">\(Y\)</span> given <span class="math inline">\(X=x\)</span></strong>.</p>
-<p><strong>Conditional Density</strong> - If <span class="math inline">\(f(x,y)\)</span> is the value of the joint density of the continuous random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> at <span class="math inline">\((x,y)\)</span> and <span class="math inline">\(h(y)\)</span> is the value of the marginal distribution of <span class="math inline">\(Y\)</span> at <span class="math inline">\(y\)</span>, the function given by</p>
+<p><strong>Conditional Density [Continuous Random Variables]</strong> - If <span class="math inline">\(f(x,y)\)</span> is the value of the joint density of the continuous random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> at <span class="math inline">\((x,y)\)</span> and <span class="math inline">\(h(y)\)</span> is the value of the marginal distribution of <span class="math inline">\(Y\)</span> at <span class="math inline">\(y\)</span>, the function given by</p>
 <p><span class="math display">\[
 \begin{align}
 f(x|y)=\frac{f(x,y)}{h(y)} &amp;&amp; h(y) \ne 0
