@@ -79,11 +79,11 @@ E(aX + b)=aE(X)+b
 **Theorem 4.2 [Expected Value coefficient and sum of constants - Proof]** Using Theorem 4.1 with \(g(X)=aX+b\), we get
 
 \[
-\begin{align}
+\begin{align*}
 E(aX+b)&=\int_{-\infty}^{\infty}(ax+b) \cdot f(x) dx\\
 &=a \int_{-\infty}^{\infty}x \cdot f(x)dx+b \int_{-\infty}^{\infty}f(x)dx\\
 &=aE(X)+b
-\end{align}
+\end{align*}
 \]
 
 **Corollary 4.1** - If \(a\) is a constant, then
@@ -122,7 +122,7 @@ E[g(X,Y)] = \sum_x \sum_y g(x,y) \cdot f(x,y)
 Correspondingly, if \(X\) and \(Y\) are continuous random variables and \(f(x,y)\) is the value of their joint probability density at \((x,y)\), the expected value of \(g(X,Y)\) is
 
 \[
-E[g(x,y)] = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g(x,y) f(x,y) dx dy
+E[g(X,Y)] = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g(x,y) f(x,y) dx dy
 \]
 
 **Theorem 4.5 [Expected values for Summation (multiple random variables)]** - If \(c_1, c_2, \ldots , c_n\) are constants, then 
@@ -192,7 +192,7 @@ when \(X\) is continuous
 
 ## 4.4 Chebyshev's Theorem
 
-**Theorem 4.8** or **Chebyshev's Theorem** - If \(\mu\) and \(\sigma\) are the mean and the standard deviation of a random variable \(X\), then for any positive constant \(k\) the probability is _at least_ \(1 - \frac{1}{k^2}\) that \(X\) will take on a value within \(k\) standard deviationes fo the mean; symbolically,
+**Theorem 4.8** or **Chebyshev's Theorem** - If \(\mu\) and \(\sigma\) are the mean and the standard deviation of a random variable \(X\), then for any positive constant \(k\) the probability is _at least_ \(1 - \frac{1}{k^2}\) that \(X\) will take on a value within \(k\) standard deviations fo the mean; symbolically,
 
 \[
 P(|x-\mu|< k \sigma) \ge 1- \frac{1}{k^2}, \; \sigma \ne 0
@@ -287,9 +287,7 @@ when \(X\) is continuous
 
 for \(r=0,1,2, \ldots \) and \(s=0,1,2,\ldots\) when \(X\) and \(Y\) are discrete, and
 
-\[
-\mu^{'}_{r,s}= E(X^r Y^s)=\int_{- \infty}^{\infty} \int_{- \infty}^{\infty} x^r y^s \cdot f(x,y) dx dy
-\]
+c
 
 when \(X\) and \(Y\) are continuous
 
@@ -336,7 +334,7 @@ when \(X\) and \(Y\) are continuous
 
 **Theorem 4.12[Covariance of Independents]** - If \(X\) and \(Y\) are independent, then \(E(XY)= E(X) \cdot E(Y)\) and \(\sigma_{XY} =0 \)
 
-**Proof** For the discrete case we have, by definiteion, 
+**Proof** For the discrete case we have, by definition, 
 
 \[
 E(XY)=\sum_x \sum_y xy \cdot f(x,y)
@@ -390,7 +388,7 @@ and
 
 where the double summation extends over all values of \(i\) and \(j\), from 1 to \(n\), for which \(i \lt j\).
 
-**Proof** From **variance** with \(g_i (X_1, X_2, \ldots, X_k)=X_i\) for \(i=0,1,2, \ldots n \) it follows that immediately that
+**Proof** From **Theorem 4.5** with \(g_i (X_1, X_2, \ldots, X_k)=X_i\) for \(i=0,1,2, \ldots n \) it follows immediately that
 
 \[
 E(Y)=E \left ( \sum_{i=1}^n a_iX_i \right ) = \sum_{i=1}^n a_i E(X_i)
@@ -400,20 +398,61 @@ and this proves the first part of the theorem. To obtain the expression for the 
 
 \[
 \begin{align}
-\text{var}(Y) = E([Y-E(Y)]^2)&=E \left \{  \left [ \sum_{i=1}^n a_i X_i  - \sum_{i=1}^n a_i E(X_i)\right ]^2 \right \}\\
-&=E \left \{  \left [ \sum_{i=1}^n a_i (X_i  - \mu_i)\right ]^2 \right \}
+\text{var}(Y) = E([Y-E(Y)]^2)&=E \left [  \left ( \sum_{i=1}^n a_i X_i  - \sum_{i=1}^n a_i E(X_i)\right )^2 \right ]\\
+&=E \left [  \left ( \sum_{i=1}^n a_i X_i  - \sum_{i=1}^n a_i \mu_i)\right )^2 \right ]
 \end{align}
 \]
 
-Then, expanding by means of the multinomial theorem, according to which \((a+b+c+d)^2\), for example, equals \(a^2+b^2+c^c+d^2+2ab+2ac+2ad+2bc+2bd+2cd\), and again referring to Theorem 4.5, we get
+Now the summation signs have the same index so we replace them with one summation in addition to factoring out \(a_i\)
 
 \[
-\begin{align}
-\text{var}(Y) &= \sum_{i=1}^n a_i^2 E[(X_i - \mu_i)^2]+ 2 \underset{i<j}{\sum \sum}a_i a_j E[(X_i - \mu_i)(X_j - \mu_j)]\\
-&= \sum_{i=1}^n a_i^2 \cdot \text{var} (X_i)+ 2 \underset{i<j}{\sum \sum}a_i a_j \cdot \text{cov}(X_i,X_j)\\
-\end{align}
+\text{var}(Y)=E \left [  \left ( \sum_{i=1}^n a_i (X_i  - \mu_i)\right )^2 \right ]
 \]
 
+Now rewrite the squared term as product of two terms and use different indexes for the two sets:
+
+\[
+\text{var}(Y)=E \left [  \left ( \sum_{i=1}^n a_i (X_i  - \mu_i)\right ) \left ( \sum_{j=1}^n a_j (X_j  - \mu_j)\right ) \right ]
+\]
+
+Group the summations together:
+
+\[
+\text{var}(Y)=E \left [  \sum_{i=1}^n \sum_{j=1}^n a_i a_j (X_i  - \mu_i)(X_j  - \mu_j) \right ]
+\]
+
+Using Theorem 4.5 we can distribution the Expectation:
+
+\[
+\text{var}(Y)=  \sum_{i=1}^n \sum_{j=1}^n a_i a_j E \left [ (X_i  - \mu_i)(X_j  - \mu_j) \right ] 
+\]
+
+Now we can expand a few terms to see the pattern:
+
+\[
+\begin{align*}
+  \text{var}(Y) &= a_1 a_1 E \left [ (X_1 - \mu_1)(X_1 - \mu_1)\right ] \\
+  &+ a_1 a_2 E \left [ (X_1 - \mu_1)(X_2 - \mu_2)\right ] +  a_2 a_1 E \left [ (X_2 - \mu_2)(X_1 - \mu_1)\right ] \\
+  &+ a_2 a_2 E \left [ (X_2 - \mu_2)(X_2 - \mu_2)\right ] \\
+  &+ a_1 a_2 E \left [ (X_1 - \mu_1)(X_2 - \mu_2)\right ] +  a_2 a_1 E \left [ (X_2 - \mu_2)(X_1 - \mu_1)\right ] \\
+  &+ \ldots
+\end{align*}
+\]
+
+Now grouping the terms we notice there are two sets of terms, those where the indexes are equal, i.e. \(i=j\) and those where they are not equal , i.e. \(i \ne j\). 
+\[
+\begin{align*}
+  \text{var}(Y) &= a_1^2 E \left [ (X_1 - \mu_1)(X_1 - \mu_1)\right ] + a_2^2 E \left [ (X_2 - \mu_2)(X_2 - \mu_2)\right ] \\
+  &+ 2 a_1 a_2 E \left [ (X_1 - \mu_1)(X_2 - \mu_2)\right ] + \ldots\\
+&= \sum_{i=1}^n a_i^2 E[(X_i - \mu_i)^2]+ 2 \underset{i<j}{\sum \sum}a_i a_j E[(X_i - \mu_i)(X_j - \mu_j)]
+\end{align*}
+\]
+
+Then we notice that the terms can be simplified using the definition of variance \(\text{var}(X_i)=E[(X_i - \mu_i)^2]\) and covariance \(\text{covariance}(X_i,X_j)=E[(X_i - \mu_i)(X_j - \mu_j)]\):
+
+\[
+\text{var}(Y) = \sum_{i=1}^n a_i^2 \cdot \text{var} (X_i)+ 2 \underset{i<j}{\sum \sum}a_i a_j \cdot \text{cov}(X_i,X_j)
+\]
 Note that we have tacitly made use of the fact that \(\text{cov}(X_i, X_j)=\text{cov}(X_j,X_i)\)
 
 **Corollary 4.3** - If the random variables \(X_1, X_2,\ldots,X_n\) are independent and \(Y=\sum_{i=1}^n a_i X_i\), then
@@ -446,7 +485,7 @@ where \(a_1,a_2,\ldots,a_n,b_1, b_2, \ldots, b_n\) are constants, then
 
 ## 4.8 Conditional Expectations
 
-**Conditional Expectation** - If \(X\) is a discrete random variable, and \(f(x|y)\) is the value of the conditional probability distribution of \(X\) give \(Y=y\) at \(x\), the **conditioanl expectation of \(u(X)\) given \(Y=y\) is
+**Conditional Expectation** - If \(X\) is a discrete random variable, and \(f(x|y)\) is the value of the conditional probability distribution of \(X\) given \(Y=y\) at \(x\), the **conditional expectation of \(u(X)\) given \(Y=y\)** is
 
 \[
 E[(u(X)|y)]=\sum_x u(x)\cdot f(x|y)

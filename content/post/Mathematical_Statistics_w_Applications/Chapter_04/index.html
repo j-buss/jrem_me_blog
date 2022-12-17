@@ -2,7 +2,7 @@
 title: "Chapter 4 - Mathematical Expectation"
 author: Jeremy Buss
 output: html_document
-date: "2022-08-30"
+date: "2022-12-17"
 categories:
   - John E. Freund's Mathematical Statistics with Applications - Miller/Miller
   - Statistics
@@ -54,11 +54,11 @@ E(aX + b)=aE(X)+b
 \]</span></p>
 <p><strong>Theorem 4.2 [Expected Value coefficient and sum of constants - Proof]</strong> Using Theorem 4.1 with <span class="math inline">\(g(X)=aX+b\)</span>, we get</p>
 <p><span class="math display">\[
-\begin{align}
+\begin{align*}
 E(aX+b)&amp;=\int_{-\infty}^{\infty}(ax+b) \cdot f(x) dx\\
 &amp;=a \int_{-\infty}^{\infty}x \cdot f(x)dx+b \int_{-\infty}^{\infty}f(x)dx\\
 &amp;=aE(X)+b
-\end{align}
+\end{align*}
 \]</span></p>
 <p><strong>Corollary 4.1</strong> - If <span class="math inline">\(a\)</span> is a constant, then
 <span class="math display">\[
@@ -87,7 +87,7 @@ E[g(X,Y)] = \sum_x \sum_y g(x,y) \cdot f(x,y)
 \]</span></p>
 <p>Correspondingly, if <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are continuous random variables and <span class="math inline">\(f(x,y)\)</span> is the value of their joint probability density at <span class="math inline">\((x,y)\)</span>, the expected value of <span class="math inline">\(g(X,Y)\)</span> is</p>
 <p><span class="math display">\[
-E[g(x,y)] = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g(x,y) f(x,y) dx dy
+E[g(X,Y)] = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g(x,y) f(x,y) dx dy
 \]</span></p>
 <p><strong>Theorem 4.5 [Expected values for Summation (multiple random variables)]</strong> - If <span class="math inline">\(c_1, c_2, \ldots , c_n\)</span> are constants, then</p>
 <p><span class="math display">\[
@@ -137,7 +137,7 @@ E \left [ \sum_{i=1}^n c_i g_i (X_1, X_2, \ldots, X_k)\right ] = \sum_{i=1}^n c_
 </div>
 <div id="chebyshevs-theorem" class="section level2">
 <h2>4.4 Chebyshev’s Theorem</h2>
-<p><strong>Theorem 4.8</strong> or <strong>Chebyshev’s Theorem</strong> - If <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> are the mean and the standard deviation of a random variable <span class="math inline">\(X\)</span>, then for any positive constant <span class="math inline">\(k\)</span> the probability is <em>at least</em> <span class="math inline">\(1 - \frac{1}{k^2}\)</span> that <span class="math inline">\(X\)</span> will take on a value within <span class="math inline">\(k\)</span> standard deviationes fo the mean; symbolically,</p>
+<p><strong>Theorem 4.8</strong> or <strong>Chebyshev’s Theorem</strong> - If <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> are the mean and the standard deviation of a random variable <span class="math inline">\(X\)</span>, then for any positive constant <span class="math inline">\(k\)</span> the probability is <em>at least</em> <span class="math inline">\(1 - \frac{1}{k^2}\)</span> that <span class="math inline">\(X\)</span> will take on a value within <span class="math inline">\(k\)</span> standard deviations fo the mean; symbolically,</p>
 <p><span class="math display">\[
 P(|x-\mu|&lt; k \sigma) \ge 1- \frac{1}{k^2}, \; \sigma \ne 0
 \]</span></p>
@@ -208,9 +208,7 @@ M_X(t)= E(e^{tX}) = \int_{- \infty}^{\infty}e^{tx} \cdot f(x) dx
 \mu^{&#39;}_{r,s}= E(X^r Y^s)=\sum_x \sum_y x^r y^s \cdot f(x,y)
 \]</span></p>
 <p>for <span class="math inline">\(r=0,1,2, \ldots\)</span> and <span class="math inline">\(s=0,1,2,\ldots\)</span> when <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are discrete, and</p>
-<p><span class="math display">\[
-\mu^{&#39;}_{r,s}= E(X^r Y^s)=\int_{- \infty}^{\infty} \int_{- \infty}^{\infty} x^r y^s \cdot f(x,y) dx dy
-\]</span></p>
+<p>c</p>
 <p>when <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are continuous</p>
 <p><strong>Product Moments About the Mean</strong> - The <strong><span class="math inline">\(r\)</span>th and <span class="math inline">\(s\)</span>th product moment about the means</strong> of the random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, denoted by <span class="math inline">\(\mu_{r,s}\)</span>, is the expected value of <span class="math inline">\((X-\mu_X)^r (Y - \mu_Y)^s\)</span>; symbolically,</p>
 <p><span class="math display">\[
@@ -243,7 +241,7 @@ M_X(t)= E(e^{tX}) = \int_{- \infty}^{\infty}e^{tx} \cdot f(x) dx
 \end{align}
 \]</span></p>
 <p><strong>Theorem 4.12[Covariance of Independents]</strong> - If <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, then <span class="math inline">\(E(XY)= E(X) \cdot E(Y)\)</span> and <span class="math inline">\(\sigma_{XY} =0\)</span></p>
-<p><strong>Proof</strong> For the discrete case we have, by definiteion,</p>
+<p><strong>Proof</strong> For the discrete case we have, by definition,</p>
 <p><span class="math display">\[
 E(XY)=\sum_x \sum_y xy \cdot f(x,y)
 \]</span></p>
@@ -283,25 +281,56 @@ E(Y) = \sum_{i=1}^n a_i E(X_i)
 \text{var}(Y)=\sum_{i=1}^n a_i^2 \cdot \text{var}(X_i)+ 2 \underset{i \lt j}{\sum \sum} a_i a_j \cdot \text{cov} (X_i X_j)
 \]</span></p>
 <p>where the double summation extends over all values of <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>, from 1 to <span class="math inline">\(n\)</span>, for which <span class="math inline">\(i \lt j\)</span>.</p>
-<p><strong>Proof</strong> From <strong>variance</strong> with <span class="math inline">\(g_i (X_1, X_2, \ldots, X_k)=X_i\)</span> for <span class="math inline">\(i=0,1,2, \ldots n\)</span> it follows that immediately that</p>
+<p><strong>Proof</strong> From <strong>Theorem 4.5</strong> with <span class="math inline">\(g_i (X_1, X_2, \ldots, X_k)=X_i\)</span> for <span class="math inline">\(i=0,1,2, \ldots n\)</span> it follows immediately that</p>
 <p><span class="math display">\[
 E(Y)=E \left ( \sum_{i=1}^n a_iX_i \right ) = \sum_{i=1}^n a_i E(X_i)
 \]</span></p>
 <p>and this proves the first part of the theorem. To obtain the expression for the variance of <span class="math inline">\(Y\)</span>, let us write <span class="math inline">\(\mu_i\)</span> for <span class="math inline">\(E(X_i)\)</span> so that we get</p>
 <p><span class="math display">\[
 \begin{align}
-\text{var}(Y) = E([Y-E(Y)]^2)&amp;=E \left \{  \left [ \sum_{i=1}^n a_i X_i  - \sum_{i=1}^n a_i E(X_i)\right ]^2 \right \}\\
-&amp;=E \left \{  \left [ \sum_{i=1}^n a_i (X_i  - \mu_i)\right ]^2 \right \}
+\text{var}(Y) = E([Y-E(Y)]^2)&amp;=E \left [  \left ( \sum_{i=1}^n a_i X_i  - \sum_{i=1}^n a_i E(X_i)\right )^2 \right ]\\
+&amp;=E \left [  \left ( \sum_{i=1}^n a_i X_i  - \sum_{i=1}^n a_i \mu_i)\right )^2 \right ]
 \end{align}
 \]</span></p>
-<p>Then, expanding by means of the multinomial theorem, according to which <span class="math inline">\((a+b+c+d)^2\)</span>, for example, equals <span class="math inline">\(a^2+b^2+c^c+d^2+2ab+2ac+2ad+2bc+2bd+2cd\)</span>, and again referring to Theorem 4.5, we get</p>
+<p>Now the summation signs have the same index so we replace them with one summation in addition to factoring out <span class="math inline">\(a_i\)</span></p>
 <p><span class="math display">\[
-\begin{align}
-\text{var}(Y) &amp;= \sum_{i=1}^n a_i^2 E[(X_i - \mu_i)^2]+ 2 \underset{i&lt;j}{\sum \sum}a_i a_j E[(X_i - \mu_i)(X_j - \mu_j)]\\
-&amp;= \sum_{i=1}^n a_i^2 \cdot \text{var} (X_i)+ 2 \underset{i&lt;j}{\sum \sum}a_i a_j \cdot \text{cov}(X_i,X_j)\\
-\end{align}
+\text{var}(Y)=E \left [  \left ( \sum_{i=1}^n a_i (X_i  - \mu_i)\right )^2 \right ]
 \]</span></p>
-<p>Note that we have tacitly made use of the fact that <span class="math inline">\(\text{cov}(X_i, X_j)=\text{cov}(X_j,X_i)\)</span></p>
+<p>Now rewrite the squared term as product of two terms and use different indexes for the two sets:</p>
+<p><span class="math display">\[
+\text{var}(Y)=E \left [  \left ( \sum_{i=1}^n a_i (X_i  - \mu_i)\right ) \left ( \sum_{j=1}^n a_j (X_j  - \mu_j)\right ) \right ]
+\]</span></p>
+<p>Group the summations together:</p>
+<p><span class="math display">\[
+\text{var}(Y)=E \left [  \sum_{i=1}^n \sum_{j=1}^n a_i a_j (X_i  - \mu_i)(X_j  - \mu_j) \right ]
+\]</span></p>
+<p>Using Theorem 4.5 we can distribution the Expectation:</p>
+<p><span class="math display">\[
+\text{var}(Y)=  \sum_{i=1}^n \sum_{j=1}^n a_i a_j E \left [ (X_i  - \mu_i)(X_j  - \mu_j) \right ]
+\]</span></p>
+<p>Now we can expand a few terms to see the pattern:</p>
+<p><span class="math display">\[
+\begin{align*}
+  \text{var}(Y) &amp;= a_1 a_1 E \left [ (X_1 - \mu_1)(X_1 - \mu_1)\right ] \\
+  &amp;+ a_1 a_2 E \left [ (X_1 - \mu_1)(X_2 - \mu_2)\right ] +  a_2 a_1 E \left [ (X_2 - \mu_2)(X_1 - \mu_1)\right ] \\
+  &amp;+ a_2 a_2 E \left [ (X_2 - \mu_2)(X_2 - \mu_2)\right ] \\
+  &amp;+ a_1 a_2 E \left [ (X_1 - \mu_1)(X_2 - \mu_2)\right ] +  a_2 a_1 E \left [ (X_2 - \mu_2)(X_1 - \mu_1)\right ] \\
+  &amp;+ \ldots
+\end{align*}
+\]</span></p>
+<p>Now grouping the terms we notice there are two sets of terms, those where the indexes are equal, i.e. <span class="math inline">\(i=j\)</span> and those where they are not equal , i.e. <span class="math inline">\(i \ne j\)</span>.
+<span class="math display">\[
+\begin{align*}
+  \text{var}(Y) &amp;= a_1^2 E \left [ (X_1 - \mu_1)(X_1 - \mu_1)\right ] + a_2^2 E \left [ (X_2 - \mu_2)(X_2 - \mu_2)\right ] \\
+  &amp;+ 2 a_1 a_2 E \left [ (X_1 - \mu_1)(X_2 - \mu_2)\right ] + \ldots\\
+&amp;= \sum_{i=1}^n a_i^2 E[(X_i - \mu_i)^2]+ 2 \underset{i&lt;j}{\sum \sum}a_i a_j E[(X_i - \mu_i)(X_j - \mu_j)]
+\end{align*}
+\]</span></p>
+<p>Then we notice that the terms can be simplified using the definition of variance <span class="math inline">\(\text{var}(X_i)=E[(X_i - \mu_i)^2]\)</span> and covariance <span class="math inline">\(\text{covariance}(X_i,X_j)=E[(X_i - \mu_i)(X_j - \mu_j)]\)</span>:</p>
+<p><span class="math display">\[
+\text{var}(Y) = \sum_{i=1}^n a_i^2 \cdot \text{var} (X_i)+ 2 \underset{i&lt;j}{\sum \sum}a_i a_j \cdot \text{cov}(X_i,X_j)
+\]</span>
+Note that we have tacitly made use of the fact that <span class="math inline">\(\text{cov}(X_i, X_j)=\text{cov}(X_j,X_i)\)</span></p>
 <p><strong>Corollary 4.3</strong> - If the random variables <span class="math inline">\(X_1, X_2,\ldots,X_n\)</span> are independent and <span class="math inline">\(Y=\sum_{i=1}^n a_i X_i\)</span>, then</p>
 <p><span class="math display">\[
 \text{var}(Y)=\sum_{i=1}^n a_i^2 \cdot \text{var}(X_i)
@@ -325,7 +354,7 @@ Y_1=\sum_{i=1}^n a_i X_i \; \text{and} \; Y_2=\sum_{i=1}^n b_i X_i
 </div>
 <div id="conditional-expectations" class="section level2">
 <h2>4.8 Conditional Expectations</h2>
-<p><strong>Conditional Expectation</strong> - If <span class="math inline">\(X\)</span> is a discrete random variable, and <span class="math inline">\(f(x|y)\)</span> is the value of the conditional probability distribution of <span class="math inline">\(X\)</span> give <span class="math inline">\(Y=y\)</span> at <span class="math inline">\(x\)</span>, the **conditioanl expectation of <span class="math inline">\(u(X)\)</span> given <span class="math inline">\(Y=y\)</span> is</p>
+<p><strong>Conditional Expectation</strong> - If <span class="math inline">\(X\)</span> is a discrete random variable, and <span class="math inline">\(f(x|y)\)</span> is the value of the conditional probability distribution of <span class="math inline">\(X\)</span> given <span class="math inline">\(Y=y\)</span> at <span class="math inline">\(x\)</span>, the <strong>conditional expectation of <span class="math inline">\(u(X)\)</span> given <span class="math inline">\(Y=y\)</span></strong> is</p>
 <p><span class="math display">\[
 E[(u(X)|y)]=\sum_x u(x)\cdot f(x|y)
 \]</span></p>
