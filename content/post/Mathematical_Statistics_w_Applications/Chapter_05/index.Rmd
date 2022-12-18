@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r message=FALSE, warning=FALSE, include=FALSE}
 install.packages("blogdown")
 ```
-
+\newcommand{\R}{{\mathbb R}}
 
 
 ## 5.1 Introduction
@@ -27,13 +27,71 @@ install.packages("blogdown")
 
 ## 5.2 The Discrete Uniform Distribution
 
-**Discrete Uniform Distribution** - A random variable \(X\) has a **discrete uniform distribution** and it is referred to as a discrete uniform random variable if and only if it probability distribution is given by
+**Discrete Uniform Distribution** - A random variable \(X\) has a **discrete uniform distribution** and it is referred to as a discrete uniform random variable if and only if 
+
+### Probability Distribution:
 
 \[
-f(x) = \frac{1}{k} \; \text{for} \, x = x_1, x_2, \dots, x_k
+f(x) = 
+  \begin{cases}
+    \frac{1}{k} \qquad \text{for} \, x = x_1, x_2, \dots, x_k \qquad \text{ and } x_i \ne x_j \text{ when } i \ne j\\
+    0 \qquad \text{otherwise}
+  \end{cases}
 \]
 
-where \(x_i \ne x_j\) when \(i \ne j\)
+### Moment About the Origin:
+
+\[
+  \begin{align*}
+   \mu_r^{'} &= E[X^r]=\sum_x x^r \cdot f(x)\\
+    &=\frac{1}{k} \sum_{i=1}^k x_i^r \qquad r=1,2,3,\ldots\\
+  \end{align*}
+\]
+
+### Moment Generating Function:
+
+\[
+\begin{align*}
+		M_X(t)&= \sum_x e^{tX} \cdot f(x)\\
+		&=\frac{1}{k} \sum_{i=1}^k e^{tx_i} \qquad t \in \R
+	\end{align*}
+\]
+
+### 1st Moment about the origin (e.g. Mean)
+
+\[
+	\begin{align*}
+		\frac{d}{dt} \left ( M_X(t) \right )&=\frac{d}{dt} \left ( \frac{1}{k} \sum_{i=1}^k e^{tx_i} \right )= \frac{1}{k} \frac{d}{dt} \left ( \sum_{i=1}^k e^{tx_i} \right )\\
+		&=\frac{1}{k} \left ( \sum_{i=1}^k x_i e^{tx_i} \right )=M_X^{(1)}(t)
+	\end{align*}
+\]
+
+Evaluate at \(t=0\)
+
+\[
+M_X^{(1)}(0)=\frac{1}{k}  \sum_{i=1}^k x_i = \mu
+\]
+
+For the common occurrence that \(x_i=i\) then
+\[
+\mu = \frac{a+b}{2} 
+\]
+ Where \(a,b\) are integers expressing the domain of \(x\) and \(b \ge a\)
+
+### 2nd Moment about the origin
+
+\[
+	\begin{align*}
+		\frac{d}{dt} \left ( M_X^{(1)}(t) \right )= \frac{d}{dt} \left [ \frac{1}{k} \left ( \sum_{i=1}^k x_i e^{tx_i} \right ) \right ] \\
+		&= \frac{1}{k} \sum_{i=1}^k x_i^2 e^{tx_i}=M_X^{(2)}(t)
+	\end{align*}
+\]
+
+Evaluate at \(t=0\)
+
+\[
+M_X^{(2)}(0)=\frac{1}{k}  \sum_{i=1}^k x_i^2
+\]
 
 ## 5.3 The Bernoulli Distribution
 

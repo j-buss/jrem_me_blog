@@ -2,7 +2,7 @@
 title: "Chapter 5 - Special Probability Distributions"
 author: Jeremy Buss
 output: html_document
-date: "2022-08-29"
+date: "2022-12-17"
 categories:
   - John E. Freund's Mathematical Statistics with Applications - Miller/Miller
   - Statistics
@@ -18,11 +18,66 @@ katex: yes
 </div>
 <div id="the-discrete-uniform-distribution" class="section level2">
 <h2>5.2 The Discrete Uniform Distribution</h2>
-<p><strong>Discrete Uniform Distribution</strong> - A random variable <span class="math inline">\(X\)</span> has a <strong>discrete uniform distribution</strong> and it is referred to as a discrete uniform random variable if and only if it probability distribution is given by</p>
+<p><strong>Discrete Uniform Distribution</strong> - A random variable <span class="math inline">\(X\)</span> has a <strong>discrete uniform distribution</strong> and it is referred to as a discrete uniform random variable if and only if</p>
+<div id="probability-distribution" class="section level3">
+<h3>Probability Distribution:</h3>
 <p><span class="math display">\[
-f(x) = \frac{1}{k} \; \text{for} \, x = x_1, x_2, \dots, x_k
+f(x) =
+  \begin{cases}
+    \frac{1}{k} \qquad \text{for} \, x = x_1, x_2, \dots, x_k \qquad \text{ and } x_i \ne x_j \text{ when } i \ne j\\
+    0 \qquad \text{otherwise}
+  \end{cases}
 \]</span></p>
-<p>where <span class="math inline">\(x_i \ne x_j\)</span> when <span class="math inline">\(i \ne j\)</span></p>
+</div>
+<div id="moment-about-the-origin" class="section level3">
+<h3>Moment About the Origin:</h3>
+<p><span class="math display">\[
+  \begin{align*}
+   \mu_r^{&#39;} &amp;= E[X^r]=\sum_x x^r \cdot f(x)\\
+    &amp;=\frac{1}{k} \sum_{i=1}^k x_i^r \qquad r=1,2,3,\ldots\\
+  \end{align*}
+\]</span></p>
+</div>
+<div id="moment-generating-function" class="section level3">
+<h3>Moment Generating Function:</h3>
+<p><span class="math display">\[
+\begin{align*}
+		M_X(t)&amp;= \sum_x e^{tX} \cdot f(x)\\
+		&amp;=\frac{1}{k} \sum_{i=1}^k e^{tx_i} \qquad t \in {\mathbb R}
+	\end{align*}
+\]</span></p>
+</div>
+<div id="st-moment-about-the-origin-e.g.-mean" class="section level3">
+<h3>1st Moment about the origin (e.g. Mean)</h3>
+<p><span class="math display">\[
+	\begin{align*}
+		\frac{d}{dt} \left ( M_X(t) \right )&amp;=\frac{d}{dt} \left ( \frac{1}{k} \sum_{i=1}^k e^{tx_i} \right )= \frac{1}{k} \frac{d}{dt} \left ( \sum_{i=1}^k e^{tx_i} \right )\\
+		&amp;=\frac{1}{k} \left ( \sum_{i=1}^k x_i e^{tx_i} \right )=M_X^{(1)}(t)
+	\end{align*}
+\]</span></p>
+<p>Evaluate at <span class="math inline">\(t=0\)</span></p>
+<p><span class="math display">\[
+M_X^{(1)}(0)=\frac{1}{k}  \sum_{i=1}^k x_i = \mu
+\]</span></p>
+<p>For the common occurrence that <span class="math inline">\(x_i=i\)</span> then
+<span class="math display">\[
+\mu = \frac{a+b}{2}
+\]</span>
+Where <span class="math inline">\(a,b\)</span> are integers expressing the domain of <span class="math inline">\(x\)</span> and <span class="math inline">\(b \ge a\)</span></p>
+</div>
+<div id="nd-moment-about-the-origin" class="section level3">
+<h3>2nd Moment about the origin</h3>
+<p><span class="math display">\[
+	\begin{align*}
+		\frac{d}{dt} \left ( M_X^{(1)}(t) \right )= \frac{d}{dt} \left [ \frac{1}{k} \left ( \sum_{i=1}^k x_i e^{tx_i} \right ) \right ] \\
+		&amp;= \frac{1}{k} \sum_{i=1}^k x_i^2 e^{tx_i}=M_X^{(2)}(t)
+	\end{align*}
+\]</span></p>
+<p>Evaluate at <span class="math inline">\(t=0\)</span></p>
+<p><span class="math display">\[
+M_X^{(2)}(0)=\frac{1}{k}  \sum_{i=1}^k x_i^2
+\]</span></p>
+</div>
 </div>
 <div id="the-bernoulli-distribution" class="section level2">
 <h2>5.3 The Bernoulli Distribution</h2>
