@@ -272,19 +272,20 @@ Where \(Z\) is seen to be a random variable having the standard normal distribut
 
 ## 6.6 The Normal Approximation to the Binomial Distribution
 
-**Theorem 6.8 [Normal Approx to Binomial Distribution]** If \(X\) is a random variable having a binomial distribution with the parmeters \(n\) and \(\theta\), then the moment generating function of 
+**Theorem 6.8 [Normal Approx to Binomial Distribution]** If \(X\) is a random variable having a binomial distribution with the parameters \(n\) and \(\theta\), then the moment generating function of 
 
 \[
 Z = \frac{X-n \theta}{\sqrt{n \theta (1-\theta)}}
 \]
 
-approaches that of the standard normla distribution when \(n\rightarrow \infty\)
+approaches that of the standard normal distribution when \(n\rightarrow \infty\)
 
 **Theorem 6.8 [Normal Approx to Binomial Distribution - Proof]**
 
 Making use of Theorem 4.10 and 5.4 [Binomial Moment Generation] we can write
 
 \[
+M_Z(t)=M_{\frac{X-\mu}{\sigma}}(t)=e^{- \mu t/\sigma} \cdot \left [ 1 + \theta (e^{t/\sigma} - 1)\right ]^n
 \]
 
 where \(\mu=n\theta\) and \(\sigma = \sqrt{n \theta (1 - \theta)}\). Then, taking logarithms and substituting the Maclaurin's series of \(e^{t/\sigma}\), we get

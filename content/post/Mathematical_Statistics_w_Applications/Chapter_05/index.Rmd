@@ -23,7 +23,7 @@ install.packages("blogdown")
 
 ## 5.1 Introduction
 
-**parameters** - quantities that are constants for particular distributions, but can take on different values for different members of famiiles of distributions of the same kind
+**parameters** - quantities that are constants for particular distributions, but can take on different values for different members of families of distributions of the same kind
 
 ## 5.2 The Discrete Uniform Distribution
 
@@ -39,7 +39,7 @@ f(x) =
   \end{cases}
 \]
 
-### Moment About the Origin:
+### Moment About the Origin - Directly:
 
 \[
   \begin{align*}
@@ -69,7 +69,7 @@ f(x) =
 Evaluate at \(t=0\)
 
 \[
-M_X^{(1)}(0)=\frac{1}{k}  \sum_{i=1}^k x_i = \mu
+M_X^{(1)}(0)=\mu=\frac{1}{k}  \sum_{i=1}^k x_i 
 \]
 
 For the common occurrence that \(x_i=i\) then
@@ -82,7 +82,7 @@ For the common occurrence that \(x_i=i\) then
 
 \[
 	\begin{align*}
-		\frac{d}{dt} \left ( M_X^{(1)}(t) \right )= \frac{d}{dt} \left [ \frac{1}{k} \left ( \sum_{i=1}^k x_i e^{tx_i} \right ) \right ] \\
+		\frac{d}{dt} \left ( M_X^{(1)}(t) \right )&= \frac{d}{dt} \left [ \frac{1}{k} \left ( \sum_{i=1}^k x_i e^{tx_i} \right ) \right ] \\
 		&= \frac{1}{k} \sum_{i=1}^k x_i^2 e^{tx_i}=M_X^{(2)}(t)
 	\end{align*}
 \]
@@ -95,13 +95,14 @@ M_X^{(2)}(0)=\frac{1}{k}  \sum_{i=1}^k x_i^2
 
 ## 5.3 The Bernoulli Distribution
 
+**Bernoulli Trial** - an experiment to which a Bernoulli distribution applies; an experiment that has two possible outcomes "success" and "failure"
+
 **Bernoulli Distribution** - A random variable \(X\) has a **Bernoulli distribution** and it is referred to as a Bernoulli random variable if and only if its probability distribution is given by
 
 \[
 f(x; \theta) = \theta ^x (1-\theta)^{1-x} \; \text{for} \, x=0,1
 \]
 
-**Bernoulli Trial** - an experiment to which a Bernoulli distribution applies; an experiment that has two possible outcomes "success" and "failure"
 
 ## 5.4 The Binomial Distribution
 

@@ -2,7 +2,7 @@
 title: "Chapter 5 - Special Probability Distributions"
 author: Jeremy Buss
 output: html_document
-date: "2022-12-17"
+date: "2022-12-23"
 categories:
   - John E. Freund's Mathematical Statistics with Applications - Miller/Miller
   - Statistics
@@ -14,7 +14,7 @@ katex: yes
 
 <div id="introduction" class="section level2">
 <h2>5.1 Introduction</h2>
-<p><strong>parameters</strong> - quantities that are constants for particular distributions, but can take on different values for different members of famiiles of distributions of the same kind</p>
+<p><strong>parameters</strong> - quantities that are constants for particular distributions, but can take on different values for different members of families of distributions of the same kind</p>
 </div>
 <div id="the-discrete-uniform-distribution" class="section level2">
 <h2>5.2 The Discrete Uniform Distribution</h2>
@@ -29,8 +29,8 @@ f(x) =
   \end{cases}
 \]</span></p>
 </div>
-<div id="moment-about-the-origin" class="section level3">
-<h3>Moment About the Origin:</h3>
+<div id="moment-about-the-origin---directly" class="section level3">
+<h3>Moment About the Origin - Directly:</h3>
 <p><span class="math display">\[
   \begin{align*}
    \mu_r^{&#39;} &amp;= E[X^r]=\sum_x x^r \cdot f(x)\\
@@ -57,7 +57,7 @@ f(x) =
 \]</span></p>
 <p>Evaluate at <span class="math inline">\(t=0\)</span></p>
 <p><span class="math display">\[
-M_X^{(1)}(0)=\frac{1}{k}  \sum_{i=1}^k x_i = \mu
+M_X^{(1)}(0)=\mu=\frac{1}{k}  \sum_{i=1}^k x_i
 \]</span></p>
 <p>For the common occurrence that <span class="math inline">\(x_i=i\)</span> then
 <span class="math display">\[
@@ -69,7 +69,7 @@ Where <span class="math inline">\(a,b\)</span> are integers expressing the domai
 <h3>2nd Moment about the origin</h3>
 <p><span class="math display">\[
 	\begin{align*}
-		\frac{d}{dt} \left ( M_X^{(1)}(t) \right )= \frac{d}{dt} \left [ \frac{1}{k} \left ( \sum_{i=1}^k x_i e^{tx_i} \right ) \right ] \\
+		\frac{d}{dt} \left ( M_X^{(1)}(t) \right )&amp;= \frac{d}{dt} \left [ \frac{1}{k} \left ( \sum_{i=1}^k x_i e^{tx_i} \right ) \right ] \\
 		&amp;= \frac{1}{k} \sum_{i=1}^k x_i^2 e^{tx_i}=M_X^{(2)}(t)
 	\end{align*}
 \]</span></p>
@@ -81,11 +81,11 @@ M_X^{(2)}(0)=\frac{1}{k}  \sum_{i=1}^k x_i^2
 </div>
 <div id="the-bernoulli-distribution" class="section level2">
 <h2>5.3 The Bernoulli Distribution</h2>
+<p><strong>Bernoulli Trial</strong> - an experiment to which a Bernoulli distribution applies; an experiment that has two possible outcomes “success” and “failure”</p>
 <p><strong>Bernoulli Distribution</strong> - A random variable <span class="math inline">\(X\)</span> has a <strong>Bernoulli distribution</strong> and it is referred to as a Bernoulli random variable if and only if its probability distribution is given by</p>
 <p><span class="math display">\[
 f(x; \theta) = \theta ^x (1-\theta)^{1-x} \; \text{for} \, x=0,1
 \]</span></p>
-<p><strong>Bernoulli Trial</strong> - an experiment to which a Bernoulli distribution applies; an experiment that has two possible outcomes “success” and “failure”</p>
 </div>
 <div id="the-binomial-distribution" class="section level2">
 <h2>5.4 The Binomial Distribution</h2>

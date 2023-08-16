@@ -131,7 +131,7 @@ which completes the proof.
 
 The subset can't contain more elements than the original set; i.e. \(\dbinom n r = 0\) whenever \(n\) is a positive integer and \(r\) is a positive integer greater than \(n\). 
 
-**Theorem 1.12 [Sums of combinations]** 
+**Theorem 1.12 [Vandermonde's Identity]** 
 
 \[
 \sum^k_{r=0} \dbinom m r \dbinom n {k-r} = \dbinom {m+n} k 

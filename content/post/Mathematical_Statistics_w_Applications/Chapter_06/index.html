@@ -2,7 +2,7 @@
 title: "Chapter 6 - Special Probability Densities"
 author: Jeremy Buss
 output: html_document
-date: "2022-07-24"
+date: "2023-01-02"
 categories:
   - John E. Freund's Mathematical Statistics with Applications - Miller/Miller
   - Statistics
@@ -195,14 +195,15 @@ P(x_1 \lt X \lt x_2)&amp;=\frac{1}{\sqrt{2 \pi \sigma}} \int_{x_1}^{x_2} e^{-\fr
 </div>
 <div id="the-normal-approximation-to-the-binomial-distribution" class="section level2">
 <h2>6.6 The Normal Approximation to the Binomial Distribution</h2>
-<p><strong>Theorem 6.8 [Normal Approx to Binomial Distribution]</strong> If <span class="math inline">\(X\)</span> is a random variable having a binomial distribution with the parmeters <span class="math inline">\(n\)</span> and <span class="math inline">\(\theta\)</span>, then the moment generating function of</p>
+<p><strong>Theorem 6.8 [Normal Approx to Binomial Distribution]</strong> If <span class="math inline">\(X\)</span> is a random variable having a binomial distribution with the parameters <span class="math inline">\(n\)</span> and <span class="math inline">\(\theta\)</span>, then the moment generating function of</p>
 <p><span class="math display">\[
 Z = \frac{X-n \theta}{\sqrt{n \theta (1-\theta)}}
 \]</span></p>
-<p>approaches that of the standard normla distribution when <span class="math inline">\(n\rightarrow \infty\)</span></p>
+<p>approaches that of the standard normal distribution when <span class="math inline">\(n\rightarrow \infty\)</span></p>
 <p><strong>Theorem 6.8 [Normal Approx to Binomial Distribution - Proof]</strong></p>
 <p>Making use of Theorem 4.10 and 5.4 [Binomial Moment Generation] we can write</p>
 <p><span class="math display">\[
+M_Z(t)=M_{\frac{X-\mu}{\sigma}}(t)=e^{- \mu t/\sigma} \cdot \left [ 1 + \theta (e^{t/\sigma} - 1)\right ]^n
 \]</span></p>
 <p>where <span class="math inline">\(\mu=n\theta\)</span> and <span class="math inline">\(\sigma = \sqrt{n \theta (1 - \theta)}\)</span>. Then, taking logarithms and substituting the Maclaurin’s series of <span class="math inline">\(e^{t/\sigma}\)</span>, we get</p>
 <p><span class="math display">\[
